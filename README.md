@@ -23,9 +23,8 @@ My mod for the game round made by Landfall games
 ### <span style="color:red">!IMPORTANT DEPENDENCIES!</span>
 you need to have [BepInEx](https://github.com/BepInEx/BepInEx/releases/download/v5.4.11/BepInEx_x64_5.4.11.0.zip), [UnboundLib and MMHOOK](https://github.com/willis81808/UnboundLib/releases/latest) installed  
   
-BepInEx you can extract the zip into the root folder of your Round game folder  
-  
-UnboundLib and MMHOOK dll's need to be put into the BepInEx plugins folder which is located at
+- BepInEx you can extract the zip into the root folder of your Round game folder
+- UnboundLib and MMHOOK dll's need to be put into the BepInEx plugins folder which is located at  
 ```Rounds/BepInEx/plugins```
 
 
