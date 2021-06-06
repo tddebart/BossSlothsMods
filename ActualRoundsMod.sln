@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActualRoundsMod", "ActualRoundsMod.csproj", "{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater", "AutoUpdater\AutoUpdater.csproj", "{53D4B2BB-2E3A-4F09-8388-EACBB1C56D93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D4B2BB-2E3A-4F09-8388-EACBB1C56D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D4B2BB-2E3A-4F09-8388-EACBB1C56D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D4B2BB-2E3A-4F09-8388-EACBB1C56D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D4B2BB-2E3A-4F09-8388-EACBB1C56D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

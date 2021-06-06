@@ -77,17 +77,18 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="A_Yang.cs" />
-        <Compile Include="InfJump.cs" />
-        <Compile Include="OneShot.cs" />
-        <Compile Include="Nice.cs" />
-        <Compile Include="Sneeze.cs" />
-        <Compile Include="Testing.cs" />
+        <Compile Include="Cards\A_Yang.cs" />
+        <Compile Include="Cards\InfJump.cs" />
+        <Compile Include="Cards\Knockback.cs" />
+        <Compile Include="Cards\Nice.cs" />
+        <Compile Include="Cards\OneShot.cs" />
+        <Compile Include="Cards\Sneeze.cs" />
+        <Compile Include="Cards\Yang.cs" />
+        <Compile Include="Cards\Yin.cs" />
+        <Compile Include="Cards\YinYang.cs" />
+        <Compile Include="jumpPatch.cs" />
+        <Compile Include="Startup.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Yang.cs" />
-        <Compile Include="Knockback.cs" />
-        <Compile Include="Yin.cs" />
-        <Compile Include="YinYang.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -99,10 +100,10 @@
     </Target>
     -->
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PostBuildEvent>copy "F:\\Software developer\\Rounds\\ActualRoundsMod\\bin\\Debug\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
+        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\ActualRoundsMod\\bin\\Debug\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PostBuildEvent>copy "F:\\Software developer\\Rounds\\ActualRoundsMod\\bin\\Release\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
+        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\ActualRoundsMod\\bin\\Release\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
     </PropertyGroup>
         
 
