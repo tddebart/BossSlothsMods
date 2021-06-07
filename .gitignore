@@ -2,6 +2,9 @@
 /AutoUpdaterr/packages/DotNetZip.1.15.0/.signature.p7s b/AutoUpdaterr/packages/DotNetZip.1.15.0/.signature.p7s
 /bin/Debug/
 /bin/Release/
-/AutoUpdater/bin/Debug/
-/AutoUpdater/bin/Release/
+/AutoUpdater/bin/Debug
+/AutoUpdater/bin/Release
+/AutoUpdater/bin
 /obj/
+.cache
+/AutoUpdater/obj/
