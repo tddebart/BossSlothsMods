@@ -33,7 +33,7 @@
             Name="PlayButton"
             Padding="10,1,10,1"
             VerticalAlignment="Bottom" />
-        <ComboBox Name="DropDown" Height = "30" Width = "150" HorizontalAlignment = "Left" Margin = "10,10,0,0" VerticalAlignment="Top" SelectedIndex="0"> 
+        <ComboBox Name="DropDown" Height = "30" Width = "150" HorizontalAlignment = "Left" Margin = "10,10,0,0" VerticalAlignment="Top"> 
             <ComboBoxItem Content = "Newest release" Selected="Official"/> 
             <ComboBoxItem Content = "Newest BETA release" Selected="Beta"/> 
         </ComboBox>

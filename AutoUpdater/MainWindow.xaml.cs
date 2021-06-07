@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Ionic.Zip;
 using Octokit;
+using Application = System.Windows.Application;
 
 namespace AutoUpdater
 {
@@ -58,7 +60,11 @@ namespace AutoUpdater
         public MainWindow()
         {
             InitializeComponent();
-
+            
+            _official = (string)Properties.Settings.Default["DVersion"] == "Official";
+            
+            DropDown.SelectedIndex = _official ? 0 : 1;
+            
             rootPath = Directory.GetCurrentDirectory();
             versionFile = Path.Combine(rootPath, "libs", "Version.txt");
             gameZip = Path.Combine(rootPath, "ModFiles.zip");
@@ -68,7 +74,30 @@ namespace AutoUpdater
         {
             if (File.Exists(versionFile))
             {
+                /*
                 Version localVersion = new Version(File.ReadAllText(versionFile));
+                if (_official)
+                {
+                    localVersion = new Version(Regex.Replace(localVersion.ToString(), "B", ""));
+                }
+                else
+                {
+                    localVersion.Text = new Version(localVersion.ToString() + "B");
+                }*/
+                var verCharacters = versionFile.Split('.');
+                var localVersion = Version.zero;
+                foreach (var character in verCharacters)
+                {
+                    if (character == "B")
+                    {
+                        localVersion = new Version(File.ReadAllText(versionFile), true);
+                    }
+                    else
+                    {
+                        localVersion = new Version(File.ReadAllText(versionFile), false);
+                    }
+                }
+                
                 VersionText.Text = "Version: " + localVersion.ToString();
 
                 try
@@ -78,7 +107,7 @@ namespace AutoUpdater
                     var client = new GitHubClient(new ProductHeaderValue("SomeName"));
                     var releases = await client.Repository.Release.GetAll("tddebart", "ActualRoundsMod");
                     var verFix = Regex.Replace(releases[0].TagName, "[^0-9.]", "");
-                    var onlineVersion = new Version(verFix);
+                    var onlineVersion = new Version(verFix, false);
                     
                     
                     
@@ -111,6 +140,8 @@ namespace AutoUpdater
 
         private async void InstallGameFiles(bool _isUpdate, Version _onlineVersion)
         {
+            
+            
             try
             {
                 WebClient webClient = new WebClient();
@@ -125,11 +156,20 @@ namespace AutoUpdater
                     var client = new GitHubClient(new ProductHeaderValue("SomeName"));
                     var releases = await client.Repository.Release.GetAll("tddebart", "ActualRoundsMod");
                     var verFix = Regex.Replace(releases[0].TagName, "[^0-9.]", "");
-                    _onlineVersion = new Version(verFix);
+                    _onlineVersion = new Version(verFix, _onlineVersion.beta);
+                    VersionText.Text = "Version: " + _onlineVersion.ToString();
                 }
 
                 webClient.DownloadFileCompleted += DownloadGameCompletedCallback;
-                webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsMod.zip"), gameZip, _onlineVersion);
+                if (_official)
+                {
+                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsMod.zip"), gameZip, _onlineVersion);
+                }
+                else
+                {
+                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsModBeta.zip"), gameZip, _onlineVersion);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -152,7 +192,14 @@ namespace AutoUpdater
                 }
                 zip.Dispose();
                 File.Delete(gameZip);
-                File.WriteAllText(versionFile, onlineVersion);
+                if (_official)
+                {
+                    //File.WriteAllText(versionFile, onlineVersion);
+                }
+                else
+                {
+                    //File.WriteAllText(versionFile, onlineVersion + ".B");
+                }
 
                 VersionText.Text = "Version: " + onlineVersion;
                 Status = LauncherStatus.ready;
@@ -173,14 +220,16 @@ namespace AutoUpdater
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             // ReSharper disable once UnusedVariable
-            var task = CheckForUpdates();
+            InstallGameFiles(false, Version.zero);
 
-            _official = (string)Properties.Settings.Default["DVersion"] == "Official";
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Status == LauncherStatus.ready) Close();
+            if (Status == LauncherStatus.ready)
+            {
+                Close();
+            }
             else if (Status == LauncherStatus.failed)
             {
                 // ReSharper disable once UnusedVariable
@@ -192,31 +241,45 @@ namespace AutoUpdater
         {
             Properties.Settings.Default["DVersion"] = "Official";
             Properties.Settings.Default.Save();
+            if (_official == false)
+            {
+                Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
+            _official = true;
         }
         
         private void Beta(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default["DVersion"] = "Beta";
             Properties.Settings.Default.Save();
+            if (_official)
+            {
+                Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
+            _official = false;
         }
     }
 
     internal readonly struct Version
     {
-        internal static Version zero = new Version(0, 0, 0);
+        internal static Version zero = new Version(0, 0, 0, false);
 
         private readonly short major;
         private readonly short minor;
         private readonly short subMinor;
+        public readonly bool beta;
 
-        private Version(short _major, short _minor, short _subMinor)
+        private Version(short _major, short _minor, short _subMinor, bool _beta)
         {
             major = _major;
             minor = _minor;
             subMinor = _subMinor;
+            beta = _beta;
         }
         
-        internal Version(string _version)
+        internal Version(string _version, bool _beta)
         {
             var versionStrings = _version.Split('.');
             if (versionStrings.Length != 3)
@@ -224,12 +287,14 @@ namespace AutoUpdater
                 major = 0;
                 minor = 0;
                 subMinor = 0;
+                beta = false;
                 return;
             }
 
             major = short.Parse(versionStrings[0]);
             minor = short.Parse(versionStrings[1]);
             subMinor = short.Parse(versionStrings[2]);
+            beta = _beta;
         }
 
         internal bool IsDifferentThan(Version _otherVersion)
@@ -250,6 +315,10 @@ namespace AutoUpdater
                     {
                         return true;
                     }
+                    else if (beta != _otherVersion.beta)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -257,7 +326,14 @@ namespace AutoUpdater
 
         public override string ToString()
         {
-            return $"{major}.{minor}.{subMinor}";
+            if (beta)
+            {
+                return $"{major}.{minor}.{subMinor}.B";
+            }
+            else
+            {
+                return $"{major}.{minor}.{subMinor}";
+            }
         }
 
 
