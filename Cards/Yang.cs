@@ -55,7 +55,7 @@ namespace ActualRoundsMod.Cards
             gun.reloadTimeAdd = 0.5f;
             gun.attackSpeed = 0.7f;
             
-            gun.projectileColor = Color.white;
+            gun.projectileColor = new Color(1,1,1,0);
 
             var A_Yang = new GameObject();
             A_Yang.AddComponent<A_Yang>();

@@ -27,6 +27,7 @@ namespace AutoUpdater
         private readonly string rootPath;
         private readonly string versionFile;
         private readonly string gameZip;
+        private bool _official;
 
         private LauncherStatus _status;
 
@@ -39,7 +40,7 @@ namespace AutoUpdater
                 switch (_status)
                 {
                     case LauncherStatus.ready:
-                        PlayButton.Content = "Update Downloaded, will close in 2 seconds";
+                        PlayButton.Content = "Update Downloaded, click to close";
                         break;
                     case LauncherStatus.failed:
                         PlayButton.Content = "Update Failed - Retry";
@@ -59,7 +60,7 @@ namespace AutoUpdater
             InitializeComponent();
 
             rootPath = Directory.GetCurrentDirectory();
-            versionFile = Path.Combine(rootPath, "Version.txt");
+            versionFile = Path.Combine(rootPath, "libs", "Version.txt");
             gameZip = Path.Combine(rootPath, "ModFiles.zip");
         }
 
@@ -68,7 +69,7 @@ namespace AutoUpdater
             if (File.Exists(versionFile))
             {
                 Version localVersion = new Version(File.ReadAllText(versionFile));
-                VersionText.Text = localVersion.ToString();
+                VersionText.Text = "Version: " + localVersion.ToString();
 
                 try
                 {
@@ -88,11 +89,12 @@ namespace AutoUpdater
                     else
                     {
                         Status = LauncherStatus.ready;
+                        /*
                         await Task.Delay(1000);
                         PlayButton.Content = "Update Downloaded, will close in 1 seconds";
                         await Task.Delay(1000);
                         PlayButton.Content = "Update Downloaded, will close in 0 seconds";
-                        Close();
+                        Close(); */
                     }
                 }
                 catch (Exception ex)
@@ -135,7 +137,7 @@ namespace AutoUpdater
                 MessageBox.Show($"Error installing game files: {ex}");
             }
         }
-        private async void DownloadGameCompletedCallback(object sender, AsyncCompletedEventArgs e)
+        private void DownloadGameCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
             try
             {
@@ -152,13 +154,14 @@ namespace AutoUpdater
                 File.Delete(gameZip);
                 File.WriteAllText(versionFile, onlineVersion);
 
-                VersionText.Text = onlineVersion;
+                VersionText.Text = "Version: " + onlineVersion;
                 Status = LauncherStatus.ready;
+                /*
                 await Task.Delay(1000);
                 PlayButton.Content = "Update Downloaded, will close in 1 seconds";
                 await Task.Delay(1000);
                 PlayButton.Content = "Update Downloaded, will close in 0 seconds";
-                Close();
+                Close(); */
             }
             catch (Exception ex)
             {
@@ -171,6 +174,8 @@ namespace AutoUpdater
         {
             // ReSharper disable once UnusedVariable
             var task = CheckForUpdates();
+
+            _official = (string)Properties.Settings.Default["DVersion"] == "Official";
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
@@ -181,6 +186,18 @@ namespace AutoUpdater
                 // ReSharper disable once UnusedVariable
                 var task = CheckForUpdates();
             }
+        }
+        
+        private void Official(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default["DVersion"] = "Official";
+            Properties.Settings.Default.Save();
+        }
+        
+        private void Beta(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default["DVersion"] = "Beta";
+            Properties.Settings.Default.Save();
         }
     }
 
@@ -242,5 +259,7 @@ namespace AutoUpdater
         {
             return $"{major}.{minor}.{subMinor}";
         }
+
+
     }
 }

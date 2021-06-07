@@ -54,7 +54,7 @@ namespace ActualRoundsMod.Cards
             gun.reloadTimeAdd = -0.5f;
             gun.attackSpeed = 1.30f;
 
-            gun.projectileColor = Color.black;
+            gun.projectileColor = new Color(0,0,0,1);
         }
 
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,

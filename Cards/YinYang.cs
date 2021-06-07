@@ -24,7 +24,7 @@ namespace ActualRoundsMod.Cards
             var info3 = new CardInfoStat {stat = "Block cooldown", amount = "+4s", positive = false};
             var info4 = new CardInfoStat {stat = "Ammo", amount = "+2", positive = true};
             var info5 = new CardInfoStat {stat = "ATKSPD", amount = "+10%", positive = true};
-            var info6 = new CardInfoStat {stat = "Projectiles", amount = "+2", positive = true};
+            var info6 = new CardInfoStat {stat = "Bullets", amount = "+2", positive = true};
             var info7 = new CardInfoStat {stat = "Health", amount = "+20%", positive = true};
             var info = new [] {info1, info2, info3, info4, info5, info6, info7};
 
@@ -38,8 +38,8 @@ namespace ActualRoundsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            //var art = Testing.Instance.Asset.LoadAsset<GameObject>("C_Sneeze");
-            return null;
+            var art = Startup.Instance.Asset.LoadAsset<GameObject>("C_YinYang");
+            return art;
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
