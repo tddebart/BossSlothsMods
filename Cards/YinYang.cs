@@ -16,19 +16,84 @@ namespace ActualRoundsMod.Cards
         {
             return "Ups most stats";
         }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+            UnityEngine.Debug.Log("Setting up Yin Yang card");
+            cardInfo.allowMultiple = false;
+        }
+
+        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,
+            Block block, CharacterStatModifiers characterStats)
+        {
+            UnityEngine.Debug.Log("Adding Yin Yang card");
+            
+            gun.damage = 1.15f;
+            gun.reloadTimeAdd = 4;
+            gun.ammo = 2;
+            block.cdAdd = 4;
+            gun.numberOfProjectiles = 2;
+            gun.attackSpeed = 1.10f;
+            statModifiers.health = 1.2f;
+            
+            gun.spread = 0.03f;
+            block.additionalBlocks = 1;
+        }
 
         protected override CardInfoStat[] GetStats()
         {
-            var info1 = new CardInfoStat {stat = "Damage", amount = "+10%", positive = true};
-            var info2 = new CardInfoStat { stat = "Reload time", amount = "+4s", positive = false};
-            var info3 = new CardInfoStat {stat = "Block cooldown", amount = "+4s", positive = false};
-            var info4 = new CardInfoStat {stat = "Ammo", amount = "+2", positive = true};
-            var info5 = new CardInfoStat {stat = "ATKSPD", amount = "+10%", positive = true};
-            var info6 = new CardInfoStat {stat = "Bullets", amount = "+2", positive = true};
-            var info7 = new CardInfoStat {stat = "Health", amount = "+20%", positive = true};
-            var info = new [] {info1, info2, info3, info4, info5, info6, info7};
-
-            return info;
+            return new[]
+            {
+                new CardInfoStat
+                {
+                    stat = "Damage",
+                    amount = "+15%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Reload time",
+                    amount = "+4s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Ammo",
+                    amount = "+2",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Block cooldown",
+                    amount = "+4s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Bullets",
+                    amount = "+2",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "ATKSPD",
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Health",
+                    amount = "+20%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()
@@ -38,45 +103,16 @@ namespace ActualRoundsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            var art = Startup.Instance.Asset.LoadAsset<GameObject>("C_YinYang");
-            return art;
+            return Startup.ArtAsset.LoadAsset<GameObject>("C_YinYang");;
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
             return CardThemeColor.CardThemeColorType.TechWhite;
         }
-
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            Debug.Log("Setting up Yin Yang card");
-            cardInfo.allowMultiple = false;
-            gun.damage = 1.10f;
-            gun.ammo = 2;
-            gun.reloadTimeAdd = 4;
-            gun.numberOfProjectiles = 2;
-            gun.attackSpeed = 1.10f;
-            gun.spread = 0.01f;
-
-            statModifiers.health = 1.2f;
-            
-            
-
-        }
-
-        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,
-            Block block, CharacterStatModifiers characterStats)
-        {
-            Debug.Log("Adding Yin Yang card");
-            block.additionalBlocks = 1;
-            block.cdAdd = 4;
-
-        }
-
+        
         public override void OnRemoveCard()
         {
-            Debug.Log("Removing Yin Yang card");
-            
         }
     }
 }
