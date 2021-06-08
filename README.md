@@ -2,21 +2,26 @@
 My mod for the game round made by Landfall games
 
 ## New cards
-- Sneeze
-  - Makes you sneeze your bullets
 - Infinite jumps
-- YingYang
-  - Ups most stats
-- Yin
-  - Ups gun stats
+- Sneeze
+  - Makes you sneeze your bullet
 - Yang
   - Ups block stats
-- Knockback
-
+- Yeetus
+  - Gives knockback
+- Yin
+  - Ups gun stats
+- YingYang
+  - Ups most stats
+  - 
 ## Card changes
 - Phoenix
   - Added -50% damage
-  - Reduced health to -50% (from -40%)
+  - Reduced health to -50% (from -35%)
+- Grow
+  - only one card per game
+- Emp
+  - only one card per game
   
 ## How to install
 
