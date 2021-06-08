@@ -2,21 +2,24 @@
 using System.Linq;
 using ActualRoundsMod.Cards;
 using BepInEx;
+using Photon.Pun;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace ActualRoundsMod
 {
-    [BepInPlugin("MyCoolPlugin.gsgsgs.Yes", "ActualRoundsMod", "1.0.0")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "ActualRoundsMod", "1.0.0")]
     public class Startup : BaseUnityPlugin
     {
         public static Startup Instance;
-        public AssetBundle Asset;
+        internal static AssetBundle ArtAsset;
+        internal static AssetBundle EffectAsset;
         
         #if DEBUG
-        Vector2 scrollposision;
-        readonly GUILayoutOption[] gl = new GUILayoutOption[0];
+        private Vector2 scrollposision;
+        private readonly GUILayoutOption[] gl = new GUILayoutOption[0];
         private bool _isinstanceNotNull;
 
         private void OnGUI()
@@ -41,7 +44,7 @@ namespace ActualRoundsMod
         }
         #endif
         
-        public void Start()
+        private void Start()
         {
             Instance = this;
 
@@ -49,7 +52,8 @@ namespace ActualRoundsMod
             _isinstanceNotNull = CardChoice.instance != null;
             #endif
             
-            Asset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "actualart"));
+            ArtAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "actualart"));
+            EffectAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "effects"));
             
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
@@ -58,18 +62,19 @@ namespace ActualRoundsMod
             CustomCard.BuildCard<Yang>();
             CustomCard.BuildCard<Knockback>();
 
-  
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
-            //await Task.Delay(2000);
-            var cardArray = CardChoice.instance.cards;
-            foreach (var info in cardArray)
+            foreach (var info in CardChoice.instance.cards)
             {
                 switch (info.cardName)
                 {
                     case "PHOENIX":
                     {
                         var infoList = info.cardStats.ToList();
+                        if (infoList.Count > 2)
+                        {
+                            break;
+                        }
                         var damage = new CardInfoStat {stat = "Damage", amount = "-50%", positive = false};
                         infoList.Add(damage);
                         infoList[0].amount = "-50%";
@@ -81,13 +86,37 @@ namespace ActualRoundsMod
                         charstat.health = 0.5f;
                         break;
                     }
+                    case "GROW":
+                    {
+                        info.allowMultiple = false;
+                        break;
+                    }
+                    case "EMP":
+                    {
+                        info.allowMultiple = false;
+                        break;
+                    }
                 }
+
             }
         }
 
         public void Message(string message)
         {
             Logger.LogWarning(message);
+        }
+        
+        private void Update()
+        {
+            if (GameManager.instance.isPlaying && PhotonNetwork.OfflineMode)
+            {
+                foreach (var info in CardChoice.instance.cards.ToList().Where(info => info.cardName == "BUCKSHOT"))
+                {
+                    var _cardArray = CardChoice.instance.cards.ToList();
+                    _cardArray.Remove(info);
+                    CardChoice.instance.cards = _cardArray.ToArray();
+                }
+            }
         }
 
 

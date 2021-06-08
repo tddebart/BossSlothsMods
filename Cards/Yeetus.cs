@@ -3,34 +3,32 @@ using UnityEngine;
 
 namespace ActualRoundsMod.Cards
 {
-    public class InfJump : CustomCard
+    public class Knockback : CustomCard
     {
         public AssetBundle Asset;
-        public CharacterData _data;
         
         protected override string GetTitle()
         {
-            return "Infinite jumps";
+            return "Yeetus";
         }
 
         protected override string GetDescription()
         {
-            return "";
+            return "Gives more bullet knockback and block knockback";
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            UnityEngine.Debug.Log("Setting up jump card");
-            cardInfo.allowMultiple = false;
+            UnityEngine.Debug.Log("Setting up Yeetus card");
+            cardInfo.allowMultiple = true;
         }
 
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log("Adding jump card");
+            UnityEngine.Debug.Log("Adding Yeetus card");
             
-            statModifiers.health = 1.3f;
-            statModifiers.numberOfJumps = 1;
-            _data = data;
+            gun.knockback = 2;
+            //characterStats.AddObjectToPlayer = Startup.EffectAsset.LoadAsset<GameObject>("A_Explode_Y");
         }
 
         protected override CardInfoStat[] GetStats()
@@ -39,8 +37,8 @@ namespace ActualRoundsMod.Cards
             {
                 new CardInfoStat
                 {
-                    stat = "Health",
-                    amount = "+30%",
+                    stat = "Knockback",
+                    amount = "+200%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
@@ -49,7 +47,7 @@ namespace ActualRoundsMod.Cards
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
 
         protected override GameObject GetCardArt()
@@ -60,9 +58,9 @@ namespace ActualRoundsMod.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.EvilPurple;
         }
-
+        
         public override void OnRemoveCard()
         {
         }

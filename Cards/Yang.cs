@@ -16,18 +16,80 @@ namespace ActualRoundsMod.Cards
         {
             return "Ups block stats and makes minimum block cooldown 3s";
         }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+            UnityEngine.Debug.Log("Setting up Yang card");
+            cardInfo.allowMultiple = false;
+        }
+
+        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+        {
+            UnityEngine.Debug.Log("Adding Yang card");
+            
+            gun.damage = 0.7f;
+            gun.reloadTimeAdd = 0.5f;
+            block.additionalBlocks += 2;
+            block.cooldown -= 5;
+            gun.ammo = -3;
+            gun.attackSpeed = 0.7f;
+            
+            
+            gun.projectileColor = new Color(1,1,1,0);
+            block.forceToAdd += 3;
+
+            var A_Yang = new GameObject();
+            A_Yang.AddComponent<A_Yang>();
+            statModifiers.AddObjectToPlayer = A_Yang;
+        }
 
         protected override CardInfoStat[] GetStats()
         {
-            var info1 = new CardInfoStat {stat = "Damage", amount = "-30%", positive = false};
-            var info2 = new CardInfoStat { stat = "Amount of Blocks", amount = "+2", positive = true};
-            var info3 = new CardInfoStat { stat = "Reload time", amount = "+0.5s", positive = false};
-            var info4 = new CardInfoStat {stat = "Block cooldown", amount = "-5s", positive = true};
-            var info5 = new CardInfoStat {stat = "Ammo", amount = "-3", positive = false};
-            var info6 = new CardInfoStat {stat = "ATKSPD", amount = "-30%", positive = false};
-            var info = new[] {info1, info2, info3, info4, info5, info6};
-
-            return info;
+            return new[]
+            {
+                new CardInfoStat
+                {
+                    stat = "Damage",
+                    amount = "-30%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Reload time",
+                    amount = "+0.5s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Amount of Blocks",
+                    amount = "+2",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Block cooldown",
+                    amount = "-4s",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Ammo",
+                    amount = "-3",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "ATKSPD",
+                    amount = "-30%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()
@@ -45,37 +107,9 @@ namespace ActualRoundsMod.Cards
         {
             return CardThemeColor.CardThemeColorType.TechWhite;
         }
-
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            Debug.Log("Setting up Yin Yang card");
-            cardInfo.allowMultiple = false;
-            gun.damage = 0.7f;
-            gun.ammo = -3;
-            gun.reloadTimeAdd = 0.5f;
-            gun.attackSpeed = 0.7f;
-            
-            gun.projectileColor = Color.white;
-
-            var A_Yang = new GameObject();
-            A_Yang.AddComponent<A_Yang>();
-            statModifiers.AddObjectToPlayer = A_Yang;
-        }
-
-        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,
-            Block block, CharacterStatModifiers characterStats)
-        {
-            Debug.Log("Adding Yin Yang card");
-            block.additionalBlocks += 2;
-            block.cooldown -= 5;
-            block.forceToAdd += 3;
-        }
-
+        
         public override void OnRemoveCard()
         {
-            Debug.Log("Removing Yin Yang card");
-            
         }
-        
     }
 }

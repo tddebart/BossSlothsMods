@@ -1,0 +1,16 @@
+﻿/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/AutoUpdaterr/packages/DotNetZip.1.15.0/.signature.p7s b/AutoUpdaterr/packages/DotNetZip.1.15.0/.signature.p7s
+/bin/Debug/
+/bin/Release/
+/AutoUpdater/bin/Debug
+/AutoUpdater/bin/Release
+/AutoUpdater/bin
+/obj/
+.cache
+/AutoUpdater/obj/
+.iml
+/.idea/
+/.vs/
+/AutoUpdater/.idea/
+/AutoUpdater/bin/
+.user

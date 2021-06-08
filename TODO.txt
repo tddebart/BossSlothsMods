@@ -1,0 +1,10 @@
+﻿#TODO Add gifs for cards  
+
+#DONE Nerf sneeze rare
+#DONE Only one grow
+#TESTING Yeetus block knocking
+#DONE Remove buckshot
+#DONE Only one Emp
+#TODO Enter the gungeon card, gun that shoots guns
+#TODO scavanger one
+#TODO nerf supernova 

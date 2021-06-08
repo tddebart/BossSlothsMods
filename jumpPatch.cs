@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ActualRoundsMod
 {
-    [BepInPlugin("MyCoolPlugin.gsgsgs.Yes.patch", "JumpPatch", "1.0.0")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes.patch", "JumpPatch", "1.0.0")]
     class jumpPatch : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("com.round.MyEpicRoundsMod.Yeetus.Harmony");
