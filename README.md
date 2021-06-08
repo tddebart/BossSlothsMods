@@ -41,15 +41,6 @@ Download [ActualRoundMod.zip](https://github.com/tddebart/ActualRoundsMod/releas
 and extract it into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
 the game in Steam and going to local files and then browse)  
 
-## TODO
-- [ ] Add gifs for cards  
-
-
-- [ ] Nerf sneeze rare
-- [ ] Only one grow
-- [ ] Yeetus block knocking
-- [ ] Remove buckshot
-- [ ] Only one Emp
 
 ## Special thanks
 Thanks to:

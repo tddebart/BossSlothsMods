@@ -8,3 +8,9 @@
 /obj/
 .cache
 /AutoUpdater/obj/
+.iml
+/.idea/
+/.vs/
+/AutoUpdater/.idea/
+/AutoUpdater/bin/
+.user

@@ -47,6 +47,9 @@
         <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\MMHOOK_Assembly-CSharp.dll</HintPath>
         </Reference>
+        <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -79,9 +82,7 @@
     <ItemGroup>
         <Compile Include="Cards\A_Yang.cs" />
         <Compile Include="Cards\InfJump.cs" />
-        <Compile Include="Cards\Knockback.cs" />
-        <Compile Include="Cards\Nice.cs" />
-        <Compile Include="Cards\OneShot.cs" />
+        <Compile Include="Cards\Yeetus.cs" />
         <Compile Include="Cards\Sneeze.cs" />
         <Compile Include="Cards\Yang.cs" />
         <Compile Include="Cards\Yin.cs" />
@@ -89,6 +90,11 @@
         <Compile Include="jumpPatch.cs" />
         <Compile Include="Startup.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Unused cards\Nice.cs" />
+        <Compile Include="Unused cards\OneShot.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="TODO.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
