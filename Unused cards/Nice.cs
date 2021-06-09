@@ -1,8 +1,7 @@
-﻿using System.IO;
-using UnboundLib.Cards;
+﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod
+namespace BossSlothsMod.Unused_cards
 {
     public class Nice : CustomCard
     {
