@@ -2,18 +2,18 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using ActualRoundsMod.Cards;
 using BepInEx;
+using BossSlothsMod.Cards;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib.Cards;
 using UnityEngine;
 
 
-namespace ActualRoundsMod
+namespace BossSlothsMod
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "ActualRoundsMod", "1.0.0")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.0.3")]
     [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {
@@ -62,12 +62,11 @@ namespace ActualRoundsMod
             EffectAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "effects"));
             
             CustomCard.BuildCard<Sneeze>();
-            /*
             CustomCard.BuildCard<YinYang>();
             CustomCard.BuildCard<InfJump>();
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
-            CustomCard.BuildCard<Knockback>(); */
+            CustomCard.BuildCard<Knockback>();
 
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();

@@ -1,7 +1,7 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class Yang : CustomCard
     {
@@ -17,26 +17,31 @@ namespace ActualRoundsMod.Cards
             return "Ups block stats and makes minimum block cooldown 3s";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up Yang card");
-            cardInfo.allowMultiple = false;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log("Adding Yang card");
-            
-            gun.damage = 0.7f;
-            gun.reloadTimeAdd = 0.5f;
+#if DEBUG
+            UnityEngine.Debug.Log("Adding yang card");
+#endif
             block.additionalBlocks += 2;
             block.cooldown -= 5;
+            
+            block.forceToAdd += 3;
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up yang card");
+#endif
+            cardInfo.allowMultiple = false;
+
+            gun.damage = 0.7f;
+            gun.reloadTimeAdd = 0.5f;
             gun.ammo = -3;
             gun.attackSpeed = 0.7f;
-            
-            
-            gun.projectileColor = new Color(1,1,1,0);
-            block.forceToAdd += 3;
+
+            gun.projectileColor = Color.white;
+
 
             var A_Yang = new GameObject();
             A_Yang.AddComponent<A_Yang>();

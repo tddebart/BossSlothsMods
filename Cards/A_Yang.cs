@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using Logger = BepInEx.Logging.Logger;
 
-namespace ActualRoundsMod
+namespace BossSlothsMod.Cards
 {
     public class A_Yang : MonoBehaviour
     {

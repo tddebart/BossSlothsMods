@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class Sneeze : CustomCard
     {
@@ -18,24 +18,29 @@ namespace ActualRoundsMod.Cards
             return "Make you sneeze your bullets";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up Sneeze card");
-            cardInfo.allowMultiple = false;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+#if DEBUG
             UnityEngine.Debug.Log("Adding Sneeze card");
+#endif
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up Sneeze card");
+#endif
+            cardInfo.allowMultiple = false;
             
             gun.damage = 0.10f;
             gun.reloadTimeAdd = 2f;
             gun.ammo = 15;
-            gun.numberOfProjectiles = 10; 
-            
+            gun.numberOfProjectiles = 10;
+
             gun.spread = 0.40f;
-            gun.recoil = 5;
-            gun.projectileColor = new Color(55, 230,122, 1);
+            gun.recoil = 500;
+            
+            gun.projectileColor = new Color(0.216f, 0.902f,0.478f);
         }
 
         protected override CardInfoStat[] GetStats()
@@ -80,7 +85,7 @@ namespace ActualRoundsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_Sneeze");;
+            return Startup.ArtAsset.LoadAsset<GameObject>("C_Sneeze");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

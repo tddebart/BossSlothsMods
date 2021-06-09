@@ -1,7 +1,7 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class Yin : CustomCard
     {
@@ -17,26 +17,31 @@ namespace ActualRoundsMod.Cards
             return "Ups gun stats";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up Yin card");
-            cardInfo.allowMultiple = false;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log("Adding Yin card");
+#if DEBUG
+            UnityEngine.Debug.Log("Adding yin card");
+#endif
+            block.cdAdd += 5;
+            
+            block.additionalBlocks += -1;
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up yin card");
+#endif
+            cardInfo.allowMultiple = false;
             
             gun.damage = 1.30f;
             gun.reloadTimeAdd = -0.5f;
-            block.cdAdd += 5;
             gun.ammo = 3;
             gun.attackSpeed = 1.30f;
 
-            gun.projectileColor = new Color(0,0,0,1);
-            block.additionalBlocks += -1;
+            gun.projectileColor = Color.black;
         }
-
+        
         protected override CardInfoStat[] GetStats()
         {
             return new[]

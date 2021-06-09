@@ -1,7 +1,7 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class YinYang : CustomCard
     {
@@ -17,29 +17,34 @@ namespace ActualRoundsMod.Cards
             return "Ups most stats";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up Yin Yang card");
-            cardInfo.allowMultiple = false;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,
             Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log("Adding Yin Yang card");
+#if DEBUG
+            UnityEngine.Debug.Log("Adding YinYang card");
+#endif
+            block.cdAdd = 4;
             
+            block.additionalBlocks = 1;
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up YinYang card");
+#endif
+            cardInfo.allowMultiple = false;
+                        
             gun.damage = 1.15f;
             gun.reloadTimeAdd = 4;
             gun.ammo = 2;
-            block.cdAdd = 4;
             gun.numberOfProjectiles = 2;
             gun.attackSpeed = 1.10f;
             statModifiers.health = 1.2f;
             
-            gun.spread = 0.03f;
-            block.additionalBlocks = 1;
+            gun.spread = 0.05f;
         }
-
+        
         protected override CardInfoStat[] GetStats()
         {
             return new[]
@@ -103,7 +108,7 @@ namespace ActualRoundsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_YinYang");;
+            return Startup.ArtAsset.LoadAsset<GameObject>("C_YinYang");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

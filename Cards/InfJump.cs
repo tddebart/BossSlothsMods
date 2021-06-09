@@ -1,7 +1,7 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class InfJump : CustomCard
     {
@@ -18,19 +18,23 @@ namespace ActualRoundsMod.Cards
             return "";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up jump card");
-            cardInfo.allowMultiple = false;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+#if DEBUG
             UnityEngine.Debug.Log("Adding jump card");
+#endif
+            _data = data;
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up jump card");
+#endif
+            cardInfo.allowMultiple = false;
             
             statModifiers.health = 1.3f;
             statModifiers.numberOfJumps = 1;
-            _data = data;
         }
 
         protected override CardInfoStat[] GetStats()

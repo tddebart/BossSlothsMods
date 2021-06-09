@@ -1,7 +1,7 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace ActualRoundsMod.Cards
+namespace BossSlothsMod.Cards
 {
     public class Knockback : CustomCard
     {
@@ -17,18 +17,22 @@ namespace ActualRoundsMod.Cards
             return "Gives more bullet knockback and block knockback";
         }
         
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
-        {
-            UnityEngine.Debug.Log("Setting up Yeetus card");
-            cardInfo.allowMultiple = true;
-        }
-
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log("Adding Yeetus card");
-            
+#if DEBUG
+            UnityEngine.Debug.Log("Addig yeetus card");
+#endif
+        }
+        
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
+        {
+#if DEBUG
+            UnityEngine.Debug.Log("Setting up yeetus card");
+#endif
+            cardInfo.allowMultiple = true;
             gun.knockback = 2;
-            //characterStats.AddObjectToPlayer = Startup.EffectAsset.LoadAsset<GameObject>("A_Explode_Y");
+            
+            //statModifiers.AddObjectToPlayer = Startup.EffectAsset.LoadAsset<GameObject>("A_Explode_Y");
         }
 
         protected override CardInfoStat[] GetStats()
