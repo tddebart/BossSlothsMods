@@ -41,7 +41,7 @@ you need to have [`BepInEx`](https://github.com/BepInEx/BepInEx/releases/downloa
 
 
 ### AutoUpdater
-1. Download [AutoUpdater.zip](https://github.com/tddebart/ActualRoundsMod/releases/latest/download/AutoUpdater.zip)
+1. Download [AutoUpdater.zip](https://github.com/tddebart/BossSlothsMod/releases/latest/download/AutoUpdater.zip)
 2. Extract `AutoUpdater.zip` into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
 the game in Steam and going to local files and then browse)
 3. Double-click `AutoUpdater.exe` and it will automatically download the mod files.
@@ -50,8 +50,8 @@ the game in Steam and going to local files and then browse)
 <img src="https://i.imgur.com/rATZEd8.png" alt="drawing" width="500"/>
 
 ### Manual update
-1. Download [ActualRoundMod.zip](https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsMod.zip)
-2. extract `ActualRoundMod.zip` into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
+1. Download [BossSlothsMod.zip](https://github.com/tddebart/BossSlothsMod/releases/latest/download/BossSlothsMod.zip)
+2. extract `BossSlothsMod.zip` into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
 the game in Steam and going to local files and then browse)
 3. Enjoy
 
