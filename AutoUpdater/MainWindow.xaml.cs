@@ -163,11 +163,11 @@ namespace AutoUpdater
                 webClient.DownloadFileCompleted += DownloadGameCompletedCallback;
                 if (_official)
                 {
-                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsMod.zip"), gameZip, _onlineVersion);
+                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/BossSlothsMod.zip"), gameZip, _onlineVersion);
                 }
                 else
                 {
-                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/ActualRoundsModBeta.zip"), gameZip, _onlineVersion);
+                    webClient.DownloadFileAsync(new Uri("https://github.com/tddebart/ActualRoundsMod/releases/latest/download/BossSlothsModBeta.zip"), gameZip, _onlineVersion);
                 }
                 
             }

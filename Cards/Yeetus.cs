@@ -14,7 +14,7 @@ namespace BossSlothsMod.Cards
 
         protected override string GetDescription()
         {
-            return "Gives more bullet knockback and block knockback";
+            return "Gives more bullet knockback";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
