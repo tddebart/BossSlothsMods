@@ -106,10 +106,10 @@
     </Target>
     -->
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\ActualRoundsMod\\bin\\Debug\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
+        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\BossSlothsMod\\bin\\Debug\\BossSlothsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\ActualRoundsMod\\bin\\Release\\ActualRoundsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
+        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\BossSlothsMod\\bin\\Release\\BossSlothsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
     </PropertyGroup>
         
 
