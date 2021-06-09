@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,27 @@ namespace BossSlothsMod
         
         private readonly Harmony harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
         
+=======
+﻿using System.IO;
+using System.Linq;
+using ActualRoundsMod.Cards;
+using BepInEx;
+using Photon.Pun;
+using UnboundLib.Cards;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+
+namespace ActualRoundsMod
+{
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "ActualRoundsMod", "1.0.0")]
+    public class Startup : BaseUnityPlugin
+    {
+        public static Startup Instance;
+        internal static AssetBundle ArtAsset;
+        internal static AssetBundle EffectAsset;
+        
+>>>>>>> parent of b94a634 (Removed problem files (#3))
         #if DEBUG
         private Vector2 scrollposision;
         private readonly GUILayoutOption[] gl = new GUILayoutOption[0];
@@ -51,6 +73,7 @@ namespace BossSlothsMod
         
         private void Start()
         {
+<<<<<<< HEAD
             #if DEBUG
             _isinstanceNotNull = CardChoice.instance != null;
             #endif
@@ -60,6 +83,16 @@ namespace BossSlothsMod
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new ArgumentNullException($"Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)");
             ArtAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "actualart"));
             EffectAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "effects"));
+=======
+            Instance = this;
+
+            #if DEBUG
+            _isinstanceNotNull = CardChoice.instance != null;
+            #endif
+            
+            ArtAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "actualart"));
+            EffectAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "effects"));
+>>>>>>> parent of b94a634 (Removed problem files (#3))
             
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
@@ -114,7 +147,10 @@ namespace BossSlothsMod
         
         private void Update()
         {
+<<<<<<< HEAD
             
+=======
+>>>>>>> parent of b94a634 (Removed problem files (#3))
             if (GameManager.instance.isPlaying && PhotonNetwork.OfflineMode)
             {
                 foreach (var info in CardChoice.instance.cards.ToList().Where(info => info.cardName == "BUCKSHOT"))

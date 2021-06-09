@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsMod.Unused_cards
+=======
+﻿using System.IO;
+using UnboundLib.Cards;
+using UnityEngine;
+
+namespace ActualRoundsMod
+>>>>>>> parent of b94a634 (Removed problem files (#3))
 {
     public class Nice : CustomCard
     {

@@ -7,5 +7,9 @@
 #DONE Only one Emp
 #TODO Enter the gungeon card, gun that shoots guns
 #TODO scavanger one
+<<<<<<< HEAD
 #TODO nerf supernova 
 #TODO every 5th time you get hit you shoot your gun
+=======
+#TODO nerf supernova 
+>>>>>>> parent of b94a634 (Removed problem files (#3))
