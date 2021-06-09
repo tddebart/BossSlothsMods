@@ -1,21 +1,26 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using ActualRoundsMod.Cards;
 using BepInEx;
+using HarmonyLib;
 using Photon.Pun;
 using UnboundLib.Cards;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 namespace ActualRoundsMod
 {
+    [BepInDependency("com.willis.rounds.unbound")]
     [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "ActualRoundsMod", "1.0.0")]
+    [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {
-        public static Startup Instance;
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
+        
+        private readonly Harmony harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
         
         #if DEBUG
         private Vector2 scrollposision;
@@ -46,21 +51,23 @@ namespace ActualRoundsMod
         
         private void Start()
         {
-            Instance = this;
-
             #if DEBUG
             _isinstanceNotNull = CardChoice.instance != null;
             #endif
+
+            harmony.PatchAll();
             
-            ArtAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "actualart"));
-            EffectAsset = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "effects"));
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new ArgumentNullException($"Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)");
+            ArtAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "actualart"));
+            EffectAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "effects"));
             
             CustomCard.BuildCard<Sneeze>();
+            /*
             CustomCard.BuildCard<YinYang>();
             CustomCard.BuildCard<InfJump>();
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
-            CustomCard.BuildCard<Knockback>();
+            CustomCard.BuildCard<Knockback>(); */
 
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
@@ -108,6 +115,7 @@ namespace ActualRoundsMod
         
         private void Update()
         {
+            
             if (GameManager.instance.isPlaying && PhotonNetwork.OfflineMode)
             {
                 foreach (var info in CardChoice.instance.cards.ToList().Where(info => info.cardName == "BUCKSHOT"))
