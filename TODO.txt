@@ -6,6 +6,6 @@
 #DONE Remove buckshot
 #DONE Only one Emp
 #TODO Enter the gungeon card, gun that shoots guns
-#TODO scavanger one
+#TESTING scavanger one
 #TODO nerf supernova 
 #TODO every 5th time you get hit you shoot your gun

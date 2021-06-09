@@ -102,6 +102,11 @@ namespace BossSlothsMod
                         info.allowMultiple = false;
                         break;
                     }
+                    case "SCAVENGER":
+                    {
+                        info.allowMultiple = false;
+                        break;
+                    }
                 }
 
             }

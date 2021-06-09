@@ -22,9 +22,13 @@ My BepInEx mod for the game Rounds made by Landfall games
   - Added -50% damage
   - Reduced health to -50% (from -35%)
 - Grow
-  - only one card per game
+  - Only one card per game
 - Emp
-  - only one card per game
+  - Only one card per game
+- Scavenger
+  - Only one card per game
+- Buckshot
+  - Removed from game
   
 ## How to install
 ---
