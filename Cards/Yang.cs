@@ -26,6 +26,10 @@ namespace BossSlothsMod.Cards
             block.cooldown -= 5;
             
             block.forceToAdd += 3;
+            
+            var A_Yang = new GameObject("A_Yang");
+            A_Yang.AddComponent<A_Yang>();
+            statModifiers.AddObjectToPlayer = A_Yang;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -43,9 +47,7 @@ namespace BossSlothsMod.Cards
             gun.projectileColor = Color.white;
 
 
-            var A_Yang = new GameObject();
-            A_Yang.AddComponent<A_Yang>();
-            statModifiers.AddObjectToPlayer = A_Yang;
+
         }
 
         protected override CardInfoStat[] GetStats()
