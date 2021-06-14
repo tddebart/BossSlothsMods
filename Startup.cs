@@ -1,11 +1,14 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Reflection;
 using BepInEx;
 using BossSlothsMod.Cards;
 using HarmonyLib;
+using HarmonyLib.Tools;
+using Jotunn.Utils;
 using Photon.Pun;
+using PickTwoPlugin;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -19,13 +22,12 @@ namespace BossSlothsMod
     {
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
-        
-        private readonly Harmony harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
-        
-        #if DEBUG
+
+        public static GameObject Instance;
+
+#if DEBUG
         private Vector2 scrollposision;
         private readonly GUILayoutOption[] gl = new GUILayoutOption[0];
-        private bool _isinstanceNotNull;
 
         private void OnGUI()
         {
@@ -33,7 +35,7 @@ namespace BossSlothsMod
             GUILayout.BeginArea(area);
             scrollposision = GUILayout.BeginScrollView(scrollposision, GUILayout.MaxWidth(200), GUILayout.MaxHeight(1000));
 
-            if(_isinstanceNotNull && CardChoice.instance.cards != null)
+            if(CardChoice.instance != null && CardChoice.instance.cards != null)
             {
                 GUILayout.Label("cards: ", gl);
                 var cardArray = CardChoice.instance.cards;
@@ -51,16 +53,18 @@ namespace BossSlothsMod
         
         private void Start()
         {
-            #if DEBUG
-            _isinstanceNotNull = CardChoice.instance != null;
-            #endif
-
+            Instance = this.gameObject;
+            
+            var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
             harmony.PatchAll();
-            
-            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new ArgumentNullException($"Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)");
-            ArtAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "actualart"));
-            EffectAsset = AssetBundle.LoadFromFile(Path.Combine(dir, "effects"));
-            
+
+            ArtAsset = AssetUtils.LoadAssetBundleFromResources("actualart", typeof(Startup).Assembly);
+            if (ArtAsset == null)
+            {
+                Debug.LogError("Couldn't find ArtAsset?");
+            }
+            EffectAsset = AssetUtils.LoadAssetBundleFromResources("effects", typeof(Startup).Assembly);
+
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
             CustomCard.BuildCard<InfJump>();
@@ -120,7 +124,7 @@ namespace BossSlothsMod
         private void Update()
         {
             
-            if (GameManager.instance.isPlaying && PhotonNetwork.OfflineMode)
+            if (GameManager.instance.isPlaying || PhotonNetwork.OfflineMode)
             {
                 foreach (var info in CardChoice.instance.cards.ToList().Where(info => info.cardName == "BUCKSHOT"))
                 {

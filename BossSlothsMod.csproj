@@ -1,103 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>BossSlothsMod</RootNamespace>
-        <AssemblyName>BossSlothsMod</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\0Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\Assembly-CSharp.dll</HintPath>
-        </Reference>
-        <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.dll</HintPath>
-        </Reference>
-        <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\MMHOOK_Assembly-CSharp.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
-        <Reference Include="UnboundLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\UnboundLib.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UI.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIModule.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Cards\A_Yang.cs" />
-        <Compile Include="Cards\InfJump.cs" />
-        <Compile Include="Cards\Yeetus.cs" />
-        <Compile Include="Cards\Sneeze.cs" />
-        <Compile Include="Cards\Yang.cs" />
-        <Compile Include="Cards\Yin.cs" />
-        <Compile Include="Cards\YinYang.cs" />
-        <Compile Include="jumpPatch.cs" />
-        <Compile Include="Startup.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Unused cards\Nice.cs" />
-        <Compile Include="Unused cards\OneShot.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="TODO.txt" />
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BossSlothsMod</RootNamespace>
+    <AssemblyName>BossSlothsMod</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="PickTwoPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS - kopie\BepInEx\plugins\PickTwoPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="RoundsWithFriends, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS - kopie\BepInEx\plugins\RoundsWithFriends.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnboundLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\UnboundLib.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cardBarPatch.cs" />
+    <Compile Include="Cards\A_Yang.cs" />
+    <Compile Include="Cards\InfJump.cs" />
+    <Compile Include="Cards\Yeetus.cs" />
+    <Compile Include="Cards\Sneeze.cs" />
+    <Compile Include="Cards\Yang.cs" />
+    <Compile Include="Cards\Yin.cs" />
+    <Compile Include="Cards\YinYang.cs" />
+    <Compile Include="jumpPatch.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unused cards\Nice.cs" />
+    <Compile Include="Unused cards\OneShot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AssetsEmbedded\actualart" />
+    <EmbeddedResource Include="AssetsEmbedded\effects" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
@@ -105,12 +113,11 @@
         
     </Target>
     -->
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\BossSlothsMod\\bin\\Debug\\BossSlothsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PostBuildEvent>copy "F:\\Software developer\\\TheActualRoundsMod\\BossSlothsMod\\bin\\Release\\BossSlothsMod.dll" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
-    </PropertyGroup>
-        
-
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PostBuildEvent>copy "$(TargetPath)" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y
+start steam://rungameid/1557740</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PostBuildEvent>copy "$(TargetPath)" "F:\\SteamLibrary\\steamapps\\common\\ROUNDS\\BepInEx\\plugins" /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
