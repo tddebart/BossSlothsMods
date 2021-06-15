@@ -22,13 +22,21 @@ My BepInEx mod for the game Rounds made by Landfall games
   - Added -50% damage
   - Reduced health to -50% (from -35%)
 - Grow
-  - Only one card per game
+  - Only one per game
 - Emp
-  - Only one card per game
+  - Only one per game
 - Scavenger
-  - Only one card per game
+  - Only one per game
 - Buckshot
-  - Removed from game
+  - Removed from game(Because it's trash)
+- Saw
+  - Reduced range to 4 (from 4.5)
+  - Only one per game
+- Supernova
+  - gf
+  
+
+- The card bar in the top right will now show a max of 23 cards
   
 ## How to install
 ---
