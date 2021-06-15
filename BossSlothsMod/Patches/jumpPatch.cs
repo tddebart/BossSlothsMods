@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace BossSlothsMod
+namespace BossSlothsMod.Patches
 {
     internal class jumpPatch
     {

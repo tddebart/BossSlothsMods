@@ -7,7 +7,6 @@ using HarmonyLib;
 using HarmonyLib.Tools;
 using Jotunn.Utils;
 using Photon.Pun;
-using PickTwoPlugin;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
