@@ -15,3 +15,5 @@
 /AutoUpdater/bin/
 /BossSlothsMod.sln.DotSettings.user
 
+/CustomMapLoader/obj/
+/CustomMapLoader/bin/

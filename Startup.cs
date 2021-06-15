@@ -16,7 +16,7 @@ using UnityEngine;
 namespace BossSlothsMod
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.0.3")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.4")]
     [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {
@@ -58,12 +58,16 @@ namespace BossSlothsMod
             var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
             harmony.PatchAll();
 
-            ArtAsset = AssetUtils.LoadAssetBundleFromResources("actualart", typeof(Startup).Assembly);
+            ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(Startup).Assembly);
             if (ArtAsset == null)
             {
                 Debug.LogError("Couldn't find ArtAsset?");
             }
-            EffectAsset = AssetUtils.LoadAssetBundleFromResources("effects", typeof(Startup).Assembly);
+            EffectAsset = AssetUtils.LoadAssetBundleFromResources("bossslothseffects", typeof(Startup).Assembly);
+            if (EffectAsset == null)
+            {
+                Debug.LogError("Couldn't find EffectAsset?");
+            }
 
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
@@ -109,6 +113,19 @@ namespace BossSlothsMod
                     case "SCAVENGER":
                     {
                         info.allowMultiple = false;
+                        break;
+                    }
+                    case "SAW":
+                    {
+                        info.allowMultiple = false;
+                        var saw = info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<Saw>();
+                        saw.range = 4;
+                        break;
+                    }
+                    case "SUPERNOVA":
+                    {
+                        info.allowMultiple = false;
+                        var nova = info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<SpawnObjects>().objectToSpawn[0].GetComponents<Explosion>();
                         break;
                     }
                 }

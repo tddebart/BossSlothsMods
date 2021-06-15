@@ -101,8 +101,10 @@
     <Compile Include="Unused cards\OneShot.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AssetsEmbedded\actualart" />
-    <EmbeddedResource Include="AssetsEmbedded\effects" />
+    <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />
+    <EmbeddedResource Include="AssetsEmbedded\bossslothseffects" />
+    <Content Include="icon.png" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
