@@ -69,7 +69,7 @@ namespace BossSlothsMod
 
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
-            CustomCard.BuildCard<InfJump>();
+            CustomCard.BuildCard<DoubleJump>();
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
             CustomCard.BuildCard<Knockback>();

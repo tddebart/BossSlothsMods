@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace BossSlothsMod.Cards
 {
-    public class InfJump : CustomCard
+    public class DoubleJump : CustomCard
     {
         public AssetBundle Asset;
         public CharacterData _data;
         
         protected override string GetTitle()
         {
-            return "Infinite jumps";
+            return "Double jump";
         }
 
         protected override string GetDescription()
         {
-            return "";
+            return "Gives you the ability to double jump";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -53,7 +53,7 @@ namespace BossSlothsMod.Cards
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
 
         protected override GameObject GetCardArt()
