@@ -18,7 +18,17 @@ namespace BossSlothsMod.Patches
                     var layoutGroup = cardBar.gameObject.GetComponent<HorizontalLayoutGroup>();
                     layoutGroup.spacing = 3;
                     var rectTransform = cardBar.gameObject.GetComponent<RectTransform>();
-                    rectTransform.offsetMin = new Vector2(-1000, -69);
+                    switch (rectTransform.name)
+                    {
+                        case "Bar1":
+                            rectTransform.offsetMin = new Vector2(-1450, -69);
+                            break;
+                        case "Bar2":
+                        case "Bar3":
+                        case "Bar4":
+                            rectTransform.offsetMin = new Vector2(-1450, -122.5f);
+                            break;
+                    }
                 }
             }
         }
