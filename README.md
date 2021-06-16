@@ -2,13 +2,14 @@
 My BepInEx mod for the game Rounds made by Landfall games
 
 ## New cards
-- Infinite jumps
+- Double jumps
+  - Gives you the ability to double jump  
 - Sneeze
   - Makes you sneeze your bullet
 - Yang
   - Ups block stats
 - Yeetus
-  - Gives knockback
+  - Gives gun knockback
 - Yin
   - Ups gun stats
 - YingYang
