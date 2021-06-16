@@ -12,7 +12,7 @@ using UnboundLib;
 namespace BossSlothsMod
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.4")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.5")]
     [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {

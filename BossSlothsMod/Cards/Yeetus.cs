@@ -56,8 +56,7 @@ namespace BossSlothsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            //var art = Testing.Instance.Asset.LoadAsset<GameObject>("C_Sneeze");
-            return null;
+            return Startup.ArtAsset.LoadAsset<GameObject>("C_Yeetus");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
