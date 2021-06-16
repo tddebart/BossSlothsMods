@@ -1,22 +1,18 @@
-﻿using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using BepInEx;
 using BossSlothsMod.Cards;
 using HarmonyLib;
-using HarmonyLib.Tools;
 using Jotunn.Utils;
 using Photon.Pun;
-using PickTwoPlugin;
-using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnboundLib;
 
 
 namespace BossSlothsMod
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.0.3")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.4")]
     [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {
@@ -24,6 +20,9 @@ namespace BossSlothsMod
         internal static AssetBundle EffectAsset;
 
         public static GameObject Instance;
+        
+        
+        internal static AssetBundle levelAsset;
 
 #if DEBUG
         private Vector2 scrollposision;
@@ -43,7 +42,6 @@ namespace BossSlothsMod
                 {
                     GUILayout.Label(info.cardName);
                 }
-
             }
 
             GUILayout.EndScrollView();
@@ -58,22 +56,35 @@ namespace BossSlothsMod
             var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
             harmony.PatchAll();
 
-            ArtAsset = AssetUtils.LoadAssetBundleFromResources("actualart", typeof(Startup).Assembly);
+            ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(Startup).Assembly);
             if (ArtAsset == null)
             {
-                Debug.LogError("Couldn't find ArtAsset?");
+                UnityEngine.Debug.LogError("Couldn't find ArtAsset?");
             }
-            EffectAsset = AssetUtils.LoadAssetBundleFromResources("effects", typeof(Startup).Assembly);
+            EffectAsset = AssetUtils.LoadAssetBundleFromResources("bossslothseffects", typeof(Startup).Assembly);
+            if (EffectAsset == null)
+            {
+                UnityEngine.Debug.LogError("Couldn't find EffectAsset?");
+            }
 
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
-            CustomCard.BuildCard<InfJump>();
+            CustomCard.BuildCard<DoubleJump>();
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
             CustomCard.BuildCard<Knockback>();
-
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
+            
+            levelAsset = AssetUtils.LoadAssetBundleFromResources("customlevel", typeof(Startup).Assembly);
+            if (levelAsset == null)
+            {
+                UnityEngine.Debug.LogError("Couldn't find levelAsset?");
+            }
+
+            Unbound.BuildLevel(levelAsset);
+            
+            //Balancing cards
             foreach (var info in CardChoice.instance.cards)
             {
                 switch (info.cardName)
@@ -111,16 +122,25 @@ namespace BossSlothsMod
                         info.allowMultiple = false;
                         break;
                     }
+                    case "SAW":
+                    {
+                        info.allowMultiple = false;
+                        var saw = info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<Saw>();
+                        saw.range = 4;
+                        break;
+                    }
+                    // case "SUPERNOVA":
+                    // {
+                    //     info.allowMultiple = false;
+                    //     var nova = info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<SpawnObjects>().objectToSpawn[0].GetComponents<Explosion>();
+                    //     nova[1].damage = 25;
+                    //     break;
+                    // }
                 }
 
             }
         }
 
-        public void Message(string message)
-        {
-            Logger.LogWarning(message);
-        }
-        
         private void Update()
         {
             
@@ -134,7 +154,5 @@ namespace BossSlothsMod
                 }
             }
         }
-
-
     }
 }
