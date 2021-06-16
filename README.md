@@ -50,25 +50,16 @@ Thanks to:
 
 
 ## How to install **OLD**
+###Warning this install method is not recommended if you can please use Thunderstore
 ### <span style="color:red">!IMPORTANT DEPENDENCIES!</span>
 you need to have [`BepInEx`](https://github.com/BepInEx/BepInEx/releases/download/v5.4.11/BepInEx_x64_5.4.11.0.zip), [`UnboundLib and MMHOOK`](https://github.com/willis81808/UnboundLib/releases/latest) installed
 
 - `BepInEx` you can extract the zip into the root folder of your Round game folder
 - UnboundLib and MMHOOK dll's need to be put into the BepInEx plugins folder which is located at  
   `Rounds/BepInEx/plugins`
-
-
-### AutoUpdater
-1. Download [AutoUpdater.zip](https://github.com/tddebart/BossSlothsMod/releases/latest/download/AutoUpdater.zip)
-2. Extract `AutoUpdater.zip` into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
-   the game in Steam and going to local files and then browse)
-3. Double-click `AutoUpdater.exe` and it will automatically download the mod files.
-4. Enjoy
-
-<img src="https://i.imgur.com/rATZEd8.png" alt="drawing" width="500"/>
-
+  
 ### Manual update
 1. Download [BossSlothsMod.zip](https://github.com/tddebart/BossSlothsMod/releases/latest/download/BossSlothsMod.zip)
-2. extract `BossSlothsMod.zip` into your Rounds game folder. (You can find the location of your Rounds folder by right clicking
+2. extract `BossSlothsMod.zip` into your Rounds/BepInEx/Plugins game folder. (You can find the location of your Rounds folder by right clicking
    the game in Steam and going to local files and then browse)
 3. Enjoy
