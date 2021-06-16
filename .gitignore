@@ -17,3 +17,12 @@
 
 /CustomMapLoader/obj/
 /CustomMapLoader/bin/
+/packages/
+/BossSlothsMod/bin/
+/BossSlothsMod/obj/
+/BossSlothsMod/AssetsEmbedded/AssetsEmbedded
+/BossSlothsMod/AssetsEmbedded/AssetsEmbedded.manifest
+/BossSlothsMod/AssetsEmbedded/bossslothsart.manifest
+/BossSlothsMod/AssetsEmbedded/bossslothseffects.manifest
+/BossSlothsMod/AssetsEmbedded/customlevel.manifest
+/BossSlothsMod/AssetsEmbedded/CustomMaps.unitypackage

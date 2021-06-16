@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsMod", "BossSlothsMod.csproj", "{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsMod", "BossSlothsMod\BossSlothsMod.csproj", "{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater", "AutoUpdater\AutoUpdater.csproj", "{8D3AB655-7686-4B5A-8A15-3BC9B9DB1488}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomMapLoader", "CustomMapLoader\CustomMapLoader.csproj", "{51CA6D9B-575B-4680-BF2C-A97C2D03F205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{8D3AB655-7686-4B5A-8A15-3BC9B9DB1488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D3AB655-7686-4B5A-8A15-3BC9B9DB1488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D3AB655-7686-4B5A-8A15-3BC9B9DB1488}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51CA6D9B-575B-4680-BF2C-A97C2D03F205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51CA6D9B-575B-4680-BF2C-A97C2D03F205}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51CA6D9B-575B-4680-BF2C-A97C2D03F205}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51CA6D9B-575B-4680-BF2C-A97C2D03F205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
