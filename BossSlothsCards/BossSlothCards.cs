@@ -14,14 +14,12 @@ namespace BossSlothsCards
     [BepInDependency("com.willis.rounds.unbound")]
     [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsCards", "0.1.1")]
     [BepInProcess("Rounds.exe")]
-    public class Startup : BaseUnityPlugin
+    public class BossSlothCards : BaseUnityPlugin
     {
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 
-        public static GameObject Instance;
-        
-        
+
         internal static AssetBundle levelAsset;
 
 #if DEBUG
@@ -51,17 +49,15 @@ namespace BossSlothsCards
         
         private void Start()
         {
-            Instance = this.gameObject;
-            
             var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
             harmony.PatchAll();
 
-            ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(Startup).Assembly);
+            ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
             {
                 UnityEngine.Debug.LogError("Couldn't find ArtAsset?");
             }
-            EffectAsset = AssetUtils.LoadAssetBundleFromResources("bossslothseffects", typeof(Startup).Assembly);
+            EffectAsset = AssetUtils.LoadAssetBundleFromResources("bossslothseffects", typeof(BossSlothCards).Assembly);
             if (EffectAsset == null)
             {
                 UnityEngine.Debug.LogError("Couldn't find EffectAsset?");
@@ -76,7 +72,7 @@ namespace BossSlothsCards
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
             
-            levelAsset = AssetUtils.LoadAssetBundleFromResources("customlevel", typeof(Startup).Assembly);
+            levelAsset = AssetUtils.LoadAssetBundleFromResources("customlevel", typeof(BossSlothCards).Assembly);
             if (levelAsset == null)
             {
                 UnityEngine.Debug.LogError("Couldn't find levelAsset?");

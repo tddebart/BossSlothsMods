@@ -108,7 +108,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_YinYang");
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_YinYang");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

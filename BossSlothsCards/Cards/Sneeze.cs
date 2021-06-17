@@ -85,7 +85,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_Sneeze");
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Sneeze");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

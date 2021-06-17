@@ -89,7 +89,7 @@
     <Compile Include="Cards\YinYang.cs" />
     <Compile Include="Patches\cardBarPatch.cs" />
     <Compile Include="Patches\jumpPatch.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="BossSlothCards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unused cards\Nice.cs" />
     <Compile Include="Unused cards\OneShot.cs" />
