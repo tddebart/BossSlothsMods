@@ -87,7 +87,6 @@
     <Compile Include="Cards\Yang.cs" />
     <Compile Include="Cards\Yin.cs" />
     <Compile Include="Cards\YinYang.cs" />
-    <Compile Include="Patches\cardBarPatch.cs" />
     <Compile Include="Patches\jumpPatch.cs" />
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +97,14 @@
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />
     <EmbeddedResource Include="AssetsEmbedded\bossslothseffects" />
     <EmbeddedResource Include="AssetsEmbedded\customlevel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ThunderStore\BossSlothsCards.dll" />
+    <Content Include="ThunderStore\BossSlothsMod.zip" />
+    <Content Include="ThunderStore\icon.png" />
+    <Content Include="ThunderStore\icon.psd" />
+    <Content Include="ThunderStore\manifest.json" />
+    <Content Include="ThunderStore\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -112,6 +119,7 @@
     <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\3 player\BepInEx\plugins" /y</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\3 player\BepInEx\plugins" /y
+      copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsCards\ThunderStore"</PostBuildEvent>
   </PropertyGroup>
 </Project>

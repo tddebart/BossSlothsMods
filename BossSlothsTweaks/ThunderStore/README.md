@@ -1,55 +1,6 @@
-# Boss Sloth's Mods
-My BepInEx mods for the game Rounds made by Landfall games
-
-
-# Boss Sloths's cards
-## New cards
-
----
-###Double jump
-Common card  
-
-Gives you the ability to double jump
-
----
-###Sneeze
-Rare card  
-
-Makes you sneeze your bullet
-
----
-###Yang
-Uncommon card  
-
-Ups block stats
-
----
-###Yeetus
-Common card  
-
-Gives some gun knockback
-
----
-###Yin
-Uncommon card  
-
-Ups gun stats
-
----
-###YingYang
-Rare card  
-
-Ups most stats  
-
----
-##Changelist
-- v1.0.0 First ThunderStore release
-  
-- v1.0.1 Splitted BSM to BSC and BST
-
----
 # Boss Sloths's tweaks
 ## Base game card changes
+### All of these changes can be manually turned on or off at any time and it will save your settings
 
 ---
 ###Phoenix

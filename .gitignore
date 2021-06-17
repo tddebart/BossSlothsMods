@@ -3,6 +3,8 @@
 *.iml
 *.idea/
 *.vs/
+*.user
+*.zip
 /AutoUpdater/.idea/
 /AutoUpdater/bin/
 /BossSlothsCards.sln.DotSettings.user
@@ -33,4 +35,5 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
-/ThunderStore/BossSlothsMod.zip
+/BossSlothsCards/ThunderStore/BossSlothsCards.dll
+/BossSlothsTweaks/ThunderStore/BossSlothsTweaks.dll
