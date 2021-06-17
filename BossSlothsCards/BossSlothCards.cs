@@ -45,8 +45,8 @@ namespace BossSlothsCards
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
-        #endif
-        
+#endif
+
         private void Start()
         {
             var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
@@ -57,6 +57,7 @@ namespace BossSlothsCards
             {
                 UnityEngine.Debug.LogError("Couldn't find ArtAsset?");
             }
+
             EffectAsset = AssetUtils.LoadAssetBundleFromResources("bossslothseffects", typeof(BossSlothCards).Assembly);
             if (EffectAsset == null)
             {
@@ -71,14 +72,15 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Knockback>();
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
-            
+
             levelAsset = AssetUtils.LoadAssetBundleFromResources("customlevel", typeof(BossSlothCards).Assembly);
             if (levelAsset == null)
             {
                 UnityEngine.Debug.LogError("Couldn't find levelAsset?");
             }
 
-            Unbound.BuildLevel(levelAsset);
+            //Unbound.BuildLevel(levelAsset);
+
         }
     }
 }
