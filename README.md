@@ -6,43 +6,43 @@ My BepInEx mods for the game Rounds made by Landfall games
 ## New cards
 
 ---
-###Double jump
+### Double jump
 Common card  
 
 Gives you the ability to double jump
 
 ---
-###Sneeze
+### Sneeze
 Rare card  
 
 Makes you sneeze your bullet
 
 ---
-###Yang
+### Yang
 Uncommon card  
 
 Ups block stats
 
 ---
-###Yeetus
+### Yeetus
 Common card  
 
 Gives some gun knockback
 
 ---
-###Yin
+### Yin
 Uncommon card  
 
 Ups gun stats
 
 ---
-###YingYang
+### YingYang
 Rare card  
 
 Ups most stats  
 
 ---
-##Changelist
+## Changelist
 - v1.0.0 First ThunderStore release
   
 - v1.0.1 Splitted BSM to BSC and BST
@@ -52,38 +52,44 @@ Ups most stats
 ## Base game card changes
 
 ---
-###Phoenix
+
+### Phoenix
 Added -50% damage  
 Reduced health to -50% (from -35%)
 
 ---
-###Grow
+
+### Grow
 Only one per game
 
 ---
-###Emp
+
+### Emp
 Only one per game
 
 ---
-###Scavenger
+
+### Scavenger
 Only one per game
 
 ---
-###Saw
+
+### Saw
 Reduced range to 4 (from 4.5)
 Only one per game
 
 ---
-###The card bar in the top right will now show a max of 34 cards (from 11)  
+
+### The card bar in the top right will now show a max of 34 cards (from 11)  
 
 ---
 
-##Changelist
+## Changelist
 - v1.0.0 Splitted BSM to BSC and BST
     -added options menu for tweaks that also get saved between restarts
   
 ## How to install
-Use [ThunderStore Mod manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager)  
+Use ThunderStore Mod manager [BSC](https://rounds.thunderstore.io/package/BossSloth/BSC/) [BST](https://rounds.thunderstore.io/package/BossSloth/BST/)  
 [List of all mods](https://rounds.thunderstore.io/)
 
 ## Bug reports and suggestions
