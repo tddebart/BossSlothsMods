@@ -1,8 +1,8 @@
 ﻿{
-  "name": "BSM",
-  "version_number": "0.1.1",
+  "name": "BST",
+  "version_number": "0.1.0",
   "website_url": "https://github.com/tddebart/BossSlothsMods",
-  "description": "Adds some new cards to the game and some balancing tweaks",
+  "description": "Some balancing tweaks to existing cards and features",
   "dependencies": [
     "willis81808-UnboundLib-1.1.2",
     "willis81808-MMHook-1.0.0",
