@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace BossSlothsMod.Cards
+namespace BossSlothsCards.Cards
 {
     public class Sneeze : CustomCard
     {
@@ -85,7 +85,7 @@ namespace BossSlothsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_Sneeze");
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Sneeze");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

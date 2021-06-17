@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BossSlothsMod.Cards
+namespace BossSlothsCards.Cards
 {
     public class A_Yang : MonoBehaviour
     {

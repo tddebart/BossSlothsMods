@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HarmonyLib;
 
-namespace BossSlothsMod.Patches
+namespace BossSlothsCards.Patches
 {
     internal class jumpPatch
     {

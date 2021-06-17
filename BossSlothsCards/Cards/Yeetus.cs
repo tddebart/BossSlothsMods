@@ -1,40 +1,38 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace BossSlothsMod.Cards
+namespace BossSlothsCards.Cards
 {
-    public class DoubleJump : CustomCard
+    public class Knockback : CustomCard
     {
         public AssetBundle Asset;
-        public CharacterData _data;
         
         protected override string GetTitle()
         {
-            return "Double jump";
+            return "Yeetus";
         }
 
         protected override string GetDescription()
         {
-            return "Gives you the ability to double jump";
+            return "Gives more bullet knockback";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Adding jump card");
+            UnityEngine.Debug.Log("Addig yeetus card");
 #endif
-            _data = data;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Setting up jump card");
+            UnityEngine.Debug.Log("Setting up yeetus card");
 #endif
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
+            gun.knockback = 2;
             
-            statModifiers.health = 1.3f;
-            statModifiers.numberOfJumps = 1;
+            //statModifiers.AddObjectToPlayer = Startup.EffectAsset.LoadAsset<GameObject>("A_Explode_Y");
         }
 
         protected override CardInfoStat[] GetStats()
@@ -43,8 +41,8 @@ namespace BossSlothsMod.Cards
             {
                 new CardInfoStat
                 {
-                    stat = "Health",
-                    amount = "+30%",
+                    stat = "Knockback",
+                    amount = "+200%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
@@ -58,15 +56,14 @@ namespace BossSlothsMod.Cards
 
         protected override GameObject GetCardArt()
         {
-            //var art = Testing.Instance.Asset.LoadAsset<GameObject>("C_Sneeze");
-            return null;
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Yeetus");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.EvilPurple;
         }
-
+        
         public override void OnRemoveCard()
         {
         }
