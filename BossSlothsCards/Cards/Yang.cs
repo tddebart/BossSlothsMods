@@ -1,50 +1,55 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 
-namespace BossSlothsMod.Cards
+namespace BossSlothsCards.Cards
 {
-    public class YinYang : CustomCard
+    public class Yang : CustomCard
     {
         public AssetBundle Asset;
         
         protected override string GetTitle()
         {
-            return "Yin Yang";
+            return "Yang";
         }
 
         protected override string GetDescription()
         {
-            return "Ups most stats";
+            return "Ups block stats and makes minimum block cooldown 3s";
         }
         
-        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity,
-            Block block, CharacterStatModifiers characterStats)
+        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Adding YinYang card");
+            UnityEngine.Debug.Log("Adding yang card");
 #endif
-            block.cdAdd = 4;
+            block.additionalBlocks += 2;
+            block.cooldown -= 5;
             
-            block.additionalBlocks = 1;
+            block.forceToAdd += 3;
+            
+            var A_Yang = new GameObject("A_Yang");
+            A_Yang.AddComponent<A_Yang>();
+            statModifiers.AddObjectToPlayer = A_Yang;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Setting up YinYang card");
+            UnityEngine.Debug.Log("Setting up yang card");
 #endif
             cardInfo.allowMultiple = false;
-                        
-            gun.damage = 1.15f;
-            gun.reloadTimeAdd = 4;
-            gun.ammo = 2;
-            gun.numberOfProjectiles = 2;
-            gun.attackSpeed = 1.10f;
-            statModifiers.health = 1.2f;
-            
-            gun.spread = 0.05f;
+
+            gun.damage = 0.7f;
+            gun.reloadTimeAdd = 0.5f;
+            gun.ammo = -3;
+            gun.attackSpeed = 0.7f;
+
+            gun.projectileColor = Color.white;
+
+
+
         }
-        
+
         protected override CardInfoStat[] GetStats()
         {
             return new[]
@@ -52,20 +57,20 @@ namespace BossSlothsMod.Cards
                 new CardInfoStat
                 {
                     stat = "Damage",
-                    amount = "+15%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat
-                {
-                    stat = "Reload time",
-                    amount = "+4s",
+                    amount = "-30%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat
                 {
-                    stat = "Ammo",
+                    stat = "Reload time",
+                    amount = "+0.5s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Amount of Blocks",
                     amount = "+2",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
@@ -73,42 +78,36 @@ namespace BossSlothsMod.Cards
                 new CardInfoStat
                 {
                     stat = "Block cooldown",
-                    amount = "+4s",
+                    amount = "-4s",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Ammo",
+                    amount = "-3",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat
                 {
-                    stat = "Bullets",
-                    amount = "+2",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat
-                {
                     stat = "ATKSPD",
-                    amount = "+10%",
-                    positive = true,
+                    amount = "-30%",
+                    positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat
-                {
-                    stat = "Health",
-                    amount = "+20%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                }
             };
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Uncommon;
         }
 
         protected override GameObject GetCardArt()
         {
-            return Startup.ArtAsset.LoadAsset<GameObject>("C_YinYang");
+            //var art = Testing.Instance.Asset.LoadAsset<GameObject>("C_Sneeze");
+            return null;
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BossSlothsMod.Patches
+namespace BossSlothsCards.Patches
 {
     internal class cardBarPatch
     {

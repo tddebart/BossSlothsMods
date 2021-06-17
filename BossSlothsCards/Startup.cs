@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using BepInEx;
-using BossSlothsMod.Cards;
+using BossSlothsCards.Cards;
 using HarmonyLib;
 using Jotunn.Utils;
 using Photon.Pun;
@@ -9,10 +9,10 @@ using UnityEngine;
 using UnboundLib;
 
 
-namespace BossSlothsMod
+namespace BossSlothsCards
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsMod", "0.0.5")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsCards", "0.1.1")]
     [BepInProcess("Rounds.exe")]
     public class Startup : BaseUnityPlugin
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BossSlothsMod</RootNamespace>
-    <AssemblyName>BossSlothsMod</AssemblyName>
+    <RootNamespace>BossSlothsCards</RootNamespace>
+    <AssemblyName>BossSlothsCards</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
