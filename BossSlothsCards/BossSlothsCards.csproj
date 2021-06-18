@@ -87,7 +87,6 @@
     <Compile Include="Cards\Yang.cs" />
     <Compile Include="Cards\Yin.cs" />
     <Compile Include="Cards\YinYang.cs" />
-    <Compile Include="Patches\jumpPatch.cs" />
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unused cards\Nice.cs" />
@@ -106,6 +105,9 @@
     <Content Include="ThunderStore\manifest.json" />
     <Content Include="ThunderStore\README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Patches" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
@@ -116,10 +118,10 @@
     </Target>
     -->
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\3 player\BepInEx\plugins" /y
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\3 player\BepInEx\plugins" /y
       copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsCards\ThunderStore"</PostBuildEvent>
   </PropertyGroup>
 </Project>

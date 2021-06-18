@@ -31,7 +31,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Setting up jump card");
 #endif
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
             
             statModifiers.health = 1.3f;
             statModifiers.numberOfJumps = 1;
@@ -45,6 +45,13 @@ namespace BossSlothsCards.Cards
                 {
                     stat = "Health",
                     amount = "+30%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat
+                {
+                    stat = "Jumps",
+                    amount = "+1",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }

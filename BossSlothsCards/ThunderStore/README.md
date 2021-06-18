@@ -39,9 +39,11 @@ Ups most stats
 
 ---
 ##Changelist
-- v1.0.0 First ThunderStore release
+- v0.1.0 First ThunderStore release
   
-- v1.0.1 Splitted BSM to BSC and BST
+- v0.1.1 Splitted BSM to BSC and BST
+  
+- v0.1.2 Fixed bug where custom cards where not loaded
 
 ---
 ## How to install
