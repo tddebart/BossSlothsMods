@@ -12,7 +12,8 @@ using UnboundLib;
 namespace BossSlothsCards
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsCards", "0.1.1")]
+    [BepInDependency("pykess.rounds.plugins.playerjumppatch")]
+    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsCards", "0.1.3")]
     [BepInProcess("Rounds.exe")]
     public class BossSlothCards : BaseUnityPlugin
     {
@@ -49,8 +50,8 @@ namespace BossSlothsCards
 
         private void Start()
         {
-            var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
-            harmony.PatchAll();
+            //var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
+            //harmony.PatchAll();
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)

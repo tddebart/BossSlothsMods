@@ -1,11 +1,12 @@
 ﻿{
   "name": "BSC",
-  "version_number": "0.1.2",
+  "version_number": "0.1.3",
   "website_url": "https://github.com/tddebart/BossSlothsMods",
   "description": "Adds some new cards to the game",
   "dependencies": [
-    "willis81808-UnboundLib-1.1.2",
+    "willis81808-UnboundLib-2.1.0",
     "willis81808-MMHook-1.0.0",
-    "BepInEx-BepInExPack_ROUNDS-5.4.1100"
+    "BepInEx-BepInExPack_ROUNDS-5.4.1100",
+    "Pykess-PlayerJumpPatch-0.0.0"
   ]
 }
