@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsCards", "BossSlot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsTweaks", "BossSlothsTweaks\BossSlothsTweaks.csproj", "{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardBarPatch", "CardBarPatch\CardBarPatch.csproj", "{71574359-E73D-4D57-91BB-D6AD44C4C3C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

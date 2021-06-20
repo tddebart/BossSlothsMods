@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}</ProjectGuid>
+        <ProjectGuid>{71574359-E73D-4D57-91BB-D6AD44C4C3C9}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>BossSlothsTweaks</RootNamespace>
-        <AssemblyName>BossSlothsTweaks</AssemblyName>
+        <RootNamespace>CardBarPatch</RootNamespace>
+        <AssemblyName>CardBarPatch</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -41,18 +41,15 @@
         <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.dll</HintPath>
         </Reference>
-        <Reference Include="PhotonRealtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonRealtime.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+        <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.Harmony.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
         <Reference Include="UnboundLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
+          <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
@@ -60,19 +57,22 @@
         <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-        </Reference>
         <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UI.dll</HintPath>
         </Reference>
+        <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BossSlothsTweaks.cs" />
+        <Compile Include="CardBarPatch.cs" />
+        <Compile Include="Patches\cardBarPatch.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="ThunderStore\BossSlothsMod.zip" />
       <Content Include="ThunderStore\BossSlothsTweaks.dll" />
       <Content Include="ThunderStore\icon.png" />
       <Content Include="ThunderStore\icon.psd" />
@@ -84,7 +84,7 @@
         <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PostBuildEvent>copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsTweaks\ThunderStore"</PostBuildEvent>
+        <PostBuildEvent>copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\CardBarPatch\ThunderStore"</PostBuildEvent>
     </PropertyGroup>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

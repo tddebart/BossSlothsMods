@@ -24,14 +24,10 @@ Only one per game
 Reduced range to 4 (from 4.5)
 Only one per game
 
----
-###The card bar in the top right will now show a max of 34 cards (from 11)  
-
----
-
 ##Changelist
 - v1.0.0 Splitted BSM to BSC and BST
     -added options menu for tweaks that also get saved between restarts
+- v1.1.0 CarBarPatch has been moved to a separate mod
   
 ## How to install
 Use [ThunderStore Mod manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager)  
@@ -45,4 +41,3 @@ If you have any suggestions please open an new issue with the label `Suggestion`
 ## Special thanks
 Thanks to:
 - [Round modding discord](https://discord.gg/zUtsjXWeWk) for the great UnboundLib
-- [Tom Weiland](https://www.youtube.com/channel/UCa-mDKzV5MW_BXjSDRqqHUw) for the AutoUpdater code
