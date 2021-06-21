@@ -7,6 +7,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsCards", "BossSlot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossSlothsTweaks", "BossSlothsTweaks\BossSlothsTweaks.csproj", "{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardBarPatch", "CardBarPatch\CardBarPatch.csproj", "{71574359-E73D-4D57-91BB-D6AD44C4C3C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution files", "{AE724A86-BA21-454F-98A4-8FC4567B1535}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BSC files", "BSC files", "{B3F0C602-6D94-46DA-9F09-327EE039135B}"
+	ProjectSection(SolutionItems) = preProject
+		BossSlothsCards\ThunderStore\manifest.json = BossSlothsCards\ThunderStore\manifest.json
+		BossSlothsCards\ThunderStore\README.md = BossSlothsCards\ThunderStore\README.md
+		BossSlothsCards\publish.ps1 = BossSlothsCards\publish.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BST files", "BST files", "{3852D71C-6188-4D0E-A843-139A04078738}"
+	ProjectSection(SolutionItems) = preProject
+		BossSlothsTweaks\ThunderStore\manifest.json = BossSlothsTweaks\ThunderStore\manifest.json
+		BossSlothsTweaks\ThunderStore\README.md = BossSlothsTweaks\ThunderStore\README.md
+		BossSlothsTweaks\publish.ps1 = BossSlothsTweaks\publish.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CBP files", "CBP files", "{BEEFB667-0EDA-47A3-ADF1-4BF2162E2A10}"
+	ProjectSection(SolutionItems) = preProject
+		CardBarPatch\ThunderStore\manifest.json = CardBarPatch\ThunderStore\manifest.json
+		CardBarPatch\ThunderStore\README.md = CardBarPatch\ThunderStore\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +45,18 @@ Global
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3F0C602-6D94-46DA-9F09-327EE039135B} = {AE724A86-BA21-454F-98A4-8FC4567B1535}
+		{3852D71C-6188-4D0E-A843-139A04078738} = {AE724A86-BA21-454F-98A4-8FC4567B1535}
+		{BEEFB667-0EDA-47A3-ADF1-4BF2162E2A10} = {AE724A86-BA21-454F-98A4-8FC4567B1535}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C7378FA-8881-4762-9F9D-5A87C4A7C8E3}

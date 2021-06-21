@@ -31,21 +31,29 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <RoundsFolder>F:\SteamLibrary\steamapps\common\ROUNDS</RoundsFolder>
+    <IndirectBuildTask>true</IndirectBuildTask>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-MMHook\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
@@ -54,8 +62,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnboundLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>C:\Users\tddeb\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
+    <Reference Include="UnboundLib, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
@@ -117,11 +125,30 @@
         
     </Target>
     -->
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\3 player\BepInEx\plugins" /y
-      copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsCards\ThunderStore"</PostBuildEvent>
-  </PropertyGroup>
+  
+  
+<!--  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">-->
+<!--    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>-->
+<!--  </PropertyGroup>-->
+<!--  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">-->
+<!--    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\3 player\BepInEx\plugins" /y-->
+<!--      copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsCards\ThunderStore"</PostBuildEvent>-->
+<!--  </PropertyGroup>-->
+  
+
+  <Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build" Outputs="$(PackageVersion)">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="PackAssembly" />
+    </GetAssemblyIdentity>
+    <PropertyGroup>
+      <PackageVersion>%(PackAssembly.Version)</PackageVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="PostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'" DependsOnTargets="Build" AfterTargets="Build">
+    <CallTarget Targets="ReadPackageVersionFromOutputAssembly">
+      <Output TaskParameter="TargetOutputs" PropertyName="PackageVersion" />
+    </CallTarget>
+    <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(ProjectDir)publish.ps1&quot; -Version &quot;$(PackageVersion.Remove($(PackageVersion.LastIndexOf('.')), 2))&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -RoundsPath &quot;$(RoundsFolder.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
+  </Target>
 </Project>

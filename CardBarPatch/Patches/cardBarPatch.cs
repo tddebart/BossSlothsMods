@@ -1,8 +1,6 @@
 ﻿using HarmonyLib;
-using UnityEngine;
-using UnityEngine.UI;
 
-namespace BossSlothsTweaks.Patches
+namespace CardBarPatch.Patches
 {
     internal class cardBarPatch
     {
@@ -13,7 +11,7 @@ namespace BossSlothsTweaks.Patches
             // ReSharper disable once UnusedMember.Local
             private static void Postfix()
             {
-                BossSlothsTweaks.ChangeCards();
+                CardBarPatch.CardBar();
             }
         }
         
