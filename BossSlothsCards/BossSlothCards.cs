@@ -13,10 +13,15 @@ namespace BossSlothsCards
 {
     [BepInDependency("com.willis.rounds.unbound")]
     [BepInDependency("pykess.rounds.plugins.playerjumppatch")]
-    [BepInPlugin("MyCoolPlugin.ActualRounds.Yes", "BossSlothsCards", "0.1.3")]
+    [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class BossSlothCards : BaseUnityPlugin
     {
+        
+        private const string ModId = "com.bosssloth.rounds.BSM";
+        private const string ModName = "BossSlothsCards";
+        public const string Version = "0.1.4";
+        
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 

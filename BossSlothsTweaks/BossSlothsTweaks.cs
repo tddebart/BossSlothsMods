@@ -10,10 +10,14 @@ using UnityEngine;
 namespace BossSlothsTweaks
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin("com.BossSloth.Rounds.Tweaks", "BossSlothsTweaks", "0.1.1")]
+    [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class BossSlothsTweaks : BaseUnityPlugin
     {
+        
+        private const string ModId = "com.BossSloth.Rounds.Tweaks";
+        private const string ModName = "BossSlothsTweaks";
+        public const string Version = "0.1.1";
 
         private static ConfigEntry<bool> PHOENIX;
         private static ConfigEntry<bool> GROW;

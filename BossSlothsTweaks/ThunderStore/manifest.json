@@ -1,6 +1,6 @@
 ﻿{
   "name": "BST",
-  "version_number": "0.1.1",
+  "version_number": "#VERSION#",
   "website_url": "https://github.com/tddebart/BossSlothsMods",
   "description": "Some balancing tweaks to existing cards",
   "dependencies": [

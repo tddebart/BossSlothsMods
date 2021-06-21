@@ -31,6 +31,13 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <RoundsFolder>F:\SteamLibrary\steamapps\common\ROUNDS</RoundsFolder>
+        <IndirectBuildTask>true</IndirectBuildTask>
+        <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+    </PropertyGroup>
+    
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\0Harmony.dll</HintPath>
@@ -80,18 +87,28 @@
       <Content Include="ThunderStore\README.md" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PostBuildEvent>copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsTweaks\ThunderStore"</PostBuildEvent>
-    </PropertyGroup>
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
+    
+<!--    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">-->
+<!--        <PostBuildEvent>copy "$(TargetPath)" "C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins" /y</PostBuildEvent>-->
+<!--    </PropertyGroup>-->
+<!--    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">-->
+<!--        <PostBuildEvent>copy "$(TargetPath)" "F:\Software developer\TheActualRoundsMod\BossSlothsMod\BossSlothsTweaks\ThunderStore"</PostBuildEvent>-->
+<!--    </PropertyGroup>-->
+
+    <Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build" Outputs="$(PackageVersion)">
+        <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+            <Output TaskParameter="Assemblies" ItemName="PackAssembly" />
+        </GetAssemblyIdentity>
+        <PropertyGroup>
+            <PackageVersion>%(PackAssembly.Version)</PackageVersion>
+        </PropertyGroup>
     </Target>
-    <Target Name="AfterBuild">
+
+    <Target Name="PostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'" DependsOnTargets="Build" AfterTargets="Build">
+        <CallTarget Targets="ReadPackageVersionFromOutputAssembly">
+            <Output TaskParameter="TargetOutputs" PropertyName="PackageVersion" />
+        </CallTarget>
+        <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(ProjectDir)publish.ps1&quot; -Version &quot;$(PackageVersion.Remove($(PackageVersion.LastIndexOf('.')), 2))&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -RoundsPath &quot;$(RoundsFolder.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
     </Target>
-    -->
 
 </Project>
