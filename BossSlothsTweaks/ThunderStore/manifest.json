@@ -4,8 +4,9 @@
   "website_url": "https://github.com/tddebart/BossSlothsMods",
   "description": "Some balancing tweaks to existing cards",
   "dependencies": [
-    "willis81808-UnboundLib-1.1.2",
+    "willis81808-UnboundLib-2.1.4",
     "willis81808-MMHook-1.0.0",
-    "BepInEx-BepInExPack_ROUNDS-5.4.1100"
+    "BepInEx-BepInExPack_ROUNDS-5.4.1100",
+    "Pykess-CardChoiceSpawnUniqueCardPatch-0.0.0"
   ]
 }

@@ -10,6 +10,7 @@ using UnityEngine;
 namespace BossSlothsTweaks
 {
     [BepInDependency("com.willis.rounds.unbound")]
+    [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class BossSlothsTweaks : BaseUnityPlugin
@@ -17,7 +18,7 @@ namespace BossSlothsTweaks
         
         private const string ModId = "com.BossSloth.Rounds.Tweaks";
         private const string ModName = "BossSlothsTweaks";
-        public const string Version = "0.1.1";
+        public const string Version = "0.1.2";
 
         private static ConfigEntry<bool> PHOENIX;
         private static ConfigEntry<bool> GROW;

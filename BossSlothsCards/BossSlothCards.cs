@@ -1,18 +1,15 @@
-﻿using System.Linq;
-using BepInEx;
+﻿using BepInEx;
 using BossSlothsCards.Cards;
-using HarmonyLib;
 using Jotunn.Utils;
-using Photon.Pun;
 using UnboundLib.Cards;
 using UnityEngine;
-using UnboundLib;
 
 
 namespace BossSlothsCards
 {
     [BepInDependency("com.willis.rounds.unbound")]
     [BepInDependency("pykess.rounds.plugins.playerjumppatch")]
+    [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class BossSlothCards : BaseUnityPlugin
