@@ -43,6 +43,7 @@ Ups most stats
 - v0.1.1 Splitted BSM to BSC and BST
 - v0.1.2 Fixed bug where custom cards where not loaded
 - v0.1.3 Fixed double jump
+- v0.1.4 New dependency CardchoiceSpawnUniqueCardPatch
 
 ---
 ## How to install
