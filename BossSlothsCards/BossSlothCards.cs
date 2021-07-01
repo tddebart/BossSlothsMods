@@ -22,34 +22,6 @@ namespace BossSlothsCards
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 
-
-        internal static AssetBundle levelAsset;
-
-#if DEBUG
-        private Vector2 scrollposision;
-        private readonly GUILayoutOption[] gl = new GUILayoutOption[0];
-
-        private void OnGUI()
-        {
-            var area = new Rect(50, 50, 2000, 2000);
-            GUILayout.BeginArea(area);
-            scrollposision = GUILayout.BeginScrollView(scrollposision, GUILayout.MaxWidth(200), GUILayout.MaxHeight(1000));
-
-            if(CardChoice.instance != null && CardChoice.instance.cards != null)
-            {
-                GUILayout.Label("cards: ", gl);
-                var cardArray = CardChoice.instance.cards;
-                foreach (var info in cardArray)
-                {
-                    GUILayout.Label(info.cardName);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
-        }
-#endif
-
         private void Start()
         {
             //var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
@@ -76,13 +48,6 @@ namespace BossSlothsCards
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
 
-            levelAsset = AssetUtils.LoadAssetBundleFromResources("customlevel", typeof(BossSlothCards).Assembly);
-            if (levelAsset == null)
-            {
-                UnityEngine.Debug.LogError("Couldn't find levelAsset?");
-            }
-
-            //Unbound.BuildLevel(levelAsset);
 
         }
     }

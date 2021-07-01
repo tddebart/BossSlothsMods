@@ -103,7 +103,6 @@
   <ItemGroup>
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />
     <EmbeddedResource Include="AssetsEmbedded\bossslothseffects" />
-    <EmbeddedResource Include="AssetsEmbedded\customlevel" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ThunderStore\BossSlothsCards.dll" />
