@@ -23,7 +23,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding 360 card");
 #endif
-            player.gameObject.AddComponent<A_GetCamera>();
+            player.gameObject.AddComponent<GetCamera_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)

@@ -46,7 +46,7 @@ namespace BossSlothsCards.Cards
 
             var obj = new GameObject("A_Sneeze");
             obj.hideFlags = HideFlags.HideAndDontSave;
-            obj.AddComponent<A_Sneeze>();
+            obj.AddComponent<Sneeze_Mono>();
             gun.objectsToSpawn = new[]
             {
                 new ObjectsToSpawn

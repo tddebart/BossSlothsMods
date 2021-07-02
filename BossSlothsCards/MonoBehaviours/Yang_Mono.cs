@@ -2,7 +2,7 @@
 
 namespace BossSlothsCards.Cards
 {
-    public class A_Yang : MonoBehaviour
+    public class Yang_Mono : MonoBehaviour
     {
         private Block _block;
 

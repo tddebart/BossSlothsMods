@@ -28,7 +28,7 @@ namespace BossSlothsCards.Cards
             block.forceToAdd += 3;
             
             var A_Yang = new GameObject("A_Yang");
-            A_Yang.AddComponent<A_Yang>();
+            A_Yang.AddComponent<Yang_Mono>();
             statModifiers.AddObjectToPlayer = A_Yang;
         }
         

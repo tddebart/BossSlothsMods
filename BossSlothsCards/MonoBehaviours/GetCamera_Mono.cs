@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class A_GetCamera : MonoBehaviour
+    public class GetCamera_Mono : MonoBehaviour
     {
         public Aim _aim;
 
@@ -145,7 +145,7 @@ namespace BossSlothsCards.Cards
         {
             foreach (var player in PlayerManager.instance.players.Where(player => player.transform.Find("Particles/Orange circle(Clone)")))
             {
-                player.GetComponent<A_GetCamera>().hasEnable = false;
+                player.GetComponent<GetCamera_Mono>().hasEnable = false;
             }
         }
     }
@@ -159,7 +159,7 @@ namespace BossSlothsCards.Cards
             if (__instance.GetComponent<Holdable>().holder.transform.Find("Particles/Orange circle(Clone)"))
             {
                 UnityEngine.Debug.LogWarning("shot with 3670");
-                __instance.GetComponent<Holdable>().holder.GetComponent<A_GetCamera>().hasEnable = false;
+                __instance.GetComponent<Holdable>().holder.GetComponent<GetCamera_Mono>().hasEnable = false;
             }
         }
     }

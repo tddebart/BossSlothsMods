@@ -2,7 +2,7 @@
 
 namespace BossSlothsCards.Cards
 {
-    public class A_Sneeze : MonoBehaviour
+    public class Sneeze_Mono : MonoBehaviour
     {
 
         private void Awake()
