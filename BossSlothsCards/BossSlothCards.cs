@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BossSlothsCards.Cards;
+using HarmonyLib;
 using Jotunn.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -24,8 +25,8 @@ namespace BossSlothsCards
 
         private void Start()
         {
-            //var harmony = new Harmony("com.rounds.BSM.Startup.Harmony");
-            //harmony.PatchAll();
+            var harmony = new Harmony(ModId);
+            harmony.PatchAll();
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
@@ -45,6 +46,10 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
             CustomCard.BuildCard<Knockback>();
+            //CustomCard.BuildCard<NotToday>();
+            CustomCard.BuildCard<MomGetTheCamera>();
+
+
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
 
