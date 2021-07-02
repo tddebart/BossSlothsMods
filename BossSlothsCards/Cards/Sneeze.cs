@@ -39,8 +39,35 @@ namespace BossSlothsCards.Cards
 
             gun.spread = 0.40f;
             gun.recoil = 500;
+
+            //gun.ammoReg = 1;
             
             gun.projectileColor = new Color(0.216f, 0.902f,0.478f);
+
+            var obj = new GameObject("A_Sneeze");
+            obj.hideFlags = HideFlags.HideAndDontSave;
+            obj.AddComponent<A_Sneeze>();
+            gun.objectsToSpawn = new[]
+            {
+                new ObjectsToSpawn
+                {
+                    AddToProjectile = obj,
+                    direction = ObjectsToSpawn.Direction.forward,
+                    effect = null,
+                    normalOffset = 0,
+                    numberOfSpawns = 1,
+                    removeScriptsFromProjectileObject = false,
+                    scaleFromDamage = 0,
+                    scaleStackM = 0,
+                    scaleStacks = false,
+                    spawnAsChild = false,
+                    spawnOn = ObjectsToSpawn.SpawnOn.all,
+                    stacks = 0,
+                    stickToAllTargets = false,
+                    stickToBigTargets = false,
+                    zeroZ = false
+                }
+            };
         }
 
         protected override CardInfoStat[] GetStats()
