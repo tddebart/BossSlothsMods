@@ -24,9 +24,6 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Adding 360 card");
 #endif
             player.gameObject.AddComponent<A_GetCamera>();
-            
-            var circle = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("Orange circle"), player.transform.Find("Particles"));
-            circle.transform.localPosition = Vector3.zero;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
