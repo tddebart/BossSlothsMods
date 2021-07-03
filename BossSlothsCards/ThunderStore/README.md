@@ -2,43 +2,43 @@
 ## New cards
 
 ---
-###Double jump
+### Double jump
 Common card  
 
 Gives you the ability to double jump
 
 ---
-###Sneeze
+### Sneeze
 Rare card  
 
 Makes you sneeze your bullet
 
 ---
-###Yang
+### Yang
 Uncommon card  
 
 Ups block stats
 
 ---
-###Yeetus
+### Yeetus
 Common card  
 
 Gives some gun knockback
 
 ---
-###Yin
+### Yin
 Uncommon card  
 
 Ups gun stats
 
 ---
-###YingYang
+### YingYang
 Rare card  
 
 Ups most stats  
 
 ---
-##Changelist
+## Changelist
 - v0.1.0 First ThunderStore release
 - v0.1.1 Splitted BSM to BSC and BST
 - v0.1.2 Fixed bug where custom cards where not loaded
