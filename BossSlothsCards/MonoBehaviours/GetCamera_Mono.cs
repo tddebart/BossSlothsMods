@@ -1,11 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib;
+using UnboundLib.GameModes;
 using UnityEngine;
+
 // ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
-namespace BossSlothsCards.Cards
+namespace BossSlothsCards.MonoBehaviours
 {
     public class GetCamera_Mono : MonoBehaviour
     {
@@ -13,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         public bool hasEnable;
 
-        private bool onCooldown;
+        public bool onCooldown;
         private Holding _holding;
         private Gun _gun;
 
@@ -31,6 +34,7 @@ namespace BossSlothsCards.Cards
         public float zeroRotationTime;
 
         public GameObject circle;
+        private static readonly int Activaded = Animator.StringToHash("Activaded");
 
         private void Start()
         {
@@ -45,6 +49,8 @@ namespace BossSlothsCards.Cards
             
             circle = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("Orange circle"), transform.Find("Particles"));
             circle.transform.localPosition = Vector3.zero;
+
+            GameModeManager.AddHook(GameModeHooks.HookRoundEnd, (gm) => ResetBetweenRounds());
         }
         
         private void Update()
@@ -122,41 +128,39 @@ namespace BossSlothsCards.Cards
                
             }
         }
-        
-        public static Vector2 DegreesToVector(float angle, float magnitude = 1f)
+
+        private static Vector2 DegreesToVector(float angle, float magnitude = 1f)
         {
             float f = angle * 0.017453292f;
             return new Vector2(Mathf.Cos(f), Mathf.Sin(f)) * magnitude;
         }
 
         [PunRPC]
+        //#TODO add player id to void
         public void RPCA_doCircleAnimation()
         {
-            circle.GetComponent<Animator>().SetTrigger("Activaded");
+            circle.GetComponent<Animator>().SetTrigger(Activaded);
         }
-    }
-    
-    
-    [HarmonyPatch(typeof(GM_ArmsRace),"PointOver")]
-    class Patch_GM_Armsrace
-    {
-        // ReSharper disable once UnusedMember.Local
-        private static void Postfix(int winningTeamID)
+
+        private static IEnumerator ResetBetweenRounds()
         {
             foreach (var player in PlayerManager.instance.players.Where(player => player.transform.Find("Particles/Orange circle(Clone)")))
             {
-                player.GetComponent<GetCamera_Mono>().hasEnable = false;
+                var mono = player.GetComponent<GetCamera_Mono>();
+                mono.hasEnable = false;
+                mono.onCooldown = false;
             }
-        }
+            yield break;
+        } 
     }
-    
+
     [HarmonyPatch(typeof(Gun),"DoAttack")]
     class Patch_DoAttack
     {
         // ReSharper disable once UnusedMember.Local
         private static void Postfix(Gun __instance)
         {
-            if (__instance.GetComponent<Holdable>().holder.transform.Find("Particles/Orange circle(Clone)"))
+            if (__instance.GetComponent<Holdable>() && __instance.GetComponent<Holdable>().holder.transform.Find("Particles/Orange circle(Clone)"))
             {
                 UnityEngine.Debug.LogWarning("shot with 3670");
                 __instance.GetComponent<Holdable>().holder.GetComponent<GetCamera_Mono>().hasEnable = false;

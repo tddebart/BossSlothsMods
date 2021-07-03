@@ -1,4 +1,5 @@
-﻿using UnboundLib.Cards;
+﻿using BossSlothsCards.MonoBehaviours;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards

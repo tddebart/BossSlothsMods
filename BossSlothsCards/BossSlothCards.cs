@@ -48,6 +48,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Knockback>();
             //CustomCard.BuildCard<NotToday>();
             CustomCard.BuildCard<MomGetTheCamera>();
+            CustomCard.BuildCard<WhereDidItGo>();
 
 
             //CustomCard.BuildCard<OneShot>();
