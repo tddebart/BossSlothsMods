@@ -20,18 +20,19 @@ Only one per game
 Reduced range to 4 (from 4.5)
 Only one per game
 
+---
 ### Tactical reload + Shields up
 You can no longer get Shield up with Tactical reload and vice versa
 
 
 ##Changelist
-- v0.1.0 Splitted BSM to BSC and BST   
-        - added options menu for tweaks that also get saved between restarts
+- v0.1.0 Splitted BSM to BSC and BST
+    - added options menu for tweaks that also get saved between restarts
 - v0.1.1 CarBarPatch has been moved to a separate mod
 - v0.1.2 Added dependency CardchoiceSpawnUniqueCardPatch
 - v0.1.3 New tweak and removed tweak
-        - Tactical reload + Shields up combo
-        - Emp tweak has been removed because it is not needed anymore
+    - Tactical reload + Shields up combo
+    - Emp tweak has been removed because it is not needed anymore
   
 ## How to install
 Use [ThunderStore Mod manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager)  
