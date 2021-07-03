@@ -18,33 +18,52 @@ namespace BossSlothsTweaks
         
         private const string ModId = "com.BossSloth.Rounds.Tweaks";
         private const string ModName = "BossSlothsTweaks";
-        public const string Version = "0.1.2";
+        public const string Version = "0.1.3";
 
         private static ConfigEntry<bool> PHOENIX;
         private static ConfigEntry<bool> GROW;
-        private static ConfigEntry<bool> EMP;
         private static ConfigEntry<bool> SCAVENGER;
         private static ConfigEntry<bool> SAW;
+        private static ConfigEntry<bool> TACTICALSHIELDUP;
 
-        internal static BossSlothsTweaks Instance;
+        //private static BossSlothsTweaks Instance;
+
+        private static CardCategory[] tacticalReload;
+        private static CardCategory[] shieldsUp;
 
         private void Start()
         {
             Unbound.RegisterGUI("BossSlothTweaks", DrawGUI);
             Unbound.RegisterHandshake("com.willis.rounds.unbound", OnHandShakeCompleted);
 
-            Instance = this;
+            //Instance = this;
             
             PHOENIX = Config.Bind("Cards", "Phoenix", false, "Added -50% damage, Reduced health to -50% (from -35%)");
             GROW = Config.Bind("Cards", "Grow", false, "Only one per game");
-            EMP = Config.Bind("Cards", "Emp", false, "Only one per game");
             SCAVENGER = Config.Bind("Cards", "Scavenger", false, "Only one per game");
             SAW = Config.Bind("Cards", "Saw", false, "Reduced range to 4 (from 4.5), Only one per game");
+            TACTICALSHIELDUP = Config.Bind("Cards", "Tactical reload + Shields Up", false, "makes it so you can't get Shields up when you have Tactical reload and vice versa");
 
-            ChangeCards();
 
             var harmony = new Harmony("com.BossSloth.Rounds.Tweaks.Harmony");
             harmony.PatchAll();
+
+            var catergoryTactical = ScriptableObject.CreateInstance<CardCategory>();
+            catergoryTactical.name = "TACTICAl RELOAD";
+            
+            tacticalReload = new[]
+            {
+                catergoryTactical
+            };
+
+            var catergoryShields = ScriptableObject.CreateInstance<CardCategory>();
+            catergoryShields.name = "TACTICAl RELOAD";
+            
+            shieldsUp = new[]
+            {
+                catergoryShields
+            };
+            ChangeCards();
         }
 
         private static void ChangeCards()
@@ -97,18 +116,6 @@ namespace BossSlothsTweaks
                         }
                         break;
                     }
-                    case "EMP":
-                    {
-                        if (EMP.Value)
-                        {
-                            info.allowMultiple = false;
-                        }
-                        else
-                        {
-                            info.allowMultiple = true;
-                        }
-                        break;
-                    }
                     case "SCAVENGER":
                     {
                         if (SCAVENGER.Value)
@@ -123,7 +130,7 @@ namespace BossSlothsTweaks
                     }
                     case "SAW":
                     {
-                        if (!SAW.Value)
+                        if (SAW.Value)
                         {
                             info.allowMultiple = false;
                             var saw = info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<Saw>();
@@ -133,6 +140,34 @@ namespace BossSlothsTweaks
                         {
                             info.allowMultiple = true;
                             info.gameObject.GetComponent<CharacterStatModifiers>().AddObjectToPlayer.GetComponent<SpawnObjects>().objectToSpawn[0].GetComponent<Saw>().range = 4.5f;
+                        }
+                        break;
+                    }
+                    case "TACTICAL RELOAD":
+                    {
+                        if (TACTICALSHIELDUP.Value)
+                        {
+                            info.categories = tacticalReload;
+                            info.blacklistedCategories = shieldsUp;
+                        }
+                        else
+                        {
+                            info.categories = Array.Empty<CardCategory>();
+                            info.blacklistedCategories = Array.Empty<CardCategory>();
+                        }
+                        break;
+                    }
+                    case "SHIELDS UP":
+                    {
+                        if (TACTICALSHIELDUP.Value)
+                        {
+                            info.categories = shieldsUp;
+                            info.blacklistedCategories = tacticalReload;
+                        }
+                        else
+                        {
+                            info.categories = Array.Empty<CardCategory>();
+                            info.blacklistedCategories = Array.Empty<CardCategory>();
                         }
                         break;
                     }
@@ -152,27 +187,32 @@ namespace BossSlothsTweaks
         {
             bool flag1 = GUILayout.Toggle(PHOENIX.Value, "Phoenix", Array.Empty<GUILayoutOption>());
             bool flag2 = GUILayout.Toggle(GROW.Value, "Grow", Array.Empty<GUILayoutOption>());
-            bool flag3 = GUILayout.Toggle(EMP.Value, "Emp", Array.Empty<GUILayoutOption>());
             bool flag4 = GUILayout.Toggle(SCAVENGER.Value, "Scavenger", Array.Empty<GUILayoutOption>());
             bool flag5 = GUILayout.Toggle(SAW.Value, "Saw", Array.Empty<GUILayoutOption>());
-            if (flag1 != PHOENIX.Value || flag2 != GROW.Value || flag3 != EMP.Value || flag4 != SCAVENGER.Value || flag5 != SAW.Value)
+            bool flag6 = GUILayout.Toggle(TACTICALSHIELDUP.Value, "TacticalReload + ShieldsUp combo", Array.Empty<GUILayoutOption>());
+            if (flag1 != PHOENIX.Value || flag2 != GROW.Value || flag4 != SCAVENGER.Value || flag5 != SAW.Value || flag6 != TACTICALSHIELDUP.Value)
             {
                 NetworkingManager.RaiseEvent("com.BossSloth.Rounds.Tweaks_SyncTweaks", new object[]
                 {
                     flag1,
                     flag2,
-                    flag3,
                     flag4,
                     flag5,
+                    flag6
                 });
+                PHOENIX.Value = flag1;
+                GROW.Value = flag2;
+                SCAVENGER.Value = flag4;
+                SAW.Value = flag5;
+                TACTICALSHIELDUP.Value = flag6;
                 ChangeCards();
+                return;
             }
-
             PHOENIX.Value = flag1;
             GROW.Value = flag2;
-            EMP.Value = flag3;
             SCAVENGER.Value = flag4;
             SAW.Value = flag5;
+            TACTICALSHIELDUP.Value = flag6;
         }
         
         private void Awake()
@@ -181,13 +221,13 @@ namespace BossSlothsTweaks
             {
                 PHOENIX.Value = (bool)e[0];
                 GROW.Value = (bool)e[1];
-                EMP.Value = (bool)e[2];
-                SCAVENGER.Value = (bool)e[3];
-                SAW.Value = (bool)e[4];
+                SCAVENGER.Value = (bool)e[2];
+                SAW.Value = (bool)e[3];
+                TACTICALSHIELDUP.Value = (bool)e[4];
             });
         }
         
-        private void OnHandShakeCompleted()
+        private static void OnHandShakeCompleted()
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -195,9 +235,9 @@ namespace BossSlothsTweaks
                 {
                     PHOENIX.Value,
                     GROW.Value,
-                    EMP.Value,
                     SCAVENGER.Value,
                     SAW.Value,
+                    TACTICALSHIELDUP.Value
                 })
                 ;
             }
