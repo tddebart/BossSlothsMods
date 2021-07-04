@@ -101,9 +101,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BossSlothMonoBehaviour.cs" />
     <Compile Include="Cards\MomGetTheCamera.cs" />
     <Compile Include="Cards\DoubleJump.cs" />
     <Compile Include="Cards\NotToday.cs" />
+    <Compile Include="Cards\Larcenist.cs" />
     <Compile Include="Cards\WhereDidItGo.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
@@ -111,11 +113,14 @@
     <Compile Include="Cards\Yin.cs" />
     <Compile Include="Cards\YinYang.cs" />
     <Compile Include="BossSlothCards.cs" />
+    <Compile Include="Extensions\BossSlothCustomCard.cs" />
+    <Compile Include="Extensions\Cards.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\WhereDidItGo_Mono.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
+    <Compile Include="Patches\Reset_Patchcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

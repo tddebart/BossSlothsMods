@@ -45,10 +45,11 @@ namespace BossSlothsCards
             CustomCard.BuildCard<DoubleJump>();
             CustomCard.BuildCard<Yin>();
             CustomCard.BuildCard<Yang>();
-            CustomCard.BuildCard<Knockback>();
+            CustomCard.BuildCard<Yeetus>();
             //CustomCard.BuildCard<NotToday>();
             CustomCard.BuildCard<MomGetTheCamera>();
             CustomCard.BuildCard<WhereDidItGo>();
+            CustomCard.BuildCard<Larcenist>();
 
 
             //CustomCard.BuildCard<OneShot>();

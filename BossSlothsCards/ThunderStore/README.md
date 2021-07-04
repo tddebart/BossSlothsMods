@@ -45,6 +45,17 @@ Ups most stats
 - v0.1.3 Fixed double jump
 - v0.1.4 New dependency CardchoiceSpawnUniqueCardPatch
 
+### BIG 1.0.0
+- v1.0.0
+    - New cards
+        - Mom get the camera
+        - Where did it go
+        - Larcenist
+    
+    - Changes and bugfixes  
+        - Sneeze bullets no longer collide
+    
+
 ---
 ## How to install
 Use [ThunderStore Mod manager](https://rounds.thunderstore.io/package/BossSloth/BSC/)  

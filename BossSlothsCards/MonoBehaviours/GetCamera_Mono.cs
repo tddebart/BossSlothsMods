@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.MonoBehaviours
 {
-    public class GetCamera_Mono : MonoBehaviour
+    public class GetCamera_Mono : BossSlothMonoBehaviour
     {
         public Aim _aim;
 
@@ -24,7 +25,7 @@ namespace BossSlothsCards.MonoBehaviours
 
         public Vector3 aimDirection;
         
-        private float origDamage;
+        private float originDamage;
 
         public float m_currentAngle;
         public float m_lastAngle;
@@ -50,7 +51,7 @@ namespace BossSlothsCards.MonoBehaviours
             circle = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("Orange circle"), transform.Find("Particles"));
             circle.transform.localPosition = Vector3.zero;
 
-            GameModeManager.AddHook(GameModeHooks.HookRoundEnd, (gm) => ResetBetweenRounds());
+            GameModeManager.AddHook(GameModeHooks.HookPointEnd, (gm) => ResetBetweenRounds());
         }
         
         private void Update()
@@ -62,11 +63,11 @@ namespace BossSlothsCards.MonoBehaviours
             }
             else
             {
-                if (origDamage != 0f)
+                if (originDamage != 0f)
                 {
-                    _gun.damage = origDamage;
+                    _gun.damage = originDamage;
                 }
-                origDamage = _gun.damage;
+                originDamage = _gun.damage;
                 circle.gameObject.SetActive(false);
             }
 
@@ -110,36 +111,57 @@ namespace BossSlothsCards.MonoBehaviours
 
             void done360()
             {
-                if (onCooldown) return;
-                #if DEBUG
-                UnityEngine.Debug.LogWarning("Did 360");
-                #endif
-                _gun.damage += origDamage * 0.45f;
-                hasEnable = true;
-                onCooldown = true;
-                this.ExecuteAfterSeconds(2f, () =>
-                {
-                    onCooldown = false;
-                });
                 if (GetComponent<PhotonView>().IsMine)
                 {
-                    GetComponent<PhotonView>().RPC("RPCA_doCircleAnimation", RpcTarget.All);
+                    GetComponent<PhotonView>().RPC("RPCA_Do360", RpcTarget.All, GetComponent<Player>().playerID, originDamage);
                 }
-               
             }
         }
 
         private static Vector2 DegreesToVector(float angle, float magnitude = 1f)
         {
-            float f = angle * 0.017453292f;
+            var f = angle * 0.017453292f;
             return new Vector2(Mathf.Cos(f), Mathf.Sin(f)) * magnitude;
         }
 
         [PunRPC]
-        //#TODO add player id to void
-        public void RPCA_doCircleAnimation()
+        public void RPCA_Do360(int playerID, float _originDamage)
         {
-            circle.GetComponent<Animator>().SetTrigger(Activaded);
+            var player = (Player) typeof(PlayerManager).InvokeMember("GetPlayerWithID",
+                BindingFlags.Instance | BindingFlags.InvokeMethod |
+                BindingFlags.NonPublic, null, PlayerManager.instance, new object[] {playerID});
+            // ReSharper disable once LocalVariableHidesMember
+            var getCameraMono = player.GetComponent<GetCamera_Mono>();
+            UnityEngine.Debug.LogWarning("Done360, cooldown: " + getCameraMono.onCooldown);
+            if (getCameraMono.onCooldown) return;
+#if DEBUG
+            UnityEngine.Debug.LogWarning("Did 360");
+#endif
+            getCameraMono.hasEnable = true;
+            getCameraMono.onCooldown = true;
+            getCameraMono.ExecuteAfterSeconds(2f, () =>
+            {
+                getCameraMono.onCooldown = false;
+            });
+            if (getCameraMono.GetComponent<PhotonView>().IsMine)
+            {
+                getCameraMono.GetComponent<PhotonView>().RPC("RPCA_doCircleAnimation", RpcTarget.All, new object[] { getCameraMono.GetComponent<Player>().playerID, _originDamage});
+            }
+
+        }
+
+        [PunRPC]
+        public void RPCA_doCircleAnimation(int playerID, float _origDamage)
+        {
+            var player = (Player) typeof(PlayerManager).InvokeMember("GetPlayerWithID",
+                BindingFlags.Instance | BindingFlags.InvokeMethod |
+                BindingFlags.NonPublic, null, PlayerManager.instance, new object[] {playerID});
+            var _circle = player.transform.Find("Particles/Orange circle(Clone)");
+            _circle.gameObject.SetActive(true);
+            _circle.GetComponent<Animator>().SetTrigger(Activaded);
+            UnityEngine.Debug.LogWarning("Damage: " + player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage + ". origDamage: " + _origDamage);
+            player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage += _origDamage * 0.45f;
+            UnityEngine.Debug.LogWarning("Damage: " + player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage + ". origDamage: " + _origDamage);
         }
 
         private static IEnumerator ResetBetweenRounds()
@@ -151,7 +173,13 @@ namespace BossSlothsCards.MonoBehaviours
                 mono.onCooldown = false;
             }
             yield break;
-        } 
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(circle);
+            Destroy(cube);
+        }
     }
 
     [HarmonyPatch(typeof(Gun),"DoAttack")]
@@ -162,7 +190,9 @@ namespace BossSlothsCards.MonoBehaviours
         {
             if (__instance.GetComponent<Holdable>() && __instance.GetComponent<Holdable>().holder.transform.Find("Particles/Orange circle(Clone)"))
             {
+#if DEBUG
                 UnityEngine.Debug.LogWarning("shot with 3670");
+#endif
                 __instance.GetComponent<Holdable>().holder.GetComponent<GetCamera_Mono>().hasEnable = false;
             }
         }

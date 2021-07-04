@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class Knockback : CustomCard
+    public class Yeetus : CustomCard
     {
         public AssetBundle Asset;
         
