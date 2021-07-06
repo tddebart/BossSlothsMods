@@ -106,7 +106,7 @@
     <Compile Include="Cards\DoubleJump.cs" />
     <Compile Include="Cards\NotToday.cs" />
     <Compile Include="Cards\Larcenist.cs" />
-    <Compile Include="Cards\WhereDidItGo.cs" />
+    <Compile Include="Cards\RandomConfringo.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
     <Compile Include="Cards\Yang.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="Extensions\Cards.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
-    <Compile Include="MonoBehaviours\WhereDidItGo_Mono.cs" />
+    <Compile Include="MonoBehaviours\Confringo_Mono.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Reset_Patchcs.cs" />

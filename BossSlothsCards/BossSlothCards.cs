@@ -48,7 +48,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Yeetus>();
             //CustomCard.BuildCard<NotToday>();
             CustomCard.BuildCard<MomGetTheCamera>();
-            CustomCard.BuildCard<WhereDidItGo>();
+            CustomCard.BuildCard<RandomConfringo>();
             CustomCard.BuildCard<Larcenist>();
 
 

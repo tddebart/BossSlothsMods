@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 
 namespace BossSlothsCards.Cards
 {
-    public class WhereDidItGo : CustomCard
+    public class RandomConfringo : CustomCard
     {
         public AssetBundle Asset;
         
         protected override string GetTitle()
         {
-            return "Where did it go";
+            return "Random confringo";
         }
 
         protected override string GetDescription()
@@ -25,15 +25,15 @@ namespace BossSlothsCards.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Adding WDIG card");
+            UnityEngine.Debug.Log("Adding confringo card");
 #endif
-            player.gameObject.AddComponent<WhereDidItGo_Mono>();
+            player.gameObject.AddComponent<Confringo_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
 #if DEBUG
-            UnityEngine.Debug.Log("Setting up WDIG card");
+            UnityEngine.Debug.Log("Setting up confringo card");
 #endif
             cardInfo.allowMultiple = false;
 
@@ -61,26 +61,6 @@ namespace BossSlothsCards.Cards
 
         public override void OnRemoveCard()
         {
-        }
-    }
-    
-    [HarmonyPatch(typeof(MapManager),"OnLevelFinishedLoading")]
-    internal class Patch_MapManager
-    {
-        // ReSharper disable once UnusedMember.Local
-        private static void Postfix(Scene scene, MapManager __instance)
-        {
-            __instance.ExecuteAfterSeconds(5, () =>
-            {
-                var objects = scene.GetRootGameObjects()[0].GetComponentsInChildren<SpriteRenderer>(false);
-                foreach (var player in PlayerManager.instance.players)
-                {
-                    foreach (var behaviour in player.GetComponents<WhereDidItGo_Mono>())
-                    {
-                        behaviour.RemoveRandomObject(objects);
-                    }
-                }
-            });
         }
     }
 }
