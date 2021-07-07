@@ -5,6 +5,7 @@ using UnboundLib.Cards;
 
 namespace BossSlothsCards.Extensions
 {
+    // class from PCE(https://github.com/pdcook/PCE)
     public abstract class BossSlothCustomCard : CustomCard
     {
         

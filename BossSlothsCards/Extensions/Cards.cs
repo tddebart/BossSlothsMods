@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace BossSlothsCards.Extensions
 {
+    // Class from PCE(https://github.com/pdcook/PCE)
     public sealed class Cards
     {
         // singleton design, so that the RNG isn't reset each call

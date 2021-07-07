@@ -11,7 +11,6 @@ namespace BossSlothsCards.Patches
             // ReSharper disable once UnusedMember.Local
             private static void Postfix(Player __instance)
             {
-                UnityEngine.Debug.LogWarning("Resetting");
                 foreach (var resetObj in __instance.GetComponents<BossSlothMonoBehaviour>())
                 {
                     Object.Destroy(resetObj);

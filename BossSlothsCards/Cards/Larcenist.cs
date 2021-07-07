@@ -19,7 +19,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Steal the most recent card of the enemy";
+            return "Steal the most recent card of each enemy";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -102,7 +102,6 @@ namespace BossSlothsCards.Cards
             {
                 if (cardBar.gameObject.name == "Bar"+(enemyID+1))
                 {
-                    UnityEngine.Debug.LogWarning(cardBar.gameObject.name);
                     cardBar.ClearBar();
                 }
             }
@@ -111,14 +110,15 @@ namespace BossSlothsCards.Cards
                                                      BindingFlags.NonPublic, null, enemy, new object[] { });
             foreach(var cardC in copyOfCurrentCards)
             {
-                //#TODO check ifit is a card that should not be readded
                 if (!CardShouldNotBeAdded(cardC))
                 {
                     AddCardToPlayer(enemy, cardC);
                 }
                 else
                 {
+                    #if DEBUG
                     UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
+                    #endif
                     
                     enemy.data.currentCards.Add(cardC);
                     
@@ -135,7 +135,8 @@ namespace BossSlothsCards.Cards
 
         private static bool CardShouldNotBeAdded(CardInfo _card)
         {
-            return _card.cardName.Contains("Gamble") || _card.cardName == "Larcenist" || _card.cardName.Contains("Jackpot");
+            var name = _card.cardName;
+            return name.Contains("Gamble") || name == "Larcenist" || name.Contains("Jackpot") || _card.cardName == "Copycat";
         }
                  
         protected override CardInfoStat[] GetStats()
