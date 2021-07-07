@@ -18,7 +18,7 @@ namespace BossSlothsCards
         
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "0.1.4";
+        public const string Version = "1.0.0";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
