@@ -47,9 +47,12 @@ namespace BossSlothsCards.MonoBehaviours
             cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.parent = _gun.transform;
             cube.transform.localPosition = new Vector3(0, 100, 0);
-            
-            circle = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("Orange circle"), transform.Find("Particles"));
-            circle.transform.localPosition = Vector3.zero;
+
+            if (!transform.Find("Particles/Orange circle(Clone)"))
+            {
+                circle = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("Orange circle"), transform.Find("Particles"));
+                circle.transform.localPosition = Vector3.zero;
+            }
 
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, (gm) => ResetBetweenRounds());
         }
@@ -132,7 +135,6 @@ namespace BossSlothsCards.MonoBehaviours
                 BindingFlags.NonPublic, null, PlayerManager.instance, new object[] {playerID});
             // ReSharper disable once LocalVariableHidesMember
             var getCameraMono = player.GetComponent<GetCamera_Mono>();
-            UnityEngine.Debug.LogWarning("Done360, cooldown: " + getCameraMono.onCooldown);
             if (getCameraMono.onCooldown) return;
 #if DEBUG
             UnityEngine.Debug.LogWarning("Did 360");
@@ -159,9 +161,7 @@ namespace BossSlothsCards.MonoBehaviours
             var _circle = player.transform.Find("Particles/Orange circle(Clone)");
             _circle.gameObject.SetActive(true);
             _circle.GetComponent<Animator>().SetTrigger(Activaded);
-            UnityEngine.Debug.LogWarning("Damage: " + player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage + ". origDamage: " + _origDamage);
             player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage += _origDamage * 0.45f;
-            UnityEngine.Debug.LogWarning("Damage: " + player.GetComponent<Holding>().holdable.GetComponent<Gun>().damage + ". origDamage: " + _origDamage);
         }
 
         private static IEnumerator ResetBetweenRounds()
@@ -179,6 +179,7 @@ namespace BossSlothsCards.MonoBehaviours
         {
             Destroy(circle);
             Destroy(cube);
+            GameModeManager.RemoveHook(GameModeHooks.HookPointEnd, (gm) => ResetBetweenRounds());
         }
     }
 
@@ -191,7 +192,7 @@ namespace BossSlothsCards.MonoBehaviours
             if (__instance.GetComponent<Holdable>() && __instance.GetComponent<Holdable>().holder.transform.Find("Particles/Orange circle(Clone)"))
             {
 #if DEBUG
-                UnityEngine.Debug.LogWarning("shot with 3670");
+                UnityEngine.Debug.LogWarning("shot with 360");
 #endif
                 __instance.GetComponent<Holdable>().holder.GetComponent<GetCamera_Mono>().hasEnable = false;
             }
