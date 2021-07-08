@@ -5,7 +5,7 @@
 ### Copycat
 Common card
 
-Copy a random card from each enemy
+Copy a random card from a random enemy
 
 ---
 ### Double jump
@@ -17,7 +17,7 @@ Gives you the ability to double jump
 ### Larcenist
 Uncommon card
 
-Steal the most recent card of each enemy
+Steal the most recent card of a random enemy
 
 ---
 ### Mom get the camera
@@ -73,6 +73,10 @@ Ups most stats
     
     - Changes and bugfixes  
         - Sneeze bullets no longer collide
+- v1.0.1
+    - Bugfixes
+        - Fixed random confringo with deathmatch
+        - Fixed Copycat and Larcenist with deathmatch
     
   
 ---
