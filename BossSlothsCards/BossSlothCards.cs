@@ -23,6 +23,8 @@ namespace BossSlothsCards
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 
+        internal static bool hasPointHookBeenMade;
+
         private void Start()
         {
             var harmony = new Harmony(ModId);

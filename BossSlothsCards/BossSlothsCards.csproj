@@ -119,7 +119,6 @@
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Extensions\BossSlothCustomCard.cs" />
     <Compile Include="Extensions\Cards.cs" />
-    <Compile Include="Extensions\PlayerManagerExtension.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\Confringo_Mono.cs" />
