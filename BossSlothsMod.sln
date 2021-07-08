@@ -35,20 +35,27 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		MultiplayerDebug|Any CPU = MultiplayerDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.MultiplayerDebug|Any CPU.ActiveCfg = MultiplayerDebug|Any CPU
+		{1A3B42E3-3BC2-4F3A-8A0B-9C2D89D677B7}.MultiplayerDebug|Any CPU.Build.0 = MultiplayerDebug|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.MultiplayerDebug|Any CPU.ActiveCfg = MultiplayerDebug|Any CPU
+		{4CA426D7-B5D1-4CE0-AF56-A68B86D49B2B}.MultiplayerDebug|Any CPU.Build.0 = MultiplayerDebug|Any CPU
 		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.MultiplayerDebug|Any CPU.ActiveCfg = MultiplayerDebug|Any CPU
+		{71574359-E73D-4D57-91BB-D6AD44C4C3C9}.MultiplayerDebug|Any CPU.Build.0 = MultiplayerDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

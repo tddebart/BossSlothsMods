@@ -31,6 +31,9 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MultiplayerDebug|AnyCPU' ">
+      <OutputPath>bin\MultiplayerDebug\</OutputPath>
+    </PropertyGroup>
 
     <PropertyGroup>
         <RoundsFolder>F:\SteamLibrary\steamapps\common\ROUNDS</RoundsFolder>
@@ -58,7 +61,7 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
-        <Reference Include="UnboundLib, Version=2.1.5.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="UnboundLib, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">

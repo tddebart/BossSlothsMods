@@ -35,7 +35,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Setting up confringo card");
 #endif
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
             statModifiers.health = 1.35f;
         }
 
