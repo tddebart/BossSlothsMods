@@ -8,7 +8,7 @@ namespace BossSlothsCards.Cards
     public class CopyCat : BossSlothCustomCard
     {
         public AssetBundle Asset;
-        
+
         protected override string GetTitle()
         {
             return "Copycat";
@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Copy a random card from each enemy";
+            return "Copy a random card from a random enemy";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -24,17 +24,15 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding Copycat card");
 #endif
-            foreach (var enemy in PlayerManager.instance.GetPlayersInTeam(
-                PlayerManager.instance.GetOtherTeam(player.teamID)))
+            var enemy = GetRandomEnemy(player); 
+            if (enemy.data.currentCards.Count == 0)
             {
-                if (enemy.data.currentCards.Count == 0)
-                {
-                    return;
-                }
+                return;
+            };
 
-                var randomNum = Random.Range(0, enemy.data.currentCards.Count-1);
-                AddCardToPlayer(player, enemy.data.currentCards[randomNum]);
-            }
+            var randomNum = Random.Range(0, enemy.data.currentCards.Count);
+            AddCardToPlayer(player, enemy.data.currentCards[randomNum]);
+            
         }
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -43,8 +41,6 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up Copycat card");
 #endif
             cardInfo.allowMultiple = true;
-
-            
         }
 
         protected override CardInfoStat[] GetStats()

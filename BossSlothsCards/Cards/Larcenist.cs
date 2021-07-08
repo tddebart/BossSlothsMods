@@ -19,7 +19,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Steal the most recent card of each enemy";
+            return "Steal the most recent card of a random enemy";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -41,40 +41,35 @@ namespace BossSlothsCards.Cards
 
         private void DoLarcenistThings(Player player)
         {
-
-            foreach (var enemy in PlayerManager.instance.GetPlayersInTeam(
-                PlayerManager.instance.GetOtherTeam(player.teamID)))
+            var enemy = GetRandomEnemy(player);   
+            if (enemy.data.currentCards.Count == 0)
             {
-                if (enemy.data.currentCards.Count == 0)
+                return;
+            }
+            // get amount in currentCards
+            var count = enemy.data.currentCards.Count - 1;
+            while (true)
+            {
+                if (enemy.data.currentCards.Count <= -1)
                 {
                     return;
                 }
-                // get amount in currentCards
-                var count = enemy.data.currentCards.Count - 1;
-                while (true)
+                // check if card is not larcenist
+                if (enemy.data.currentCards[count].cardName == "Larcenist")
                 {
-                    if (enemy.data.currentCards.Count <= -1)
-                    {
-                        return;
-                    }
-                    // check if card is not larcenist
-                    if (enemy.data.currentCards[count].cardName == "Larcenist")
-                    {
-                        count--;
-                        continue;
-                    }
-
-                    // Add card to player
-                    AddCardToPlayer(player, enemy.data.currentCards[count]);
-                    // rpca event
-                    if (base.GetComponent<PhotonView>().IsMine)
-                    {
-                        GetComponent<PhotonView>().RPC("RPCA_RemoveCard", RpcTarget.All,
-                            new object[] { Extensions.Cards.instance.GetCardID(enemy.data.currentCards[count]), enemy.playerID, player.playerID});
-                    }
-                    break;
+                    count--;
+                    continue;
                 }
-                
+
+                // Add card to player
+                AddCardToPlayer(player, enemy.data.currentCards[count]);
+                // rpca event
+                if (GetComponent<PhotonView>().IsMine)
+                {
+                    GetComponent<PhotonView>().RPC("RPCA_RemoveCard", RpcTarget.All,
+                        new object[] { Extensions.Cards.instance.GetCardID(enemy.data.currentCards[count]), enemy.playerID, player.playerID});
+                }
+                break;
             }
 
 
@@ -89,7 +84,7 @@ namespace BossSlothsCards.Cards
             var assigner = (Player)typeof(PlayerManager).InvokeMember("GetPlayerWithID",
                 BindingFlags.Instance | BindingFlags.InvokeMethod |
                 BindingFlags.NonPublic, null, PlayerManager.instance, new object[] { assignerID });
-            var cardsList = global::CardChoice.instance.cards;
+            var cardsList = CardChoice.instance.cards;
             var cardToRemove = cardsList[cardID];
             // get copy of currentCards
             var copyOfCurrentCards = new List<CardInfo>(enemy.data.currentCards);

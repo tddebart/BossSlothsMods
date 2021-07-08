@@ -1,14 +1,38 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib.Cards;
+using UnityEngine;
 
 namespace BossSlothsCards.Extensions
 {
-    // class from PCE(https://github.com/pdcook/PCE)
+    // parts of class from PCE(https://github.com/pdcook/PCE)
     public abstract class BossSlothCustomCard : CustomCard
     {
+        // private bool MoreThan2Players = false;
+
+        public Player GetRandomEnemy(Player player)
+        {
+            var players = new List<Player>(PlayerManager.instance.players);
+            Player enemy = null;
+            foreach (var _player in PlayerManager.instance.GetPlayersInTeam(player.teamID))
+            {
+                players.Remove(_player);
+            }
+            
+            enemy = players[Random.Range(0, players.Count)];
+
+            return enemy;
+        }
         
+        public static bool IsDeathMatch()
+        {
+            return PlayerManager.instance.players.Any(player => player.teamID >= 2);
+        }
+        
+        //PCE
         public void AddCardToPlayer(Player player, CardInfo card)
         {
             // adds the card "card" to the player "player"
@@ -39,6 +63,7 @@ namespace BossSlothsCards.Extensions
                 }
             }
         }
+        //PCE
         [PunRPC]
         public void RPCA_AssignCard(int cardID, int[] actorIDs)
         {
