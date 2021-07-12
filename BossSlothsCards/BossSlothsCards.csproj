@@ -108,6 +108,7 @@
     <Compile Include="Cards\CopyCat.cs" />
     <Compile Include="Cards\MomGetTheCamera.cs" />
     <Compile Include="Cards\DoubleJump.cs" />
+    <Compile Include="Cards\NoThanks.cs" />
     <Compile Include="Cards\NotToday.cs" />
     <Compile Include="Cards\Larcenist.cs" />
     <Compile Include="Cards\RandomConfringo.cs" />

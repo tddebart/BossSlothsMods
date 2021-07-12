@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Photon.Pun;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -11,8 +12,6 @@ namespace BossSlothsCards.Extensions
     // parts of class from PCE(https://github.com/pdcook/PCE)
     public abstract class BossSlothCustomCard : CustomCard
     {
-        // private bool MoreThan2Players = false;
-
         public Player GetRandomEnemy(Player player)
         {
             var players = new List<Player>(PlayerManager.instance.players);
@@ -91,6 +90,66 @@ namespace BossSlothsCards.Extensions
                                     BindingFlags.NonPublic, null, cardStats, new object[] { });
                 CardBarHandler.instance.AddCard(playerToUpgrade.playerID, cardStats.GetComponent<CardInfo>().sourceCard);
             }
+        }
+        
+        
+        [PunRPC]
+        public void RPCA_RemoveCard(int cardToRemoveID, int playerToRemoveFromID)
+        {
+            var enemy = (Player)typeof(PlayerManager).InvokeMember("GetPlayerWithID",
+                BindingFlags.Instance | BindingFlags.InvokeMethod |
+                BindingFlags.NonPublic, null, PlayerManager.instance, new object[] { playerToRemoveFromID });
+            var cardsList = CardChoice.instance.cards;
+            var cardToRemove = cardsList[cardToRemoveID];
+            // get copy of currentCards
+            var copyOfCurrentCards = new List<CardInfo>(enemy.data.currentCards);
+            copyOfCurrentCards.Remove(cardToRemove);
+            // clear enemy currentCards
+            enemy.data.currentCards.Clear();
+            // remove card from enemy in cardBar
+            var cardBars = (CardBar[]) Traverse.Create(CardBarHandler.instance).Field("cardBars").GetValue();
+            foreach (var cardBar in cardBars)
+            {
+                if (cardBar.gameObject.name == "Bar"+(playerToRemoveFromID+1))
+                {
+                    cardBar.ClearBar();
+                }
+            }
+            // reset enemy stats
+            typeof(Player).InvokeMember("FullReset", BindingFlags.Instance | BindingFlags.InvokeMethod |
+                                                     BindingFlags.NonPublic, null, enemy, new object[] { });
+            enemy.ExecuteAfterSeconds(0.1f, () =>
+            {
+                foreach(var cardC in copyOfCurrentCards)
+                {
+                    if (!CardShouldNotBeAddedBack(cardC))
+                    {
+                        AddCardToPlayer(enemy, cardC);
+                    }
+                    else
+                    {
+                        #if DEBUG
+                        UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
+                        #endif
+                        
+                        enemy.data.currentCards.Add(cardC);
+                        
+                        foreach (var cardBar in cardBars)
+                        {
+                            if (cardBar.gameObject.name == "Bar"+(playerToRemoveFromID+1))
+                            {
+                                cardBar.AddCard(cardC);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        private static bool CardShouldNotBeAddedBack(CardInfo _card)
+        {
+            var name = _card.cardName;
+            return name.Contains("Gamble") || name == "Larcenist" || name.Contains("Jackpot") || _card.cardName == "Copycat";
         }
     }
 }

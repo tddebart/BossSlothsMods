@@ -68,7 +68,7 @@ namespace BossSlothsCards.Cards
                 if (GetComponent<PhotonView>().IsMine)
                 {
                     GetComponent<PhotonView>().RPC("RPCA_RemoveCard", RpcTarget.All,
-                        new object[] { Extensions.Cards.instance.GetCardID(enemy.data.currentCards[count]), enemy.playerID, player.playerID});
+                        new object[] { Extensions.Cards.instance.GetCardID(enemy.data.currentCards[count]), enemy.playerID});
                 }
                 break;
             }
@@ -76,68 +76,6 @@ namespace BossSlothsCards.Cards
 
         }
 
-        [PunRPC]
-        public void RPCA_RemoveCard(int cardID, int enemyID, int assignerID)
-        {
-            var enemy = (Player)typeof(PlayerManager).InvokeMember("GetPlayerWithID",
-                BindingFlags.Instance | BindingFlags.InvokeMethod |
-                BindingFlags.NonPublic, null, PlayerManager.instance, new object[] { enemyID });
-            var assigner = (Player)typeof(PlayerManager).InvokeMember("GetPlayerWithID",
-                BindingFlags.Instance | BindingFlags.InvokeMethod |
-                BindingFlags.NonPublic, null, PlayerManager.instance, new object[] { assignerID });
-            var cardsList = CardChoice.instance.cards;
-            var cardToRemove = cardsList[cardID];
-            // get copy of currentCards
-            var copyOfCurrentCards = new List<CardInfo>(enemy.data.currentCards);
-            copyOfCurrentCards.Remove(cardToRemove);
-            // clear enemy currentCards
-            enemy.data.currentCards.Clear();
-            // remove card from enemy in cardBar
-            var cardBars = (CardBar[]) Traverse.Create(CardBarHandler.instance).Field("cardBars").GetValue();
-            foreach (var cardBar in cardBars)
-            {
-                if (cardBar.gameObject.name == "Bar"+(enemyID+1))
-                {
-                    cardBar.ClearBar();
-                }
-            }
-            // reset enemy stats
-            typeof(Player).InvokeMember("FullReset", BindingFlags.Instance | BindingFlags.InvokeMethod |
-                                                     BindingFlags.NonPublic, null, enemy, new object[] { });
-            enemy.ExecuteAfterSeconds(0.1f, () =>
-            {
-                foreach(var cardC in copyOfCurrentCards)
-                {
-                    if (!CardShouldNotBeAdded(cardC))
-                    {
-                        AddCardToPlayer(enemy, cardC);
-                    }
-                    else
-                    {
-                        #if DEBUG
-                        UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
-                        #endif
-                        
-                        enemy.data.currentCards.Add(cardC);
-                        
-                        foreach (var cardBar in cardBars)
-                        {
-                            if (cardBar.gameObject.name == "Bar"+(enemyID+1))
-                            {
-                                cardBar.AddCard(cardC);
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        private static bool CardShouldNotBeAdded(CardInfo _card)
-        {
-            var name = _card.cardName;
-            return name.Contains("Gamble") || name == "Larcenist" || name.Contains("Jackpot") || _card.cardName == "Copycat";
-        }
-                 
         protected override CardInfoStat[] GetStats()
         {
             return null;
