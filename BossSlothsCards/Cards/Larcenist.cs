@@ -3,6 +3,7 @@ using System.Reflection;
 using BossSlothsCards.Extensions;
 using HarmonyLib;
 using Photon.Pun;
+using UnboundLib;
 using UnityEngine;
 
 
@@ -103,29 +104,32 @@ namespace BossSlothsCards.Cards
             // reset enemy stats
             typeof(Player).InvokeMember("FullReset", BindingFlags.Instance | BindingFlags.InvokeMethod |
                                                      BindingFlags.NonPublic, null, enemy, new object[] { });
-            foreach(var cardC in copyOfCurrentCards)
+            enemy.ExecuteAfterSeconds(0.1f, () =>
             {
-                if (!CardShouldNotBeAdded(cardC))
+                foreach(var cardC in copyOfCurrentCards)
                 {
-                    AddCardToPlayer(enemy, cardC);
-                }
-                else
-                {
-                    #if DEBUG
-                    UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
-                    #endif
-                    
-                    enemy.data.currentCards.Add(cardC);
-                    
-                    foreach (var cardBar in cardBars)
+                    if (!CardShouldNotBeAdded(cardC))
                     {
-                        if (cardBar.gameObject.name == "Bar"+(enemyID+1))
+                        AddCardToPlayer(enemy, cardC);
+                    }
+                    else
+                    {
+                        #if DEBUG
+                        UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
+                        #endif
+                        
+                        enemy.data.currentCards.Add(cardC);
+                        
+                        foreach (var cardBar in cardBars)
                         {
-                            cardBar.AddCard(cardC);
+                            if (cardBar.gameObject.name == "Bar"+(enemyID+1))
+                            {
+                                cardBar.AddCard(cardC);
+                            }
                         }
                     }
                 }
-            }
+            });
         }
 
         private static bool CardShouldNotBeAdded(CardInfo _card)
