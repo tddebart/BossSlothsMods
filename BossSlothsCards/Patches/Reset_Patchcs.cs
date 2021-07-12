@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using UnityEngine;
 
 namespace BossSlothsCards.Patches
@@ -15,6 +16,7 @@ namespace BossSlothsCards.Patches
                 {
                     Object.Destroy(resetObj);
                 }
+                __instance.data.currentCards = new List<CardInfo> { };
             }
         }
     }
