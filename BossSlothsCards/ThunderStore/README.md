@@ -75,8 +75,12 @@ Ups most stats
         - Sneeze bullets no longer collide
 - v1.0.1
     - Bugfixes
-        - Fixed random confringo with deathmatch
+        - Fixed random confringo with deathmatch(Thanks TimeToGrind for reporting this)
         - Fixed Copycat and Larcenist with deathmatch
+- v1.0.2
+    - Bugfixes
+        - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
+        - Fixed larcenist removing effects of some cards
     
   
 ---
