@@ -15,6 +15,7 @@ Gives you the ability to double jump
 
 ---
 ### Larcenist
+###**Removed for now**
 Uncommon card
 
 Steal the most recent card of a random enemy
@@ -81,6 +82,8 @@ Ups most stats
     - Bugfixes
         - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
         - Fixed larcenist removing effects of some cards
+- v1.0.3
+    - Removed larcenist for now
     
   
 ---

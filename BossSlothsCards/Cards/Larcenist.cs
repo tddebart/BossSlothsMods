@@ -72,10 +72,8 @@ namespace BossSlothsCards.Cards
                 }
                 break;
             }
-
-
         }
-
+        
         protected override CardInfoStat[] GetStats()
         {
             return null;

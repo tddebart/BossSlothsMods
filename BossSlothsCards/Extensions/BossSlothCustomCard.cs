@@ -34,33 +34,45 @@ namespace BossSlothsCards.Extensions
         //PCE
         public void AddCardToPlayer(Player player, CardInfo card)
         {
-            // adds the card "card" to the player "player"
-            if (card == null) { return; }
-            else if (PhotonNetwork.OfflineMode)
+            BossSlothCards.instance.ExecuteAfterSeconds(0.1f, () =>
             {
-                // assign card locally
-                ApplyCardStats cardStats = card.gameObject.GetComponentInChildren<ApplyCardStats>();
-                cardStats.GetComponent<CardInfo>().sourceCard = card;
-                cardStats.Pick(player.playerID, true, PickerType.Player);
-            }
-            else
-            {
-                // assign card with RPC
-
-                Player[] array = new Player[] { player };
-                int[] array2 = new int[array.Length];
-
-                for (int j = 0; j < array.Length; j++)
+                UnityEngine.Debug.LogWarning("adding card to player: " + card.cardName);
+                // adds the card "card" to the player "player"
+                if (card == null)
                 {
-                    array2[j] = array[j].data.view.ControllerActorNr;
+                    return;
                 }
-                if (base.GetComponent<PhotonView>().IsMine)
+                else if (PhotonNetwork.OfflineMode)
                 {
-
-                    base.GetComponent<PhotonView>().RPC("RPCA_AssignCard", RpcTarget.All, new object[] { Cards.instance.GetCardID(card), array2 });
-
+                    // assign card locally
+                    ApplyCardStats cardStats = card.gameObject.GetComponentInChildren<ApplyCardStats>();
+                    cardStats.GetComponent<CardInfo>().sourceCard = card;
+                    cardStats.Pick(player.playerID, true, PickerType.Player);
                 }
-            }
+                else
+                {
+                    // assign card with RPC
+
+                    Player[] array = new Player[] {player};
+                    int[] array2 = new int[array.Length];
+
+                    for (int j = 0; j < array.Length; j++)
+                    {
+                        array2[j] = array[j].data.view.ControllerActorNr;
+                    }
+
+                    UnityEngine.Debug.LogWarning("pre " + card.cardName + "|" + gameObject);
+                    bool test = gameObject.GetComponent<PhotonView>() == null;
+                    UnityEngine.Debug.LogWarning(test + " this " + card.cardName);
+                    if (gameObject.GetComponent<PhotonView>().IsMine) // _____CRASHING HERE WHY?
+                    {
+                        UnityEngine.Debug.LogWarning("PhotonIsMine " + card.cardName);
+                        gameObject.GetComponent<PhotonView>().RPC("RPCA_AssignCard", RpcTarget.All,
+                            new object[] {Cards.instance.GetCardID(card), array2});
+
+                    }
+                }
+            });
         }
         //PCE
         [PunRPC]
@@ -92,7 +104,6 @@ namespace BossSlothsCards.Extensions
             }
         }
         
-        
         [PunRPC]
         public void RPCA_RemoveCard(int cardToRemoveID, int playerToRemoveFromID)
         {
@@ -118,32 +129,29 @@ namespace BossSlothsCards.Extensions
             // reset enemy stats
             typeof(Player).InvokeMember("FullReset", BindingFlags.Instance | BindingFlags.InvokeMethod |
                                                      BindingFlags.NonPublic, null, enemy, new object[] { });
-            enemy.ExecuteAfterSeconds(0.1f, () =>
+            foreach(var cardC in copyOfCurrentCards)
             {
-                foreach(var cardC in copyOfCurrentCards)
+                if (!CardShouldNotBeAddedBack(cardC))
                 {
-                    if (!CardShouldNotBeAddedBack(cardC))
+                    this.AddCardToPlayer(enemy, cardC);
+                }
+                else
+                {
+                    #if DEBUG
+                    UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
+                    #endif
+                    
+                    enemy.data.currentCards.Add(cardC);
+                    
+                    foreach (var cardBar in cardBars)
                     {
-                        AddCardToPlayer(enemy, cardC);
-                    }
-                    else
-                    {
-                        #if DEBUG
-                        UnityEngine.Debug.LogWarning("Card: " + cardC.cardName + ". Should not be added");
-                        #endif
-                        
-                        enemy.data.currentCards.Add(cardC);
-                        
-                        foreach (var cardBar in cardBars)
+                        if (cardBar.gameObject.name == "Bar"+(playerToRemoveFromID+1))
                         {
-                            if (cardBar.gameObject.name == "Bar"+(playerToRemoveFromID+1))
-                            {
-                                cardBar.AddCard(cardC);
-                            }
+                            cardBar.AddCard(cardC);
                         }
                     }
                 }
-            });
+            }
         }
 
         private static bool CardShouldNotBeAddedBack(CardInfo _card)
@@ -151,5 +159,6 @@ namespace BossSlothsCards.Extensions
             var name = _card.cardName;
             return name.Contains("Gamble") || name == "Larcenist" || name.Contains("Jackpot") || _card.cardName == "Copycat";
         }
+
     }
 }

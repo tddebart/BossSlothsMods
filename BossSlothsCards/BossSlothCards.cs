@@ -18,17 +18,21 @@ namespace BossSlothsCards
         
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "1.0.2";
+        public const string Version = "1.0.3";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 
         internal static bool hasPointHookBeenMade;
 
+        internal static BossSlothCards instance;
+
         private void Start()
         {
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
+
+            instance = this;
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
@@ -52,7 +56,7 @@ namespace BossSlothsCards
             
             CustomCard.BuildCard<MomGetTheCamera>();
             CustomCard.BuildCard<RandomConfringo>();
-            CustomCard.BuildCard<Larcenist>();
+            //CustomCard.BuildCard<Larcenist>();
             CustomCard.BuildCard<CopyCat>();
             //CustomCard.BuildCard<NoThanks>();
 
