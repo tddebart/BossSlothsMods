@@ -1,12 +1,13 @@
 ﻿using System.Linq;
-using BossSlothsCards.Extensions;
-using Photon.Pun;
+using BossSlothsCards.MonoBehaviours;
+using UnboundLib;
+using UnboundLib.Cards;
 using UnityEngine;
 
 
 namespace BossSlothsCards.Cards
 {
-    public class NoThanks : BossSlothCustomCard
+    public class NoThanks : CustomCard
     {
         public AssetBundle Asset;
 
@@ -27,57 +28,56 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding NoThanks card");
 #endif
-            DoCardThings(player, gun, gunAmmo, data, health, gravity, block, characterStats);
-        }
-
-        private void DoCardThings(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
-        {
             if (player.data.currentCards.Count == 0)
             {
                 return;
             }
             // get amount in currentCards
             var count = player.data.currentCards.Count - 1;
-            while (true)
+            var tries = 0;
+            while (!(tries > 50))
             {
+                tries++;
                 if (player.data.currentCards.Count <= -1)
                 {
                     return;
                 }
-                // check if card is not larcenist
-                if (player.data.currentCards[count].cardName == "Larcenist")
+                // check if card is not NoThanks
+                if (player.data.currentCards[count].cardName == "No thanks")
                 {
                     count--;
                     continue;
                 }
                 
+                var randomCard = Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
+                UnityEngine.Debug.LogWarning(randomCard.cardName);
+                
                 cardRemovedName = player.data.currentCards[count].cardName;
 
-                var randomCard = Extensions.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
-                
-                
-                // Add card to player
-                AddCardToPlayer(player, randomCard);
-                
-                // rpca event
-                if (GetComponent<PhotonView>().IsMine)
-                {
-                    GetComponent<PhotonView>().RPC("RPCA_RemoveCard", RpcTarget.All,
-                        new object[] { Extensions.Cards.instance.GetCardID(player.data.currentCards[count]), player.playerID});
-                }
+                Utils.Cards.AddCardToPlayer(player, randomCard);
+                UnityEngine.Debug.LogWarning(player.data.currentCards[count].cardName);
+                Utils.Cards.RemoveCardFromPlayer(player, player.data.currentCards[count]);
 
-                
                 break;
             }
         }
-        
+
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
 #if DEBUG
             UnityEngine.Debug.Log("Setting up NoThanks card");
 #endif
             cardInfo.allowMultiple = true;
+            
+            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            {
+                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
+            }
+        }
 
+        private void Update()
+        {
+            UnityEngine.Debug.LogWarning("Test");
         }
 
         protected override CardInfoStat[] GetStats()
@@ -122,7 +122,7 @@ namespace BossSlothsCards.Cards
                 }
             }
 
-            return !blacklisted && (card.allowMultiple || !player.data.currentCards.Where(cardinfo => cardinfo.name == card.name).Any()) && !card.cardName.Contains(cardRemovedName) && !card.cardName.Contains("No thanks");
+            return !blacklisted && (card.allowMultiple || player.data.currentCards.All(cardinfo => cardinfo.name != card.name)) && !card.cardName.Contains(cardRemovedName) && !card.cardName.Contains("No thanks");
 
         }
 

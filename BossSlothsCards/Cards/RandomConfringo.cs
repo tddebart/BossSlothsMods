@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.MonoBehaviours;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -34,6 +35,15 @@ namespace BossSlothsCards.Cards
 #endif
             cardInfo.allowMultiple = true;
             statModifiers.health = 1.35f;
+            
+            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Text_Name"))
+            {
+                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Text_Name").gameObject.GetOrAddComponent<RainbowText>();
+            }
+            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            {
+                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
+            }
         }
 
         protected override CardInfoStat[] GetStats()

@@ -123,9 +123,11 @@
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Extensions\CardInfo.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
+    <Compile Include="Extensions\String.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\Confringo_Mono.cs" />
+    <Compile Include="MonoBehaviours\RainbowText.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Reset_Patchcs.cs" />

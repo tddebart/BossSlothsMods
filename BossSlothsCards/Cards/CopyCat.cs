@@ -1,5 +1,7 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
 using TMPro;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -25,11 +27,8 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding Copycat card");
 #endif
-            var enemy = PlayerManager.instance.GetRandomEnemy(player); 
-            if (enemy.data.currentCards.Count == 0)
-            {
-                return;
-            };
+            var enemy = PlayerManager.instance.GetRandomEnemy(player);
+            if (enemy == null || enemy.data.currentCards.Count == 0) return;
 
             var tries = 0;
             while (!(tries > 50))
@@ -49,6 +48,10 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up Copycat card");
 #endif
             cardInfo.allowMultiple = true;
+            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            {
+                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
+            }
         }
 
         protected override CardInfoStat[] GetStats()

@@ -1,7 +1,8 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-
 
 namespace BossSlothsCards.Cards
 {
@@ -33,16 +34,18 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up larcenist card");
 #endif
             cardInfo.allowMultiple = true;
-
+            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            {
+                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
+            }
+            
         }
 
         private static void DoLarcenistThings(Player player)
         {
-            var enemy = PlayerManager.instance.GetRandomEnemy(player);   
-            if (enemy.data.currentCards.Count == 0)
-            {
-                return;
-            }
+            var enemy = PlayerManager.instance.GetRandomEnemy(player);
+            if (enemy == null || enemy.data.currentCards.Count == 0) return;
+            
             // get amount in currentCards
             var count = enemy.data.currentCards.Count - 1;
             var tries = 0;
