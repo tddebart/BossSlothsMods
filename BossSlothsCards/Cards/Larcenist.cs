@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using BossSlothsCards.Extensions;
-using HarmonyLib;
-using Photon.Pun;
-using UnboundLib;
+﻿using BossSlothsCards.Extensions;
+using UnboundLib.Cards;
 using UnityEngine;
 
 
 namespace BossSlothsCards.Cards
 {
-    public class Larcenist : BossSlothCustomCard
+    public class Larcenist : CustomCard
     {
         public AssetBundle Asset;
         
@@ -20,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Steal the most recent card of a random enemy";
+            return "Steal the most recent valid card from a random enemy";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -40,21 +36,23 @@ namespace BossSlothsCards.Cards
 
         }
 
-        private void DoLarcenistThings(Player player)
+        private static void DoLarcenistThings(Player player)
         {
-            var enemy = GetRandomEnemy(player);   
+            var enemy = PlayerManager.instance.GetRandomEnemy(player);   
             if (enemy.data.currentCards.Count == 0)
             {
                 return;
             }
             // get amount in currentCards
             var count = enemy.data.currentCards.Count - 1;
-            while (true)
+            var tries = 0;
+            while (!(tries > 50))
             {
                 if (enemy.data.currentCards.Count <= -1)
                 {
                     return;
                 }
+                tries++;
                 // check if card is not larcenist
                 if (enemy.data.currentCards[count].cardName == "Larcenist")
                 {
@@ -62,14 +60,17 @@ namespace BossSlothsCards.Cards
                     continue;
                 }
 
-                // Add card to player
-                AddCardToPlayer(player, enemy.data.currentCards[count]);
-                // rpca event
-                if (GetComponent<PhotonView>().IsMine)
+                if (!Utils.Cards.PlayerIsAllowedCard(player, enemy.data.currentCards[count]))
                 {
-                    GetComponent<PhotonView>().RPC("RPCA_RemoveCard", RpcTarget.All,
-                        new object[] { Extensions.Cards.instance.GetCardID(enemy.data.currentCards[count]), enemy.playerID});
+                    count--;
+                    continue;
                 }
+
+                // Add card to player
+                Utils.Cards.AddCardToPlayer(player, enemy.data.currentCards[count]);
+                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, enemy.data.currentCards[count]);
+                // Remove card from enemy
+                Utils.Cards.RemoveCardFromPlayer(enemy, enemy.data.currentCards[count]);
                 break;
             }
         }

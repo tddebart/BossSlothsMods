@@ -75,8 +75,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnboundLib, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="UnboundLib, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
@@ -118,8 +121,8 @@
     <Compile Include="Cards\Yin.cs" />
     <Compile Include="Cards\YinYang.cs" />
     <Compile Include="BossSlothCards.cs" />
-    <Compile Include="Extensions\BossSlothCustomCard.cs" />
-    <Compile Include="Extensions\Cards.cs" />
+    <Compile Include="Extensions\CardInfo.cs" />
+    <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\Confringo_Mono.cs" />
@@ -127,6 +130,8 @@
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Reset_Patchcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CardBar.cs" />
+    <Compile Include="Utils\Cards.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />

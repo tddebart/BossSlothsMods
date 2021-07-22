@@ -1,9 +1,6 @@
 ﻿using BossSlothsCards.MonoBehaviours;
-using HarmonyLib;
-using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 namespace BossSlothsCards.Cards

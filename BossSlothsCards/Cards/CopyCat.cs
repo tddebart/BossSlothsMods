@@ -1,11 +1,12 @@
 ﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.MonoBehaviours;
+using TMPro;
+using UnboundLib.Cards;
 using UnityEngine;
 
 
 namespace BossSlothsCards.Cards
 {
-    public class CopyCat : BossSlothCustomCard
+    public class CopyCat : CustomCard
     {
         public AssetBundle Asset;
 
@@ -24,15 +25,22 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding Copycat card");
 #endif
-            var enemy = GetRandomEnemy(player); 
+            var enemy = PlayerManager.instance.GetRandomEnemy(player); 
             if (enemy.data.currentCards.Count == 0)
             {
                 return;
             };
 
-            var randomNum = Random.Range(0, enemy.data.currentCards.Count);
-            AddCardToPlayer(player, enemy.data.currentCards[randomNum]);
-            
+            var tries = 0;
+            while (!(tries > 50))
+            {
+                var randomNum = Random.Range(0, enemy.data.currentCards.Count);
+                tries++;
+                if (!Utils.Cards.PlayerIsAllowedCard(player, enemy.data.currentCards[randomNum])) continue;
+                Utils.Cards.AddCardToPlayer(player, enemy.data.currentCards[randomNum]);
+                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, enemy.data.currentCards[randomNum]);
+                break;
+            }
         }
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
