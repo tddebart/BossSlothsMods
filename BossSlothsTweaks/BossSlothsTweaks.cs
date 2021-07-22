@@ -5,6 +5,7 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib;
+using UnboundLib.Utils.UI;
 using UnityEngine;
 
 namespace BossSlothsTweaks
@@ -18,7 +19,7 @@ namespace BossSlothsTweaks
         
         private const string ModId = "com.BossSloth.Rounds.Tweaks";
         private const string ModName = "BossSlothsTweaks";
-        public const string Version = "0.1.3";
+        public const string Version = "0.1.4";
 
         private static ConfigEntry<bool> PHOENIX;
         private static ConfigEntry<bool> GROW;
@@ -33,7 +34,10 @@ namespace BossSlothsTweaks
 
         private void Start()
         {
-            Unbound.RegisterGUI("BossSlothTweaks", DrawGUI);
+            //Unbound.RegisterGUI("BossSloth Tweaks", DrawGUI);
+            
+            Unbound.RegisterMenu("Boss Sloths Tweaks", () => { }, DrawOtherUI);
+            
             Unbound.RegisterHandshake("com.willis.rounds.unbound", OnHandShakeCompleted);
 
             //Instance = this;
@@ -183,37 +187,66 @@ namespace BossSlothsTweaks
             }
         }
 
-        private void DrawGUI()
+        private void DrawOtherUI(GameObject obj)
         {
-            bool flag1 = GUILayout.Toggle(PHOENIX.Value, "Phoenix", Array.Empty<GUILayoutOption>());
-            bool flag2 = GUILayout.Toggle(GROW.Value, "Grow", Array.Empty<GUILayoutOption>());
-            bool flag4 = GUILayout.Toggle(SCAVENGER.Value, "Scavenger", Array.Empty<GUILayoutOption>());
-            bool flag5 = GUILayout.Toggle(SAW.Value, "Saw", Array.Empty<GUILayoutOption>());
-            bool flag6 = GUILayout.Toggle(TACTICALSHIELDUP.Value, "TacticalReload + ShieldsUp combo", Array.Empty<GUILayoutOption>());
-            if (flag1 != PHOENIX.Value || flag2 != GROW.Value || flag4 != SCAVENGER.Value || flag5 != SAW.Value || flag6 != TACTICALSHIELDUP.Value)
+            void RaiseEvent(bool phoenix, bool grow, bool scavenger, bool saw, bool tacticalshieldup)
             {
+                PHOENIX.Value = phoenix;
+                GROW.Value = grow;
+                SCAVENGER.Value = scavenger;
+                SAW.Value = saw;
+                TACTICALSHIELDUP.Value = tacticalshieldup;
+                
                 NetworkingManager.RaiseEvent("com.BossSloth.Rounds.Tweaks_SyncTweaks", new object[]
                 {
-                    flag1,
-                    flag2,
-                    flag4,
-                    flag5,
-                    flag6
+                    phoenix,
+                    grow,
+                    scavenger,
+                    saw,
+                    tacticalshieldup
                 });
-                PHOENIX.Value = flag1;
-                GROW.Value = flag2;
-                SCAVENGER.Value = flag4;
-                SAW.Value = flag5;
-                TACTICALSHIELDUP.Value = flag6;
-                ChangeCards();
-                return;
             }
-            PHOENIX.Value = flag1;
-            GROW.Value = flag2;
-            SCAVENGER.Value = flag4;
-            SAW.Value = flag5;
-            TACTICALSHIELDUP.Value = flag6;
+            MenuHandler.CreateText("Boss Sloths Tweaks options", obj, out _, 70);
+            // Create toggles
+            MenuHandler.CreateToggle(PHOENIX.Value, "Phoenix", obj, 
+                flag => { RaiseEvent(flag, GROW.Value, SCAVENGER.Value, SAW.Value, TACTICALSHIELDUP.Value);});
+            MenuHandler.CreateToggle(GROW.Value, "Grow", obj, flag => { RaiseEvent(PHOENIX.Value, flag, SCAVENGER.Value, SAW.Value, TACTICALSHIELDUP.Value);});
+            MenuHandler.CreateToggle(SCAVENGER.Value, "Scavenger", obj, flag => { RaiseEvent(PHOENIX.Value, GROW.Value, flag, SAW.Value, TACTICALSHIELDUP.Value);});
+            MenuHandler.CreateToggle(SAW.Value, "Saw", obj, flag => { RaiseEvent(PHOENIX.Value, GROW.Value, SCAVENGER.Value, flag, TACTICALSHIELDUP.Value);});
+            MenuHandler.CreateToggle(TACTICALSHIELDUP.Value, "TacticalReload + ShieldsUp combo", obj, flag => { RaiseEvent(PHOENIX.Value, GROW.Value, SCAVENGER.Value, SAW.Value, flag);});
         }
+
+        // private void DrawGUI()
+        // {
+        //     bool flag1 = GUILayout.Toggle(PHOENIX.Value, "Phoenix", Array.Empty<GUILayoutOption>());
+        //     bool flag2 = GUILayout.Toggle(GROW.Value, "Grow", Array.Empty<GUILayoutOption>());
+        //     bool flag4 = GUILayout.Toggle(SCAVENGER.Value, "Scavenger", Array.Empty<GUILayoutOption>());
+        //     bool flag5 = GUILayout.Toggle(SAW.Value, "Saw", Array.Empty<GUILayoutOption>());
+        //     bool flag6 = GUILayout.Toggle(TACTICALSHIELDUP.Value, "TacticalReload + ShieldsUp combo", Array.Empty<GUILayoutOption>());
+        //     if (flag1 != PHOENIX.Value || flag2 != GROW.Value || flag4 != SCAVENGER.Value || flag5 != SAW.Value || flag6 != TACTICALSHIELDUP.Value)
+        //     {
+        //         NetworkingManager.RaiseEvent("com.BossSloth.Rounds.Tweaks_SyncTweaks", new object[]
+        //         {
+        //             flag1,
+        //             flag2,
+        //             flag4,
+        //             flag5,
+        //             flag6
+        //         });
+        //         PHOENIX.Value = flag1;
+        //         GROW.Value = flag2;
+        //         SCAVENGER.Value = flag4;
+        //         SAW.Value = flag5;
+        //         TACTICALSHIELDUP.Value = flag6;
+        //         ChangeCards();
+        //         return;
+        //     }
+        //     PHOENIX.Value = flag1;
+        //     GROW.Value = flag2;
+        //     SCAVENGER.Value = flag4;
+        //     SAW.Value = flag5;
+        //     TACTICALSHIELDUP.Value = flag6;
+        // }
         
         private void Awake()
         {
