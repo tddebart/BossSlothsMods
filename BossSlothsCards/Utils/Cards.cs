@@ -59,7 +59,7 @@ namespace BossSlothsCards.Utils
 
                 Traverse.Create(cardStats).Field("playerToUpgrade").SetValue(player);
 
-                if (!reassign || card.GetAdditionalData().canBeReassigned || !card.cardName.Contains("Gamble", StringComparison.OrdinalIgnoreCase) || !card.cardName.Contains("Jackpot", StringComparison.OrdinalIgnoreCase))
+                if (!reassign || card.GetAdditionalData().canBeReassigned)
                 {
                     typeof(ApplyCardStats).InvokeMember("ApplyStats",
                                         BindingFlags.Instance | BindingFlags.InvokeMethod |

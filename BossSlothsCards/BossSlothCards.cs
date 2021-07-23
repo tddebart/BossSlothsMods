@@ -70,7 +70,18 @@ namespace BossSlothsCards
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
 
-
+            // Patch some cards from PCE
+            this.ExecuteAfterSeconds(2, () =>
+            {
+                foreach (var info in CardChoice.instance.cards)
+                {
+                    if (info.cardName.Contains("Gamble") || info.cardName.Contains("Jackpot"))
+                    {
+                        info.GetAdditionalData().canBeReassigned = false;
+                    }
+                }
+                
+            });
         }
     }
 }
