@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.MonoBehaviours;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -28,6 +28,11 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding NoThanks card");
 #endif
+            DoNoThanksThings(player,gun,gunAmmo,data,health,gravity,block,characterStats);
+        }
+
+        private void DoNoThanksThings(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+        {
             if (player.data.currentCards.Count == 0)
             {
                 return;
@@ -49,15 +54,18 @@ namespace BossSlothsCards.Cards
                     continue;
                 }
                 
-                var randomCard = Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
-                UnityEngine.Debug.LogWarning(randomCard.cardName);
-                
                 cardRemovedName = player.data.currentCards[count].cardName;
-
-                Utils.Cards.AddCardToPlayer(player, randomCard);
-                UnityEngine.Debug.LogWarning(player.data.currentCards[count].cardName);
-                Utils.Cards.RemoveCardFromPlayer(player, player.data.currentCards[count]);
-
+                var cardToRemove = player.data.currentCards[count];
+                var randomCard = Utils.Cards.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
+                UnityEngine.Debug.LogWarning(randomCard);
+                
+                Utils.Cards.RemoveCardFromPlayer(player, cardToRemove);
+                player.ExecuteAfterSeconds(0.2f, () =>
+                {
+                    Utils.Cards.AddCardToPlayer(player, randomCard);
+                    Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                    UnityEngine.Debug.LogWarning(cardToRemove.cardName);
+                });
                 break;
             }
         }
@@ -68,16 +76,13 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up NoThanks card");
 #endif
             cardInfo.allowMultiple = true;
-            
-            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            var cardData = new CardInfoAdditionalData()
             {
-                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
-            }
-        }
-
-        private void Update()
-        {
-            UnityEngine.Debug.LogWarning("Test");
+                canBeReassigned = false
+            };
+            cardInfo.AddData(cardData);
+            
+            transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
         }
 
         protected override CardInfoStat[] GetStats()
@@ -110,25 +115,15 @@ namespace BossSlothsCards.Cards
             return "BSC";
         }
         
-        // From PCE
-        private bool condition(CardInfo card, Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+        //From PCE
+        public bool condition(CardInfo card, Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             // do not allow duplicates of cards with allowMultiple == false
-            // card cannot be the card that got removed
+            // card rarity must be as desired
+            // card cannot be another Gamble / Jackpot card
             // card cannot be from a blacklisted category of any other card
-
-            bool blacklisted = false;
-
-            foreach (CardInfo currentCard in player.data.currentCards)
-            {
-                if (card.categories.Intersect(currentCard.blacklistedCategories).Any())
-                {
-                    blacklisted = true;
-                }
-            }
-
-            return !blacklisted && (card.allowMultiple || player.data.currentCards.All(cardinfo => cardinfo.name != card.name)) && !card.cardName.Contains(cardRemovedName) && !card.cardName.Contains("No thanks");
-
+        
+            return card.cardName != cardRemovedName && card.cardName != "No thanks";
         }
 
     }

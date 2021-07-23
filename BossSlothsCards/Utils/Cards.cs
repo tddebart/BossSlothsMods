@@ -29,7 +29,7 @@ namespace BossSlothsCards.Utils
             }
             set { }
         }
-        private CardInfo[] activeCards
+        private static CardInfo[] activeCards
         {
             get
             {
@@ -646,7 +646,7 @@ namespace BossSlothsCards.Utils
             
         }
         // get random card without respecting rarity, but always respecting PlayerIsAllowedCard
-        public CardInfo NORARITY_GetRandomCardWithCondition(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, Func<CardInfo, Player, Gun, GunAmmo, CharacterData, HealthHandler, Gravity, Block, CharacterStatModifiers, bool> condition, int maxattempts = 1000)
+        public static CardInfo NORARITY_GetRandomCardWithCondition(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, Func<CardInfo, Player, Gun, GunAmmo, CharacterData, HealthHandler, Gravity, Block, CharacterStatModifiers, bool> condition, int maxattempts = 1000)
         {
             // get array of all ACTIVE cards
             CardInfo[] cards = activeCards;

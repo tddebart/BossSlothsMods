@@ -39,11 +39,8 @@ namespace BossSlothsCards.Cards
             };
             cardInfo.AddData(cardData);
             cardInfo.allowMultiple = true;
-            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
-            {
-                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
-            }
-            
+            transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
+
         }
 
         private static void DoLarcenistThings(Player player)

@@ -58,7 +58,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<RandomConfringo>();
             CustomCard.BuildCard<Larcenist>();
             CustomCard.BuildCard<CopyCat>();
-            //CustomCard.BuildCard<NoThanks>();
+            CustomCard.BuildCard<NoThanks>();
 
 
             //CustomCard.BuildCard<OneShot>();

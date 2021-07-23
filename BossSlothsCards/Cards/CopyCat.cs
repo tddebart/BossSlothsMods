@@ -49,10 +49,12 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up Copycat card");
 #endif
             cardInfo.allowMultiple = true;
-            if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
+            var cardData = new CardInfoAdditionalData()
             {
-                transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText").gameObject.GetOrAddComponent<RainbowText>();
-            }
+                canBeReassigned = false
+            };
+            cardInfo.AddData(cardData);
+            transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
         }
 
         protected override CardInfoStat[] GetStats()
