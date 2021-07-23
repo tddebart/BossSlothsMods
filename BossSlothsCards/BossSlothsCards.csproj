@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
+    <Compile Include="Cards\HitMeBabyOneMoreTime.cs" />
     <Compile Include="Cards\CopyCat.cs" />
     <Compile Include="Cards\GiveMeAnother.cs" />
     <Compile Include="Cards\MomGetTheCamera.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Extensions\CardInfo.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="Extensions\String.cs" />
+    <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\Confringo_Mono.cs" />

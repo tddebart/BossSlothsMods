@@ -5,7 +5,7 @@
 ### Copycat
 Common card
 
-Copy a random card from a random enemy
+Copy a random valid card from a random enemy
 
 ---
 ### Double jump
@@ -14,16 +14,28 @@ Common card
 Gives you the ability to double jump
 
 ---
+### Give me another
+Common card
+
+Clone a random valid card you have
+
+---
 ### Larcenist
 Uncommon card
 
-Steal the most recent card of a random enemy
+Steal the most recent valid card of a random enemy
 
 ---
 ### Mom get the camera
 Common card
 
 Do a 360 every 2s to get a boost
+
+---
+### No thanks
+Uncommon card
+
+Replace your most recent card with a random card
 
 ---
 ### Random confringo
@@ -73,7 +85,7 @@ Ups most stats
         - Added back larcenist
         - Sneeze buffed
         - Fixed copycat and random confringo
-    - Fancy text on random cards
+    - Fancy text on "random" cards
     - Credits menu
         
 
