@@ -76,13 +76,15 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up NoThanks card");
 #endif
             cardInfo.allowMultiple = true;
-            var cardData = new CardInfoAdditionalData()
-            {
-                canBeReassigned = false
-            };
-            cardInfo.AddData(cardData);
+            // var cardData = new CardInfoAdditionalData()
+            // {
+            //     canBeReassigned = false
+            // };
+            // cardInfo.AddData(cardData);
+            cardInfo.GetAdditionalData().canBeReassigned = false;
             
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
+            UnityEngine.Debug.LogWarning(cardInfo.GetAdditionalData().canBeReassigned);
         }
 
         protected override CardInfoStat[] GetStats()

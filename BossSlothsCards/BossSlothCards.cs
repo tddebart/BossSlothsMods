@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BossSlothsCards.Cards;
+using BossSlothsCards.Extensions;
 using HarmonyLib;
 using Jotunn.Utils;
 using UnboundLib;
@@ -61,9 +62,12 @@ namespace BossSlothsCards
             CustomCard.BuildCard<RandomConfringo>();
             CustomCard.BuildCard<Larcenist>();
             CustomCard.BuildCard<CopyCat>();
+            
             CustomCard.BuildCard<NoThanks>();
             CustomCard.BuildCard<GiveMeAnother>();
             CustomCard.BuildCard<HitMeBabyOneMoreTime>();
+            CustomCard.BuildCard<SnapEffect>();
+            
             //CustomCard.BuildCard<ShieldBar>();
 
 
