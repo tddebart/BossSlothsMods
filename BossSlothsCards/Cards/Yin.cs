@@ -107,6 +107,11 @@ namespace BossSlothsCards.Cards
             return CardThemeColor.CardThemeColorType.NatureBrown;
         }
         
+        public override string GetModName()
+        {
+            return "BSC";
+        }
+        
         public override void OnRemoveCard()
         {
         }

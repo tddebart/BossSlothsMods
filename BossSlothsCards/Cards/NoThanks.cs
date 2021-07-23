@@ -105,6 +105,11 @@ namespace BossSlothsCards.Cards
         {
         }
         
+        public override string GetModName()
+        {
+            return "BSC";
+        }
+        
         // From PCE
         private bool condition(CardInfo card, Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
