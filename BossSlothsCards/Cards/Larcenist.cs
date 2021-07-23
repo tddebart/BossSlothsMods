@@ -33,6 +33,11 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Setting up larcenist card");
 #endif
+            var cardData = new CardInfoAdditionalData()
+            {
+                canBeReassigned = false
+            };
+            cardInfo.AddData(cardData);
             cardInfo.allowMultiple = true;
             if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText"))
             {
@@ -69,11 +74,13 @@ namespace BossSlothsCards.Cards
                     continue;
                 }
 
+                var card = enemy.data.currentCards[count];
+
                 // Add card to player
-                Utils.Cards.AddCardToPlayer(player, enemy.data.currentCards[count]);
-                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, enemy.data.currentCards[count]);
+                Utils.Cards.AddCardToPlayer(player, card);
+                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, card);
                 // Remove card from enemy
-                Utils.Cards.RemoveCardFromPlayer(enemy, enemy.data.currentCards[count]);
+                Utils.Cards.RemoveCardFromPlayer(enemy, card);
                 break;
             }
         }

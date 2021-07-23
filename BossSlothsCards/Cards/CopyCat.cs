@@ -36,8 +36,9 @@ namespace BossSlothsCards.Cards
                 var randomNum = Random.Range(0, enemy.data.currentCards.Count);
                 tries++;
                 if (!Utils.Cards.PlayerIsAllowedCard(player, enemy.data.currentCards[randomNum])) continue;
-                Utils.Cards.AddCardToPlayer(player, enemy.data.currentCards[randomNum]);
-                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, enemy.data.currentCards[randomNum]);
+                var randomCard = enemy.data.currentCards[randomNum];
+                Utils.Cards.AddCardToPlayer(player, randomCard);
+                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 break;
             }
         }
