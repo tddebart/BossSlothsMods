@@ -117,6 +117,7 @@
     <Compile Include="Cards\NotToday.cs" />
     <Compile Include="Cards\Larcenist.cs" />
     <Compile Include="Cards\RandomConfringo.cs" />
+    <Compile Include="Cards\ShieldBar.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
     <Compile Include="Cards\Yang.cs" />
@@ -125,10 +126,12 @@
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Cards\_BaseCard.cs" />
     <Compile Include="Extensions\CardInfo.cs" />
+    <Compile Include="Extensions\CharacterData.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="Extensions\String.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
+    <Compile Include="MonoBehaviours\ShieldBar_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\Confringo_Mono.cs" />
     <Compile Include="MonoBehaviours\RainbowText.cs" />

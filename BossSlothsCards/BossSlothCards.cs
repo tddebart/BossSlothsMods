@@ -64,6 +64,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<NoThanks>();
             CustomCard.BuildCard<GiveMeAnother>();
             CustomCard.BuildCard<HitMeBabyOneMoreTime>();
+            //CustomCard.BuildCard<ShieldBar>();
 
 
             //CustomCard.BuildCard<OneShot>();
