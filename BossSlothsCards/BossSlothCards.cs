@@ -2,6 +2,7 @@
 using BossSlothsCards.Cards;
 using HarmonyLib;
 using Jotunn.Utils;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace BossSlothsCards
         
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "1.0.3";
+        public const string Version = "1.1.0";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
@@ -33,6 +34,8 @@ namespace BossSlothsCards
             harmony.PatchAll();
 
             instance = this;
+            
+            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new string[] {"Boss sloth Inc.", "Special thanks to: ","Pykess for Card frameworks"}, "Github", "https://github.com/tddebart/BossSlothsMods");
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)

@@ -15,7 +15,6 @@ Gives you the ability to double jump
 
 ---
 ### Larcenist
-###**Removed for now**
 Uncommon card
 
 Steal the most recent card of a random enemy
@@ -65,6 +64,35 @@ Ups most stats
 ---
 ## Changelist
 ### 1.0.0
+
+- v1.1.0
+    - New cards
+        - No thanks
+        - Give me another
+    - Hotfixes/Changes
+        - Added back larcenist
+        - Sneeze buffed
+        - Fixed copycat and random confringo
+    - Fancy text on random cards
+    - Credits menu
+        
+
+- v1.0.3
+    - Removed larcenist for now
+    
+
+- v1.0.2
+    - Bugfixes
+        - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
+        - Fixed larcenist removing effects of some cards
+    
+
+- v1.0.1
+    - Bugfixes
+        - Fixed random confringo with deathmatch(Thanks TimeToGrind for reporting this)
+        - Fixed Copycat and Larcenist with deathmatch
+    
+
 - v1.0.0
     - New cards
         - Mom get the camera
@@ -74,18 +102,8 @@ Ups most stats
     
     - Changes and bugfixes  
         - Sneeze bullets no longer collide
-- v1.0.1
-    - Bugfixes
-        - Fixed random confringo with deathmatch(Thanks TimeToGrind for reporting this)
-        - Fixed Copycat and Larcenist with deathmatch
-- v1.0.2
-    - Bugfixes
-        - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
-        - Fixed larcenist removing effects of some cards
-- v1.0.3
-    - Removed larcenist for now
     
-  
+
 ---
 - v0.1.0 First ThunderStore release
 - v0.1.1 Splitted BSM to BSC and BST
