@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
     <Compile Include="Cards\CopyCat.cs" />
+    <Compile Include="Cards\GiveMeAnother.cs" />
     <Compile Include="Cards\MomGetTheCamera.cs" />
     <Compile Include="Cards\DoubleJump.cs" />
     <Compile Include="Cards\NoThanks.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Cards\Yin.cs" />
     <Compile Include="Cards\YinYang.cs" />
     <Compile Include="BossSlothCards.cs" />
+    <Compile Include="Cards\_BaseCard.cs" />
     <Compile Include="Extensions\CardInfo.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="Extensions\String.cs" />
