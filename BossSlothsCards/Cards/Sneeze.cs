@@ -35,8 +35,8 @@ namespace BossSlothsCards.Cards
             
             gun.damage = 0.10f;
             gun.reloadTimeAdd = 2f;
-            gun.ammo = 15;
-            gun.numberOfProjectiles = 10;
+            gun.ammo = 30;
+            gun.numberOfProjectiles = 20;
 
             gun.spread = 0.40f;
             gun.recoil = 500;
@@ -92,14 +92,14 @@ namespace BossSlothsCards.Cards
                 new CardInfoStat
                 {
                     stat = "Ammo",
-                    amount = "+15",
+                    amount = "+30",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat
                 {
                     stat = "Bullets",
-                    amount = "+10",
+                    amount = "+20",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
