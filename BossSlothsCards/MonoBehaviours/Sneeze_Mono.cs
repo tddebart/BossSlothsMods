@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace BossSlothsCards.MonoBehaviours
+﻿namespace BossSlothsCards.MonoBehaviours
 {
     public class Sneeze_Mono : BossSlothMonoBehaviour
     {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace BossSlothsCards.Extensions
@@ -15,6 +16,13 @@ namespace BossSlothsCards.Extensions
             }
 
             return players[Random.Range(0, players.Count)];
+        }
+        
+        public static Player GetPlayerWithID(this PlayerManager playerManager, int playerID)
+        {
+            return (Player)typeof(PlayerManager).InvokeMember("GetPlayerWithID",
+                BindingFlags.Instance | BindingFlags.InvokeMethod |
+                BindingFlags.NonPublic, null, playerManager, new object[]{playerID});
         }
     }
 }

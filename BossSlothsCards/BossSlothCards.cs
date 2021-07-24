@@ -5,6 +5,7 @@ using HarmonyLib;
 using Jotunn.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
+using UnboundLib.GameModes;
 using UnityEngine;
 
 
@@ -67,13 +68,16 @@ namespace BossSlothsCards
             CustomCard.BuildCard<GiveMeAnother>();
             CustomCard.BuildCard<HitMeBabyOneMoreTime>();
             CustomCard.BuildCard<SnapEffect>();
+            CustomCard.BuildCard<KnightsArmor>();
+            CustomCard.BuildCard<KingsArmor>();
             
-            //CustomCard.BuildCard<ShieldBar>();
 
 
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
 
+            GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => Utils.CardBarUtils.instance.EndPickPhaseShow());
+            
             // Patch some cards from PCE
             this.ExecuteAfterSeconds(2, () =>
             {

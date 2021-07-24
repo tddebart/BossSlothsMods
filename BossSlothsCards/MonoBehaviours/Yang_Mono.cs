@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace BossSlothsCards.MonoBehaviours
+﻿namespace BossSlothsCards.MonoBehaviours
 {
     public class Yang_Mono : BossSlothMonoBehaviour
     {

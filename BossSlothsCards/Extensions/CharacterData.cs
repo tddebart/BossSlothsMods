@@ -5,11 +5,13 @@ namespace BossSlothsCards.Extensions
 {
     public class CharacterDataAdditionalData
     {
-        public float shield;
+        public float armor;
+        public float maxArmor;
 
         public CharacterDataAdditionalData()
         {
-            shield = 100;
+            armor = 0;
+            maxArmor = 0;
         }
     }
     
