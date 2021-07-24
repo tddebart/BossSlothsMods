@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using BossSlothsCards.Extensions;
 
-namespace BossSlothsCards.MonoBehaviours
+namespace BossSlothsCards.Utils
 {
     public class RainbowText : MonoBehaviour
     {

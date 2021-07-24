@@ -1,5 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -57,14 +57,12 @@ namespace BossSlothsCards.Cards
                 cardRemovedName = player.data.currentCards[count].cardName;
                 var cardToRemove = player.data.currentCards[count];
                 var randomCard = Utils.Cards.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
-                UnityEngine.Debug.LogWarning(randomCard);
-                
+
                 Utils.Cards.RemoveCardFromPlayer(player, cardToRemove);
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
                     Utils.Cards.AddCardToPlayer(player, randomCard);
                     Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
-                    UnityEngine.Debug.LogWarning(cardToRemove.cardName);
                 });
                 break;
             }
@@ -84,7 +82,6 @@ namespace BossSlothsCards.Cards
             cardInfo.GetAdditionalData().canBeReassigned = false;
             
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
-            UnityEngine.Debug.LogWarning(cardInfo.GetAdditionalData().canBeReassigned);
         }
 
         protected override CardInfoStat[] GetStats()

@@ -1,6 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.MonoBehaviours;
-using TMPro;
+using BossSlothsCards.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;

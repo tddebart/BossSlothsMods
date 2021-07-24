@@ -147,6 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CardBar.cs" />
     <Compile Include="Utils\Cards.cs" />
+    <Compile Include="Utils\Text\RainbowText.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />
