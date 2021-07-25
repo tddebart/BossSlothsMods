@@ -120,6 +120,7 @@
     <Compile Include="Cards\RandomConfringo.cs" />
     <Compile Include="Cards\KnightsArmor.cs" />
     <Compile Include="Cards\SnapEffect.cs" />
+    <Compile Include="Cards\Thorns.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
     <Compile Include="Cards\Yang.cs" />

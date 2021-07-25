@@ -37,7 +37,7 @@ namespace BossSlothsCards
 
             instance = this;
             
-            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new string[] {"Boss sloth Inc.", "Special thanks to: ","Pykess for Card frameworks"}, "Github", "https://github.com/tddebart/BossSlothsMods");
+            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new string[] {"Boss sloth Inc.", "","Special thanks to: ","Pykess for Card frameworks"}, "Github", "https://github.com/tddebart/BossSlothsMods");
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
@@ -70,6 +70,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<SnapEffect>();
             CustomCard.BuildCard<KnightsArmor>();
             CustomCard.BuildCard<KingsArmor>();
+            CustomCard.BuildCard<Thorns>();
             
 
 
