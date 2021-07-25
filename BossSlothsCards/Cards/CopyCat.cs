@@ -18,7 +18,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Copy a random card from a random enemy";
+            return "Copy a random valid card from a random enemy";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

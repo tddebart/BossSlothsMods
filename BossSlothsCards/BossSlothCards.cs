@@ -131,8 +131,6 @@ namespace BossSlothsCards
                                 }
                             }
 
-                            UnityEngine.Debug.LogWarning(objects.Count-1);
-
                             var loops = 0;
                             while (true)
                             {
@@ -141,10 +139,8 @@ namespace BossSlothsCards
                                 if (objects[rID] == null) continue;
                                 if (Condition(objects[rID].gameObject))
                                 {
-                                    UnityEngine.Debug.LogWarning("checking if photon is mine");
                                     if (player.GetComponent<PhotonView>().IsMine)
                                     {
-                                        UnityEngine.Debug.LogWarning("photon was mine exc");
                                         player.GetComponent<PhotonView>().RPC("RPCA_ExplodeBlock", RpcTarget.All, rID);
                                     }
                                     break;
@@ -188,8 +184,6 @@ namespace BossSlothsCards
                 }
             }
 
-            UnityEngine.Debug.LogWarning(objects.Count-1);
-
             var loops = 0;
             while (true)
             {
@@ -198,10 +192,8 @@ namespace BossSlothsCards
                 if (objects[rID] == null) continue;
                 if (Condition(objects[rID].gameObject))
                 {
-                    UnityEngine.Debug.LogWarning("checking if photon is mine");
                     if (player.GetComponent<PhotonView>().IsMine)
                     {
-                        UnityEngine.Debug.LogWarning("photon was mine exc");
                         player.GetComponent<PhotonView>().RPC("RPCA_ExplodeBlock", RpcTarget.All, rID);
                     }
 

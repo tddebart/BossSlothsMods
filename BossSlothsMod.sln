@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardBarPatch", "CardBarPatch\CardBarPatch.csproj", "{71574359-E73D-4D57-91BB-D6AD44C4C3C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution files", "{AE724A86-BA21-454F-98A4-8FC4567B1535}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BSC files", "BSC files", "{B3F0C602-6D94-46DA-9F09-327EE039135B}"
 	ProjectSection(SolutionItems) = preProject
