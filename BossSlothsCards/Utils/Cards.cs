@@ -702,6 +702,10 @@ namespace BossSlothsCards.Utils
             }
 
         }
+        public int GetCardID(string cardName)
+        {
+            return ACTIVEANDHIDDENCARDS.Where(card => card.name == cardName).Select(GetCardID).FirstOrDefault();
+        }
         public int GetCardID(CardInfo card)
         {
             return Array.IndexOf(ACTIVEANDHIDDENCARDS.ToArray(), card);
