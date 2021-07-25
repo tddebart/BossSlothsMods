@@ -26,7 +26,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding confringo card");
 #endif
-            player.gameObject.AddComponent<Confringo_Mono>();
+            player.gameObject.GetOrAddComponent<ExplosionMap>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
