@@ -20,6 +20,24 @@ Common card
 Clone a random valid card you have
 
 ---
+### Hit me baby one more time
+Common card
+
+Every second you take 10% damage, but when you get below 30% health you get all damage this card had done back(since last heal)
+
+---
+### Kings armor
+Rare card
+
+Gives you a set of regenerating kings armor to protect you from damage
+
+---
+### Knights armor
+Uncommon card
+
+Gives you a set of regenerating knight armor to protect you from damage
+
+---
 ### Larcenist
 Uncommon card
 
@@ -39,15 +57,27 @@ Replace your most recent card with a random card
 
 ---
 ### Random confringo
-common card
+Common card
 
 Randomly explodes a part of the map every round after 5s
+
+---
+### Snap effect
+Rare card
+
+Randomly explodes a part of the map every 7s
 
 ---
 ### Sneeze
 Rare card  
 
 Makes you sneeze your bullet
+
+---
+### Thorns
+Uncommon card
+
+The enemy that hits you takes 20% of damage done to you
 
 ---
 ### Yang
@@ -81,6 +111,11 @@ Ups most stats
     - New cards
         - No thanks
         - Give me another
+        - Hit me baby one more time
+        - Snap effect
+        - Knights armor
+        - Kings armor
+        - Thorns
     - Hotfixes/Changes
         - Added back larcenist
         - Sneeze buffed
