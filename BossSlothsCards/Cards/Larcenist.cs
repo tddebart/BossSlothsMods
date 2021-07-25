@@ -77,7 +77,7 @@ namespace BossSlothsCards.Cards
                 Utils.Cards.AddCardToPlayer(player, card);
                 Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, card);
                 // Remove card from enemy
-                Utils.Cards.RemoveCardFromPlayer(enemy, card);
+                Utils.Cards.RemoveCardFromPlayer(enemy, card, Utils.Cards.SelectionType.Newest);
                 break;
             }
         }

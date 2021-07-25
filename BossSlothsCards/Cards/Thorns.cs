@@ -14,7 +14,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "";
+            return "If someone hits you they take thorns damage";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

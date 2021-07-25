@@ -58,7 +58,7 @@ namespace BossSlothsCards.Cards
                 var cardToRemove = player.data.currentCards[count];
                 var randomCard = Utils.Cards.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
 
-                Utils.Cards.RemoveCardFromPlayer(player, cardToRemove);
+                Utils.Cards.RemoveCardFromPlayer(player, cardToRemove, Utils.Cards.SelectionType.Newest);
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
                     Utils.Cards.AddCardToPlayer(player, randomCard);

@@ -25,7 +25,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Adding " + cardInfo.cardName + " card");
 #endif
-            player.ExecuteAfterSeconds(0.2f, () =>
+            BossSlothCards.instance.ExecuteAfterSeconds(0.2f, () =>
             {
                 var tries = 0;
                 while (!(tries > 50))
