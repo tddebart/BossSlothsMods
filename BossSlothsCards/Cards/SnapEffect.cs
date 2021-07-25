@@ -23,7 +23,7 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<Snap_Mono>();
+            player.gameObject.GetOrAddComponent<ExplosionMap>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)

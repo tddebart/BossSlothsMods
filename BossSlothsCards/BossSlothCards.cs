@@ -81,6 +81,7 @@ namespace BossSlothsCards
 
             GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => Utils.CardBarUtils.instance.EndPickPhaseShow());
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
+            GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
             
             // Patch some cards from PCE
             this.ExecuteAfterSeconds(2, () =>
@@ -99,6 +100,12 @@ namespace BossSlothsCards
         {
             if (this == null) yield break;
             Wait5SecondsAndDoSomething();
+        }
+
+        private IEnumerator IEStopAllCoroutines()
+        {
+            StopAllCoroutines();
+            yield break;
         }
 
         private void Wait5SecondsAndDoSomething()
@@ -151,7 +158,62 @@ namespace BossSlothsCards
                                 }
                             }
                         });
+                    } 
+                    else if (player.data.currentCards[i].cardName == "Snap effect")
+                    {
+                        this.ExecuteAfterSeconds(i * 0.1f + player.playerID * 0.2f , () =>
+                        {
+                            StopCoroutine(SnapEffect(player));
+                            if (this == null) return;
+                            StartCoroutine(SnapEffect(player));
+                        });
                     }
+                }
+            }
+        }
+
+        private IEnumerator SnapEffect(Player player)
+        {
+            yield return new WaitForSeconds(7);
+            var scene = SceneManager.GetSceneAt(1);
+            if (!scene.IsValid())  yield break;
+            var objectsArray = scene.GetRootGameObjects()[0].GetComponentsInChildren<Collider2D>(false);
+            if (objectsArray == null)  yield break;
+            var objects = new List<Collider2D>();
+            foreach (var obj in objectsArray)
+            {
+                if (Condition(obj.gameObject))
+                {
+                    objects.Add(obj);
+                }
+            }
+
+            UnityEngine.Debug.LogWarning(objects.Count-1);
+
+            var loops = 0;
+            while (true)
+            {
+                var rng = new System.Random();
+                var rID = rng.Next(0, objects.Count-1);
+                if (objects[rID] == null) continue;
+                if (Condition(objects[rID].gameObject))
+                {
+                    UnityEngine.Debug.LogWarning("checking if photon is mine");
+                    if (player.GetComponent<PhotonView>().IsMine)
+                    {
+                        UnityEngine.Debug.LogWarning("photon was mine exc");
+                        player.GetComponent<PhotonView>().RPC("RPCA_ExplodeBlock", RpcTarget.All, rID);
+                    }
+
+                    StartCoroutine(SnapEffect(player));
+                    break;
+                }
+
+                loops++;
+                if (loops >= 100)
+                {
+                    UnityEngine.Debug.LogError("Couldn't find object in 100 iterations");
+                    yield break;
                 }
             }
         }

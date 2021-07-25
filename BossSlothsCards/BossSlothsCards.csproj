@@ -141,7 +141,6 @@
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
-    <Compile Include="MonoBehaviours\Snap_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
