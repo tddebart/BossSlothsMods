@@ -5,6 +5,7 @@ using BossSlothsCards.Cards;
 using BossSlothsCards.Extensions;
 using HarmonyLib;
 using Jotunn.Utils;
+using ModdingUtils.Utils;
 using Photon.Pun;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -16,8 +17,8 @@ using UnityEngine.SceneManagement;
 namespace BossSlothsCards
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInDependency("pykess.rounds.plugins.playerjumppatch")]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
+    [BepInDependency("pykess.rounds.plugins.moddingutils")]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class BossSlothCards : BaseUnityPlugin
@@ -25,7 +26,7 @@ namespace BossSlothsCards
         
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "1.1.0";
+        public const string Version = "1.1.1";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
@@ -39,7 +40,7 @@ namespace BossSlothsCards
 
             instance = this;
             
-            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new[] {"Boss sloth Inc.", " ","Special thanks to: ","Pykess for Card frameworks"}, "Github", "https://github.com/tddebart/BossSlothsMods");
+            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new[] {"Boss sloth Inc.", " ","Special thanks to: ","Pykess for Card frameworks"}, new[] {"Github", "Buy me a coffee"}, new[] {"https://github.com/tddebart/BossSlothsMods", "https://www.buymeacoffee.com/BossSloth"});
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
@@ -78,23 +79,9 @@ namespace BossSlothsCards
 
             //CustomCard.BuildCard<OneShot>();
             //CustomCard.BuildCard<Nice>();
-
-            GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => Utils.CardBarUtils.instance.EndPickPhaseShow());
+            
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
-            
-            // Patch some cards from PCE
-            this.ExecuteAfterSeconds(2, () =>
-            {
-                foreach (var info in CardChoice.instance.cards)
-                {
-                    if (info.cardName.Contains("Gamble") || info.cardName.Contains("Jackpot"))
-                    {
-                        info.GetAdditionalData().canBeReassigned = false;
-                    }
-                }
-                
-            });
         }
         private IEnumerator DoExplosionThings()
         {

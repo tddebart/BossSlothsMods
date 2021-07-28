@@ -1,5 +1,6 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -32,10 +33,10 @@ namespace BossSlothsCards.Cards
                 {
                     var randomNum = Random.Range(0, player.data.currentCards.Count);
                     tries++;
-                    if (!Utils.Cards.PlayerIsAllowedCard(player, player.data.currentCards[randomNum]) || player.data.currentCards[randomNum].cardName == "Give me another") continue;
+                    if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, player.data.currentCards[randomNum]) || player.data.currentCards[randomNum].cardName == "Give me another") continue;
                     var randomCard = player.data.currentCards[randomNum];
-                    Utils.Cards.AddCardToPlayer(player, randomCard);
-                    Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
+                    ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                     break;
                 }
             });
@@ -48,11 +49,7 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up " + cardInfo.cardName + " card");
 #endif
             cardInfo.allowMultiple = true;
-            var cardData = new CardInfoAdditionalData()
-            {
-                canBeReassigned = false
-            };
-            cardInfo.AddData(cardData);
+            cardInfo.GetAdditionalData().canBeReassigned = false;
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
         }
 

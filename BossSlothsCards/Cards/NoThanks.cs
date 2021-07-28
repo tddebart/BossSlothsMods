@@ -1,5 +1,6 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -56,13 +57,13 @@ namespace BossSlothsCards.Cards
                 
                 cardRemovedName = player.data.currentCards[count].cardName;
                 var cardToRemove = player.data.currentCards[count];
-                var randomCard = Utils.Cards.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
+                var randomCard = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
 
-                Utils.Cards.RemoveCardFromPlayer(player, cardToRemove, Utils.Cards.SelectionType.Newest);
+                ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(player, cardToRemove, ModdingUtils.Utils.Cards.SelectionType.Newest);
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
-                    Utils.Cards.AddCardToPlayer(player, randomCard);
-                    Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
+                    ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 });
                 break;
             }
@@ -74,11 +75,6 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up NoThanks card");
 #endif
             cardInfo.allowMultiple = true;
-            // var cardData = new CardInfoAdditionalData()
-            // {
-            //     canBeReassigned = false
-            // };
-            // cardInfo.AddData(cardData);
             cardInfo.GetAdditionalData().canBeReassigned = false;
             
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();

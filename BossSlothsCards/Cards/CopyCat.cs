@@ -1,8 +1,10 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using ModdingUtils.Utils;
 
 
 namespace BossSlothsCards.Cards
@@ -34,10 +36,10 @@ namespace BossSlothsCards.Cards
             {
                 var randomNum = Random.Range(0, enemy.data.currentCards.Count);
                 tries++;
-                if (!Utils.Cards.PlayerIsAllowedCard(player, enemy.data.currentCards[randomNum])) continue;
+                if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, enemy.data.currentCards[randomNum])) continue;
                 var randomCard = enemy.data.currentCards[randomNum];
-                Utils.Cards.AddCardToPlayer(player, randomCard);
-                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
+                ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 break;
             }
         }
@@ -48,11 +50,7 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up Copycat card");
 #endif
             cardInfo.allowMultiple = true;
-            var cardData = new CardInfoAdditionalData()
-            {
-                canBeReassigned = false
-            };
-            cardInfo.AddData(cardData);
+            cardInfo.GetAdditionalData().canBeReassigned = false;
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
         }
 

@@ -1,5 +1,6 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -33,11 +34,7 @@ namespace BossSlothsCards.Cards
 #if DEBUG
             UnityEngine.Debug.Log("Setting up larcenist card");
 #endif
-            var cardData = new CardInfoAdditionalData()
-            {
-                canBeReassigned = false
-            };
-            cardInfo.AddData(cardData);
+            cardInfo.GetAdditionalData().canBeReassigned = false;
             cardInfo.allowMultiple = true;
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
 
@@ -65,7 +62,7 @@ namespace BossSlothsCards.Cards
                     continue;
                 }
 
-                if (!Utils.Cards.PlayerIsAllowedCard(player, enemy.data.currentCards[count]))
+                if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, enemy.data.currentCards[count]))
                 {
                     count--;
                     continue;
@@ -74,10 +71,10 @@ namespace BossSlothsCards.Cards
                 var card = enemy.data.currentCards[count];
 
                 // Add card to player
-                Utils.Cards.AddCardToPlayer(player, card);
-                Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, card);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, card);
+                ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, card);
                 // Remove card from enemy
-                Utils.Cards.RemoveCardFromPlayer(enemy, card, Utils.Cards.SelectionType.Newest);
+                ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(enemy, card, ModdingUtils.Utils.Cards.SelectionType.Newest);
                 break;
             }
         }

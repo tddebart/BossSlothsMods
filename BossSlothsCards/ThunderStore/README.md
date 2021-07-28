@@ -107,6 +107,10 @@ Ups most stats
 ## Changelist
 ### 1.0.0
 
+- v1.1.1
+    - New dependency ModdingUtils
+
+
 - v1.1.0
     - New cards
         - No thanks
