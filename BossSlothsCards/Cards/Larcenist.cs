@@ -1,5 +1,6 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -35,6 +36,7 @@ namespace BossSlothsCards.Cards
             UnityEngine.Debug.Log("Setting up larcenist card");
 #endif
             cardInfo.GetAdditionalData().canBeReassigned = false;
+            cardInfo.categories = new[] { CustomCardCategories.instance.CardCategory("CardManipulation") };
             cardInfo.allowMultiple = true;
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
 

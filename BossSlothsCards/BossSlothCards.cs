@@ -23,10 +23,9 @@ namespace BossSlothsCards
     [BepInProcess("Rounds.exe")]
     public class BossSlothCards : BaseUnityPlugin
     {
-        
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "1.1.1";
+        public const string Version = "1.1.2";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
@@ -75,11 +74,8 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-
-
-            //CustomCard.BuildCard<OneShot>();
-            //CustomCard.BuildCard<Nice>();
             
+
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
         }

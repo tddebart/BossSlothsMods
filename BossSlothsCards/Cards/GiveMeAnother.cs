@@ -1,5 +1,6 @@
 ﻿using BossSlothsCards.Extensions;
 using BossSlothsCards.Utils;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -50,6 +51,7 @@ namespace BossSlothsCards.Cards
 #endif
             cardInfo.allowMultiple = true;
             cardInfo.GetAdditionalData().canBeReassigned = false;
+            cardInfo.categories = new[] { CustomCardCategories.instance.CardCategory("CardManipulation") };
             transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Grid/EffectText")?.gameObject.GetOrAddComponent<RainbowText>();
         }
 
