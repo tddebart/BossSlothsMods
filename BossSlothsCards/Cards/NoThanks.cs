@@ -49,7 +49,7 @@ namespace BossSlothsCards.Cards
                 {
                     return;
                 }
-                // check if card is not NoThanks
+                // make sure the card is not NoThanks
                 if (player.data.currentCards[count].cardName == "No thanks")
                 {
                     count--;

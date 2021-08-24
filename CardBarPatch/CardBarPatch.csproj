@@ -34,6 +34,7 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MultiplayerDebug|AnyCPU' ">
       <OutputPath>bin\MultiplayerDebug\</OutputPath>
     </PropertyGroup>
+    
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\0Harmony.dll</HintPath>
@@ -47,12 +48,18 @@
         <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.Harmony.dll</HintPath>
         </Reference>
+        <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-MMHook\MMHOOK_Assembly-CSharp.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
-        <Reference Include="UnboundLib, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
+        <Reference Include="UnboundLib, Version=2.5.1.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\testing\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\Unity.TextMeshPro.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.dll</HintPath>
@@ -71,6 +78,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="CardBarHandlerExtension.cs" />
         <Compile Include="CardBarPatch.cs" />
         <Compile Include="Patches\cardBarPatch.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

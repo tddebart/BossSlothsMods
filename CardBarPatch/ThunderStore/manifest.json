@@ -1,10 +1,10 @@
 ﻿{
   "name": "CardBarPatch",
-  "version_number": "1.0.0",
+  "version_number": "2.0.0",
   "website_url": "https://github.com/tddebart/BossSlothsMods",
-  "description": "The card bar in the top right will now show a max of 34 cards instead of 11",
+  "description": "Fully customize the card bar to your own liking",
   "dependencies": [
-    "willis81808-UnboundLib-1.1.2",
+    "willis81808-UnboundLib-2.5.1",
     "willis81808-MMHook-1.0.0",
     "BepInEx-BepInExPack_ROUNDS-5.4.1100"
   ]
