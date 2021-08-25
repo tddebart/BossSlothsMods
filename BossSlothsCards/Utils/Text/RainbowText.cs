@@ -1,10 +1,9 @@
 ﻿using System;
-using BossSlothsCards;
+using BossSlothsCards.Extensions;
 using TMPro;
 using UnityEngine;
-using BossSlothsCards.Extensions;
 
-namespace BossSlothsCards.Utils
+namespace BossSlothsCards.Utils.Text
 {
     public class RainbowText : MonoBehaviour
     {

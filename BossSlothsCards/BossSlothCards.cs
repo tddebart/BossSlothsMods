@@ -73,6 +73,9 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KnightsArmor>();
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
+
+            CustomCard.BuildCard<GetOverHere>();
+            CustomCard.BuildCard<Sloth>();
             
             
 
