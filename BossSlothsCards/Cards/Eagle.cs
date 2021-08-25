@@ -1,45 +1,38 @@
-﻿using System;
+﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.TempEffects;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class GetOverHere : CustomCard
+    public class Eagle : CustomCard
     {
         public AssetBundle Asset;
         
         protected override string GetTitle()
         {
-            return "Get over here";
+            return "Eagle";
         }
 
         protected override string GetDescription()
         {
-            return "";
+            return "The longer you are in the air the more damage you will do but also take";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.knockback = -4f * Math.Abs(gun.knockback);
+            player.gameObject.GetOrAddComponent<EagleEffect>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
+            cardInfo.allowMultiple = false;
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new[]
-            {
-                new CardInfoStat
-                {
-                    stat = "Knockback",
-                    amount = "-400%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                }
-            };
+            return null;
         }
 
         protected override CardInfo.Rarity GetRarity()
@@ -54,7 +47,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.EvilPurple;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
 
         public override string GetModName()

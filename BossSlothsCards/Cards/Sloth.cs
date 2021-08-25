@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.TempEffects;
 using ModdingUtils.Extensions;
 using ModdingUtils.RoundsEffects;
 using UnboundLib;
@@ -23,7 +24,6 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
             player.gameObject.GetOrAddComponent<SlothEffect>();
         }
         
@@ -50,7 +50,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.NatureBrown;
         }
 
         public override string GetModName()

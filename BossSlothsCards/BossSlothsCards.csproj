@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
+    <Compile Include="Cards\Eagle.cs" />
     <Compile Include="Cards\GetOverHere.cs" />
     <Compile Include="Cards\HitMeBabyOneMoreTime.cs" />
     <Compile Include="Cards\CopyCat.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="BossSlothCards.cs" />
     <Compile Include="Cards\_BaseCard.cs" />
     <Compile Include="Extensions\CharacterData.cs" />
+    <Compile Include="Extensions\CharacterStatModifiers.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="Extensions\String.cs" />
     <Compile Include="MonoBehaviours\ArmorDamageOverTime.cs" />
@@ -152,17 +154,17 @@
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
-    <Compile Include="MonoBehaviours\SlothEffect.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Gun.cs" />
     <Compile Include="Patches\HealthHandler.cs" />
-    <Compile Include="Patches\quickPatchRemove.cs" />
-    <Compile Include="Patches\Reset_Patchcs.cs" />
+    <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempEffects\EagleEffect.cs" />
+    <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
   </ItemGroup>
   <ItemGroup>

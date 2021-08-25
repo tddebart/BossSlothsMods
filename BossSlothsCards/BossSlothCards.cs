@@ -76,6 +76,7 @@ namespace BossSlothsCards
 
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
+            CustomCard.BuildCard<Eagle>();
             
             
 

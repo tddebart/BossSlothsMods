@@ -1,8 +1,7 @@
-﻿using HarmonyLib;
-using ModdingUtils.MonoBehaviours;
+﻿using ModdingUtils.MonoBehaviours;
 using UnityEngine;
 
-namespace BossSlothsCards.MonoBehaviours
+namespace BossSlothsCards.TempEffects
 {
     public class SlothEffect : CounterReversibleEffect
     {
@@ -20,7 +19,7 @@ namespace BossSlothsCards.MonoBehaviours
 
         public override void UpdateEffects()
         {
-            gunStatModifier.damage_mult = 1 * multiplier;
+            gunStatModifier.damage_mult = multiplier;
         }
 
         public override void OnApply()
