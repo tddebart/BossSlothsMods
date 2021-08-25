@@ -25,7 +25,7 @@ namespace BossSlothsCards
     {
         private const string ModId = "com.bosssloth.rounds.BSM";
         private const string ModName = "BossSlothsCards";
-        public const string Version = "1.1.2";
+        public const string Version = "2.0.0";
         
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
@@ -39,7 +39,7 @@ namespace BossSlothsCards
 
             instance = this;
             
-            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new[] {"Boss sloth Inc.", " ","Special thanks to: ","Pykess for Card frameworks"}, new[] {"Github", "Buy me a coffee"}, new[] {"https://github.com/tddebart/BossSlothsMods", "https://www.buymeacoffee.com/BossSloth"});
+            Unbound.RegisterCredits("Boss Sloths Cards (BSC)", new[] {"Boss sloth Inc.", " ","Special thanks to: ","Pykess for some Card frameworks"}, new[] {"Github", "Buy me a coffee"}, new[] {"https://github.com/tddebart/BossSlothsMods", "https://www.buymeacoffee.com/BossSloth"});
 
             ArtAsset = AssetUtils.LoadAssetBundleFromResources("bossslothsart", typeof(BossSlothCards).Assembly);
             if (ArtAsset == null)
@@ -77,6 +77,8 @@ namespace BossSlothsCards
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
+            CustomCard.BuildCard<HigherCaliber>();
+            CustomCard.BuildCard<ThisWayUp>();
             
             
 

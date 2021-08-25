@@ -1,20 +1,21 @@
-﻿using UnboundLib.Cards;
+﻿using BossSlothsCards.MonoBehaviours;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class Yeetus : CustomCard
+    public class ThisWayUp : CustomCard
     {
         public AssetBundle Asset;
         
         protected override string GetTitle()
         {
-            return "Yeetus";
+            return "This way up";
         }
 
         protected override string GetDescription()
         {
-            return "Gives more bullet knockback";
+            return "";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -24,8 +25,7 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            gun.knockback = 2;
-            //statModifiers.AddObjectToPlayer = Startup.EffectAsset.LoadAsset<GameObject>("A_Explode_Y");
+            gun.gravity -= 0.5f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -34,10 +34,10 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    stat = "Knockback",
-                    amount = "+200%",
+                    amount = "-50%",
                     positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Gravity"
                 }
             };
         }
@@ -49,21 +49,22 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Yeetus");
+            return null;
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.EvilPurple;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
-        
+
         public override string GetModName()
         {
             return "BSC";
         }
-        
+
         public override void OnRemoveCard()
         {
         }
+        
     }
 }

@@ -123,6 +123,7 @@
     <Compile Include="BossSlothMonoBehaviour.cs" />
     <Compile Include="Cards\Eagle.cs" />
     <Compile Include="Cards\GetOverHere.cs" />
+    <Compile Include="Cards\HigherCaliber.cs" />
     <Compile Include="Cards\HitMeBabyOneMoreTime.cs" />
     <Compile Include="Cards\CopyCat.cs" />
     <Compile Include="Cards\GiveMeAnother.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Cards\KnightsArmor.cs" />
     <Compile Include="Cards\Sloth.cs" />
     <Compile Include="Cards\SnapEffect.cs" />
+    <Compile Include="Cards\ThisWayUp.cs" />
     <Compile Include="Cards\Thorns.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
