@@ -9,10 +9,13 @@ namespace BossSlothsCards.Extensions
         public float damageReduction;
         public float recoil;
 
+        public bool explosiveResistant;
+
         public CharacterStatModifiersAdditionalData()
         {
             damageReduction = 1;
             recoil = 0;
+            explosiveResistant = false;
         }
     }
     public static class CharacterStatModifiersExtension
@@ -41,6 +44,7 @@ namespace BossSlothsCards.Extensions
             {
                 __instance.GetAdditionalData().damageReduction = 1;
                 __instance.GetAdditionalData().recoil = 0;
+                __instance.GetAdditionalData().explosiveResistant = false;
             }
         }
 

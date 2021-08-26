@@ -82,11 +82,21 @@ namespace BossSlothsCards
             CustomCard.BuildCard<LeMonk>();
             CustomCard.BuildCard<MorningCoffee>();
             CustomCard.BuildCard<SecondGun>();
+            CustomCard.BuildCard<CompactedShot>();
+            CustomCard.BuildCard<FoldableStock>();
+            CustomCard.BuildCard<FuturisticStock>();
+            CustomCard.BuildCard<RocketJump>();
+            CustomCard.BuildCard<WoodenStock>();
+
+            CustomCard.BuildCard<SplittingRounds>();
+
             
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
+
+            GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => DestroyAllRemoveOnRoundsEnds());
         }
 
         private IEnumerator DoExplosionThings()
@@ -98,6 +108,16 @@ namespace BossSlothsCards
         private IEnumerator IEStopAllCoroutines()
         {
             StopAllCoroutines();
+            yield break;
+        }
+
+        private IEnumerator DestroyAllRemoveOnRoundsEnds()
+        {
+            foreach (var obj in SceneManager.GetSceneAt(0).GetRootGameObjects())
+            {
+                if(obj.name == "REMOVE ME") DestroyImmediate(obj);
+            }
+
             yield break;
         }
 

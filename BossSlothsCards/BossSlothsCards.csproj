@@ -121,9 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
+    <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />
     <Compile Include="Cards\Eagle.cs" />
     <Compile Include="Cards\EliteSneakers.cs" />
+    <Compile Include="Cards\FoldableStock.cs" />
+    <Compile Include="Cards\FuturisticStock.cs" />
     <Compile Include="Cards\GetOverHere.cs" />
     <Compile Include="Cards\HigherCaliber.cs" />
     <Compile Include="Cards\HitMeBabyOneMoreTime.cs" />
@@ -139,11 +142,13 @@
     <Compile Include="Cards\Larcenist.cs" />
     <Compile Include="Cards\RandomConfringo.cs" />
     <Compile Include="Cards\KnightsArmor.cs" />
+    <Compile Include="Cards\RocketJump.cs" />
     <Compile Include="Cards\SecondGun.cs" />
     <Compile Include="Cards\Sloth.cs" />
     <Compile Include="Cards\SnapEffect.cs" />
     <Compile Include="Cards\ThisWayUp.cs" />
     <Compile Include="Cards\Thorns.cs" />
+    <Compile Include="Cards\WoodenStock.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
     <Compile Include="Cards\Yang.cs" />
@@ -166,6 +171,7 @@
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
+    <Compile Include="Patches\Explosion.cs" />
     <Compile Include="Patches\Gun.cs" />
     <Compile Include="Patches\GunAmmo.cs" />
     <Compile Include="Patches\HealthHandler.cs" />
@@ -175,6 +181,7 @@
     <Compile Include="TempEffects\EagleEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="Utils\Aim.cs" />
+    <Compile Include="Utils\RemoveOnRoundEnd.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
   </ItemGroup>
   <ItemGroup>
