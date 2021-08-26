@@ -39,6 +39,7 @@ namespace BossSlothsCards.Cards
             gun.numberOfProjectiles = 20;
 
             gun.spread = 0.40f;
+            // TODO: Move this to actial recoil
             gun.recoil = 500;
 
             //gun.ammoReg = 1;

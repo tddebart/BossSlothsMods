@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using BepInEx;
 using BossSlothsCards.Cards;
 using BossSlothsCards.Extensions;
@@ -79,12 +80,18 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Eagle>();
             CustomCard.BuildCard<HigherCaliber>();
             CustomCard.BuildCard<ThisWayUp>();
+            CustomCard.BuildCard<DrumMagazine>();
+            CustomCard.BuildCard<EliteSneakers>();
+            CustomCard.BuildCard<LeMonk>();
+            CustomCard.BuildCard<MorningCoffee>();
+            CustomCard.BuildCard<SecondGun>();
             
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
         }
+
         private IEnumerator DoExplosionThings()
         {
             if (this == null) yield break;
