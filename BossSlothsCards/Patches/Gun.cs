@@ -1,9 +1,5 @@
-﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.MonoBehaviours;
-using BossSlothsCards.Utils;
+﻿using BossSlothsCards.MonoBehaviours;
 using HarmonyLib;
-using ModdingUtils.MonoBehaviours;
-using UnityEngine;
 
 namespace BossSlothsCards.Patches
 {

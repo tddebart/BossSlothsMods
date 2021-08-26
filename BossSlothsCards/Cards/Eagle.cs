@@ -1,5 +1,4 @@
-﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.TempEffects;
+﻿using BossSlothsCards.TempEffects;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;

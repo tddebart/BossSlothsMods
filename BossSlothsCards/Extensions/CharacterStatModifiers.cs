@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
-using On.Photon.Compression;
 
 namespace BossSlothsCards.Extensions
 {

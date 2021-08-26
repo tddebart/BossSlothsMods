@@ -1,8 +1,4 @@
-﻿using HarmonyLib;
-using Sonigon;
-using UnityEngine;
-
-namespace BossSlothsCards.Patches
+﻿namespace BossSlothsCards.Patches
 {
     public class BlockPatch
     {

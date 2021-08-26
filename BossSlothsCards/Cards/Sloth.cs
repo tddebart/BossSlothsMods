@@ -1,7 +1,4 @@
-﻿using BossSlothsCards.MonoBehaviours;
-using BossSlothsCards.TempEffects;
-using ModdingUtils.Extensions;
-using ModdingUtils.RoundsEffects;
+﻿using BossSlothsCards.TempEffects;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;

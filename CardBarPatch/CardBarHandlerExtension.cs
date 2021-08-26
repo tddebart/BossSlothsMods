@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
-using UnityEngine.UI.ProceduralImage;
 
 namespace CardBarPatch
 {

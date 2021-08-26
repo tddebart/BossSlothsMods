@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using HarmonyLib;
 using UnityEngine;
 // ReSharper disable UnusedMember.Local

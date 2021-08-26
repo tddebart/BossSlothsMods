@@ -1,12 +1,10 @@
 ﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.Utils;
 using BossSlothsCards.Utils.Text;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Extensions;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using ModdingUtils.Utils;
 
 
 namespace BossSlothsCards.Cards

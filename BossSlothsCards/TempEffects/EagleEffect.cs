@@ -1,5 +1,4 @@
-﻿using System;
-using ModdingUtils.Extensions;
+﻿using ModdingUtils.Extensions;
 using ModdingUtils.MonoBehaviours;
 using UnityEngine;
 using CharacterStatModifiersExtension = BossSlothsCards.Extensions.CharacterStatModifiersExtension;

@@ -1,5 +1,4 @@
 ﻿using BossSlothsCards.MonoBehaviours;
-using BossSlothsCards.Utils;
 using BossSlothsCards.Utils.Text;
 using UnboundLib;
 using UnboundLib.Cards;
