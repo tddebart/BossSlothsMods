@@ -128,6 +128,7 @@
     <Compile Include="Cards\FoldableStock.cs" />
     <Compile Include="Cards\FuturisticStock.cs" />
     <Compile Include="Cards\GetOverHere.cs" />
+    <Compile Include="Cards\HazmatSuit.cs" />
     <Compile Include="Cards\HigherCaliber.cs" />
     <Compile Include="Cards\HitMeBabyOneMoreTime.cs" />
     <Compile Include="Cards\CopyCat.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
+    <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\SpawnBulletsEffect.cs" />

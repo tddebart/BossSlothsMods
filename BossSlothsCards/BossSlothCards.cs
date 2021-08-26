@@ -87,10 +87,8 @@ namespace BossSlothsCards
             CustomCard.BuildCard<FuturisticStock>();
             CustomCard.BuildCard<RocketJump>();
             CustomCard.BuildCard<WoodenStock>();
-
             CustomCard.BuildCard<SplittingRounds>();
-
-            
+            CustomCard.BuildCard<HazmatSuit>();
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using HarmonyLib;
 
 namespace BossSlothsCards.Extensions
 {
@@ -7,11 +8,13 @@ namespace BossSlothsCards.Extensions
     {
         public float armor;
         public float maxArmor;
+        public OutOfBoundsHandler outOfBoundsHandler;
 
         public CharacterDataAdditionalData()
         {
             armor = 0;
             maxArmor = 0;
+            outOfBoundsHandler = null;
         }
     }
     
@@ -32,6 +35,28 @@ namespace BossSlothsCards.Extensions
                 data.Add(block, value);
             }
             catch (Exception) { }
+        }
+    }
+    
+    // CODE FROM PCE
+    // get outOfBounds handler assigned to this player
+    [HarmonyPatch(typeof(OutOfBoundsHandler), "Start")]
+    class OutOfBoundsHandlerPatchStart
+    {
+        private static void Postfix(OutOfBoundsHandler __instance)
+        {
+            if (((CharacterData)Traverse.Create(__instance).Field("data").GetValue()).GetAdditionalData().outOfBoundsHandler == null)
+            {
+                OutOfBoundsHandler[] ooBs = UnityEngine.GameObject.FindObjectsOfType<OutOfBoundsHandler>();
+                foreach (OutOfBoundsHandler ooB in ooBs)
+                {
+                    if (((CharacterData)Traverse.Create(ooB).Field("data").GetValue()).player.playerID == ((CharacterData)Traverse.Create(__instance).Field("data").GetValue()).player.playerID)
+                    {
+                        ((CharacterData)Traverse.Create(__instance).Field("data").GetValue()).GetAdditionalData().outOfBoundsHandler = ooB;
+                        return;
+                    }
+                }
+            }
         }
     }
 }

@@ -11,8 +11,12 @@ namespace BossSlothsCards.Patches
     {
         [HarmonyPatch("TakeDamageOverTime")]
         [HarmonyPrefix]
-        public static bool TakeDamageOverTime(Vector2 damage, Vector2 position, float time, float interval, Color color, SoundEvent soundDamageOverTime,CharacterData ___data, GameObject damagingWeapon = null, Player damagingPlayer = null)
+        public static bool TakeDamageOverTime(ref Vector2 damage, Vector2 position, float time, float interval, Color color, SoundEvent soundDamageOverTime,CharacterData ___data, GameObject damagingWeapon = null, Player damagingPlayer = null)
         {
+            if (___data.GetComponent<Hazmat_Mono>())
+            {
+                damage *= 0.9f;
+            }
             if (___data.GetComponent<ArmorHandler>() && ___data.GetAdditionalData().armor > 0 && !___data.GetComponent<ArmorHandler>().armorIsZero)
             {
                 ___data.GetComponent<ArmorDamageOverTime>().DoDamageOverTimeVoid(damage, position, time, interval, color, soundDamageOverTime, damagingWeapon, damagingPlayer);
