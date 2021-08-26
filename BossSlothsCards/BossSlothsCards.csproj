@@ -154,6 +154,7 @@
     <Compile Include="Extensions\CharacterData.cs" />
     <Compile Include="Extensions\CharacterStatModifiers.cs" />
     <Compile Include="Extensions\PlayerManager.cs" />
+    <Compile Include="Extensions\PlayerVelocity.cs" />
     <Compile Include="Extensions\String.cs" />
     <Compile Include="MonoBehaviours\ArmorDamageOverTime.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
@@ -166,12 +167,14 @@
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Gun.cs" />
+    <Compile Include="Patches\GunAmmo.cs" />
     <Compile Include="Patches\HealthHandler.cs" />
     <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
+    <Compile Include="Utils\Aim.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using System.Reflection;
+using BossSlothsCards.Utils;
 using HarmonyLib;
 using Photon.Pun;
 using UnboundLib;
@@ -20,8 +21,7 @@ namespace BossSlothsCards.MonoBehaviours
         public bool onCooldown;
         private Holding _holding;
         private Gun _gun;
-
-        private GameObject cube;
+        private Player _player;
 
         public Vector3 aimDirection;
         
@@ -41,12 +41,9 @@ namespace BossSlothsCards.MonoBehaviours
         {
             _holding = GetComponent<Holding>();
             _gun = _holding.holdable.GetComponent<Gun>();
+            _player = GetComponent<Player>();
 
             _aim = GetComponent<Aim>();
-
-            cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.parent = _gun.transform;
-            cube.transform.localPosition = new Vector3(0, 100, 0);
 
             if (!transform.Find("Particles/Orange circle(Clone)"))
             {
@@ -78,7 +75,7 @@ namespace BossSlothsCards.MonoBehaviours
             // calculate if did 360
             
             // angle goes from 0 to 360
-            m_currentAngle = Vector2.SignedAngle(transform.position, cube.transform.position) + 180;
+            m_currentAngle = Utils.Aim.GetAimDirectionAs360(_player);
 
             rotation = Vector2.SignedAngle(DegreesToVector(m_currentAngle), DegreesToVector(m_lastAngle));
             rotation = Mathf.Clamp(rotation, -90, 90);
@@ -97,7 +94,7 @@ namespace BossSlothsCards.MonoBehaviours
                 zeroRotationTime = 0f;
             }
 
-            m_lastAngle = Vector2.SignedAngle(transform.position, cube.transform.position) + 180;
+            m_lastAngle = Utils.Aim.GetAimDirectionAs360(_player);
             m_cumulativeGunRotation += rotation;
             if (m_cumulativeGunRotation > 360f)
             {
@@ -178,7 +175,6 @@ namespace BossSlothsCards.MonoBehaviours
         private void OnDestroy()
         {
             Destroy(circle);
-            Destroy(cube);
             GameModeManager.RemoveHook(GameModeHooks.HookPointEnd, (gm) => ResetBetweenRounds());
         }
     }
