@@ -5,8 +5,7 @@ namespace BossSlothsCards.Cards
 {
     public class _BaseCard : CustomCard
     {
-        public AssetBundle Asset;
-        
+
         protected override string GetTitle()
         {
             return "Title";
