@@ -14,7 +14,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "";
+            return "Try catching me now.";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -25,7 +25,7 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            statModifiers.movementSpeed = 1.25f;
+            statModifiers.movementSpeed = 1.35f;
 
         }
 
@@ -35,7 +35,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+25%",
+                    amount = "+35%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Movement speed"

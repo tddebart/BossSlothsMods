@@ -1,50 +1,33 @@
-﻿using BossSlothsCards.MonoBehaviours;
-using BossSlothsCards.TempEffects;
-using UnboundLib;
-using UnboundLib.Cards;
+﻿using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class SplittingRounds : CustomCard
+    public class BoltAction : CustomCard
     {
 
         protected override string GetTitle()
         {
-            return "Splitting rounds";
+            return "Bolt action";
         }
 
         protected override string GetDescription()
         {
-            return "Bullets will create an extra bullet on each bounce";
+            return "";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.GetOrAddComponent<SplitEffect>();
+
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
-            gun.reflects = 3;
-            
-            var obj = new GameObject("A_SplittingRounds");
-            obj.hideFlags = HideFlags.HideAndDontSave;
-            obj.AddComponent<Sneeze_Mono>();
-            
-            var explosiveBullet = (GameObject)Resources.Load("0 cards/Mayhem");
-            var A_ScreenEdge = explosiveBullet.GetComponent<Gun>().objectsToSpawn[0];
-            
-            gun.objectsToSpawn = new[]
-            {
-                new ObjectsToSpawn
-                {
-                    AddToProjectile = obj
-                },
-                A_ScreenEdge
-            };
+            cardInfo.allowMultiple = false;
 
+            gun.attackSpeed = 0.1f;
+            gun.damage = 2;
+            gun.reloadTimeAdd = 0.35f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -53,10 +36,24 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+3",
+                    amount = "-90%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Attack speed"
+                },
+                new CardInfoStat
+                {
+                    amount = "+100%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Bounces"
+                    stat = "Damage"
+                },
+                new CardInfoStat
+                {
+                    amount = "+0.35s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Reload time"
                 }
             };
         }

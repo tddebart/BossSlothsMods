@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
+    <Compile Include="Cards\BoltAction.cs" />
     <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />
     <Compile Include="Cards\Eagle.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Cards\RandomConfringo.cs" />
     <Compile Include="Cards\KnightsArmor.cs" />
     <Compile Include="Cards\RocketJump.cs" />
+    <Compile Include="Cards\SawbladeBullets.cs" />
     <Compile Include="Cards\SecondGun.cs" />
     <Compile Include="Cards\Sloth.cs" />
     <Compile Include="Cards\SnapEffect.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
     <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
+    <Compile Include="MonoBehaviours\SawObject.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\SpawnBulletsEffect.cs" />
