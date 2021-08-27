@@ -20,7 +20,6 @@ namespace BossSlothsCards.TempEffects
             SinceGroundUpdate();
             grounded = player.data.isGrounded || player.data.isWallGrab;
             multiplier = Mathf.Clamp(((maxMultiplier - 1f) / (timeToMax)) * sinceGrounded + 1f, 1f, maxMultiplier);
-            UnityEngine.Debug.LogWarning(CharacterStatModifiersExtension.GetAdditionalData(characterStatModifiers).damageReduction);
             return !grounded ? CounterStatus.Apply : CounterStatus.Remove;
         }
 

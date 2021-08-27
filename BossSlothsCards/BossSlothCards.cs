@@ -87,7 +87,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-            // 23
+            // 24
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -111,6 +111,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Quadratics>();
             CustomCard.BuildCard<SpinningDeath>();
             CustomCard.BuildCard<UnderDog>();
+            CustomCard.BuildCard<RollingThunder>();
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

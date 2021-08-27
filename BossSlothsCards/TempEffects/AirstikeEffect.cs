@@ -8,8 +8,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.TempEffects
 {
-    // Some code "borrowed from PCE
-    public class SplitEffect : HitSurfaceEffect
+    public class AirstikeEffect : HitSurfaceEffect
     {
         static readonly System.Random rng = new System.Random() { };
         
@@ -30,19 +29,19 @@ namespace BossSlothsCards.TempEffects
             List<Vector3> directions = GetDirections(position, positions);
             effect.SetPositions(positions);
             effect.SetDirections(directions);
-            effect.SetNumBullets(1);
+            effect.SetNumBullets(5);
             effect.SetTimeBetweenShots(0f);
             effect.SetInitialDelay(0f);
 
             // copy private gun stats over and reset a few public stats
             SpawnBulletsEffect.CopyGunStats(this.gun, newGun);
-
-            newGun.reflects = 0;
-            newGun.spread = 0.5f;
+            
+            //newGun.spread = 0.5f;
             newGun.numberOfProjectiles = 1;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
-            newGun.damage = Mathf.Clamp(newGun.damage/2f, 0.5f, float.MaxValue);
-            newGun.projectileSpeed = velocity.magnitude/65;
+            newGun.damage /= 4f;
+            UnityEngine.Debug.LogWarning(velocity.magnitude/90);
+            newGun.projectileSpeed = 0.6f;
             newGun.damageAfterDistanceMultiplier = 1f;
             newGun.GetAdditionalData().inactiveDelay = 0.1f;
             newGun.objectsToSpawn = new [] { PreventRecursion.stopRecursionObjectToSpawn };
@@ -54,10 +53,10 @@ namespace BossSlothsCards.TempEffects
         private List<Vector3> GetPositions(Vector2 position, Vector2 normal, Vector2 parallel)
         {
             List<Vector3> res = new List<Vector3>() { };
-
+            
             for (int i = 0; i < 5; i++)
             {
-                res.Add(position + 0.2f * normal + 0.1f * (float)rng.NextGaussianDouble() * parallel);
+                res.Add(new Vector2(position.x + (-5+2*i),30));
             }
 
             return res;
@@ -69,15 +68,10 @@ namespace BossSlothsCards.TempEffects
 
             foreach (Vector3 shootposition in shootPos)
             {
-                res.Add(((Vector2)shootposition - position).normalized);
+                res.Add(Vector3.down);
             }
 
             return res;
         }
-    }
-
-    public class SplittingGun : Gun
-    {
-
     }
 }

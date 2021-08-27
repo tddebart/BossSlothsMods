@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BossSlothsCards.TempEffects;
 using HarmonyLib;
 using UnityEngine;
 
@@ -13,6 +14,10 @@ namespace BossSlothsCards.Patches
             private static void Postfix(Player __instance)
             {
                 foreach (var resetObj in __instance.GetComponents<BossSlothMonoBehaviour>())
+                {
+                    Object.Destroy(resetObj);
+                }
+                foreach (var resetObj in __instance.GetComponents<SplittingGun>())
                 {
                     Object.Destroy(resetObj);
                 }

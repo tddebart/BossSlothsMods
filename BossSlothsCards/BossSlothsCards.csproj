@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
     <Compile Include="Cards\BoltAction.cs" />
+    <Compile Include="Cards\RollingThunder.cs" />
     <Compile Include="Cards\UnderDog.cs" />
     <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempEffects\AirstikeEffect.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
     <Compile Include="TempEffects\SawBladeEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
