@@ -154,6 +154,7 @@
     <Compile Include="Cards\Sloth.cs" />
     <Compile Include="Cards\SluggishRounds.cs" />
     <Compile Include="Cards\SnapEffect.cs" />
+    <Compile Include="Cards\SpinningDeath.cs" />
     <Compile Include="Cards\SplittingRounds.cs" />
     <Compile Include="Cards\ThisWayUp.cs" />
     <Compile Include="Cards\Thorns.cs" />
@@ -171,6 +172,8 @@
     <Compile Include="Extensions\PlayerVelocity.cs" />
     <Compile Include="Extensions\String.cs" />
     <Compile Include="MonoBehaviours\ArmorDamageOverTime.cs" />
+    <Compile Include="MonoBehaviours\BetterSawObject.cs" />
+    <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
@@ -178,6 +181,7 @@
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
     <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
     <Compile Include="MonoBehaviours\Quadratics_Mono.cs" />
+    <Compile Include="MonoBehaviours\SawCounter.cs" />
     <Compile Include="MonoBehaviours\SawObject.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
@@ -192,12 +196,14 @@
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
+    <Compile Include="TempEffects\SawBladeEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="TempEffects\SplitEffect.cs" />
     <Compile Include="Utils\Aim.cs" />
     <Compile Include="Utils\PreventRecusion.cs" />
     <Compile Include="Utils\RemoveOnRoundEnd.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
+    <Compile Include="Utils\TimeSince.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />

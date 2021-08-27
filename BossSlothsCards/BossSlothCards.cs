@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BepInEx;
 using BossSlothsCards.Cards;
+using BossSlothsCards.TempEffects;
 using HarmonyLib;
 using Jotunn.Utils;
 using Photon.Pun;
@@ -50,6 +51,17 @@ namespace BossSlothsCards
             {
                 UnityEngine.Debug.LogError("Couldn't find EffectAsset?");
             }
+            
+            var saw = (GameObject)Resources.Load("4 map objects/MapObject_Saw_Stat");
+            var betterSaw = Instantiate(saw);
+            DestroyImmediate(betterSaw.GetComponent<PhotonMapObject>());
+            DontDestroyOnLoad(betterSaw);
+            betterSaw.GetComponent<DamageBox>().damage = 27;
+            //DestroyImmediate(betterSaw.GetComponent<Collider2D>());
+            //betterSaw.transform.Rotate(new Vector3(90,0 ));
+            betterSaw.transform.localScale = Vector3.one;
+            betterSaw.transform.position = new Vector3(1000, 0, 0);
+            PhotonNetwork.PrefabPool.RegisterPrefab("MapObject_Saw_Stat", betterSaw);
 
             // 6
             CustomCard.BuildCard<Sneeze>();
@@ -75,7 +87,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-            // 21
+            // 22
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -97,12 +109,14 @@ namespace BossSlothsCards
             CustomCard.BuildCard<SawbladeBullets>();
             CustomCard.BuildCard<SluggishRounds>();
             CustomCard.BuildCard<Quadratics>();
+            CustomCard.BuildCard<SpinningDeath>();
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
 
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => DestroyAllRemoveOnRoundsEnds());
+            GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => ResetStats());
         }
 
         private IEnumerator DoExplosionThings()
@@ -124,6 +138,18 @@ namespace BossSlothsCards
                 if(obj.name == "REMOVE ME") DestroyImmediate(obj);
             }
 
+            yield break;
+        }
+
+        private IEnumerator ResetStats()
+        {
+            foreach (var player in PlayerManager.instance.players)
+            {
+                if (player.GetComponent<SawBladeEffect>())
+                {
+                    
+                }
+            }
             yield break;
         }
 
