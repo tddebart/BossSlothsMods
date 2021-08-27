@@ -51,6 +51,7 @@ namespace BossSlothsCards
                 UnityEngine.Debug.LogError("Couldn't find EffectAsset?");
             }
 
+            // 6
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
             CustomCard.BuildCard<DoubleJump>();
@@ -59,11 +60,13 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Yeetus>();
             //CustomCard.BuildCard<NotToday>();
             
+            // 4
             CustomCard.BuildCard<MomGetTheCamera>();
             CustomCard.BuildCard<RandomConfringo>();
             CustomCard.BuildCard<Larcenist>();
             CustomCard.BuildCard<CopyCat>();
             
+            // 7
             CustomCard.BuildCard<NoThanks>();
             CustomCard.BuildCard<GiveMeAnother>();
             CustomCard.BuildCard<HitMeBabyOneMoreTime>();
@@ -71,7 +74,8 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KnightsArmor>();
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
-
+            
+            // 21
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -89,9 +93,10 @@ namespace BossSlothsCards
             CustomCard.BuildCard<WoodenStock>();
             CustomCard.BuildCard<SplittingRounds>();
             CustomCard.BuildCard<HazmatSuit>();
-
             CustomCard.BuildCard<BoltAction>();
             CustomCard.BuildCard<SawbladeBullets>();
+            CustomCard.BuildCard<SluggishRounds>();
+            CustomCard.BuildCard<Quadratics>();
             
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

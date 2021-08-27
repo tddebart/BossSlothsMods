@@ -1,17 +1,14 @@
-﻿using System;
-using BossSlothsCards.Extensions;
-using UnboundLib.Cards;
+﻿using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class WoodenStock : CustomCard
+    public class SluggishRounds : CustomCard
     {
-        public AssetBundle Asset;
-        
+
         protected override string GetTitle()
         {
-            return "Wooded stock";
+            return "Sluggish rounds";
         }
 
         protected override string GetDescription()
@@ -21,16 +18,24 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.GetAdditionalData().recoil -= 1f;
+
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
+            cardInfo.allowMultiple = false;
 
-            statModifiers.movementSpeed = 1.2f;
-            gun.ammo = 2;
-            gun.reloadTimeAdd = 0.10f;
+            gun.projectileSpeed = 0.05f;
+            gun.reflects = 15;
+            
+            var explosiveBullet = (GameObject)Resources.Load("0 cards/Mayhem");
+            var A_ScreenEdge = explosiveBullet.GetComponent<Gun>().objectsToSpawn[0];
+            
+            gun.objectsToSpawn = new[]
+            {
+                A_ScreenEdge
+            };
+
         }
 
         protected override CardInfoStat[] GetStats()
@@ -39,38 +44,24 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-50%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Recoil"
-                },
-                new CardInfoStat
-                {
-                    amount = "+20%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Movement speed"
-                },
-                new CardInfoStat
-                {
-                    amount = "+2",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Ammo"
-                },
-                new CardInfoStat
-                {
-                    amount = "+0.10s",
+                    amount = "-95%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Reload time"
+                    stat = "Bullet speed"
+                },
+                new CardInfoStat
+                {
+                    amount = "+15",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Bounces"
                 }
             };
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
 
         protected override GameObject GetCardArt()
@@ -80,7 +71,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.NatureBrown;
+            return CardThemeColor.CardThemeColorType.ColdBlue;
         }
 
         public override string GetModName()

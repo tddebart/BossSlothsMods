@@ -20,12 +20,12 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.GetAdditionalData().recoil -= 2.0f;
+            characterStats.GetAdditionalData().recoil -= 3.0f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
 
             statModifiers.health = 1.5f;
             
