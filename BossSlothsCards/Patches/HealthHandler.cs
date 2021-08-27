@@ -16,11 +16,18 @@ namespace BossSlothsCards.Patches
             // Thorns damage
             foreach (var card in ___data.currentCards.Where(card => card.cardName.Contains("Thorns")).Where(card => damagingPlayer != null))
             {
+                // ReSharper disable once PossibleNullReferenceException
                 damagingPlayer.GetComponent<HealthHandler>().CallTakeDamage(damage * 0.2f, Vector2.zero);
             }
             
             // Damage reduction
             damage /= ___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReduction;
+            
+            // Underdog
+            if (damagingPlayer != null && damagingPlayer.GetComponent<Underdog_Mono>() && damagingPlayer.data.health < ___data.health)
+            {
+                damage *= 1.5f;
+            }
             
             // Deal damage to armor not health
             if (___data.GetComponent<ArmorHandler>() && ___data.GetAdditionalData().armor > 0 && !___data.GetComponent<ArmorHandler>().armorIsZero)

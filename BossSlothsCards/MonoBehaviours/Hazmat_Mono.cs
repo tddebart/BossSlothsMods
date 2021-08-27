@@ -5,7 +5,7 @@ using CharacterDataExtension = BossSlothsCards.Extensions.CharacterDataExtension
 
 namespace BossSlothsCards.MonoBehaviours
 {
-    public class Hazmat_Mono : MonoBehaviour
+    public class Hazmat_Mono : BossSlothMonoBehaviour
     {
         private void Update()
         {

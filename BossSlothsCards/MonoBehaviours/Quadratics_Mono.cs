@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.MonoBehaviours
 {
-    public class Quadratics_Mono : MonoBehaviour
+    public class Quadratics_Mono : BossSlothMonoBehaviour
     {
         private bool start;
         

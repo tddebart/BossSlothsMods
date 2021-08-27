@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
     <Compile Include="Cards\BoltAction.cs" />
+    <Compile Include="Cards\UnderDog.cs" />
     <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />
     <Compile Include="Cards\Eagle.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\SpawnBulletsEffect.cs" />
+    <Compile Include="MonoBehaviours\Underdog_Mono.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
     <Compile Include="Patches\Explosion.cs" />
