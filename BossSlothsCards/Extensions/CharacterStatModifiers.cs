@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
+using UnityEngine;
 
 namespace BossSlothsCards.Extensions
 {
@@ -10,6 +11,8 @@ namespace BossSlothsCards.Extensions
         public float recoil;
 
         public bool explosiveResistant;
+
+        public GameObject cube;
 
         public float damageReducedAistrike;
         public float damageReductionOverTime;
@@ -23,6 +26,7 @@ namespace BossSlothsCards.Extensions
             damageReducedAistrike = 6;
             damageReductionOverTime = 1;
             sawBladeScale = 1;
+            cube = null;
         }
     }
     public static class CharacterStatModifiersExtension
@@ -55,6 +59,7 @@ namespace BossSlothsCards.Extensions
                 __instance.GetAdditionalData().damageReducedAistrike = 6;
                 __instance.GetAdditionalData().damageReductionOverTime = 1;
                 __instance.GetAdditionalData().sawBladeScale = 1;
+                __instance.GetAdditionalData().cube = null;
             }
         }
 

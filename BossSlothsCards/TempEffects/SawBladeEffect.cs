@@ -30,13 +30,20 @@ namespace BossSlothsCards.TempEffects
             {
                 timeSinceLastSaw = 0;
                 doEffect = false;
-                var saw = PhotonNetwork.Instantiate("MapObject_Saw_Stat", position, Quaternion.identity);
-                saw.GetComponent<DamageBox>().damage = 27*stats.GetAdditionalData().sawBladeScale;
-                saw.transform.localScale = new Vector3(stats.GetAdditionalData().sawBladeScale, stats.GetAdditionalData().sawBladeScale);
-                saw.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
-                var rem = saw.AddComponent<RemoveAfterSeconds>();
-                rem.seconds = 4.5f;
+                GetComponent<PhotonView>().RPC("RPCA_SpawnSaw_Stat", RpcTarget.All, position, stats.GetAdditionalData().sawBladeScale);
             }
+        }
+
+        [PunRPC]
+        public void RPCA_SpawnSaw_Stat(Vector2 position, float scale)
+        {
+            var saw = Instantiate(BossSlothCards.instance.betterSawObj, position, Quaternion.identity);
+            saw.GetComponent<DamageBox>().damage = 27*scale;
+            saw.transform.localScale = new Vector3(scale, scale);
+            saw.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
+            var rem = saw.AddComponent<RemoveAfterSeconds>();
+            rem.seconds = 4.5f;
+            //TODO see if this network works
         }
 
         public void Update()

@@ -52,7 +52,7 @@ namespace BossSlothsCards.Cards
                 new CardInfoStat
                 {
                     amount = "+15",
-                    positive = false,
+                    positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bounces"
                 }

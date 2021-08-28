@@ -2,6 +2,7 @@
 using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
 using HarmonyLib;
+using Photon.Pun;
 using UnityEngine;
 
 namespace BossSlothsCards.Patches
@@ -12,9 +13,9 @@ namespace BossSlothsCards.Patches
         class Patch_Shoot
         {
             // ReSharper disable once UnusedMember.Local
-            // DoRecoil
             private static void Postfix(GunAmmo __instance, GameObject projectile)
             {
+                // Destroy pong
                 if(__instance.GetAdditionalData().destroyAllPongOnNextShot)
                 {
                     foreach (var obj in __instance.GetAdditionalData().projectiles)
@@ -25,7 +26,8 @@ namespace BossSlothsCards.Patches
                     __instance.GetAdditionalData().destroyAllPongOnNextShot = false;
                 }
                 
-                if (__instance.transform.parent.GetComponentInParent<Holdable>())
+                // DoRecoil
+                if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<PhotonView>().IsMine && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<CharacterStatModifiers>().GetAdditionalData().recoil != 0)
                 {
                     var holdable = __instance.transform.parent.GetComponentInParent<Holdable>();
                     var healthHandler = holdable.holder.GetComponent<HealthHandler>();
@@ -36,12 +38,14 @@ namespace BossSlothsCards.Patches
                     healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*3f));
                 }
 
+                // Alpha effect
                 if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<AlphaEffect>())
                 {
                     __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<AlphaEffect>()
                         .AlphaActive = false;
                 }
 
+                // Keep track of projectiles if have pong
                 if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent
                     .GetComponentInParent<Holdable>().holder.GetComponent<Pong_Mono>())
                 {

@@ -34,6 +34,8 @@ namespace BossSlothsCards.Cards
 
             statModifiers.health = 1.1f;
 
+            gun.reloadTimeAdd = 0.25f;
+
             var saw = (GameObject)Resources.Load("4 map objects/MapObject_Saw_Stat");
             var betterSaw = Instantiate(saw);
             DestroyImmediate(betterSaw.GetComponent<PhotonMapObject>());
@@ -69,9 +71,16 @@ namespace BossSlothsCards.Cards
                 new CardInfoStat
                 {
                     amount = "+50%",
-                    positive = false,
+                    positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Sawblade size"
+                },
+                new CardInfoStat
+                {
+                    amount = "+0.25s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Reload time"
                 }
             };
         }

@@ -3,56 +3,38 @@ using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class SpreadTheLove : CustomCard
+    public class FlatpackMunitions : CustomCard
     {
 
         protected override string GetTitle()
         {
-            return "Spread the love";
+            return "Flatpack munitions";
         }
 
         protected override string GetDescription()
         {
-            return "Everyone needs at least one hug a day";
+            return "Your bullets will drop a destructible box on hit";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
+            
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
-
-            gun.spread = 0.5f;
-            gun.ammo = 5;
+            cardInfo.allowMultiple = false;
+            
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new[]
-            {
-                new CardInfoStat
-                {
-                    amount = "+5",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Bullets"
-                },
-                new CardInfoStat
-                {
-                    amount = "+50%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Bullet spread"
-                }
-            };
+            return null;
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
 
         protected override GameObject GetCardArt()

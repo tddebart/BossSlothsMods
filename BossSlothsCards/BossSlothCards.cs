@@ -29,6 +29,8 @@ namespace BossSlothsCards
         internal static AssetBundle ArtAsset;
         internal static AssetBundle EffectAsset;
 
+        public GameObject betterSawObj;
+
         internal static BossSlothCards instance;
 
         private void Start()
@@ -61,7 +63,8 @@ namespace BossSlothsCards
             //betterSaw.transform.Rotate(new Vector3(90,0 ));
             betterSaw.transform.localScale = Vector3.one;
             betterSaw.transform.position = new Vector3(1000, 0, 0);
-            PhotonNetwork.PrefabPool.RegisterPrefab("MapObject_Saw_Stat", betterSaw);
+            //PhotonNetwork.PrefabPool.RegisterPrefab("MapObject_Saw_Stat", betterSaw);
+            betterSawObj = betterSaw;
 
             
             // 6
