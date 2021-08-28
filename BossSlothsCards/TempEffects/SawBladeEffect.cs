@@ -43,7 +43,6 @@ namespace BossSlothsCards.TempEffects
             saw.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
             var rem = saw.AddComponent<RemoveAfterSeconds>();
             rem.seconds = 4.5f;
-            //TODO see if this network works
         }
 
         public void Update()

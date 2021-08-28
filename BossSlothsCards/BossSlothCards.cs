@@ -30,6 +30,7 @@ namespace BossSlothsCards
         internal static AssetBundle EffectAsset;
 
         public GameObject betterSawObj;
+        public GameObject betterDesBox;
 
         internal static BossSlothCards instance;
 
@@ -54,6 +55,7 @@ namespace BossSlothsCards
                 UnityEngine.Debug.LogError("Couldn't find EffectAsset?");
             }
             
+            // Create bettersaw
             var saw = (GameObject)Resources.Load("4 map objects/MapObject_Saw_Stat");
             var betterSaw = Instantiate(saw);
             DestroyImmediate(betterSaw.GetComponent<PhotonMapObject>());
@@ -66,6 +68,15 @@ namespace BossSlothsCards
             //PhotonNetwork.PrefabPool.RegisterPrefab("MapObject_Saw_Stat", betterSaw);
             betterSawObj = betterSaw;
 
+            //Create betterBox
+            var box = (GameObject) Resources.Load("4 map objects/Box_Destructible_Small");
+            var betterBox = Instantiate(box);
+            DestroyImmediate(betterBox.GetComponent<PhotonMapObject>());
+            betterBox.GetComponent<Rigidbody2D>().simulated = false;
+            DontDestroyOnLoad(betterBox);
+            betterBox.transform.localScale = Vector3.one;
+            betterBox.transform.position = new Vector3(1000, 0, 0);
+            betterDesBox = betterBox;
             
             // 6
             CustomCard.BuildCard<Sneeze>();
@@ -124,6 +135,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<SpreadTheLove>();
             CustomCard.BuildCard<SquiresArmor>();
             CustomCard.BuildCard<Pong>();
+            //CustomCard.BuildCard<FlatpackMunitions>();
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

@@ -213,6 +213,7 @@
     <Compile Include="TempEffects\AirstikeEffect.cs" />
     <Compile Include="TempEffects\AlphaEffect.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
+    <Compile Include="TempEffects\FlatpackMunitionsEffect.cs" />
     <Compile Include="TempEffects\OmegaEffect.cs" />
     <Compile Include="TempEffects\SawBladeEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
