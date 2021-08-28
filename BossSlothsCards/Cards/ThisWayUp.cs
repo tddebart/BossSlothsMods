@@ -33,7 +33,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-50%",
+                    amount = "-150%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Gravity"
