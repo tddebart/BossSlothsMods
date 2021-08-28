@@ -169,6 +169,7 @@
     <Compile Include="Cards\SplittingRounds.cs" />
     <Compile Include="Cards\ThisWayUp.cs" />
     <Compile Include="Cards\Thorns.cs" />
+    <Compile Include="Cards\Whale.cs" />
     <Compile Include="Cards\WoodenStock.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
