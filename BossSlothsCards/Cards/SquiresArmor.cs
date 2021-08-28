@@ -5,18 +5,17 @@ using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class KnightsArmor : CustomCard
+    public class SquiresArmor : CustomCard
     {
-        public AssetBundle Asset;
-        
+
         protected override string GetTitle()
         {
-            return "Knights armor";
+            return "Squires armor";
         }
 
         protected override string GetDescription()
         {
-            return "Gain a set of regenerating knight armor to protect you from damage";
+            return "Gain a set of Squire's Armor to protect you from damage";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -30,29 +29,29 @@ namespace BossSlothsCards.Cards
             armorBar.name = "ArmorBar";
             armorBar.Translate(new Vector3(0,0.35f,0));
             var armor = player.gameObject.AddComponent<Armor_Mono>();
-            armor.maxArmor = 50;
+            armor.maxArmor = 25;
         }
-
+        
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            statModifiers.health = 0.7f;
+            statModifiers.health = 0.85f;
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new CardInfoStat[]
+            return new []
             {
                 new CardInfoStat
                 {
-                    amount = "+50",
+                    amount = "+25",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Max armor"
                 },
                 new CardInfoStat
                 {
-                    amount = "-30%",
+                    amount = "-15%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Max HP"
@@ -62,7 +61,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
 
         protected override GameObject GetCardArt()
@@ -72,7 +71,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DefensiveBlue;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
 
         public override string GetModName()

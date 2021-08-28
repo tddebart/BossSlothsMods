@@ -124,8 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BossSlothMonoBehaviour.cs" />
+    <Compile Include="Cards\Alpha.cs" />
+    <Compile Include="Cards\Attract.cs" />
+    <Compile Include="Cards\Boing.cs" />
     <Compile Include="Cards\BoltAction.cs" />
+    <Compile Include="Cards\Omega.cs" />
+    <Compile Include="Cards\Repellent.cs" />
     <Compile Include="Cards\RollingThunder.cs" />
+    <Compile Include="Cards\SpreadTheLove.cs" />
+    <Compile Include="Cards\SquiresArmor.cs" />
     <Compile Include="Cards\UnderDog.cs" />
     <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />
@@ -199,7 +206,9 @@
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempEffects\AirstikeEffect.cs" />
+    <Compile Include="TempEffects\AlphaEffect.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
+    <Compile Include="TempEffects\OmegaEffect.cs" />
     <Compile Include="TempEffects\SawBladeEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="TempEffects\SplitEffect.cs" />

@@ -112,7 +112,15 @@ namespace BossSlothsCards
             CustomCard.BuildCard<SpinningDeath>();
             CustomCard.BuildCard<UnderDog>();
             CustomCard.BuildCard<RollingThunder>();
-            
+
+            CustomCard.BuildCard<Alpha>();
+            CustomCard.BuildCard<Omega>();
+            CustomCard.BuildCard<Attract>();
+            CustomCard.BuildCard<Boing>();
+            CustomCard.BuildCard<Repellent>();
+            CustomCard.BuildCard<SpreadTheLove>();
+            CustomCard.BuildCard<SquiresArmor>();
+
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());

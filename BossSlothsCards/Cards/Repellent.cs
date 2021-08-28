@@ -1,68 +1,58 @@
-﻿using BossSlothsCards.Extensions;
-using BossSlothsCards.MonoBehaviours;
+﻿using System;
+using BossSlothsCards.Extensions;
 using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class KnightsArmor : CustomCard
+    public class Repellent : CustomCard
     {
-        public AssetBundle Asset;
-        
+
         protected override string GetTitle()
         {
-            return "Knights armor";
+            return "Repellent";
         }
 
         protected override string GetDescription()
         {
-            return "Gain a set of regenerating knight armor to protect you from damage";
+            return "";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            if (player.GetComponent<ArmorHandler>())
-            {
-                data.GetAdditionalData().maxArmor += 50;
-                return;
-            }
-            var armorBar = Instantiate(player.transform.Find("WobbleObjects/Healthbar"), player.transform.Find("WobbleObjects"));
-            armorBar.name = "ArmorBar";
-            armorBar.Translate(new Vector3(0,0.35f,0));
-            var armor = player.gameObject.AddComponent<Armor_Mono>();
-            armor.maxArmor = 50;
+            characterStats.GetAdditionalData().recoil += 0.25f;
         }
-
+        
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            statModifiers.health = 0.7f;
+            gun.knockback = 0.25f;
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new CardInfoStat[]
+            return new []
             {
                 new CardInfoStat
                 {
-                    amount = "+50",
+                    amount = "+25%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Max armor"
+                    stat = "Recoil"
                 },
                 new CardInfoStat
                 {
-                    amount = "-30%",
-                    positive = false,
+                    amount = "+25%",
+                    positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Max HP"
+                    stat = "Knockback"
                 }
             };
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
 
         protected override GameObject GetCardArt()
@@ -72,7 +62,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DefensiveBlue;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
 
         public override string GetModName()

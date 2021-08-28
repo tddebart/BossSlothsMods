@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Gives you a set of regenerating kings armor to protect you from damage";
+            return "Gain a set of regenerating kings armor to protect you from damage";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
