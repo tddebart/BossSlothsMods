@@ -22,14 +22,15 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.GetOrAddComponent<SawBladeEffect>();
-            player.GetComponent<SawBladeEffect>().timeSinceLastSaw = 15;
+            var effect = player.gameObject.GetOrAddComponent<SawBladeEffect>();
+            effect.timeSinceLastSaw = 15;
             player.gameObject.GetOrAddComponent<SawCounter>();
+            characterStats.GetAdditionalData().sawBladeScale += 0.5f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
 
             statModifiers.health = 1.1f;
 
@@ -64,6 +65,13 @@ namespace BossSlothsCards.Cards
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Health"
+                },
+                new CardInfoStat
+                {
+                    amount = "+50%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Sawblade size"
                 }
             };
         }

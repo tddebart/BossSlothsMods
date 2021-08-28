@@ -31,7 +31,8 @@ namespace BossSlothsCards.TempEffects
                 timeSinceLastSaw = 0;
                 doEffect = false;
                 var saw = PhotonNetwork.Instantiate("MapObject_Saw_Stat", position, Quaternion.identity);
-                saw.transform.localScale = Vector3.one;
+                saw.GetComponent<DamageBox>().damage = 27*stats.GetAdditionalData().sawBladeScale;
+                saw.transform.localScale = new Vector3(stats.GetAdditionalData().sawBladeScale, stats.GetAdditionalData().sawBladeScale);
                 saw.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
                 var rem = saw.AddComponent<RemoveAfterSeconds>();
                 rem.seconds = 4.5f;

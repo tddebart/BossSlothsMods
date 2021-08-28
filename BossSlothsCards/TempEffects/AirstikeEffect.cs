@@ -5,6 +5,7 @@ using BossSlothsCards.Utils;
 using ModdingUtils.Extensions;
 using ModdingUtils.RoundsEffects;
 using UnityEngine;
+using CharacterStatModifiersExtension = BossSlothsCards.Extensions.CharacterStatModifiersExtension;
 
 namespace BossSlothsCards.TempEffects
 {
@@ -39,7 +40,7 @@ namespace BossSlothsCards.TempEffects
             //newGun.spread = 0.5f;
             newGun.numberOfProjectiles = 1;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
-            newGun.damage /= 4f;
+            newGun.damage /= CharacterStatModifiersExtension.GetAdditionalData(player.data.stats).damageReducedAistrike;
             UnityEngine.Debug.LogWarning(velocity.magnitude/90);
             newGun.projectileSpeed = 0.6f;
             newGun.damageAfterDistanceMultiplier = 1f;

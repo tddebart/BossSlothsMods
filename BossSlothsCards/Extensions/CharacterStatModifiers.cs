@@ -11,11 +11,18 @@ namespace BossSlothsCards.Extensions
 
         public bool explosiveResistant;
 
+        public float damageReducedAistrike;
+        public float damageReductionOverTime;
+        public float sawBladeScale;
+
         public CharacterStatModifiersAdditionalData()
         {
             damageReduction = 1;
             recoil = 0;
             explosiveResistant = false;
+            damageReducedAistrike = 6;
+            damageReductionOverTime = 1;
+            sawBladeScale = 1;
         }
     }
     public static class CharacterStatModifiersExtension
@@ -45,6 +52,9 @@ namespace BossSlothsCards.Extensions
                 __instance.GetAdditionalData().damageReduction = 1;
                 __instance.GetAdditionalData().recoil = 0;
                 __instance.GetAdditionalData().explosiveResistant = false;
+                __instance.GetAdditionalData().damageReducedAistrike = 6;
+                __instance.GetAdditionalData().damageReductionOverTime = 1;
+                __instance.GetAdditionalData().sawBladeScale = 1;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using BossSlothsCards.TempEffects;
+﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.TempEffects;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -14,23 +15,41 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Description";
+            return "Your bullets will create an airstrike where they land\n For each stack:";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             player.gameObject.AddComponent<AirstikeEffect>();
+            characterStats.GetAdditionalData().damageReducedAistrike /= 1.8f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
 
+            gun.reloadTimeAdd = 0.5f;
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new[]
+            {
+                new CardInfoStat
+                {
+                    amount = "*2",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage per airstrike bullet"
+                },
+                new CardInfoStat
+                {
+                    amount = "+0.5s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Reload time"
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()

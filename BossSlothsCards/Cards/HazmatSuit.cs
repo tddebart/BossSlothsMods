@@ -1,4 +1,6 @@
-﻿using BossSlothsCards.MonoBehaviours;
+﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
+using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -19,12 +21,13 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<Hazmat_Mono>();
+            player.gameObject.GetOrAddComponent<Hazmat_Mono>();
+            characterStats.GetAdditionalData().damageReductionOverTime -= 0.1f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
         }
 
         protected override CardInfoStat[] GetStats()

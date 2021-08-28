@@ -63,6 +63,7 @@ namespace BossSlothsCards
             betterSaw.transform.position = new Vector3(1000, 0, 0);
             PhotonNetwork.PrefabPool.RegisterPrefab("MapObject_Saw_Stat", betterSaw);
 
+            
             // 6
             CustomCard.BuildCard<Sneeze>();
             CustomCard.BuildCard<YinYang>();
