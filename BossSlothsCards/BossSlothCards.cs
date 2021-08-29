@@ -138,6 +138,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<FlatpackMunitions>();
             CustomCard.BuildCard<Whale>();
             CustomCard.BuildCard<SleightOfHand>();
+            CustomCard.BuildCard<RecyclingDay>();
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

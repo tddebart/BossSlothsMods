@@ -131,6 +131,7 @@
     <Compile Include="Cards\FlatpackMunitions.cs" />
     <Compile Include="Cards\Omega.cs" />
     <Compile Include="Cards\Pong.cs" />
+    <Compile Include="Cards\RecyclingDay.cs" />
     <Compile Include="Cards\Repellent.cs" />
     <Compile Include="Cards\RollingThunder.cs" />
     <Compile Include="Cards\SleightOfHand.cs" />

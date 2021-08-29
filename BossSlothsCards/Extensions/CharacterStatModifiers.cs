@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using BossSlothsCards.Utils;
 using HarmonyLib;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace BossSlothsCards.Extensions
         public float damageReductionOverTime;
         public float sawBladeScale;
 
+        public TimeSince timeSinceLastBlockBox;
+
         public CharacterStatModifiersAdditionalData()
         {
             damageReduction = 1;
@@ -27,6 +30,7 @@ namespace BossSlothsCards.Extensions
             damageReductionOverTime = 1;
             sawBladeScale = 1;
             cube = null;
+            timeSinceLastBlockBox = 0;
         }
     }
     public static class CharacterStatModifiersExtension
@@ -60,6 +64,7 @@ namespace BossSlothsCards.Extensions
                 __instance.GetAdditionalData().damageReductionOverTime = 1;
                 __instance.GetAdditionalData().sawBladeScale = 1;
                 __instance.GetAdditionalData().cube = null;
+                __instance.GetAdditionalData().timeSinceLastBlockBox = 0;
             }
         }
 
