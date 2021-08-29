@@ -173,6 +173,7 @@
     <Compile Include="Cards\Thorns.cs" />
     <Compile Include="Cards\Whale.cs" />
     <Compile Include="Cards\WoodenStock.cs" />
+    <Compile Include="Cards\WreckingBall.cs" />
     <Compile Include="Cards\Yeetus.cs" />
     <Compile Include="Cards\Sneeze.cs" />
     <Compile Include="Cards\Yang.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="TempEffects\SleightOfHandEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="TempEffects\SplitEffect.cs" />
+    <Compile Include="TempEffects\WreckingBallEffect.cs" />
     <Compile Include="Utils\Aim.cs" />
     <Compile Include="Utils\PreventRecusion.cs" />
     <Compile Include="Utils\RemoveOnRoundEnd.cs" />

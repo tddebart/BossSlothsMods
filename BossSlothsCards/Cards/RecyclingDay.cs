@@ -65,12 +65,23 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = false;
-            
+
+            statModifiers.health = 1.1f;
+
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new[]
+            {
+                new CardInfoStat
+                {
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Healh"
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()
@@ -85,7 +96,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.NatureBrown;
         }
 
         public override string GetModName()
