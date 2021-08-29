@@ -135,7 +135,7 @@
     <Compile Include="Cards\OverclockedFlywheels.cs" />
     <Compile Include="Cards\Pong.cs" />
     <Compile Include="Cards\RecyclingDay.cs" />
-    <Compile Include="Cards\Repellent.cs" />
+    <Compile Include="Cards\Repel.cs" />
     <Compile Include="Cards\RollingThunder.cs" />
     <Compile Include="Cards\SleightOfHand.cs" />
     <Compile Include="Cards\SpreadTheLove.cs" />

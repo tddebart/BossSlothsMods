@@ -21,20 +21,6 @@ namespace BossSlothsCards.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             player.gameObject.AddComponent<AlphaEffect>();
-            
-            var reloadTrigger = new GameObject("Alpha_A");
-            var trigger = reloadTrigger.AddComponent<ReloadTigger>();
-            trigger.outOfAmmoEvent = new UnityEvent();
-            trigger.outOfAmmoEvent.AddListener(() =>
-            {
-            });
-            trigger.reloadDoneEvent = new UnityEvent();
-            trigger.reloadDoneEvent.AddListener(() =>
-            {
-                reloadTrigger.GetComponentInParent<AlphaEffect>().AlphaActive = true;
-            });
-            
-            reloadTrigger.transform.parent = player.transform;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -87,7 +73,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return null;
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Alpha");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

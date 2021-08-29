@@ -103,7 +103,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-            // 38
+            // 39
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -132,7 +132,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Omega>();
             CustomCard.BuildCard<Attract>();
             CustomCard.BuildCard<Boing>();
-            CustomCard.BuildCard<Repellent>();
+            CustomCard.BuildCard<Repel>();
             CustomCard.BuildCard<SpreadTheLove>();
             CustomCard.BuildCard<SquiresArmor>();
             CustomCard.BuildCard<Pong>();

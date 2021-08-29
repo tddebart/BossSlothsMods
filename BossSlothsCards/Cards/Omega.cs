@@ -73,7 +73,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return null;
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Omega");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

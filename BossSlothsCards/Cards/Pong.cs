@@ -113,7 +113,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return null;
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Pong");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

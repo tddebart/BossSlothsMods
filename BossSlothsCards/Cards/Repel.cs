@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class Repellent : CustomCard
+    public class Repel : CustomCard
     {
 
         protected override string GetTitle()
         {
-            return "Repellent";
+            return "Repel";
         }
 
         protected override string GetDescription()
@@ -57,7 +57,7 @@ namespace BossSlothsCards.Cards
 
         protected override GameObject GetCardArt()
         {
-            return null;
+            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_Repel");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()

@@ -1,4 +1,6 @@
 ﻿using ModdingUtils.MonoBehaviours;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace BossSlothsCards.TempEffects
 {
@@ -21,6 +23,26 @@ namespace BossSlothsCards.TempEffects
         public override void OnApply()
         {
             
+        }
+
+        public override void OnAwake()
+        {
+            base.OnAwake();
+            var reloadTrigger = new GameObject("Alpha_A");
+            var trigger = reloadTrigger.AddComponent<ReloadTigger>();
+            trigger.outOfAmmoEvent = new UnityEvent();
+            trigger.outOfAmmoEvent.AddListener(() =>
+            {
+            });
+            trigger.reloadDoneEvent = new UnityEvent();
+            trigger.reloadDoneEvent.AddListener(() =>
+            {
+                UnityEngine.Debug.LogWarning(trigger);
+                UnityEngine.Debug.LogWarning(trigger.GetComponentInParent<AlphaEffect>());
+                trigger.GetComponentInParent<AlphaEffect>().AlphaActive = true;
+            });
+            
+            reloadTrigger.transform.parent = player.transform;
         }
 
         public override void Reset()
