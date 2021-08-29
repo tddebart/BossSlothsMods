@@ -133,6 +133,7 @@
     <Compile Include="Cards\Pong.cs" />
     <Compile Include="Cards\Repellent.cs" />
     <Compile Include="Cards\RollingThunder.cs" />
+    <Compile Include="Cards\SleightOfHand.cs" />
     <Compile Include="Cards\SpreadTheLove.cs" />
     <Compile Include="Cards\SquiresArmor.cs" />
     <Compile Include="Cards\UnderDog.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="TempEffects\FlatpackMunitionsEffect.cs" />
     <Compile Include="TempEffects\OmegaEffect.cs" />
     <Compile Include="TempEffects\SawBladeEffect.cs" />
+    <Compile Include="TempEffects\SleightOfHandEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
     <Compile Include="TempEffects\SplitEffect.cs" />
     <Compile Include="Utils\Aim.cs" />
