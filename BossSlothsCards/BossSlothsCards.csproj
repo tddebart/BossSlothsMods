@@ -132,6 +132,7 @@
     <Compile Include="Cards\FlatpackMunitions.cs" />
     <Compile Include="Cards\LongFallBoots.cs" />
     <Compile Include="Cards\Omega.cs" />
+    <Compile Include="Cards\OverclockedFlywheels.cs" />
     <Compile Include="Cards\Pong.cs" />
     <Compile Include="Cards\RecyclingDay.cs" />
     <Compile Include="Cards\Repellent.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="TempEffects\FlatpackMunitionsEffect.cs" />
     <Compile Include="TempEffects\LongFallBootsEffect.cs" />
     <Compile Include="TempEffects\OmegaEffect.cs" />
+    <Compile Include="TempEffects\OverclockedFlywheelsEffect.cs" />
     <Compile Include="TempEffects\SawBladeEffect.cs" />
     <Compile Include="TempEffects\SleightOfHandEffect.cs" />
     <Compile Include="TempEffects\SlothEffect.cs" />
