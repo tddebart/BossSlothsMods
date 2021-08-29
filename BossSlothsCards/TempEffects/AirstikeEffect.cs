@@ -41,7 +41,6 @@ namespace BossSlothsCards.TempEffects
             newGun.numberOfProjectiles = 1;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
             newGun.damage /= CharacterStatModifiersExtension.GetAdditionalData(player.data.stats).damageReducedAistrike;
-            UnityEngine.Debug.LogWarning(velocity.magnitude/90);
             newGun.projectileSpeed = 0.6f;
             newGun.damageAfterDistanceMultiplier = 1f;
             newGun.GetAdditionalData().inactiveDelay = 0.1f;

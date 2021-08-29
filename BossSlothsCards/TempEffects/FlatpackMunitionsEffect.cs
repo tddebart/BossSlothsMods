@@ -4,6 +4,7 @@ using ModdingUtils.RoundsEffects;
 using Photon.Pun;
 using UnboundLib;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace BossSlothsCards.TempEffects
@@ -28,20 +29,39 @@ namespace BossSlothsCards.TempEffects
             if (timeSinceLastBox > 1)
             {
                 timeSinceLastBox = 0;
-                GetComponent<PhotonView>().RPC("RPCA_SpawnBox", RpcTarget.All, position);
+                if (GetComponent<PhotonView>().IsMine)
+                {
+                    PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", (position + 0.75f*normal), Quaternion.identity);
+                }
+                // var rem = box.AddComponent<RemoveAfterSeconds>();
+                // rem.seconds = 4;
+                
+                this.ExecuteAfterSeconds(0.05f, () =>
+                {
+                    var currentObj =
+                        MapManager.instance.currentMap.Map.gameObject.transform.GetChild(MapManager.instance.currentMap.Map.gameObject.transform.childCount - 1);
+                    var rigid = currentObj.GetComponent<Rigidbody2D>();
+                    rigid.isKinematic = false;
+                    rigid.simulated = true;
+                    currentObj.GetComponent<DamagableEvent>().deathEvent = new UnityEvent();
+                    currentObj.GetComponent<DamagableEvent>().deathEvent.AddListener(() =>
+                    {
+                        Destroy(currentObj.gameObject);
+                    });
+                });
             }
         }
 
-        [PunRPC]
-        public void RPCA_SpawnBox(Vector2 position)
-        {
-            var box = Instantiate(BossSlothCards.instance.betterDesBox, position, Quaternion.identity);
-            //box.AddComponent<PhotonMapObject>();
-            box.GetComponent<Rigidbody2D>().simulated = true;
-            box.GetComponent<PhotonView>().ViewID = 696969;
-            box.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
-            var rem = box.AddComponent<RemoveAfterSeconds>();
-            rem.seconds = 4.5f;
-        }
+        // [PunRPC]
+        // public void RPCA_SpawnBox(Vector2 position)
+        // {
+        //     var box = Instantiate(BossSlothCards.instance.betterDesBox, position, Quaternion.identity);
+        //     //box.AddComponent<PhotonMapObject>();
+        //     box.GetComponent<Rigidbody2D>().simulated = true;
+        //     box.GetComponent<PhotonView>().ViewID = 696969;
+        //     box.transform.SetParent(SceneManager.GetSceneAt(1).GetRootGameObjects()[0].transform);
+        //     var rem = box.AddComponent<RemoveAfterSeconds>();
+        //     rem.seconds = 4.5f;
+        // }
     }
 }
