@@ -102,7 +102,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-            // 35
+            // 36
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -140,6 +140,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<SleightOfHand>();
             CustomCard.BuildCard<RecyclingDay>();
             //CustomCard.BuildCard<WreckingBall>();
+            CustomCard.BuildCard<LongFallBoots>();
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

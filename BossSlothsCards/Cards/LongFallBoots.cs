@@ -1,14 +1,15 @@
-﻿using UnboundLib.Cards;
+﻿using BossSlothsCards.Extensions;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class Whale : CustomCard
+    public class LongFallBoots : CustomCard
     {
 
         protected override string GetTitle()
         {
-            return "Whale";
+            return "Long fall boots";
         }
 
         protected override string GetDescription()
@@ -18,50 +19,49 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            
+            characterStats.GetAdditionalData().reducedDamageFromWall -= 0.1f;
+            characterStats.GetAdditionalData().extraJumpHeight += 0.5f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
 
-            statModifiers.health = 4.0f;
-            statModifiers.movementSpeed = 0.3f;
-            gun.attackSpeed = 1.5f;
-            statModifiers.sizeMultiplier = 1.5f;
+            statModifiers.health = 0.85f;
+
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new []
+            return new[]
             {
                 new CardInfoStat
                 {
-                    amount = "+300%",
+                    amount = "+50%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Jump height"
+                },
+                new CardInfoStat
+                {
+                    amount = "-10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage resistance from walls"
+                },
+                new CardInfoStat
+                {
+                    amount = "-15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Health"
-                },
-                new CardInfoStat
-                {
-                    amount = "-60%",
-                    positive = false,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Movement speed"
-                },
-                new CardInfoStat
-                {
-                    amount = "+50%",
-                    positive = false,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Attack speed"
                 }
             };
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Common;
         }
 
         protected override GameObject GetCardArt()
@@ -71,7 +71,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.ColdBlue;
         }
 
         public override string GetModName()

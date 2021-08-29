@@ -13,6 +13,12 @@ namespace BossSlothsCards.Patches
         [HarmonyPrefix]
         public static bool CallTakeDamage(CharacterData ___data, ref Vector2 damage, Vector2 position, GameObject damagingWeapon = null, Player damagingPlayer = null)
         {
+            // Long fall boots reduced damage from wall
+            if (damagingPlayer == null && damagingWeapon == null && position == (Vector2)___data.transform.position)
+            {
+                damage *= ___data.stats.GetAdditionalData().reducedDamageFromWall;
+            }
+            
             // Thorns damage
             foreach (var card in ___data.currentCards.Where(card => card.cardName.Contains("Thorns")).Where(card => damagingPlayer != null))
             {

@@ -20,6 +20,8 @@ namespace BossSlothsCards.Extensions
         public float sawBladeScale;
 
         public TimeSince timeSinceLastBlockBox;
+        public float reducedDamageFromWall;
+        public float extraJumpHeight;
 
         public CharacterStatModifiersAdditionalData()
         {
@@ -31,6 +33,8 @@ namespace BossSlothsCards.Extensions
             sawBladeScale = 1;
             cube = null;
             timeSinceLastBlockBox = 0;
+            reducedDamageFromWall = 1;
+            extraJumpHeight = 1;
         }
     }
     public static class CharacterStatModifiersExtension
@@ -65,6 +69,8 @@ namespace BossSlothsCards.Extensions
                 __instance.GetAdditionalData().sawBladeScale = 1;
                 __instance.GetAdditionalData().cube = null;
                 __instance.GetAdditionalData().timeSinceLastBlockBox = 0;
+                __instance.GetAdditionalData().reducedDamageFromWall = 1;
+                __instance.GetAdditionalData().extraJumpHeight = 1;
             }
         }
 
