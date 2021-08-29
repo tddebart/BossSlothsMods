@@ -128,6 +128,7 @@
     <Compile Include="Cards\Attract.cs" />
     <Compile Include="Cards\Boing.cs" />
     <Compile Include="Cards\BoltAction.cs" />
+    <Compile Include="Cards\BulletProofBullets.cs" />
     <Compile Include="Cards\FlatpackMunitions.cs" />
     <Compile Include="Cards\LongFallBoots.cs" />
     <Compile Include="Cards\Omega.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Patches\Gun.cs" />
     <Compile Include="Patches\GunAmmo.cs" />
     <Compile Include="Patches\HealthHandler.cs" />
+    <Compile Include="Patches\ProjectileCollision.cs" />
     <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

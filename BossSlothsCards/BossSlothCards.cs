@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BepInEx;
 using BossSlothsCards.Cards;
+using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
 using HarmonyLib;
 using Jotunn.Utils;
@@ -102,7 +103,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<KingsArmor>();
             CustomCard.BuildCard<Thorns>();
             
-            // 36
+            // 37
             CustomCard.BuildCard<GetOverHere>();
             CustomCard.BuildCard<Sloth>();
             CustomCard.BuildCard<Eagle>();
@@ -141,6 +142,7 @@ namespace BossSlothsCards
             CustomCard.BuildCard<RecyclingDay>();
             //CustomCard.BuildCard<WreckingBall>();
             CustomCard.BuildCard<LongFallBoots>();
+            CustomCard.BuildCard<BulletProofBullets>();
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
