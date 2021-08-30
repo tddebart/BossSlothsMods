@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
 using Photon.Pun;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -22,6 +23,7 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            player.gameObject.AddComponent<RecyclingDay_Mono>();
             var reclyObj = new GameObject("recycling");
             var jump = reclyObj.AddComponent<PlayerDoJump>();
             jump.multiplier = 1;
@@ -38,25 +40,21 @@ namespace BossSlothsCards.Cards
                 {
                     jump.GetComponentInParent<CharacterStatModifiers>().GetAdditionalData().timeSinceLastBlockBox = 0;
                     jump.DoJump();
-                    if (jump.GetComponentInParent<PhotonView>().IsMine)
+                    if (PhotonNetwork.IsMasterClient)
                     {
                         PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", (player.transform.position), Quaternion.identity);
+                        jump.ExecuteAfterSeconds(0.08f, () =>
+                        {
+                            jump.transform.parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                        });
+                        jump.ExecuteAfterSeconds(0.15f, () =>
+                        {
+                            jump.transform.parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                        });
                     }
                     // var rem = box.AddComponent<RemoveAfterSeconds>();
                     // rem.seconds = 4;
                     
-                    jump.ExecuteAfterSeconds(0.02f, () =>
-                    {
-                        var currentObj = MapManager.instance.currentMap.Map.gameObject.transform.GetChild(MapManager.instance.currentMap.Map.gameObject.transform.childCount - 1);
-                        var rigid = currentObj.GetComponent<Rigidbody2D>();
-                        rigid.isKinematic = false;
-                        rigid.simulated = true;
-                        currentObj.GetComponent<DamagableEvent>().deathEvent = new UnityEvent();
-                        currentObj.GetComponent<DamagableEvent>().deathEvent.AddListener(() =>
-                        {
-                            Destroy(currentObj.gameObject);
-                        });
-                    });
                 }
             });
             reclyObj.transform.SetParent(player.gameObject.transform);

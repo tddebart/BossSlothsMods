@@ -26,13 +26,17 @@ namespace BossSlothsCards.TempEffects
         
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
-            if (timeSinceLastBox > 1)
+            if (timeSinceLastBox > 0.5f)
             {
                 timeSinceLastBox = 0;
                 if (PhotonNetwork.IsMasterClient)
                 {
                     PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", (position + 0.75f*normal), Quaternion.identity);
-                    this.ExecuteAfterSeconds(0.05f, () =>
+                    this.ExecuteAfterSeconds(0.08f, () =>
+                    {
+                        GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                    });
+                    this.ExecuteAfterSeconds(0.15f, () =>
                     {
                         GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
                     });

@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Your bullets will drop a destructible box on hit with a cooldown of 1 seconds";
+            return "Your bullets will drop a destructible box on hit with a cooldown of half a seconds";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

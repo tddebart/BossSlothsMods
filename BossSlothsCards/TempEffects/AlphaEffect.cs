@@ -37,9 +37,7 @@ namespace BossSlothsCards.TempEffects
             trigger.reloadDoneEvent = new UnityEvent();
             trigger.reloadDoneEvent.AddListener(() =>
             {
-                UnityEngine.Debug.LogWarning(trigger);
-                UnityEngine.Debug.LogWarning(trigger.GetComponentInParent<AlphaEffect>());
-                trigger.GetComponentInParent<AlphaEffect>().AlphaActive = true;
+                AlphaActive = true;
             });
             
             reloadTrigger.transform.parent = player.transform;
