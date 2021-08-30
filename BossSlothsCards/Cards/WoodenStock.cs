@@ -11,7 +11,7 @@ namespace BossSlothsCards.Cards
         
         protected override string GetTitle()
         {
-            return "Wooded stock";
+            return "Wooden stock";
         }
 
         protected override string GetDescription()

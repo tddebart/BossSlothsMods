@@ -36,6 +36,7 @@ namespace BossSlothsCards.TempEffects
                 // var rem = box.AddComponent<RemoveAfterSeconds>();
                 // rem.seconds = 4;
                 
+                //TODO: make this into a rpc
                 this.ExecuteAfterSeconds(0.05f, () =>
                 {
                     var currentObj =

@@ -3,6 +3,7 @@ using System.Linq;
 using BossSlothsCards.Extensions;
 using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace BossSlothsCards.Cards
             var pong = player.gameObject.GetOrAddComponent<Pong_Mono>();
             pong.maxAmmo++;
             gun.reflects = int.MaxValue-150;
-            
+
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -60,15 +61,22 @@ namespace BossSlothsCards.Cards
             gun.spread = 0.1f;
             gun.gravity = 0.9f;
             gun.damage = 0.9f;
+            
+            gun.projectileColor = Color.yellow;
 
+            var obj = new GameObject("pong", typeof(Sneeze_Mono), typeof(RemoveOnRoundEnd), typeof(Pong_Bullet));
+            DontDestroyOnLoad(obj);
+            
             gun.objectsToSpawn = new[]
             {
                 A_ScreenEdge,
                 new ObjectsToSpawn
                 {
-                    AddToProjectile = new GameObject("pong", typeof(Sneeze_Mono))
+                    AddToProjectile = obj
                 }
             };
+            
+            CustomCardCategories.instance.MakeCardsExclusive(cardInfo, CardChoice.instance.cards.First(info => info.cardName == "GROW"));
         }
 
         protected override CardInfoStat[] GetStats()

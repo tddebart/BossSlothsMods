@@ -147,8 +147,8 @@ namespace BossSlothsCards
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
-            GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
 
+            GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => DestroyAllRemoveOnRoundsEnds());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => ResetStats());
         }
@@ -169,7 +169,7 @@ namespace BossSlothsCards
         {
             foreach (var obj in SceneManager.GetSceneAt(0).GetRootGameObjects())
             {
-                if(obj.name == "REMOVE ME") DestroyImmediate(obj);
+                if(obj.name == "REMOVE ME" || obj.GetComponentInChildren<RemoveOnRoundEnd>()) Destroy(obj);
             }
 
             yield break;
@@ -177,13 +177,13 @@ namespace BossSlothsCards
 
         private IEnumerator ResetStats()
         {
-            foreach (var player in PlayerManager.instance.players)
-            {
-                if (player.GetComponent<SawBladeEffect>())
-                {
-                    
-                }
-            }
+            // foreach (var player in PlayerManager.instance.players)
+            // {
+            //     if (player.GetComponent<SawBladeEffect>())
+            //     {
+            //         
+            //     }
+            // }
             yield break;
         }
 

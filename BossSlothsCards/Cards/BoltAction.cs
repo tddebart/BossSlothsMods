@@ -25,8 +25,8 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
 
-            gun.attackSpeed = 0.1f;
-            gun.damage = 2;
+            gun.attackSpeed = 1.9f;
+            gun.damage = 2.5f;
             gun.reloadTimeAdd = 0.35f;
         }
 
@@ -36,14 +36,14 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-90%",
+                    amount = "+90%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Attack speed"
                 },
                 new CardInfoStat
                 {
-                    amount = "+100%",
+                    amount = "+150%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

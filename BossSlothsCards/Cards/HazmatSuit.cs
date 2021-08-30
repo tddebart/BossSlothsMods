@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "With this suit nothing can hurt me.\nNo damage from going of the screen";
+            return "With this suit nothing can hurt me.\nNo damage from going off the screen";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

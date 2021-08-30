@@ -200,8 +200,10 @@
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
     <Compile Include="MonoBehaviours\GunAmmo_Mono.cs" />
     <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
+    <Compile Include="MonoBehaviours\Pong_Bullet.cs" />
     <Compile Include="MonoBehaviours\Pong_Mono.cs" />
     <Compile Include="MonoBehaviours\Quadratics_Mono.cs" />
+    <Compile Include="MonoBehaviours\RemoveOnRoundEnd.cs" />
     <Compile Include="MonoBehaviours\SawCounter.cs" />
     <Compile Include="MonoBehaviours\SawObject.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
