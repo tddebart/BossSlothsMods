@@ -27,6 +27,17 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = false;
 
             gun.reloadTimeAdd = 0.1f;
+            
+            var obj = new GameObject("NoCollide");
+            obj.hideFlags = HideFlags.HideAndDontSave;
+            obj.AddComponent<NoSelfCollide>();
+            gun.objectsToSpawn = new[]
+            {
+                new ObjectsToSpawn
+                {
+                    AddToProjectile = obj,
+                }
+            };
         }
 
         protected override CardInfoStat[] GetStats()

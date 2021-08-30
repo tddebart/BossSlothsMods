@@ -31,7 +31,7 @@ namespace BossSlothsCards.Cards
             
             var obj = new GameObject("A_SplittingRounds");
             obj.hideFlags = HideFlags.HideAndDontSave;
-            obj.AddComponent<Sneeze_Mono>();
+            obj.AddComponent<NoSelfCollide>();
             
             var explosiveBullet = (GameObject)Resources.Load("0 cards/Mayhem");
             var A_ScreenEdge = explosiveBullet.GetComponent<Gun>().objectsToSpawn[0];

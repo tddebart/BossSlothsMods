@@ -29,28 +29,29 @@ namespace BossSlothsCards.TempEffects
             if (timeSinceLastBox > 1)
             {
                 timeSinceLastBox = 0;
-                if (GetComponent<PhotonView>().IsMine)
+                if (PhotonNetwork.IsMasterClient)
                 {
                     PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", (position + 0.75f*normal), Quaternion.identity);
-                }
-                // var rem = box.AddComponent<RemoveAfterSeconds>();
-                // rem.seconds = 4;
-                
-                //TODO: make this into a rpc
-                this.ExecuteAfterSeconds(0.05f, () =>
-                {
-                    var currentObj =
-                        MapManager.instance.currentMap.Map.gameObject.transform.GetChild(MapManager.instance.currentMap.Map.gameObject.transform.childCount - 1);
-                    var rigid = currentObj.GetComponent<Rigidbody2D>();
-                    rigid.isKinematic = false;
-                    rigid.simulated = true;
-                    currentObj.GetComponent<DamagableEvent>().deathEvent = new UnityEvent();
-                    currentObj.GetComponent<DamagableEvent>().deathEvent.AddListener(() =>
+                    this.ExecuteAfterSeconds(0.05f, () =>
                     {
-                        Destroy(currentObj.gameObject);
+                        GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
                     });
-                });
+                }
             }
+        }
+
+        [PunRPC]
+        public void RPCA_FixBox()
+        {
+            var currentObj = MapManager.instance.currentMap.Map.gameObject.transform.GetChild(MapManager.instance.currentMap.Map.gameObject.transform.childCount - 1);
+            var rigid = currentObj.GetComponent<Rigidbody2D>();
+            rigid.isKinematic = false;
+            rigid.simulated = true;
+            // currentObj.GetComponent<DamagableEvent>().deathEvent = new UnityEvent();
+            // currentObj.GetComponent<DamagableEvent>().deathEvent.AddListener(() =>
+            // {
+            //     Destroy(currentObj.gameObject);
+            // });
         }
 
         // [PunRPC]

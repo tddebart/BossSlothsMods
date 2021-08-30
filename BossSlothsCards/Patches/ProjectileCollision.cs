@@ -14,6 +14,12 @@ namespace BossSlothsCards.Patches
         {
             if (__instance.GetComponentInParent<ProjectileHit>().ownPlayer.data.currentCards.Any(cr => cr.cardName == "BulletProof bullets"))
             {
+                if (projectile.GetComponent<ProjectileHit>().ownPlayer ==
+                    __instance.GetComponentInParent<ProjectileHit>().ownPlayer &&
+                    projectile.GetComponentInChildren<NoSelfCollide>())
+                {
+                    return false;
+                }
                 UnityEngine.Debug.LogWarning("hit surface");
                 var position1 = projectile.transform.position;
                 position1 -= position1.normalized;
@@ -25,7 +31,7 @@ namespace BossSlothsCards.Patches
                     var bullet = __instance.transform.parent;
                     var transform = bullet.transform;
                     var position = transform.position;
-                    position -= position.normalized;
+                    position-= position.normalized;
                     transform.position = position;
                     bullet.GetComponent<MoveTransform>().velocity *= -1f;
                 }

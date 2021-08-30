@@ -200,6 +200,7 @@
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
     <Compile Include="MonoBehaviours\GunAmmo_Mono.cs" />
     <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
+    <Compile Include="MonoBehaviours\NoSelfCollide.cs" />
     <Compile Include="MonoBehaviours\Pong_Bullet.cs" />
     <Compile Include="MonoBehaviours\Pong_Mono.cs" />
     <Compile Include="MonoBehaviours\Quadratics_Mono.cs" />

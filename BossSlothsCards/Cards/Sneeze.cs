@@ -52,20 +52,6 @@ namespace BossSlothsCards.Cards
                 new ObjectsToSpawn
                 {
                     AddToProjectile = obj,
-                    direction = ObjectsToSpawn.Direction.forward,
-                    effect = null,
-                    normalOffset = 0,
-                    numberOfSpawns = 1,
-                    removeScriptsFromProjectileObject = false,
-                    scaleFromDamage = 0,
-                    scaleStackM = 0,
-                    scaleStacks = false,
-                    spawnAsChild = false,
-                    spawnOn = ObjectsToSpawn.SpawnOn.all,
-                    stacks = 0,
-                    stickToAllTargets = false,
-                    stickToBigTargets = false,
-                    zeroZ = false
                 }
             };
         }

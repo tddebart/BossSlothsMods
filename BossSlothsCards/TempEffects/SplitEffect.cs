@@ -18,6 +18,7 @@ namespace BossSlothsCards.TempEffects
         
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
+
             player = gameObject.GetComponent<Player>();
             gun = player.GetComponent<Holding>().holdable.GetComponent<Gun>();
 
