@@ -129,6 +129,7 @@
     <Compile Include="Cards\Boing.cs" />
     <Compile Include="Cards\BoltAction.cs" />
     <Compile Include="Cards\BulletProofBullets.cs" />
+    <Compile Include="Cards\FireHydrant.cs" />
     <Compile Include="Cards\FlatpackMunitions.cs" />
     <Compile Include="Cards\LongFallBoots.cs" />
     <Compile Include="Cards\Omega.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="MonoBehaviours\BetterSawObject.cs" />
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
+    <Compile Include="MonoBehaviours\FireHydrant_Mono.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
@@ -203,7 +205,7 @@
     <Compile Include="MonoBehaviours\NoSelfCollide.cs" />
     <Compile Include="MonoBehaviours\Pong_Bullet.cs" />
     <Compile Include="MonoBehaviours\Pong_Mono.cs" />
-    <Compile Include="MonoBehaviours\Quadratics_Mono.cs" />
+    <Compile Include="MonoBehaviours\Quadratics_Bullet.cs" />
     <Compile Include="MonoBehaviours\RemoveOnRoundEnd.cs" />
     <Compile Include="MonoBehaviours\SawCounter.cs" />
     <Compile Include="MonoBehaviours\SawObject.cs" />

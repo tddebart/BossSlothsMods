@@ -1,77 +1,61 @@
-﻿using BossSlothsCards.Extensions;
+﻿using BossSlothsCards.MonoBehaviours;
 using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
 {
-    public class LongFallBoots : CustomCard
+    public class FireHydrant : CustomCard
     {
 
         protected override string GetTitle()
         {
-            return "Long fall boots";
+            return "Fire hydrant";
         }
 
         protected override string GetDescription()
         {
-            return "";
+            return "You will always shoot all of your bullets";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.GetAdditionalData().reducedDamageFromWall -= 0.1f;
-            characterStats.GetAdditionalData().extraJumpHeight += 0.5f;
+            player.gameObject.AddComponent<FireHydrant_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
-
-            statModifiers.health = 0.85f;
-
+            cardInfo.allowMultiple = false;
+            
+            gun.reloadTimeAdd = 0.15f;
         }
 
         protected override CardInfoStat[] GetStats()
         {
-            return new[]
+            return new []
             {
                 new CardInfoStat
                 {
-                    amount = "+50%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Jump height"
-                },
-                new CardInfoStat
-                {
-                    amount = "-10%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Damage resistance from impact"
-                },
-                new CardInfoStat
-                {
-                    amount = "-15%",
+                    amount = "+0.15s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Health"
+                    stat = "Reload time"
                 }
             };
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
 
         protected override GameObject GetCardArt()
         {
-            return BossSlothCards.ArtAsset.LoadAsset<GameObject>("C_LongFall");
+            return null;
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
 
         public override string GetModName()

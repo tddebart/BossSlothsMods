@@ -26,11 +26,12 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
 
+            var obj = new GameObject("Quadratics", typeof(Quadratics_Bullet));
             gun.objectsToSpawn = new[]
             {
                 new ObjectsToSpawn()
                 {
-                    AddToProjectile = new GameObject("Quadratics", typeof(Quadratics_Mono))
+                    AddToProjectile = obj
                 }
             };
 
