@@ -1,5 +1,120 @@
 # Boss Sloths's cards
-## New cards
+This is my bepinex mod for rounds that adds numerous new cards to the game
+
+## Changelist
+<details>
+<summary>2.0</summary>
+
+- v2.0.0
+    - 40 new cards
+        - Alpha
+        - Attract
+        - Boing
+        - BoltAction
+        - BulletProofBullets
+        - CompactedShot
+        - DrumMagazine
+        - Eagle
+        - EliteSneakers
+        - FireHydrant
+        - FlatpackMunitions
+        - FoldableStock
+        - FuturisticStock
+        - GetOverHere
+        - HazmatSuit
+        - HigherCaliber
+        - LeMonk
+        - LongFallBoots
+        - MorningCoffee
+        - Omega
+        - OverclockedFlywheels
+        - Pong
+        - Quadratics
+        - RecyclingDay
+        - Repel
+        - RocketJump
+        - RollingThunder
+        - SawbladeBullets
+        - SecondGun
+        - SleightOfHand
+        - Sloth
+        - SluggishRounds
+        - SpinningDeath
+        - SplittingRounds
+        - SpreadTheLove
+        - SquiresArmor
+        - ThisWayUp
+        - UnderDog
+        - Whale
+        - WoodenStock
+    - Many bugfixes and changes
+</details>
+
+---
+<details>
+<summary>1.0</summary>
+
+- v1.1.1
+    - New dependency ModdingUtils
+
+
+- v1.1.0
+    - New cards
+        - No thanks
+        - Give me another
+        - Hit me baby one more time
+        - Snap effect
+        - Knights armor
+        - Kings armor
+        - Thorns
+    - Hotfixes/Changes
+        - Added back larcenist
+        - Sneeze buffed
+        - Fixed copycat and random confringo
+    - Fancy text on "random" cards
+    - Credits menu
+
+
+- v1.0.3
+    - Removed larcenist for now
+
+
+- v1.0.2
+    - Bugfixes
+        - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
+        - Fixed larcenist removing effects of some cards
+
+
+- v1.0.1
+    - Bugfixes
+        - Fixed random confringo with deathmatch(Thanks TimeToGrind for reporting this)
+        - Fixed Copycat and Larcenist with deathmatch
+
+
+- v1.0.0
+    - New cards
+        - Mom get the camera
+        - Random confringo
+        - Larcenist
+        - Copycat
+
+    - Changes and bugfixes
+        - Sneeze bullets no longer collide
+
+---
+- v0.1.0 First ThunderStore release
+- v0.1.1 Splitted BSM to BSC and BST
+- v0.1.2 Fixed bug where custom cards where not loaded
+- v0.1.3 Fixed double jump
+- v0.1.4 New dependency CardchoiceSpawnUniqueCardPatch
+
+</details>
+
+---
+<details>
+<summary>Cards</summary>
+
+## Cards
 
 ---
 ### Copycat
@@ -104,65 +219,9 @@ Rare card
 Ups most stats  
 
 ---
-## Changelist
-### 1.0.0
+##This list has not yet been updated
 
-- v1.1.1
-    - New dependency ModdingUtils
-
-
-- v1.1.0
-    - New cards
-        - No thanks
-        - Give me another
-        - Hit me baby one more time
-        - Snap effect
-        - Knights armor
-        - Kings armor
-        - Thorns
-    - Hotfixes/Changes
-        - Added back larcenist
-        - Sneeze buffed
-        - Fixed copycat and random confringo
-    - Fancy text on "random" cards
-    - Credits menu
-        
-
-- v1.0.3
-    - Removed larcenist for now
-    
-
-- v1.0.2
-    - Bugfixes
-        - Fixed larcenist and copycat could grab cards from previous round(Thanks Pykess for reporting this)
-        - Fixed larcenist removing effects of some cards
-    
-
-- v1.0.1
-    - Bugfixes
-        - Fixed random confringo with deathmatch(Thanks TimeToGrind for reporting this)
-        - Fixed Copycat and Larcenist with deathmatch
-    
-
-- v1.0.0
-    - New cards
-        - Mom get the camera
-        - Random confringo
-        - Larcenist
-        - Copycat
-    
-    - Changes and bugfixes  
-        - Sneeze bullets no longer collide
-    
-
----
-- v0.1.0 First ThunderStore release
-- v0.1.1 Splitted BSM to BSC and BST
-- v0.1.2 Fixed bug where custom cards where not loaded
-- v0.1.3 Fixed double jump
-- v0.1.4 New dependency CardchoiceSpawnUniqueCardPatch
-
-    
+</details>
 
 ---
 ## How to install
@@ -173,10 +232,9 @@ Use [ThunderStore Mod manager](https://rounds.thunderstore.io/package/BossSloth/
 Thanks to:
 - [PCE](https://github.com/pdcook/PCE) for some of the frameworks i used 
 - [Round modding discord](https://discord.gg/zUtsjXWeWk) for the great UnboundLib
-- [Tom Weiland](https://www.youtube.com/channel/UCa-mDKzV5MW_BXjSDRqqHUw) for the AutoUpdater code
 
 ## Bug reports and suggestions
-If you have found any bugs please open an new issue or report it in the `#bug-reports` channel in the [Round modding discord](https://discord.gg/zUtsjXWeWk).  
+If you have found any bugs please open an new issue or make a ticking in the `#bug-reports` channel in the [Round modding discord](https://discord.gg/zUtsjXWeWk).  
   
-If you have any suggestions please open an new issue with the label `Suggestion` or by putting it in the `#mod-suggestions` channel in the [Round modding discord](https://discord.gg/zUtsjXWeWk).
+If you have any suggestions please open an new issue with the label `Suggestion` or by opening a ticket in the `#suggestion` channel in the [Round modding discord](https://discord.gg/zUtsjXWeWk).
 

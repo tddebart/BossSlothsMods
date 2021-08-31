@@ -25,7 +25,7 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
 
-            gun.projectileSpeed = 0.20f;
+            gun.projectileSpeed = 0.25f;
             gun.reflects = 15;
             gun.damage = 1.15f;
             
@@ -45,7 +45,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-80%",
+                    amount = "-75%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet speed"

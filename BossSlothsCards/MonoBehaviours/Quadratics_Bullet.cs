@@ -11,6 +11,11 @@ namespace BossSlothsCards.MonoBehaviours
     {
         private bool start;
 
+        private MoveTransform moveTransform;
+        private PhotonView photonView;
+
+        private bool photonViewNotNull;
+
         void Awake()
         {
             if (transform.parent != null)
@@ -29,32 +34,27 @@ namespace BossSlothsCards.MonoBehaviours
             {
                 start = true;
             });
+
+            photonView = GetComponent<PhotonView>();
+            moveTransform = GetComponent<MoveTransform>();
+
+            photonViewNotNull = photonView != null;
         }
-        
-        void FixedUpdate()
+
+        private void FixedUpdate()
         {
             if (!start) return;
-
-            if (PhotonNetwork.OfflineMode)
+            
+            if (photonViewNotNull)
             {
-                if (GetComponent<PhotonView>() && PlayerManager.instance.players.Any(pl => PlayerStatus.PlayerAlive(pl) && Math.Round(pl.transform.position.x) == Math.Round(transform.position.x)))
+                foreach (var player in PlayerManager.instance.players.Where(PlayerStatus.PlayerAlive))
                 {
-                    GetComponent<PhotonView>().RPC("RPCA_GoDown", RpcTarget.All);
+                    if(Math.Round(player.transform.position.x) == Math.Round(transform.position.x) && player.transform.position.y < transform.position.y)
+                    {
+                        moveTransform.velocity = new Vector2(0,-25f);
+                    }
                 }
             }
-            else
-            {
-                if (GetComponent<PhotonView>() && PlayerManager.instance.players.Any(pl => PlayerStatus.PlayerAlive(pl) && pl.GetComponent<PhotonView>().IsMine && Math.Round(pl.transform.position.x) == Math.Round(transform.position.x)))
-                {
-                    GetComponent<PhotonView>().RPC("RPCA_GoDown", RpcTarget.All);
-                }
-            }
-        }
-
-        [PunRPC]
-        public void RPCA_GoDown()
-        {
-            GetComponent<MoveTransform>().velocity = new Vector2(0,-25f);
         }
     }
 }

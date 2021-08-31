@@ -146,7 +146,6 @@ namespace BossSlothsCards
             CustomCard.BuildCard<Whale>();
             CustomCard.BuildCard<SleightOfHand>();
             CustomCard.BuildCard<RecyclingDay>();
-            //CustomCard.BuildCard<WreckingBall>();
             CustomCard.BuildCard<LongFallBoots>();
             CustomCard.BuildCard<BulletProofBullets>();
             CustomCard.BuildCard<OverclockedFlywheels>();
