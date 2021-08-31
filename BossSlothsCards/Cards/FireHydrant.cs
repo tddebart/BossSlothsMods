@@ -14,12 +14,11 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "You will always shoot all of your bullets";
+            return "";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<FireHydrant_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -27,12 +26,20 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = false;
             
             gun.reloadTimeAdd = 0.15f;
+            gun.attackSpeed = 0.05f;
         }
 
         protected override CardInfoStat[] GetStats()
         {
             return new []
             {
+                new CardInfoStat
+                {
+                    amount = "+95%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Attack speed"
+                },
                 new CardInfoStat
                 {
                     amount = "+0.15s",

@@ -21,7 +21,7 @@ namespace BossSlothsCards.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gun.knockback = -0.25f * Math.Abs(gun.knockback);
-            characterStats.GetAdditionalData().recoil -= 1.25f;
+            characterStats.GetAdditionalData().recoil -= 0.25f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)

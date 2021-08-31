@@ -195,7 +195,6 @@
     <Compile Include="MonoBehaviours\BetterSawObject.cs" />
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
-    <Compile Include="MonoBehaviours\FireHydrant_Mono.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />

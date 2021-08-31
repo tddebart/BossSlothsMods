@@ -20,7 +20,6 @@ namespace BossSlothsCards.Patches
                 {
                     return false;
                 }
-                UnityEngine.Debug.LogWarning("hit surface");
                 var position1 = projectile.transform.position;
                 position1 -= position1.normalized;
                 projectile.transform.position = position1;

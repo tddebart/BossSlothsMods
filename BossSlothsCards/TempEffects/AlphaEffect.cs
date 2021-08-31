@@ -15,8 +15,8 @@ namespace BossSlothsCards.TempEffects
 
         public override void UpdateEffects()
         {
-            characterStatModifiersModifier.lifeSteal_mult = 1.75f;
-            gunStatModifier.damage_mult = 1.75f;
+            characterStatModifiersModifier.lifeSteal_mult = 1.5f;
+            gunStatModifier.damage_mult = 1.5f;
             gunStatModifier.projectileSpeed_mult = 1.25f;
         }
 

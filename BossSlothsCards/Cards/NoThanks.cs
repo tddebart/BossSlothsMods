@@ -1,6 +1,7 @@
 ﻿using BossSlothsCards.Utils.Text;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Extensions;
+using ModdingUtils.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -26,10 +27,10 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-#if DEBUG
-            UnityEngine.Debug.Log("Adding NoThanks card");
-#endif
-            DoNoThanksThings(player,gun,gunAmmo,data,health,gravity,block,characterStats);
+            BossSlothCards.instance.ExecuteAfterSeconds(0.1f, () =>
+            {
+                DoNoThanksThings(player,gun,gunAmmo,data,health,gravity,block,characterStats);
+            });
         }
 
         private void DoNoThanksThings(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -63,7 +64,7 @@ namespace BossSlothsCards.Cards
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
                     ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
-                    ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                    CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 });
                 break;
             }
@@ -71,9 +72,6 @@ namespace BossSlothsCards.Cards
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-#if DEBUG
-            UnityEngine.Debug.Log("Setting up NoThanks card");
-#endif
             cardInfo.allowMultiple = true;
             cardInfo.GetAdditionalData().canBeReassigned = false;
             cardInfo.categories = new[] { CustomCardCategories.instance.CardCategory("CardManipulation") };

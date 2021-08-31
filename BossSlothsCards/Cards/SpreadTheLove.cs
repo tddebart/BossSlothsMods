@@ -25,7 +25,7 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
 
-            gun.spread = 0.5f;
+            gun.spread = 0.20f;
             gun.ammo = 5;
         }
 
@@ -38,12 +38,12 @@ namespace BossSlothsCards.Cards
                     amount = "+5",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Bullets"
+                    stat = "Ammo"
                 },
                 new CardInfoStat
                 {
-                    amount = "+50%",
-                    positive = true,
+                    amount = "+20%",
+                    positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet spread"
                 }

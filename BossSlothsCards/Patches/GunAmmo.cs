@@ -34,8 +34,9 @@ namespace BossSlothsCards.Patches
                     var player = holdable.holder.GetComponent<Player>();
                     var direction = Utils.Aim.GetAimDirectionAsVector(player);
                     var recoil = holdable.holder.GetComponent<CharacterStatModifiers>().GetAdditionalData().recoil;
+                    var damage = holdable.GetComponent<Gun>().damage;
                     
-                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*3f));
+                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*2.3f*damage));
                 }
 
                 // Alpha effect

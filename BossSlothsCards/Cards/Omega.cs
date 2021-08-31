@@ -37,14 +37,14 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+75%",
+                    amount = "+50%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Lifesteal"
                 },
                 new CardInfoStat
                 {
-                    amount = "+75%",
+                    amount = "+50%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

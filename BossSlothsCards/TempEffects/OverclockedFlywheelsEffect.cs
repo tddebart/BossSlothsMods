@@ -12,7 +12,6 @@ namespace BossSlothsCards.TempEffects
         {
             var currentAmmo = (int)Traverse.Create(gunAmmo).Field("currentAmmo").GetValue();
             percentageAmmo = (float)currentAmmo / (float)gunAmmo.maxAmmo;
-            UnityEngine.Debug.LogWarning(percentageAmmo);
             return CounterStatus.Apply;
         }
 
