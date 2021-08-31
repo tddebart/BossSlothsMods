@@ -8,6 +8,7 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnityEngine.Events;
+using UnboundLib.Utils;
 
 namespace BossSlothsCards.Cards
 {
@@ -61,7 +62,7 @@ namespace BossSlothsCards.Cards
             gun.gravity = 0.9f;
             gun.damage = 0.9f;
             
-            gun.projectileColor = Color.yellow;
+            gun.projectileColor = Color.black;
 
             var obj = new GameObject("pong", typeof(Sneeze_Mono), typeof(RemoveOnRoundEnd), typeof(Pong_Bullet));
             DontDestroyOnLoad(obj);
@@ -76,6 +77,7 @@ namespace BossSlothsCards.Cards
             };
             
             CustomCardCategories.instance.MakeCardsExclusive(cardInfo, CardChoice.instance.cards.First(info => info.cardName == "GROW"));
+            CustomCardCategories.instance.MakeCardsExclusive(cardInfo, CardChoice.instance.cards.First(info => info.cardName == "Spinning death"));
         }
 
         protected override CardInfoStat[] GetStats()

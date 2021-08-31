@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BepInEx;
 using BossSlothsCards.Cards;
 using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
 using Jotunn.Utils;
 using Photon.Pun;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnboundLib.GameModes;
+using UnboundLib.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -147,13 +151,45 @@ namespace BossSlothsCards
             CustomCard.BuildCard<BulletProofBullets>();
             CustomCard.BuildCard<OverclockedFlywheels>();
             CustomCard.BuildCard<FireHydrant>();
-            
+
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());
 
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => IEStopAllCoroutines());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => DestroyAllRemoveOnRoundsEnds());
             GameModeManager.AddHook(GameModeHooks.HookPointEnd, gm => ResetStats());
+            
+            this.ExecuteAfterSeconds(0.4f, () =>
+            {
+                CustomCardCategories.instance.MakeCardsExclusive(
+                    CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                    CardManager.cards.Values.First(card => card.cardInfo.cardName == "GROW").cardInfo);
+                CustomCardCategories.instance.MakeCardsExclusive(
+                    CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                    CardManager.cards.Values.First(card => card.cardInfo.cardName == "Spinning death").cardInfo);
+                
+                if (CardManager.cards.Values.Any(card => card.cardInfo.cardName == "Comb"))
+                {
+                    CustomCardCategories.instance.MakeCardsExclusive(
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Comb").cardInfo);
+                }
+
+                if (CardManager.cards.Values.Any(card => card.cardInfo.cardName == "Star"))
+                {
+                    CustomCardCategories.instance.MakeCardsExclusive(
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Star").cardInfo);
+                }
+                
+                if (CardManager.cards.Values.Any(card => card.cardInfo.cardName == "Crow"))
+                {
+                    CustomCardCategories.instance.MakeCardsExclusive(
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Crow").cardInfo);
+                }
+                
+            });
         }
 
         private IEnumerator DoExplosionThings()

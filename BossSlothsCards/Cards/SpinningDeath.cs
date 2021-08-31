@@ -1,6 +1,8 @@
-﻿using BossSlothsCards.Extensions;
+﻿using System.Linq;
+using BossSlothsCards.Extensions;
 using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;

@@ -26,7 +26,7 @@ namespace BossSlothsCards.Cards
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
 
             var explosiveBullet = (GameObject)Resources.Load("0 cards/Explosive bullet");
             var a_Explosion = explosiveBullet.GetComponent<Gun>().objectsToSpawn[0].effect;

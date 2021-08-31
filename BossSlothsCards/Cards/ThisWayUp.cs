@@ -1,4 +1,5 @@
-﻿using UnboundLib.Cards;
+﻿using System;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
@@ -19,12 +20,12 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            gun.gravity = -1.5f * Math.Abs(gun.gravity);
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            gun.gravity = 0.5f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -33,7 +34,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-50%",
+                    amount = "-150%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet gravity"

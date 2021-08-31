@@ -82,7 +82,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnboundLib, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="UnboundLib, Version=2.6.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -206,6 +206,7 @@
     <Compile Include="MonoBehaviours\Pong_Mono.cs" />
     <Compile Include="MonoBehaviours\Quadratics_Bullet.cs" />
     <Compile Include="MonoBehaviours\RecyclingDay_Mono.cs" />
+    <Compile Include="MonoBehaviours\ReduceSizeOverSeconds.cs" />
     <Compile Include="MonoBehaviours\RemoveOnRoundEnd.cs" />
     <Compile Include="MonoBehaviours\SawCounter.cs" />
     <Compile Include="MonoBehaviours\SawObject.cs" />

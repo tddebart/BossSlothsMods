@@ -18,10 +18,9 @@ namespace BossSlothsCards.TempEffects
         
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
-            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return;
-            
             player = gameObject.GetComponent<Player>();
             gun = player.GetComponent<Holding>().holdable.GetComponent<Gun>();
+            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return;
 
             var newGun = player.gameObject.AddComponent<SplittingGun>();
             

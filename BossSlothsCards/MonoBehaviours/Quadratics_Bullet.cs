@@ -25,7 +25,7 @@ namespace BossSlothsCards.MonoBehaviours
                     Destroy(obj.gameObject);
                 }
             }
-            this.ExecuteAfterSeconds(0.05f, () =>
+            this.ExecuteAfterSeconds(0.08f, () =>
             {
                 start = true;
             });
@@ -34,10 +34,20 @@ namespace BossSlothsCards.MonoBehaviours
         void FixedUpdate()
         {
             if (!start) return;
-            
-            if (GetComponent<PhotonView>() && PlayerManager.instance.players.Any(pl => PlayerStatus.PlayerAlive(pl) && !pl.GetComponent<PhotonView>().IsMine && Math.Round(pl.transform.position.x) == Math.Round(transform.position.x)))
+
+            if (PhotonNetwork.OfflineMode)
             {
-                GetComponent<PhotonView>().RPC("RPCA_GoDown", RpcTarget.AllViaServer);
+                if (GetComponent<PhotonView>() && PlayerManager.instance.players.Any(pl => PlayerStatus.PlayerAlive(pl) && Math.Round(pl.transform.position.x) == Math.Round(transform.position.x)))
+                {
+                    GetComponent<PhotonView>().RPC("RPCA_GoDown", RpcTarget.All);
+                }
+            }
+            else
+            {
+                if (GetComponent<PhotonView>() && PlayerManager.instance.players.Any(pl => PlayerStatus.PlayerAlive(pl) && pl.GetComponent<PhotonView>().IsMine && Math.Round(pl.transform.position.x) == Math.Round(transform.position.x)))
+                {
+                    GetComponent<PhotonView>().RPC("RPCA_GoDown", RpcTarget.All);
+                }
             }
         }
 
