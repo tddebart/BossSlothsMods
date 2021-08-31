@@ -9,7 +9,7 @@ using CharacterStatModifiersExtension = BossSlothsCards.Extensions.CharacterStat
 
 namespace BossSlothsCards.TempEffects
 {
-    public class AirstikeEffect : HitSurfaceEffect
+    public class RollingThunderEffect : HitSurfaceEffect
     {
         static readonly System.Random rng = new System.Random() { };
         
@@ -21,6 +21,8 @@ namespace BossSlothsCards.TempEffects
             player = gameObject.GetComponent<Player>();
             gun = player.GetComponent<Holding>().holdable.GetComponent<Gun>();
 
+            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return; 
+            
             var newGun = player.gameObject.AddComponent<SplittingGun>();
             
             SpawnBulletsEffect effect = player.gameObject.AddComponent<SpawnBulletsEffect>();
@@ -37,8 +39,9 @@ namespace BossSlothsCards.TempEffects
             // copy private gun stats over and reset a few public stats
             SpawnBulletsEffect.CopyGunStats(this.gun, newGun);
             
-            //newGun.spread = 0.5f;
             newGun.numberOfProjectiles = 1;
+            newGun.spread = 0;
+            newGun.reflects = 0;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
             newGun.damage /= CharacterStatModifiersExtension.GetAdditionalData(player.data.stats).damageReducedAistrike;
             newGun.projectileSpeed = 0.6f;

@@ -46,7 +46,6 @@ namespace BossSlothsCards.Cards
             var pong = player.gameObject.GetOrAddComponent<Pong_Mono>();
             pong.maxAmmo++;
             gun.reflects = int.MaxValue-150;
-
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)

@@ -28,6 +28,14 @@ namespace BossSlothsCards.Cards
 
             gun.reflects = 1;
             gun.damage = 1.15f;
+            
+            var explosiveBullet = (GameObject)Resources.Load("0 cards/Mayhem");
+            var A_ScreenEdge = explosiveBullet.GetComponent<Gun>().objectsToSpawn[0];
+            
+            gun.objectsToSpawn = new[]
+            {
+                A_ScreenEdge
+            };
         }
 
         protected override CardInfoStat[] GetStats()

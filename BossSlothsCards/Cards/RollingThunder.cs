@@ -20,7 +20,7 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<AirstikeEffect>();
+            player.gameObject.AddComponent<RollingThunderEffect>();
             characterStats.GetAdditionalData().damageReducedAistrike /= 1.8f;
         }
         

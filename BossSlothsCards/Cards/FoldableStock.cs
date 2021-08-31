@@ -29,7 +29,7 @@ namespace BossSlothsCards.Cards
 
             gun.damage = 1.3f;
             gun.ammo = 2;
-            gun.projectileSpeed = 1.25f;
+            gun.projectileSpeed = 0.75f;
             gun.reloadTimeAdd= 0.4f;
         }
 
@@ -60,7 +60,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+25%",
+                    amount = "-25%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet speed"

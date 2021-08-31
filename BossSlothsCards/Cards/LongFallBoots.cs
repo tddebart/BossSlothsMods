@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.TempEffects;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -20,7 +21,6 @@ namespace BossSlothsCards.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             characterStats.GetAdditionalData().reducedDamageFromWall -= 0.1f;
-            characterStats.GetAdditionalData().extraJumpHeight += 0.5f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -28,7 +28,7 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = true;
 
             statModifiers.health = 0.85f;
-
+            statModifiers.jump = 1.25f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -37,7 +37,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+50%",
+                    amount = "+25%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Jump height"

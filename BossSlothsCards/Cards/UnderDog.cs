@@ -38,7 +38,7 @@ namespace BossSlothsCards.Cards
                     amount = "+0.2s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = ""
+                    stat = "Reload time"
                 }
             };
         }

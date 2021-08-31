@@ -18,7 +18,8 @@ namespace BossSlothsCards.TempEffects
         
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
-
+            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return;
+            
             player = gameObject.GetComponent<Player>();
             gun = player.GetComponent<Holding>().holdable.GetComponent<Gun>();
 
@@ -37,7 +38,7 @@ namespace BossSlothsCards.TempEffects
 
             // copy private gun stats over and reset a few public stats
             SpawnBulletsEffect.CopyGunStats(this.gun, newGun);
-
+            
             newGun.reflects = 0;
             newGun.spread = 0.5f;
             newGun.numberOfProjectiles = 1;

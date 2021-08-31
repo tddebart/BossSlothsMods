@@ -13,8 +13,10 @@ namespace BossSlothsCards.Patches
         class Patch_Shoot
         {
             // ReSharper disable once UnusedMember.Local
-            private static void Postfix(GunAmmo __instance, GameObject projectile)
+            private static void Postfix(GunAmmo __instance, GameObject projectile, Gun ___gun)
             {
+                // Prevent effects when shot from temp effect
+                if (projectile.GetComponent<ProjectileHit>().ownWeapon.name == "WeaponBase(Clone)(Clone)") return;
                 // Destroy pong
                 if(__instance.GetAdditionalData().destroyAllPongOnNextShot)
                 {
