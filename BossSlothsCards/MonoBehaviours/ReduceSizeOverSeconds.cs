@@ -6,7 +6,8 @@ namespace BossSlothsCards.MonoBehaviours
     public class ReduceSizeOverSeconds : MonoBehaviour
     {
         public float seconds;
-        private TimeSince timeSinceSpawn;
+        //private TimeSince timeSinceSpawn;
         public float maxSize;
+        //TODO: make this for spinning death
     }
 }
