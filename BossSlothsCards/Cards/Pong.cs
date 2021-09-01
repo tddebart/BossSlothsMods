@@ -59,8 +59,8 @@ namespace BossSlothsCards.Cards
             var A_ScreenEdge = mayhem.GetComponent<Gun>().objectsToSpawn[0];
 
             gun.spread = 0.1f;
-            gun.gravity = 0.9f;
-            gun.damage = 0.9f;
+            gun.gravity = 0.85f;
+            gun.damage = 0.85f;
             
             gun.projectileColor = Color.black;
 
@@ -75,9 +75,6 @@ namespace BossSlothsCards.Cards
                     AddToProjectile = obj
                 }
             };
-            
-            CustomCardCategories.instance.MakeCardsExclusive(cardInfo, CardChoice.instance.cards.First(info => info.cardName == "GROW"));
-            CustomCardCategories.instance.MakeCardsExclusive(cardInfo, CardChoice.instance.cards.First(info => info.cardName == "Spinning death"));
         }
 
         protected override CardInfoStat[] GetStats()
@@ -100,14 +97,14 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "-10%",
+                    amount = "-15%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet gravity"
                 },
                 new CardInfoStat
                 {
-                    amount = "-10%",
+                    amount = "-15%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

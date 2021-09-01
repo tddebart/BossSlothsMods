@@ -35,8 +35,7 @@ namespace BossSlothsCards
         internal static AssetBundle EffectAsset;
 
         public GameObject betterSawObj;
-        public GameObject betterDesBox;
-        
+
         public static bool firstNoThanks = true;
 
         internal static BossSlothCards instance;
