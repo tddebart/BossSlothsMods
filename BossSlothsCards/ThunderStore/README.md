@@ -5,6 +5,10 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.0.1
+    - Fixed pong double art and sometimes not spawning  
+    
+
 - v2.0.0
     - 40 new cards
         - Alpha
