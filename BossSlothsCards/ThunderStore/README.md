@@ -32,6 +32,14 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
         - This way up gives +15% damage
         - Whale gives -50% movement speed instead of -60%
         - Wooden gives +0.2s reload time instead of +0.1s
+    - New effect added for
+        - Alpha
+        - Omega
+        - Sleight of hand
+        - Morning coffee
+        - Flatpack munitions
+        - Pong
+        - Rocket jump
   
 
 - v2.0.1
