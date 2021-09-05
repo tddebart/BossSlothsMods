@@ -241,6 +241,7 @@
     <Compile Include="TempEffects\SplitEffect.cs" />
     <Compile Include="TempEffects\WreckingBallEffect.cs" />
     <Compile Include="Utils\Aim.cs" />
+    <Compile Include="Utils\Colors.cs" />
     <Compile Include="Utils\PreventRecusion.cs" />
     <Compile Include="Utils\RemoveOnRoundEnd.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />

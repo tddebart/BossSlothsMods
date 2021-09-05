@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.Utils;
 using HarmonyLib;
 using ModdingUtils.MonoBehaviours;
 using UnityEngine;
@@ -24,11 +25,11 @@ namespace BossSlothsCards.TempEffects
             gunStatModifier.damage_mult = 1.2f;
             if (data.currentCards.Any(cr => cr.cardName == "Omega"))
             {
-                gunStatModifier.projectileColor = Color.cyan;
+                gunStatModifier.projectileColor = Colors.HueColourValue(Colors.HueColorNames.Orange);
             }
             else
             {
-                gunStatModifier.projectileColor= Color.green;
+                gunStatModifier.projectileColor = Colors.HueColourValue(Colors.HueColorNames.Pink);
             }
         }
         
@@ -46,11 +47,11 @@ namespace BossSlothsCards.TempEffects
             base.OnUpdate();
             if (data.currentCards.Any(cr => cr.cardName == "Omega"))
             {
-                effect.particleColor = Color.cyan;
+                effect.particleColor = Colors.HueColourValue(Colors.HueColorNames.Orange);
             }
             else
             {
-                effect.particleColor = Color.blue;
+                effect.particleColor = Colors.HueColourValue(Colors.HueColorNames.Pink);
             }
             effect.Active = status == CounterStatus.Apply;
         }

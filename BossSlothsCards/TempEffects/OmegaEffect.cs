@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.Utils;
 using HarmonyLib;
 using ModdingUtils.MonoBehaviours;
 using UnityEngine;
@@ -25,11 +26,11 @@ namespace BossSlothsCards.TempEffects
             gunStatModifier.projectileSpeed_mult = 1.25f;
             if (data.currentCards.Any(cr => cr.cardName == "Sleight of hand"))
             {
-                gunStatModifier.projectileColor = Color.cyan;
+                gunStatModifier.projectileColor = Colors.HueColourValue(Colors.HueColorNames.Orange);
             }
             else
             {
-                gunStatModifier.projectileColor= Color.green;
+                gunStatModifier.projectileColor = Color.green;
             }
         }
         
@@ -47,7 +48,7 @@ namespace BossSlothsCards.TempEffects
             base.OnUpdate();
             if (data.currentCards.Any(cr => cr.cardName == "Sleight of hand"))
             {
-                effect.particleColor = Color.cyan;
+                effect.particleColor = Colors.HueColourValue(Colors.HueColorNames.Orange);
             }
             else
             {

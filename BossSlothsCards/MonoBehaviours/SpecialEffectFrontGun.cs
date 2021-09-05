@@ -35,11 +35,6 @@ namespace BossSlothsCards.MonoBehaviours
             var particleObj = empowerObj.transform.GetChild(0).gameObject;
             particleTransform = Instantiate(particleObj, transform).transform;
             parts = GetComponentsInChildren<ParticleSystem>();
-            foreach (var system in parts)
-            {
-                var systemMain = system.main;
-                systemMain.startColor = particleColor;
-            }
             var gun = data.weaponHandler.gun;
             gun.ShootPojectileAction = (Action<GameObject>)Delegate.Combine(gun.ShootPojectileAction, new Action<GameObject>(Attack));
         }
@@ -59,6 +54,11 @@ namespace BossSlothsCards.MonoBehaviours
                 var transform1 = data.weaponHandler.gun.transform;
                 particleTransform.position = transform1.position;
                 particleTransform.rotation = transform1.rotation;
+                foreach (var system in parts)
+                {
+                    var systemMain = system.main;
+                    systemMain.startColor = particleColor;
+                }
                 if (!alreadyActivated)
                 {
                     SoundManager.Instance.PlayAtPosition(soundSpawn, SoundManager.Instance.GetTransform(), transform);
