@@ -30,6 +30,8 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
 
+            statModifiers.health = 1.1f;
+
             if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Text_Name"))
             {
                 transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Text_Name").gameObject.GetOrAddComponent<RainbowText>();
@@ -42,7 +44,16 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new []
+            {
+                new CardInfoStat
+                {
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Health"
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()

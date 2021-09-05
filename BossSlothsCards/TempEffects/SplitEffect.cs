@@ -41,6 +41,7 @@ namespace BossSlothsCards.TempEffects
             newGun.reflects = 0;
             newGun.spread = 0.5f;
             newGun.numberOfProjectiles = 1;
+            newGun.projectileColor = Color.yellow;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
             newGun.damage = Mathf.Clamp(newGun.damage/2f, 0.5f, float.MaxValue);
             newGun.projectileSpeed = velocity.magnitude/65;

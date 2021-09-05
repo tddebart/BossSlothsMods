@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Damage increases over time between shots";
+            return "Damage increases over time between shots\nPer second: ";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -32,7 +32,16 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new []
+            {
+                new CardInfoStat
+                {
+                    amount = "+12%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage"
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()

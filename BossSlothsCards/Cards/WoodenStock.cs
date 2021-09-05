@@ -30,7 +30,7 @@ namespace BossSlothsCards.Cards
 
             statModifiers.movementSpeed = 1.2f;
             gun.ammo = 2;
-            gun.reloadTimeAdd = 0.10f;
+            gun.reloadTimeAdd = 0.15f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -39,7 +39,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-50%",
+                    amount = "-50",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
@@ -60,7 +60,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+0.10s",
+                    amount = "+0.2s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"

@@ -26,6 +26,7 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
             statModifiers.movementSpeed = 1.35f;
+            statModifiers.jump = 1.1f;
 
         }
 
@@ -42,10 +43,17 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+0.15s",
+                    amount = "+0.25s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Block cooldown"
+                },
+                new CardInfoStat
+                {
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Jump height"
                 }
             };
         }

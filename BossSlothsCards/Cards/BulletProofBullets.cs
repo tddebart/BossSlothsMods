@@ -27,6 +27,7 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = false;
 
             gun.reloadTimeAdd = 0.1f;
+            gun.attackSpeed = 1.15f;
             
             var obj = new GameObject("NoCollide");
             obj.hideFlags = HideFlags.HideAndDontSave;
@@ -50,6 +51,13 @@ namespace BossSlothsCards.Cards
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
+                },
+                new CardInfoStat
+                {
+                    amount = "-15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Attack speed"
                 }
             };
         }

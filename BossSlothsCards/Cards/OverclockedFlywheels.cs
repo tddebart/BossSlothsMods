@@ -14,7 +14,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "The closer you are to a empty clip the more projectile speed you will have to a max of 3*mutiplier";
+            return "The closer you are to a empty clip the more projectile speed you will have to a max of 3x multiplier";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

@@ -25,8 +25,8 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
 
-            gun.projectileSpeed = 0.25f;
-            gun.reflects = 15;
+            gun.projectileSpeed = 0.3f;
+            gun.reflects = 10;
             gun.damage = 1.15f;
             
             var explosiveBullet = (GameObject)Resources.Load("0 cards/Mayhem");
@@ -45,14 +45,14 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-75%",
+                    amount = "-70%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bullet speed"
                 },
                 new CardInfoStat
                 {
-                    amount = "+15",
+                    amount = "+10",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bounces"

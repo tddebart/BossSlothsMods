@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BossSlothsCards.Extensions;
 using BossSlothsCards.MonoBehaviours;
 using HarmonyLib;
@@ -27,7 +28,7 @@ namespace BossSlothsCards.Patches
             }
             
             // Damage reduction
-            damage /= ___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReduction;
+            damage /= Mathf.Sqrt(___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReduction)*1.2f;
             
             // Underdog
             if (damagingPlayer != null && damagingPlayer.GetComponent<Underdog_Mono>() && damagingPlayer.data.health < ___data.health)

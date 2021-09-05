@@ -42,6 +42,7 @@ namespace BossSlothsCards.TempEffects
             newGun.numberOfProjectiles = 1;
             newGun.spread = 0;
             newGun.reflects = 0;
+            newGun.projectileColor = Color.red;
             newGun.projectiles = (from e in Enumerable.Range(0, newGun.numberOfProjectiles) from x in newGun.projectiles select x).ToList().Take(newGun.numberOfProjectiles).ToArray();
             newGun.damage /= CharacterStatModifiersExtension.GetAdditionalData(player.data.stats).damageReducedAistrike;
             newGun.projectileSpeed = 0.6f;

@@ -15,7 +15,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "";
+            return "You gain -10% damage resistance from impact against walls and boxes";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -29,6 +29,8 @@ namespace BossSlothsCards.Cards
 
             statModifiers.health = 0.85f;
             statModifiers.jump = 1.25f;
+
+            statModifiers.gravity = 1.15f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -55,6 +57,13 @@ namespace BossSlothsCards.Cards
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Health"
+                },
+                new CardInfoStat
+                {
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Gravity"
                 }
             };
         }

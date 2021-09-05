@@ -29,28 +29,27 @@ namespace BossSlothsCards.Patches
                 }
                 
                 // DoRecoil
-                if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<PhotonView>().IsMine && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<CharacterStatModifiers>().GetAdditionalData().recoil != 0)
+                if (___gun.holdable && ___gun.holdable.holder.view.IsMine && ___gun.holdable.holder.stats.GetAdditionalData().recoil != 0)
                 {
-                    var holdable = __instance.transform.parent.GetComponentInParent<Holdable>();
-                    var healthHandler = holdable.holder.GetComponent<HealthHandler>();
-                    var player = holdable.holder.GetComponent<Player>();
+                    var holdable = ___gun.holdable;
+                    var healthHandler = holdable.holder.healthHandler;
+                    var player = holdable.holder.player;
                     var direction = Utils.Aim.GetAimDirectionAsVector(player);
-                    var recoil = holdable.holder.GetComponent<CharacterStatModifiers>().GetAdditionalData().recoil;
-                    var damage = holdable.GetComponent<Gun>().damage;
+                    var recoil = holdable.holder.stats.GetAdditionalData().recoil;
+                    var damage = ___gun.damage;
                     
-                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*2.3f*damage));
+                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*2.0f*damage));
                 }
 
                 // Alpha effect
-                if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<AlphaEffect>())
+                if (___gun.holdable && ___gun.holdable.holder.GetAdditionalData().alphaEffect)
                 {
-                    __instance.transform.parent.GetComponentInParent<Holdable>().holder.GetComponent<AlphaEffect>()
+                    ___gun.holdable.holder.GetAdditionalData().alphaEffect
                         .AlphaActive = false;
                 }
 
                 // Keep track of projectiles if have pong
-                if (__instance.transform.parent.GetComponentInParent<Holdable>() && __instance.transform.parent
-                    .GetComponentInParent<Holdable>().holder.GetComponent<Pong_Mono>())
+                if (___gun.holdable && ___gun.holdable.holder.GetComponent<Pong_Mono>())
                 {
                     __instance.GetAdditionalData().projectiles.Add(projectile);
                     GameObject.Destroy(projectile.GetComponent<RemoveAfterSeconds>());

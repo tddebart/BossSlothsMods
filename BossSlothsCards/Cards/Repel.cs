@@ -20,13 +20,14 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.GetAdditionalData().recoil += 0.25f;
+            characterStats.GetAdditionalData().recoil += 0.50f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            gun.knockback = 0.25f;
+            gun.knockback = 0.50f;
+            gun.reloadTimeAdd = 0.15f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -35,17 +36,24 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+25%",
+                    amount = "+50",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
                 },
                 new CardInfoStat
                 {
-                    amount = "+25%",
+                    amount = "+50%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Knockback"
+                },
+                new CardInfoStat
+                {
+                    amount = "+0.15s",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Reload time"
                 }
             };
         }

@@ -27,8 +27,7 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-
-            gun.ammo = 3;
+            
             gun.numberOfProjectiles = 3;
             gun.reloadTimeAdd = 0.25f;
 
@@ -43,14 +42,7 @@ namespace BossSlothsCards.Cards
                     amount = "+3",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Bullets"
-                },
-                new CardInfoStat
-                {
-                    amount = "+3",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Ammo"
+                    stat = "Projectiles"
                 },
                 new CardInfoStat
                 {
@@ -68,7 +60,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+100%",
+                    amount = "+100",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"

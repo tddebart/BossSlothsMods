@@ -20,11 +20,11 @@ namespace BossSlothsCards.MonoBehaviours
         
         private void Update()
         {
-            if ((bool) Traverse.Create(ooB).Field("outOfBounds").GetValue() && PlayerStatus.PlayerAlive(player) && transform.position.y >= -18.5f)
+            if ((bool) Traverse.Create(ooB).Field("outOfBounds").GetValue() && PlayerStatus.PlayerAlive(player) && (transform.position.y >= 19 || transform.position.x <= -35f || transform.position.x >= 35f))
             {
                 data.block.sinceBlock = 0.299f;
             }
-            if ((bool) Traverse.Create(ooB).Field("almostOutOfBounds").GetValue() && PlayerStatus.PlayerAlive(player) && transform.position.y >= -18.5f)
+            if ((bool) Traverse.Create(ooB).Field("almostOutOfBounds").GetValue() && PlayerStatus.PlayerAlive(player) && (transform.position.y >= 19 || transform.position.x <= -35f || transform.position.x >= 35f))
             {
                 data.block.sinceBlock = 0.299f;
             }

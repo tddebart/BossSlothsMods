@@ -19,7 +19,7 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.GetAdditionalData().recoil += 0.15f;
+            characterStats.GetAdditionalData().recoil += 0.25f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -58,7 +58,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+15%",
+                    amount = "+25",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"

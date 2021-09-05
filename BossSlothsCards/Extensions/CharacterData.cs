@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using BossSlothsCards.TempEffects;
 using HarmonyLib;
 
 namespace BossSlothsCards.Extensions
@@ -9,12 +10,14 @@ namespace BossSlothsCards.Extensions
         public float armor;
         public float maxArmor;
         public OutOfBoundsHandler outOfBoundsHandler;
+        public AlphaEffect alphaEffect;
 
         public CharacterDataAdditionalData()
         {
             armor = 0;
             maxArmor = 0;
             outOfBoundsHandler = null;
+            alphaEffect = null;
         }
     }
     

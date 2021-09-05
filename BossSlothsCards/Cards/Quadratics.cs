@@ -25,6 +25,10 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = false;
+            
+            gun.gravity = 0.9f;
+            gun.projectileSpeed = 1.1f;
+            gun.damage = 0.8f;
 
             var obj = new GameObject("Quadratics", typeof(Quadratics_Bullet));
             gun.objectsToSpawn = new[]
@@ -39,7 +43,31 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new []
+            {
+                new CardInfoStat
+                {
+                    amount = "+10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Bullet speed"
+                },
+                new CardInfoStat
+                {
+                    amount = "-10%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Bullet gravity"
+                }   ,
+                new CardInfoStat
+                {
+                    amount = "-20%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage"
+                } 
+                
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()

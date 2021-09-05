@@ -28,6 +28,8 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
             gun.reflects = 3;
+
+            gun.attackSpeed = 1.15f;
             
             var obj = new GameObject("A_SplittingRounds");
             obj.hideFlags = HideFlags.HideAndDontSave;
@@ -57,6 +59,13 @@ namespace BossSlothsCards.Cards
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Bounces"
+                },
+                new CardInfoStat
+                {
+                    amount = "-15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Attack speed"
                 }
             };
         }

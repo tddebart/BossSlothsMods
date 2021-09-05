@@ -39,7 +39,7 @@ namespace BossSlothsCards.Cards
                     amount = "-10%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Damage over time damage"
+                    stat = "DoT damage"
                 }
             };
         }

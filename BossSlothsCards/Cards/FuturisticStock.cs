@@ -21,6 +21,8 @@ namespace BossSlothsCards.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             characterStats.GetAdditionalData().recoil -= 1.5f;
+
+            block.cooldown *= 1.15f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -29,9 +31,9 @@ namespace BossSlothsCards.Cards
 
             statModifiers.health = 1.5f;
             
-            gun.damage = 1.5f;
+            gun.damage = 1.4f;
             gun.ammo = 3;
-            gun.reloadTimeAdd= 0.7f;
+            gun.reloadTimeAdd= 0.5f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -40,7 +42,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-150%",
+                    amount = "-150",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
@@ -61,17 +63,24 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+50%",
-                    positive = false,
+                    amount = "+40%",
+                    positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"
                 },
                 new CardInfoStat
                 {
-                    amount = "+0.7s",
+                    amount = "+0.5s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
+                },
+                new CardInfoStat
+                {
+                    amount = "+15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Block cooldown"
                 }
             };
         }

@@ -26,7 +26,7 @@ namespace BossSlothsCards.Cards
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
+            cardInfo.allowMultiple = false;
             gun.reloadTimeAdd = 0.1f;
         }
 
@@ -34,13 +34,6 @@ namespace BossSlothsCards.Cards
         {
             return new[]
             {
-                new CardInfoStat
-                {
-                    amount = "+1",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Boxes created on hit"
-                },
                 new CardInfoStat
                 {
                     amount = "+0.10s",

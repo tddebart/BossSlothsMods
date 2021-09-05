@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BSC files", "BSC files", "{
 		BossSlothsCards\ThunderStore\manifest.json = BossSlothsCards\ThunderStore\manifest.json
 		BossSlothsCards\ThunderStore\README.md = BossSlothsCards\ThunderStore\README.md
 		BossSlothsCards\publish.ps1 = BossSlothsCards\publish.ps1
+		BossSlothsCards\ThunderStore\blueprint.md = BossSlothsCards\ThunderStore\blueprint.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BST files", "BST files", "{3852D71C-6188-4D0E-A843-139A04078738}"

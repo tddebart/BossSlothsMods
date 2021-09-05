@@ -1,4 +1,6 @@
-﻿using UnboundLib.Cards;
+﻿using BossSlothsCards.MonoBehaviours;
+using UnboundLib;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
@@ -14,20 +16,20 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "";
+            return "Gain increased gravity equal to your ammo, 1 ammo = +2% gravity";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
+            player.gameObject.GetOrAddComponent<Drum_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            gun.ammo = 8;
+            gun.ammo = 14;
             gun.reloadTime = 0.75f;
-            gun.damage = 0.75f;
+            gun.damage = 0.85f;
 
         }
 
@@ -37,7 +39,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+8",
+                    amount = "+14",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Ammo"
@@ -51,7 +53,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "-25%",
+                    amount = "-15%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

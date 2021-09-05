@@ -27,10 +27,11 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
 
-            gun.damage = 1.3f;
+            gun.damage = 1.2f;
             gun.ammo = 2;
             gun.projectileSpeed = 0.75f;
             gun.reloadTimeAdd= 0.4f;
+            gun.attackSpeed = 1.15f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -39,14 +40,14 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "-100%",
+                    amount = "-100",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
                 },
                 new CardInfoStat
                 {
-                    amount = "+30%",
+                    amount = "+20%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

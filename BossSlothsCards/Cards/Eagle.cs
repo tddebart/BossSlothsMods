@@ -16,7 +16,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "The longer you are in the air the more damage you will do but also take";
+            return "The longer you are in the air the more damage you will do but also take\nPer second in air:";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -31,7 +31,23 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfoStat[] GetStats()
         {
-            return null;
+            return new []
+            {
+                new CardInfoStat
+                {
+                    amount = "+30%",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage"
+                },
+                new CardInfoStat
+                {
+                    amount = "+15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage taken"
+                }
+            };
         }
 
         protected override CardInfo.Rarity GetRarity()

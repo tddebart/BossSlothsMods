@@ -82,7 +82,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnboundLib, Version=2.6.2.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="UnboundLib, Version=2.7.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>C:\Users\tddeb\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -195,6 +195,8 @@
     <Compile Include="MonoBehaviours\BetterSawObject.cs" />
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
+    <Compile Include="MonoBehaviours\Drum_Mono.cs" />
+    <Compile Include="MonoBehaviours\FireHy_Mono.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
@@ -239,7 +241,6 @@
     <Compile Include="Utils\PreventRecusion.cs" />
     <Compile Include="Utils\RemoveOnRoundEnd.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
-    <Compile Include="Utils\TimeSince.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssetsEmbedded\bossslothsart" />
@@ -282,10 +283,10 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="PostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'" DependsOnTargets="Build" AfterTargets="Build">
-    <CallTarget Targets="ReadPackageVersionFromOutputAssembly">
-      <Output TaskParameter="TargetOutputs" PropertyName="PackageVersion" />
-    </CallTarget>
-    <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(ProjectDir)publish.ps1&quot; -Version &quot;$(PackageVersion.Remove($(PackageVersion.LastIndexOf('.')), 2))&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -RoundsPath &quot;$(RoundsFolder.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
-  </Target>
+    <Target Name="PostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'" DependsOnTargets="Build" AfterTargets="Build">
+      <CallTarget Targets="ReadPackageVersionFromOutputAssembly">
+        <Output TaskParameter="TargetOutputs" PropertyName="PackageVersion" />
+      </CallTarget>
+      <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(ProjectDir)publish.ps1&quot; -Version &quot;$(PackageVersion.Remove($(PackageVersion.LastIndexOf('.')), 2))&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -RoundsPath &quot;$(RoundsFolder.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
+    </Target>
 </Project>

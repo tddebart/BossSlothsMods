@@ -91,7 +91,7 @@ namespace BossSlothsCards.Cards
                 new CardInfoStat
                 {
                     stat = "Recoil",
-                    amount = "+20%",
+                    amount = "+20",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }

@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using BossSlothsCards.Utils;
 using HarmonyLib;
+using UnboundLib.Utils;
 using UnityEngine;
 
 namespace BossSlothsCards.Extensions

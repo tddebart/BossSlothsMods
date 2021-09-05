@@ -1,4 +1,5 @@
-﻿using BossSlothsCards.TempEffects;
+﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.TempEffects;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,7 +21,7 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<AlphaEffect>();
+            data.GetAdditionalData().alphaEffect = player.gameObject.AddComponent<AlphaEffect>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)

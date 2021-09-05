@@ -11,6 +11,8 @@
 /AutoUpdater/bin/
 /BossSlothsCards.sln.DotSettings.user
 
+/node_modules/
+
 /packages/
 /BossSlothsCards/bin/
 /BossSlothsCards/obj/

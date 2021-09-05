@@ -26,7 +26,7 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = true;
 
             gun.spread = 0.20f;
-            gun.ammo = 5;
+            gun.numberOfProjectiles = 5;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -38,7 +38,7 @@ namespace BossSlothsCards.Cards
                     amount = "+5",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Ammo"
+                    stat = "Projectiles"
                 },
                 new CardInfoStat
                 {

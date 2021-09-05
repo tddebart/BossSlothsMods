@@ -26,8 +26,9 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            gun.damage = 1.15f;
+            gun.damage = 1.3f;
             gun.knockback = 1.5f;
+            statModifiers.movementSpeed = 0.9f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -36,7 +37,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+25%",
+                    amount = "+30%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"
@@ -50,10 +51,17 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+50%",
+                    amount = "+50",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
+                },
+                new CardInfoStat
+                {
+                    amount = "-10%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Movement speed"
                 }
             };
         }

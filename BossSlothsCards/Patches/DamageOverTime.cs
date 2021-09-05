@@ -16,7 +16,7 @@ namespace BossSlothsCards.Patches
             // Less damage when hazmat
             if (___data.GetComponent<Hazmat_Mono>())
             {
-                damage *= ___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReductionOverTime;
+                damage *= Mathf.Sqrt(___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReductionOverTime)/1.2f;
             }
             
             // Damage reduction

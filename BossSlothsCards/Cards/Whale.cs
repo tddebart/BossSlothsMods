@@ -26,9 +26,9 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = true;
 
             statModifiers.health = 3.5f;
-            statModifiers.movementSpeed = 0.3f;
+            statModifiers.movementSpeed = 0.5f;
             gun.attackSpeed = 1.5f;
-            statModifiers.sizeMultiplier = 1.5f;
+            statModifiers.sizeMultiplier = 1.3f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -44,7 +44,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "-60%",
+                    amount = "-50%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Movement speed"
@@ -58,7 +58,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "+50%",
+                    amount = "+30%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Size"

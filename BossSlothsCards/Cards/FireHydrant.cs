@@ -14,11 +14,12 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "";
+            return "You will always fire your entire clip in one burst";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            player.gameObject.AddComponent<FireHy_Mono>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -26,7 +27,7 @@ namespace BossSlothsCards.Cards
             cardInfo.allowMultiple = false;
             
             gun.reloadTimeAdd = 0.15f;
-            gun.attackSpeed = 0.05f;
+            gun.timeBetweenBullets = 0.03f;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -35,17 +36,17 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+95%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Attack speed"
-                },
-                new CardInfoStat
-                {
                     amount = "+0.15s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
+                },
+                new CardInfoStat
+                {
+                    amount = "+1",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Extra burst"
                 }
             };
         }

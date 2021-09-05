@@ -5,9 +5,38 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.1.0
+    - Balancing changes and tweaks
+        - A lot of performance improvements
+        - Attract has -50 recoil and -50 knockback instead 25 for both
+        - Boing has +25 recoil
+        - Bolt action bullets are red
+        - Bulletproof has -15% attack speed
+        - Compacted shot no longer gives ammo and instead gives more projectiles
+        - Drum magazine has been fully changed
+        - Elite sneakers gives jump height
+        - Fire hydrant forces you to empty the entire clip
+        - Foldable stock does 20% damage instead of 30%
+        - Futuristic stock does 40% damage instead of 50% and has less reload time
+        - Hazmat suit no longer automatically blocks bullet
+        - Higher caliber has +30% damage instead of +25% and less movement speed
+        - Le monk has +15% damage resistance instead of +20%
+        - Long fall boots gives increased gravity
+        - Quadratics has +10% bullet speed, -10% bullet gravity and -20% damage
+        - Repel has +50 recoil and +50 knockback instead 25 for both
+        - Rolling thunder spawns red bullets
+        - Sluggish rounds does +10 bounces instead of +15
+        - Snap effect gives +10% health
+        - Splitting rounds has -15% attack speed
+        - Spread the love gives you +5 projectiles instead of +5 ammo
+        - This way up gives +15% damage
+        - Whale gives -50% movement speed instead of -60%
+        - Wooden gives +0.2s reload time instead of +0.1s
+  
+
 - v2.0.1
-    - Fixed pong double art and sometimes not spawning  
-    
+    - Fixed pong double art and sometimes not spawning
+  
 
 - v2.0.0
     - 40 new cards

@@ -18,16 +18,18 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
+            
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = false;
-
-            gun.attackSpeed = 1.9f;
+            
+            gun.attackSpeed = 2f;
             gun.damage = 2.5f;
             gun.reloadTimeAdd = 0.35f;
+            
+            gun.projectileColor = Color.red;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -36,10 +38,10 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+90%",
+                    amount = "+100%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Attack speed"
+                    stat = "Attack time"
                 },
                 new CardInfoStat
                 {
