@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.TempEffects;
 using UnboundLib;
 using UnboundLib.Cards;
@@ -28,6 +29,29 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
             gun.reloadTimeAdd = 0.1f;
+            
+            var box = (GameObject)Resources.Load("4 map objects/Box_Destructible");
+            var spriteRen = box.GetComponent<SpriteRenderer>();
+            var obj = new GameObject();
+            obj.transform.position = new Vector3(1000, 0, 0);
+            obj.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            var rendrer = obj.AddComponent<SpriteRenderer>();
+            rendrer.sprite = spriteRen.sprite;
+            rendrer.color = spriteRen.color;
+            obj.AddComponent<EffectBulletRotate>();
+            var sf = obj.AddComponent<SFPolygon>();
+            sf.verts = spriteRen.GetComponent<SFPolygon>().verts;
+            sf._looped = true;
+            sf.shadowLayers = -1;
+            sf.opacity = 1;
+
+            gun.objectsToSpawn = new[]
+            {
+                new ObjectsToSpawn()
+                {
+                    AddToProjectile = obj
+                }
+            };
         }
 
         protected override CardInfoStat[] GetStats()

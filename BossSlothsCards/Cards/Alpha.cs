@@ -60,7 +60,7 @@ namespace BossSlothsCards.Cards
                 new CardInfoStat
                 {
                     amount = "+0.5s",
-                    positive = true,
+                    positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
                 }

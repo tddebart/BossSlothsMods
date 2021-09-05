@@ -197,6 +197,7 @@
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
     <Compile Include="MonoBehaviours\Drum_Mono.cs" />
+    <Compile Include="MonoBehaviours\EffectBulletRotate.cs" />
     <Compile Include="MonoBehaviours\FireHy_Mono.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />

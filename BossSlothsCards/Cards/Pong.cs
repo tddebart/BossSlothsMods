@@ -47,6 +47,7 @@ namespace BossSlothsCards.Cards
             var pong = player.gameObject.GetOrAddComponent<Pong_Mono>();
             pong.maxAmmo++;
             gun.reflects = int.MaxValue-150;
+            gun.projectileColor = Color.yellow;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -60,19 +61,36 @@ namespace BossSlothsCards.Cards
 
             gun.spread = 0.1f;
             gun.gravity = 0.85f;
-            gun.damage = 0.85f;
-            
-            gun.projectileColor = Color.black;
+            gun.damage = 0.70f;
 
             var obj = new GameObject("pong", typeof(Sneeze_Mono), typeof(RemoveOnRoundEnd), typeof(Pong_Bullet));
             DontDestroyOnLoad(obj);
+            
+            var obj2 = new GameObject();
+            obj2.transform.position = new Vector3(1000, 0, 0);
+            obj2.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            var rendrer = obj2.AddComponent<SpriteRenderer>();
+            rendrer.sprite = BossSlothCards.EffectAsset.LoadAsset<Sprite>("pixel_ball");
+            obj2.AddComponent<EffectBulletRotate>();
+
+            gun.objectsToSpawn = new[]
+            {
+                new ObjectsToSpawn()
+                {
+                    AddToProjectile = obj
+                },
+                new ObjectsToSpawn()
+                {
+                    AddToProjectile = obj2
+                }
+            };
             
             gun.objectsToSpawn = new[]
             {
                 A_ScreenEdge,
                 new ObjectsToSpawn
                 {
-                    AddToProjectile = obj
+                    AddToProjectile = obj2
                 }
             };
         }
@@ -104,7 +122,7 @@ namespace BossSlothsCards.Cards
                 },
                 new CardInfoStat
                 {
-                    amount = "-15%",
+                    amount = "-30%",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"

@@ -26,7 +26,7 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = true;
-            statModifiers.health = 1.5f;
+            statModifiers.health = 1.4f;
             statModifiers.movementSpeed = 0.8f;
 
         }
@@ -37,7 +37,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+50%",
+                    amount = "+40%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Max HP"

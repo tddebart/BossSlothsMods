@@ -52,6 +52,7 @@ namespace BossSlothsCards.MonoBehaviours
                     if(Math.Round(player.transform.position.x) == Math.Round(transform.position.x) && player.transform.position.y < transform.position.y)
                     {
                         moveTransform.velocity = new Vector2(0,-25f);
+                        moveTransform.gravity = 1.0f;
                     }
                 }
             }
