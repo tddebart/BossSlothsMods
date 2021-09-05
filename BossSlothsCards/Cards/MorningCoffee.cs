@@ -1,4 +1,7 @@
-﻿using UnboundLib.Cards;
+﻿using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.TempEffects;
+using UnboundLib;
+using UnboundLib.Cards;
 using UnityEngine;
 
 namespace BossSlothsCards.Cards
@@ -14,18 +17,18 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Don't talk to me until I've had my morning coffee";
+            return "Don't talk to me until I've had my morning coffee\nYou gain <color=green>+100%</color> movement speed but this trails of by 10% every second while you are running recharge by standing still";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
+            player.gameObject.AddComponent<MorningCoffeeEffect>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
-            cardInfo.allowMultiple = true;
-            statModifiers.movementSpeed = 1.5f;
+            cardInfo.allowMultiple = false;
+            //statModifiers.movementSpeed = 1.5f;
             statModifiers.health = 0.80f;
 
         }
@@ -34,13 +37,6 @@ namespace BossSlothsCards.Cards
         {
             return new []
             {
-                new CardInfoStat
-                {
-                    amount = "+50%",
-                    positive = true,
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Movement speed"
-                },
                 new CardInfoStat
                 {
                     amount = "-20%",

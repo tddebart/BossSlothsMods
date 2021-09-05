@@ -191,6 +191,7 @@
     <Compile Include="Extensions\PlayerManager.cs" />
     <Compile Include="Extensions\PlayerVelocity.cs" />
     <Compile Include="Extensions\String.cs" />
+    <Compile Include="Extensions\Vector3.cs" />
     <Compile Include="MonoBehaviours\ArmorDamageOverTime.cs" />
     <Compile Include="MonoBehaviours\BetterSawObject.cs" />
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempEffects\MorningCoffeeEffect.cs" />
     <Compile Include="TempEffects\RollingThunderEffect.cs" />
     <Compile Include="TempEffects\AlphaEffect.cs" />
     <Compile Include="TempEffects\EagleEffect.cs" />
