@@ -216,6 +216,7 @@
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
     <Compile Include="MonoBehaviours\ExplosionMap.cs" />
     <Compile Include="MonoBehaviours\SpawnBulletsEffect.cs" />
+    <Compile Include="MonoBehaviours\SpecialEffectFrontGun.cs" />
     <Compile Include="MonoBehaviours\Underdog_Mono.cs" />
     <Compile Include="MonoBehaviours\Yang_Mono.cs" />
     <Compile Include="Patches\BlockPatch.cs" />
