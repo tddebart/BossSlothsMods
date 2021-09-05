@@ -38,7 +38,7 @@ namespace BossSlothsCards.Patches
                     var recoil = holdable.holder.stats.GetAdditionalData().recoil;
                     var damage = ___gun.damage;
                     
-                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*2.0f*damage));
+                    healthHandler.CallTakeForce(-new Vector2(1000 * direction.x, 1000 * direction.y) * (recoil*2.5f*damage));
                 }
 
                 // Alpha effect

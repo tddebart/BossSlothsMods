@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.Extensions;
+using BossSlothsCards.MonoBehaviours;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -48,6 +49,8 @@ namespace BossSlothsCards.Cards
             //     orig(self);
             // };
 
+            var obj = new GameObject("rocket_projectile", typeof(Rocket_Projectile));
+
             gun.objectsToSpawn = new[]
             {
                 new ObjectsToSpawn
@@ -58,6 +61,11 @@ namespace BossSlothsCards.Cards
                     scaleFromDamage = 0.5f,
                     scaleStackM = 0.7f,
                     scaleStacks = true,
+                },
+                new ObjectsToSpawn
+                {
+                    AddToProjectile = obj, 
+                    scaleFromDamage = 1f
                 }
             };
 

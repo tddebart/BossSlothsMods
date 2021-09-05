@@ -22,7 +22,7 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
         - Higher caliber has +30% damage instead of +25% and less movement speed
         - Le monk has +15% damage resistance instead of +20%
         - Long fall boots gives increased gravity
-        - Quadratics has +10% bullet speed, -10% bullet gravity and -20% damage
+        - Quadratics has +10% bullet speed, -10% bullet gravity and -20% damage and will no longer plummet up in some cases
         - Repel has +50 recoil and +50 knockback instead 25 for both
         - Rolling thunder spawns red bullets
         - Sluggish rounds does +10 bounces instead of +15

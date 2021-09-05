@@ -199,6 +199,7 @@
     <Compile Include="MonoBehaviours\Drum_Mono.cs" />
     <Compile Include="MonoBehaviours\EffectBulletRotate.cs" />
     <Compile Include="MonoBehaviours\FireHy_Mono.cs" />
+    <Compile Include="MonoBehaviours\FollowLocation.cs" />
     <Compile Include="MonoBehaviours\GetCamera_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="MonoBehaviours\RecyclingDay_Mono.cs" />
     <Compile Include="MonoBehaviours\ReduceSizeOverSeconds.cs" />
     <Compile Include="MonoBehaviours\RemoveOnRoundEnd.cs" />
+    <Compile Include="MonoBehaviours\Rocket_Projectile.cs" />
     <Compile Include="MonoBehaviours\SawCounter.cs" />
     <Compile Include="MonoBehaviours\SawObject.cs" />
     <Compile Include="MonoBehaviours\Sneeze_Mono.cs" />
@@ -245,6 +247,7 @@
     <Compile Include="Utils\Colors.cs" />
     <Compile Include="Utils\PreventRecusion.cs" />
     <Compile Include="Utils\RemoveOnRoundEnd.cs" />
+    <Compile Include="Utils\RemoveWhenNotMoving.cs" />
     <Compile Include="Utils\Text\RainbowText.cs" />
   </ItemGroup>
   <ItemGroup>
