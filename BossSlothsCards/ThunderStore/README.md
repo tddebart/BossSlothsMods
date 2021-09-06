@@ -40,6 +40,8 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
         - Flatpack munitions
         - Pong
         - Rocket jump
+        - Sloth
+        - Eagle
   
 
 - v2.0.1

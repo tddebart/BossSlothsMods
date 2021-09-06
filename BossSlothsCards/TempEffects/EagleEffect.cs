@@ -1,5 +1,6 @@
 ﻿using ModdingUtils.Extensions;
 using ModdingUtils.MonoBehaviours;
+using Photon.Pun;
 using UnityEngine;
 using CharacterStatModifiersExtension = BossSlothsCards.Extensions.CharacterStatModifiersExtension;
 
@@ -12,7 +13,9 @@ namespace BossSlothsCards.TempEffects
         private float origReduction;
         private float multiplier;
         private float maxMultiplier = 5;
-        private const float timeToMax = 17;
+        private const float timeToMax = 15;
+
+        public GameObject wings;
         
         public override CounterStatus UpdateCounter()
         {
@@ -45,7 +48,21 @@ namespace BossSlothsCards.TempEffects
             gunStatModifier.damage_mult = multiplier;
             CharacterStatModifiersExtension.GetAdditionalData(characterStatModifiers).damageReduction = 1/(multiplier <= 2 ? 1 : multiplier/2);
         }
-        
+
+        public override void OnStart()
+        {
+            base.OnStart();
+            wings = Instantiate(BossSlothCards.EffectAsset.LoadAsset<GameObject>("wings"), transform.Find("Particles"));
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            //new Color32(255, 165, 67, 255);
+            var scaleValue = Mathf.Lerp(0f, 0.8f, Mathf.Clamp(Mathf.InverseLerp(0.1f, 15, sinceGrounded), 0, 17));
+            wings.transform.localScale = new Vector3(scaleValue, scaleValue);
+        }
+
         public override void OnApply()
         {
         }

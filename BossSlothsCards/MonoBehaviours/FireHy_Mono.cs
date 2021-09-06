@@ -16,7 +16,7 @@ namespace BossSlothsCards.MonoBehaviours
         void Update()
         {
             gun.bursts = gunAmmo.maxAmmo+1;
-            gun.attackSpeed = 0.03f * gunAmmo.maxAmmo + 0.1f;
+            gun.attackSpeed = gun.timeBetweenBullets * gunAmmo.maxAmmo + 0.1f;
         }
     }
 }

@@ -25,9 +25,11 @@ namespace BossSlothsCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = false;
-            
-            gun.reloadTimeAdd = 0.15f;
-            gun.timeBetweenBullets = 0.03f;
+
+            gun.ammo = 3;
+            gun.reloadTimeAdd = 0.2f;
+            gun.timeBetweenBullets = 0.1f;
+            gun.projectileColor = Color.cyan;
         }
 
         protected override CardInfoStat[] GetStats()
@@ -36,7 +38,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+0.15s",
+                    amount = "+0.20s",
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
@@ -47,6 +49,13 @@ namespace BossSlothsCards.Cards
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Extra burst"
+                },
+                new CardInfoStat
+                {
+                    amount = "+3",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Ammo"
                 }
             };
         }
