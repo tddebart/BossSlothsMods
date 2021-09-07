@@ -6,8 +6,10 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <summary>2.0</summary>
 
 - v2.1.1
-    - Fixed pong not removing on round end
-    - Fixed wrong color on stat in long fall boots
+    - Fixed bugs
+        - pong not removing on round end
+        - wrong color on stat in long fall boots
+        - drum magazine not actually applying gravity
 
 - v2.1.0
     - Balancing changes and tweaks

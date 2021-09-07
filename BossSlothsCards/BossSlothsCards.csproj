@@ -196,7 +196,6 @@
     <Compile Include="MonoBehaviours\BetterSawObject.cs" />
     <Compile Include="MonoBehaviours\ChargeCounter.cs" />
     <Compile Include="MonoBehaviours\DealDamageToPlayer.cs" />
-    <Compile Include="MonoBehaviours\Drum_Mono.cs" />
     <Compile Include="MonoBehaviours\EffectBulletRotate.cs" />
     <Compile Include="MonoBehaviours\FireHy_Mono.cs" />
     <Compile Include="MonoBehaviours\FollowLocation.cs" />
@@ -204,7 +203,6 @@
     <Compile Include="MonoBehaviours\ArmorBar.cs" />
     <Compile Include="MonoBehaviours\Armor_Mono.cs" />
     <Compile Include="MonoBehaviours\ArmorHandler.cs" />
-    <Compile Include="MonoBehaviours\GunAmmo_Mono.cs" />
     <Compile Include="MonoBehaviours\Hazmat_Mono.cs" />
     <Compile Include="MonoBehaviours\NoSelfCollide.cs" />
     <Compile Include="MonoBehaviours\Pong_Bullet.cs" />
@@ -231,6 +229,7 @@
     <Compile Include="Patches\Reset_Patch.cs" />
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempEffects\DrumEffect.cs" />
     <Compile Include="TempEffects\MorningCoffeeEffect.cs" />
     <Compile Include="TempEffects\RollingThunderEffect.cs" />
     <Compile Include="TempEffects\AlphaEffect.cs" />

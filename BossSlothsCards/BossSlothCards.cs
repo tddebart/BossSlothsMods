@@ -165,6 +165,14 @@ namespace BossSlothsCards
                 CustomCardCategories.instance.MakeCardsExclusive(
                     CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
                     CardManager.cards.Values.First(card => card.cardInfo.cardName == "Spinning death").cardInfo);
+
+                if (CardManager.cards.Values.Any(card => card.cardInfo.cardName == "Moon Shoes"))
+                {
+                    CustomCardCategories.instance.MakeCardsExclusive(
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Pong").cardInfo,
+                        CardManager.cards.Values.First(card => card.cardInfo.cardName == "Drum magazine").cardInfo);
+                }
+
                 
                 if (CardManager.cards.Values.Any(card => card.cardInfo.cardName == "Comb"))
                 {
