@@ -66,7 +66,8 @@ namespace BossSlothsCards.Cards
             var obj = new GameObject("pong", typeof(Sneeze_Mono), typeof(RemoveOnRoundEnd), typeof(Pong_Bullet));
             DontDestroyOnLoad(obj);
             
-            var obj2 = new GameObject();
+            var obj2 = new GameObject("pixel_ball");
+            DontDestroyOnLoad(obj2);
             obj2.transform.position = new Vector3(1000, 0, 0);
             obj2.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             var rendrer = obj2.AddComponent<SpriteRenderer>();
@@ -79,19 +80,11 @@ namespace BossSlothsCards.Cards
                 {
                     AddToProjectile = obj
                 },
-                new ObjectsToSpawn()
-                {
-                    AddToProjectile = obj2
-                }
-            };
-            
-            gun.objectsToSpawn = new[]
-            {
-                A_ScreenEdge,
                 new ObjectsToSpawn
                 {
                     AddToProjectile = obj2
-                }
+                },
+                A_ScreenEdge
             };
         }
 
