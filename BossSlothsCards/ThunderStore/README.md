@@ -5,6 +5,11 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.1.2
+    - Fixed bugs
+        - you would always have a bit of damage reduction
+        - rolling thunder and splitting rounds would lag the game
+
 - v2.1.1
     - Fixed bugs
         - pong not removing on round end

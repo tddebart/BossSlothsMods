@@ -2,6 +2,7 @@
 using BossSlothsCards.Utils.Text;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Extensions;
+using Photon.Pun;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -73,7 +74,7 @@ namespace BossSlothsCards.Cards
                 var card = enemy.data.currentCards[count];
 
                 // Add card to player
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, card);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, card, false, "", 0, 0, true);
                 ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, card);
                 // Remove card from enemy
                 ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(enemy, card, ModdingUtils.Utils.Cards.SelectionType.Newest);

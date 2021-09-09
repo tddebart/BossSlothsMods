@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BossSlothsCards.MonoBehaviours;
 using BossSlothsCards.Utils;
 using ModdingUtils.Extensions;
 using ModdingUtils.RoundsEffects;
+using UnboundLib;
+using UnboundLib.Utils;
 using UnityEngine;
 using CharacterStatModifiersExtension = BossSlothsCards.Extensions.CharacterStatModifiersExtension;
+using Random = UnityEngine.Random;
 
 namespace BossSlothsCards.TempEffects
 {
@@ -15,13 +19,27 @@ namespace BossSlothsCards.TempEffects
         
         private Player player;
         private Gun gun;
-        
-        public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
+        private GunAmmo gunAmmo;
+
+        public void Awake()
         {
             player = gameObject.GetComponent<Player>();
             gun = player.GetComponent<Holding>().holdable.GetComponent<Gun>();
+            gunAmmo = player.GetComponent<Holding>().holdable.GetComponentInChildren<GunAmmo>();
+        }
 
-            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return; 
+        public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
+        {
+            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return;
+
+            if (gun.numberOfProjectiles > 5 || gunAmmo.maxAmmo > 12)
+            {
+                var rnd = Random.Range(0, Math.Max(gun.numberOfProjectiles, gunAmmo.maxAmmo));
+                if (rnd > 6)
+                {
+                    return;
+                }
+            }
             
             var newGun = player.gameObject.AddComponent<SplittingGun>();
             
@@ -48,8 +66,12 @@ namespace BossSlothsCards.TempEffects
             newGun.projectileSpeed = 0.6f;
             newGun.damageAfterDistanceMultiplier = 1f;
             newGun.GetAdditionalData().inactiveDelay = 0.1f;
-            newGun.objectsToSpawn = new [] { PreventRecursion.stopRecursionObjectToSpawn };
-
+            
+            newGun.objectsToSpawn = new []
+            {
+                PreventRecursion.stopRecursionObjectToSpawn,
+            };
+            
             // set the gun of the spawnbulletseffect
             effect.SetGun(newGun);
         }

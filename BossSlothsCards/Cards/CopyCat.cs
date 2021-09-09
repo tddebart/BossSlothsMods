@@ -38,7 +38,7 @@ namespace BossSlothsCards.Cards
                 tries++;
                 if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, enemy.data.currentCards[randomNum])) continue;
                 var randomCard = enemy.data.currentCards[randomNum];
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard, false, "", 0, 0, true);
                 ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 break;
             }

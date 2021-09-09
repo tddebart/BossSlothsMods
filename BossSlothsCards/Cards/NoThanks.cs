@@ -63,7 +63,7 @@ namespace BossSlothsCards.Cards
                 ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(player, cardToRemove, ModdingUtils.Utils.Cards.SelectionType.Newest);
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
-                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard);
+                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard, false, "", 0, 0, true);
                     CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
                 });
                 break;

@@ -24,11 +24,11 @@ namespace BossSlothsCards.Patches
             foreach (var card in ___data.currentCards.Where(card => card.cardName.Contains("Thorns")).Where(card => damagingPlayer != null))
             {
                 // ReSharper disable once PossibleNullReferenceException
-                damagingPlayer.GetComponent<HealthHandler>().CallTakeDamage(damage * 0.2f, Vector2.zero);
+                damagingPlayer.data.healthHandler.CallTakeDamage(damage * 0.2f, Vector2.zero);
             }
             
             // Damage reduction
-            damage /= Mathf.Sqrt(___data.GetComponent<CharacterStatModifiers>().GetAdditionalData().damageReduction)*1.2f;
+            damage /= ___data.stats.GetAdditionalData().damageReduction == 1 ? 1 : Mathf.Sqrt(___data.stats.GetAdditionalData().damageReduction)*1.2f;
             
             // Underdog
             if (damagingPlayer != null && damagingPlayer.GetComponent<Underdog_Mono>() && damagingPlayer.data.health < ___data.health)
