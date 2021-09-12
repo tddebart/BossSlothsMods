@@ -30,6 +30,7 @@ namespace BossSlothsCards.Cards
             
             gun.numberOfProjectiles = 3;
             gun.reloadTimeAdd = 0.25f;
+            gun.damage = 0.85f;
 
         }
 
@@ -64,6 +65,13 @@ namespace BossSlothsCards.Cards
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Recoil"
+                },
+                new CardInfoStat
+                {
+                    amount = "-15%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Damage"
                 }
             };
         }

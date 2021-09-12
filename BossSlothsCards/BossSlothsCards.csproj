@@ -230,6 +230,7 @@
     <Compile Include="Patches\DamageOverTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempEffects\DrumEffect.cs" />
+    <Compile Include="TempEffects\FireHydrantEffect.cs" />
     <Compile Include="TempEffects\MorningCoffeeEffect.cs" />
     <Compile Include="TempEffects\RollingThunderEffect.cs" />
     <Compile Include="TempEffects\AlphaEffect.cs" />

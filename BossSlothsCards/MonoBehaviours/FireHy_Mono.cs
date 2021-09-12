@@ -2,7 +2,7 @@
 
 namespace BossSlothsCards.MonoBehaviours
 {
-    public class FireHy_Mono : MonoBehaviour
+    public class FireHy_Mono : BossSlothMonoBehaviour
     {
         private Gun gun;
         private GunAmmo gunAmmo;
@@ -17,6 +17,7 @@ namespace BossSlothsCards.MonoBehaviours
         {
             gun.bursts = gunAmmo.maxAmmo+1;
             gun.attackSpeed = gun.timeBetweenBullets * gunAmmo.maxAmmo + 0.1f;
+            gun.numberOfProjectiles = 1;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BossSlothsCards.MonoBehaviours;
+using BossSlothsCards.TempEffects;
 using UnboundLib.Cards;
 using UnityEngine;
 
@@ -14,12 +15,13 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "You will always fire your entire clip in one burst";
+            return "You will always fire your entire clip in one burst and you will always shoot 1 projectile per bullet";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             player.gameObject.AddComponent<FireHy_Mono>();
+            //player.gameObject.AddComponent<FireHydrantEffect>();
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -30,6 +32,7 @@ namespace BossSlothsCards.Cards
             gun.reloadTimeAdd = 0.2f;
             gun.timeBetweenBullets = 0.1f;
             gun.projectileColor = Color.cyan;
+            //gun.lockGunToDefault = true;
         }
 
         protected override CardInfoStat[] GetStats()

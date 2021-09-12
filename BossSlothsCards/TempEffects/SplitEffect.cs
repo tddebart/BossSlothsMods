@@ -28,7 +28,7 @@ namespace BossSlothsCards.TempEffects
         
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
-            if (gun.reflects >= 2147482647 && Random.Range(0, 10) != 4) return;
+            if ((gun.reflects >= 2147482647 || player.data.currentCards.Any(cr => cr.cardName == "Sneeze")) && Random.Range(0, 10) != 4) return;
             
             if (gun.numberOfProjectiles > 5 || gunAmmo.maxAmmo > 12)
             {
