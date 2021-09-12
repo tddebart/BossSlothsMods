@@ -131,6 +131,7 @@
     <Compile Include="Cards\BulletProofBullets.cs" />
     <Compile Include="Cards\FireHydrant.cs" />
     <Compile Include="Cards\FlatpackMunitions.cs" />
+    <Compile Include="Cards\Heist.cs" />
     <Compile Include="Cards\LongFallBoots.cs" />
     <Compile Include="Cards\Omega.cs" />
     <Compile Include="Cards\OverclockedFlywheels.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Cards\SleightOfHand.cs" />
     <Compile Include="Cards\SpreadTheLove.cs" />
     <Compile Include="Cards\SquiresArmor.cs" />
+    <Compile Include="Cards\TradingSkills.cs" />
     <Compile Include="Cards\UnderDog.cs" />
     <Compile Include="Cards\CompactedShot.cs" />
     <Compile Include="Cards\DrumMagazine.cs" />

@@ -149,6 +149,8 @@ namespace BossSlothsCards
             CustomCard.BuildCard<BulletProofBullets>();
             CustomCard.BuildCard<OverclockedFlywheels>();
             CustomCard.BuildCard<FireHydrant>();
+            CustomCard.BuildCard<TradingSkills>();
+            CustomCard.BuildCard<Heist>();
 
 
             GameModeManager.AddHook(GameModeHooks.HookPointStart, (gm) => DoExplosionThings());

@@ -14,6 +14,8 @@ namespace BossSlothsCards.Cards
         public AssetBundle Asset;
 
         public string cardRemovedName;
+
+        public CardInfo.Rarity rarity;
         
         protected override string GetTitle()
         {
@@ -22,7 +24,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Replace your most recent card with a random card";
+            return "Replace your most recent card with 2 random cards of lower rarity if possible";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -57,14 +59,19 @@ namespace BossSlothsCards.Cards
                 }
                 
                 cardRemovedName = player.data.currentCards[count].cardName;
+                rarity = player.data.currentCards[count].rarity;
+                
                 var cardToRemove = player.data.currentCards[count];
                 var randomCard = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
+                var randomCard2 = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, condition);
 
                 ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(player, cardToRemove, ModdingUtils.Utils.Cards.SelectionType.Newest);
                 player.ExecuteAfterSeconds(0.2f, () =>
                 {
                     ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard, false, "", 0, 0, true);
+                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, randomCard2, false, "", 0, 0, true);
                     CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+                    CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard2);
                 });
                 break;
             }
@@ -116,8 +123,10 @@ namespace BossSlothsCards.Cards
             // card rarity must be as desired
             // card cannot be another Gamble / Jackpot card
             // card cannot be from a blacklisted category of any other card
-        
-            return card.cardName != cardRemovedName && card.cardName != "No thanks";
+
+            var lowerRarity = rarity == CardInfo.Rarity.Rare ? CardInfo.Rarity.Uncommon : CardInfo.Rarity.Common;
+            
+            return card.cardName != cardRemovedName && card.cardName != "No thanks" && card.rarity == lowerRarity;
         }
 
     }

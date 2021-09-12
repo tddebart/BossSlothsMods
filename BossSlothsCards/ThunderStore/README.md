@@ -5,6 +5,22 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.2.0
+    - New cards
+        - Heist
+        - Trading skills
+    
+    - Balancing changes
+        - Quadratics now rare
+        - Larcenist now rare
+        - Fire hydrant now sets projectiles to 1
+        - Flatpack munitions now common
+        - Recycling day now common
+        - Sluggish rounds now has +20% bullet gravity
+        - Hazmat suit now common
+        - Compacted shot -15% damage
+        - Second gun changed
+
 - v2.1.2
     - Fixed bugs
         - you would always have a bit of damage reduction
