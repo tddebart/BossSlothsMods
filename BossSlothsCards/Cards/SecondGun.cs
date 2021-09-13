@@ -21,6 +21,7 @@ namespace BossSlothsCards.Cards
         {
             gun.numberOfProjectiles *= 2;
             gun.damage *= 0.5f;
+            gun.spread = 0.05f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
@@ -45,6 +46,13 @@ namespace BossSlothsCards.Cards
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Damage"
+                },
+                new CardInfoStat
+                {
+                    amount = "+5%",
+                    positive = false,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Spread"
                 }
             };
         }

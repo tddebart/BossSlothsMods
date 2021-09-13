@@ -5,6 +5,12 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.2.1
+    - Fixed bugs
+        - Recycling day would persist with a rematch
+        - Recycling day fixed a typo
+    - Second gun has a bit of spread now
+
 - v2.2.0
     - New cards
         - Heist
@@ -17,7 +23,7 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
         - Flatpack munitions now common
         - Recycling day now common
         - Sluggish rounds now has +20% bullet gravity
-        - Hazmat suit now common
+        - Hazmat suit now Uncommon
         - Compacted shot -15% damage
         - Second gun changed
 

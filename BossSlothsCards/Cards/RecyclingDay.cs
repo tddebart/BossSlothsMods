@@ -25,6 +25,7 @@ namespace BossSlothsCards.Cards
         {
             player.gameObject.AddComponent<RecyclingDay_Mono>();
             var reclyObj = new GameObject("recycling");
+            reclyObj.AddComponent<BossSlothMonoBehaviour>();
             var jump = reclyObj.AddComponent<PlayerDoJump>();
             jump.multiplier = 1;
             var trigger = reclyObj.AddComponent<BlockTrigger>();
@@ -77,7 +78,7 @@ namespace BossSlothsCards.Cards
                     amount = "+10%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
-                    stat = "Healh"
+                    stat = "Health"
                 }
             };
         }
