@@ -21,12 +21,12 @@ namespace BossSlothsCards.Cards
         {
             gun.numberOfProjectiles *= 2;
             gun.damage *= 0.5f;
-            gun.spread = 0.05f;
         }
         
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers)
         {
             cardInfo.allowMultiple = false;
+            gun.spread = 0.05f;
         }
 
         protected override CardInfoStat[] GetStats()

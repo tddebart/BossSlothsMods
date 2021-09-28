@@ -30,7 +30,7 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = true;
 
-            statModifiers.health = 1.1f;
+            statModifiers.health = 1.2f;
 
             if (transform.Find("CardBase(Clone)(Clone)/Canvas/Front/Text_Name"))
             {
@@ -48,7 +48,7 @@ namespace BossSlothsCards.Cards
             {
                 new CardInfoStat
                 {
-                    amount = "+10%",
+                    amount = "+20%",
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Health"
@@ -58,7 +58,7 @@ namespace BossSlothsCards.Cards
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Uncommon;
         }
 
         protected override GameObject GetCardArt()

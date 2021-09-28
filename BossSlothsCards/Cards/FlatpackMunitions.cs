@@ -29,6 +29,7 @@ namespace BossSlothsCards.Cards
         {
             cardInfo.allowMultiple = false;
             gun.reloadTimeAdd = 0.1f;
+            gun.reflects = 2;
             
             var box = (GameObject)Resources.Load("4 map objects/Box_Destructible");
             var spriteRen = box.GetComponent<SpriteRenderer>();
@@ -64,6 +65,13 @@ namespace BossSlothsCards.Cards
                     positive = false,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Reload time"
+                },
+                new CardInfoStat
+                {
+                    amount = "+2",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Bounces"
                 }
             };
         }

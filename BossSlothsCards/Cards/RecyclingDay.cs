@@ -23,6 +23,8 @@ namespace BossSlothsCards.Cards
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            block.cooldown -= 0.2f;
+            
             player.gameObject.AddComponent<RecyclingDay_Mono>();
             var reclyObj = new GameObject("recycling");
             reclyObj.AddComponent<BossSlothMonoBehaviour>();
@@ -43,14 +45,18 @@ namespace BossSlothsCards.Cards
                     jump.DoJump();
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", (player.transform.position), Quaternion.identity);
+                        PhotonNetwork.Instantiate("4 map objects/Box_Destructible_Small", player.transform.position, Quaternion.identity);
+                        var scale = jump.transform.parent.transform.localScale;
                         jump.ExecuteAfterSeconds(0.08f, () =>
                         {
-                            jump.transform.parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                            var parent = jump.transform.parent;
+                            parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                            parent.GetComponent<PhotonView>().RPC("RPCA_BigBox", RpcTarget.All);
                         });
                         jump.ExecuteAfterSeconds(0.15f, () =>
                         {
-                            jump.transform.parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
+                            var parent = jump.transform.parent;
+                            parent.GetComponent<PhotonView>().RPC("RPCA_FixBox", RpcTarget.All);
                         });
                     }
                     // var rem = box.AddComponent<RemoveAfterSeconds>();
@@ -79,6 +85,13 @@ namespace BossSlothsCards.Cards
                     positive = true,
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
                     stat = "Health"
+                },
+                new CardInfoStat
+                {
+                    amount = "-0.2s",
+                    positive = true,
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned,
+                    stat = "Block cooldown"
                 }
             };
         }

@@ -17,7 +17,7 @@ namespace BossSlothsCards.Cards
 
         protected override string GetDescription()
         {
-            return "Don't talk to me until I've had my morning coffee\nYou gain <color=green>+100%</color> movement speed but this trails of by 10% every second while you are running recharge by standing still";
+            return "Don't talk to me until I've had my morning coffee\nYou gain <color=green>+150%</color> movement speed but this trails of by 10% every second while you are running recharge by standing still";
         }
         
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

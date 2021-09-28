@@ -19,8 +19,7 @@ namespace BossSlothsCards.TempEffects
 
         public override CounterStatus UpdateCounter()
         {
-            multiplier = Mathf.Clamp(100 - (10 * timeSinceStandedStill), 0, 100);
-            
+            multiplier = Mathf.Clamp(150 - (15 * timeSinceStandedStill), 0, 150);
             return CounterStatus.Apply;
         }
 

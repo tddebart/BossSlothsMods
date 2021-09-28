@@ -6,7 +6,15 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <summary>2.0</summary>
 
 - v2.2.2
-    - 
+    - Fixed bug
+        - Recycling day would lag the game
+        - Stealing cards would be weird
+    - Changes
+        - Snap effect increased health to +20% and now uncommon
+        - FlatpackMunitions now has +2 Bounces
+        - Recycling day now spawns bigger boxes
+        - Morning coffee now gives 150% movement speed
+        - Second gun spread fix
 
 - v2.2.1
     - Fixed bugs

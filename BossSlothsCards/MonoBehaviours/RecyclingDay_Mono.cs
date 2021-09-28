@@ -18,5 +18,12 @@ namespace BossSlothsCards.MonoBehaviours
             //     Destroy(currentObj.gameObject);
             // });
         }
+
+        [PunRPC]
+        public void RPCA_BigBox()
+        {
+            var currentObj = MapManager.instance.currentMap.Map.gameObject.transform.GetChild(MapManager.instance.currentMap.Map.gameObject.transform.childCount - 1);
+            currentObj.transform.localScale *= 1.5f;
+        }
     }
 }
