@@ -36,10 +36,17 @@ namespace BossSlothsCards.Cards
         private void DoHeistThings(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             var enemy = PlayerManager.instance.GetRandomEnemy(player);
-            if (enemy == null || player.data.currentCards.Count == 0 || enemy.data.currentCards.Count == 0)
+            var tris = 0;
+            while (enemy.data.currentCards.Count == 0 && tris < 5)
+            {
+                tris++;
+                enemy = PlayerManager.instance.GetRandomEnemy(player);
+            }
+            if (enemy == null || enemy.data.currentCards.Count == 0)
             {
                 return;
             }
+            
             // get amount in currentCards
             var tries = 0;
             while (!(tries > 50))
@@ -51,7 +58,7 @@ namespace BossSlothsCards.Cards
                 }
                 var randomCard = enemy.data.currentCards[Random.Range(0, enemy.data.currentCards.Count - 1)];
                 // make sure the card is not
-                if (randomCard.cardName == "Heist")
+                if (!ModdingUtils.Utils.Cards.instance.CardIsNotBlacklisted(randomCard, new[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRemove")}))
                 {
                     continue;
                 }

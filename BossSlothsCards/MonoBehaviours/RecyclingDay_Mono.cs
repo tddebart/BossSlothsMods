@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BossSlothsCards.MonoBehaviours
 {
-    public class RecyclingDay_Mono : BossSlothCards
+    public class RecyclingDay_Mono : BossSlothMonoBehaviour
     {
         [PunRPC]
         public void RPCA_FixBox()

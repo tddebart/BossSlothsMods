@@ -46,32 +46,40 @@ namespace BossSlothsCards.Cards
         private static void DoLarcenistThings(Player player)
         {
             var enemy = PlayerManager.instance.GetRandomEnemy(player);
-            if (enemy == null || enemy.data.currentCards.Count == 0) return;
+            var tris = 0;
+            while (enemy.data.currentCards.Count == 0 && tris < 5)
+            {
+                tris++;
+                enemy = PlayerManager.instance.GetRandomEnemy(player);
+            }
+            if (enemy == null || enemy.data.currentCards.Count == 0)
+            {
+                return;
+            }
             
             // get amount in currentCards
             var count = enemy.data.currentCards.Count - 1;
             var tries = 0;
             while (!(tries > 50))
             {
-                if (enemy.data.currentCards.Count <= -1)
+                if (enemy.data.currentCards.Count <= -1 || count <= -1)
                 {
                     return;
                 }
                 tries++;
-                // check if card is not larcenist
-                if (enemy.data.currentCards[count].cardName == "Larcenist")
-                {
-                    count--;
-                    continue;
-                }
-
-                if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, enemy.data.currentCards[count]))
-                {
-                    count--;
-                    continue;
-                }
-
                 var card = enemy.data.currentCards[count];
+                // check if card is not
+                if (!ModdingUtils.Utils.Cards.instance.CardIsNotBlacklisted(card, new[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRemove")}))
+                {
+                    count--;
+                    continue;
+                }
+
+                if (!ModdingUtils.Utils.Cards.instance.PlayerIsAllowedCard(player, card))
+                {
+                    count--;
+                    continue;
+                }
 
                 // Add card to player
                 ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, card, false, "", 0, 0, true);

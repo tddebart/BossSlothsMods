@@ -47,16 +47,23 @@ namespace BossSlothsCards.Cards
             while (!(tries > 50))
             {
                 tries++;
-                if (player.data.currentCards.Count <= -1)
+                if (player.data.currentCards.Count <= -1 || count <= -1)
                 {
                     return;
                 }
-                // make sure the card is not NoThanks
-                if (player.data.currentCards[count].cardName == "No thanks")
+                
+                // make sure the card is not
+                if (!ModdingUtils.Utils.Cards.instance.CardIsNotBlacklisted(player.data.currentCards[count],
+                    new[]
+                    {
+                        CustomCardCategories.instance.CardCategory("CardManipulation"),
+                        CustomCardCategories.instance.CardCategory("NoRemove")
+                    }))
                 {
                     count--;
                     continue;
                 }
+                
                 
                 cardRemovedName = player.data.currentCards[count].cardName;
                 rarity = player.data.currentCards[count].rarity;
