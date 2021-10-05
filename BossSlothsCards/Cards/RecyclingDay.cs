@@ -10,6 +10,7 @@ namespace BossSlothsCards.Cards
 {
     public class RecyclingDay : CustomCard
     {
+        private GameObject reclyObj;
 
         protected override string GetTitle()
         {
@@ -26,7 +27,7 @@ namespace BossSlothsCards.Cards
             block.cooldown -= 0.2f;
             
             player.gameObject.AddComponent<RecyclingDay_Mono>();
-            var reclyObj = new GameObject("recycling");
+            reclyObj = new GameObject("recycling");
             reclyObj.AddComponent<BossSlothMonoBehaviour>();
             var jump = reclyObj.AddComponent<PlayerDoJump>();
             jump.multiplier = 1;
@@ -118,6 +119,7 @@ namespace BossSlothsCards.Cards
 
         public override void OnRemoveCard()
         {
+            DestroyImmediate(reclyObj);
         }
         
     }

@@ -5,6 +5,9 @@ This is my bepinex mod for rounds that adds numerous new cards to the game
 <details>
 <summary>2.0</summary>
 
+- v2.2.3
+    - Fixed recycling day not resetting on rematch
+
 - v2.2.2
     - Fixed bug
         - Recycling day would lag the game

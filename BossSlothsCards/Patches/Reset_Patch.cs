@@ -17,6 +17,13 @@ namespace BossSlothsCards.Patches
                 {
                     Object.Destroy(resetObj);
                 }
+                foreach (var resetObj in __instance.GetComponentsInChildren<BossSlothMonoBehaviour>())
+                {
+                    if (!resetObj.gameObject.name.Contains("Player"))
+                    {
+                        Object.Destroy(resetObj.gameObject);
+                    }
+                }
                 foreach (var resetObj in __instance.GetComponents<SplittingGun>())
                 {
                     Object.Destroy(resetObj);
