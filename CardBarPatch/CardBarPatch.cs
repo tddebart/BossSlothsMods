@@ -188,7 +188,7 @@ namespace CardBarPatch
 
         private void Update()
         {
-            if (Input.GetKeyDown(detectedKey.Value) && CardBarHandler.instance != null)
+            if (Input.GetKeyDown(detectedKey.Value) && CardBarHandler.instance != null && !GameManager.lockInput)
             {
                 #if DEBUG
                 UnityEngine.Debug.LogWarning("Got key");
