@@ -232,9 +232,6 @@ namespace CardBarPatch
             }
             else if (!haveDetectedKey && !(keyText is null) && !(button is null))
             {
-#if DEBUG
-                UnityEngine.Debug.LogWarning("Not detecting key");
-#endif
                 keyText.text = "Toggle card bar keybind: " + Enum.GetName(typeof(KeyCode), detectedKey.Value);
                 button.GetComponentInChildren<TextMeshProUGUI>().text = "Set toggle card bar keybind";
                 haveDetectedKey = true;
