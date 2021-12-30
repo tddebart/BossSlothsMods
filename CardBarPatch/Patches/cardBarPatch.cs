@@ -22,7 +22,7 @@ namespace CardBarPatch.Patches
         {
             private static void Postfix(CardBar __instance)
             {
-                var deltaY = -CardBarPatch.verticalDistance.Value;
+                var deltaY = -CardBarPatch.VerticalDistance;
                 Transform transform1;
                 var index = 0;
                 var numbers = Regex.Split(__instance.name, @"\D+");
