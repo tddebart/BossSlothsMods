@@ -13,7 +13,7 @@ using UnityEngine;
 namespace CardBarPatch
 {
     [BepInDependency("com.willis.rounds.unbound")]
-    [BepInPlugin(GUID, "CardBarPatch", "2.0.0")]
+    [BepInPlugin(GUID, "CardBarPatch", "2.1.1")]
     [BepInProcess("Rounds.exe")]
     public class CardBarPatch : BaseUnityPlugin
     {
