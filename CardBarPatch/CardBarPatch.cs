@@ -18,16 +18,102 @@ namespace CardBarPatch
     public class CardBarPatch : BaseUnityPlugin
     {
         private const string GUID = "com.BossSloth.CardBarPatch";
+        private const string ModName = "Card Bar Patch";
+        private static string CompatibilityModName => CardBarPatch.ModName.Replace(" ", "");
         
         public static CardBarPatch instance;
 
-        private static ConfigEntry<KeyCode> detectedKey;
-        public static ConfigEntry<float> spacing;
-        private static ConfigEntry<float> distanceFromRight;
-        public static ConfigEntry<float> horizontalOffset;
-        public static ConfigEntry<float> cardSize;
-        public static ConfigEntry<float> verticalDistance;
-        public static ConfigEntry<bool> autoHide;
+        private static List<Carderbar> cardBars = new List<Carderbar>();
+        public static KeyCode DetectedKey
+        {
+            get
+            {
+                return (KeyCode)PlayerPrefs.GetInt(GetConfigKey("keycode"), (int)KeyCode.P);
+            }
+            set
+            {
+                PlayerPrefs.SetInt(GetConfigKey("keycode"), (int)value);
+            }
+        }
+        public static float Spacing
+        {
+            get
+            {
+                return PlayerPrefs.GetFloat(GetConfigKey("spacing"), 3f);
+            }
+            set
+            {
+                PlayerPrefs.SetFloat(GetConfigKey("spacing"), value);
+            }
+        }
+        public static float DistanceFromRight
+        {
+            get
+            {
+                return PlayerPrefs.GetFloat(GetConfigKey("distanceFromRight"), 35f);
+            }
+            set
+            {
+                PlayerPrefs.SetFloat(GetConfigKey("distanceFromRight"), value);
+            }
+        }
+        public static float HorizontalOffset
+        {
+            get
+            {
+                return PlayerPrefs.GetFloat(GetConfigKey("horizontalOffset"), 145f);
+            }
+            set
+            {
+                PlayerPrefs.SetFloat(GetConfigKey("horizontalOffset"), value);
+            }
+        }
+        public static float CardSize
+        {
+            get
+            {
+                return PlayerPrefs.GetFloat(GetConfigKey("cardSize"), 40f);
+            }
+            set
+            {
+                PlayerPrefs.SetFloat(GetConfigKey("cardSize"), value);
+            }
+        }
+        public static float VerticalDistance
+        {
+            get
+            {
+                return PlayerPrefs.GetFloat(GetConfigKey("verticalDistance"), 50f);
+            }
+            set
+            {
+                PlayerPrefs.SetFloat(GetConfigKey("verticalDistance"), value);
+            }
+        }
+        public static bool AutoHide
+        {
+            get
+            {
+                return PlayerPrefs.GetInt(GetConfigKey("autoHide"), 0) == 1;
+            }
+            set
+            {
+                PlayerPrefs.SetInt(GetConfigKey("autoHide"), value ? 1 : 0);
+            }
+        }
+        /*
+        public static bool AutoScale
+        {
+            get
+            {
+                return PlayerPrefs.GetInt(GetConfigKey("AutoScale"), 0) == 1;
+            }
+            set
+            {
+                PlayerPrefs.SetInt(GetConfigKey("AutoScale"), value ? 1 : 0);
+            }
+        }
+        */
         public static ConfigEntry<float> opacity;
 
         private static float previewCards = 10;
@@ -45,17 +131,10 @@ namespace CardBarPatch
         private bool firstTime = true;
         
         public static float estimatedCards;
+        static string GetConfigKey(string key) => $"{CardBarPatch.CompatibilityModName}_{key}";
 
         private void Awake()
-        {
-            spacing = Config.Bind("Card bar patch", "Spacing", 3f, "");
-            distanceFromRight = Config.Bind("Card bar patch", "Distance from right", 35f, "");
-            horizontalOffset = Config.Bind("Card bar patch", "Horizontal offset", 145f, "");
-            detectedKey = Config.Bind("Card bar patch", "Toggle keybind", KeyCode.P, "");
-            cardSize = Config.Bind("Card bar patch", "Card size", 40f, "");
-            verticalDistance = Config.Bind("Card bar patch", "Vertical distance", 50f, "");
-            autoHide = Config.Bind("Card bar patch", "Auto hide during battle", false, "");
-            opacity = Config.Bind("Card bar patch", "Opacity", 100f, "");
+        {   
 
             Unbound.RegisterClientSideMod(GUID);
         }
@@ -79,7 +158,7 @@ namespace CardBarPatch
             var harmony = new Harmony("com.BossSloth.CardBarPatch");
             harmony.PatchAll();
             
-            Unbound.RegisterMenu("Card bar patch", () =>
+            Unbound.RegisterMenu(ModName, () =>
             {
                 CardBarHandler.instance.gameObject.SetActive(true);
                 CardBarHandler.instance.Rebuild();
@@ -111,36 +190,36 @@ namespace CardBarPatch
             MenuHandler.CreateText("Estimated cards that will be visible with these settings: ", menu,
                 out estimatedText, 30);
 
-            MenuHandler.CreateSlider("Spacing", menu, 40, 0, 10, spacing.Value, (val) =>
+            MenuHandler.CreateSlider("Spacing", menu, 40, 0, 10, Spacing, (val) =>
                 {
-                    spacing.Value = val;
+                    Spacing = val;
                     UpdateCardBar();
                 },
                 out var spacingSlider, true);
             
-            MenuHandler.CreateSlider("Right side dist(Def: 35)", menu, 40, 0, 100, distanceFromRight.Value, (val) =>
+            MenuHandler.CreateSlider("Right side dist(Def: 35)", menu, 40, 0, 100, DistanceFromRight, (val) =>
             {
-                distanceFromRight.Value = val;
+                DistanceFromRight = val;
                 UpdateCardBar();
             }, out var rightSideSlider, true);
             
-            MenuHandler.CreateSlider("Horizontal offset(Def: 145)", menu, 40, 20, 190, horizontalOffset.Value, (val) =>
+            MenuHandler.CreateSlider("Horizontal offset(Def: 145)", menu, 40, 20, 190, HorizontalOffset, (val) =>
                 {
-                    horizontalOffset.Value = val;
+                    HorizontalOffset = val;
                     UpdateCardBar();
                 },
                 out var horizontalSlider, true);
             
-            MenuHandler.CreateSlider("Card size(Def: 40)", menu, 40, 20, 50, cardSize.Value, (val) =>
+            MenuHandler.CreateSlider("Card size(Def: 40)", menu, 40, 20, 50, CardSize, (val) =>
                 {
-                    cardSize.Value = val;
+                    CardSize = val;
                     UpdateCardBar();
                 },
                 out var cardSizeSlider, true);
             
-            MenuHandler.CreateSlider("Vertical dist(Def: 50)", menu, 40, 20, 60, verticalDistance.Value, (val) =>
+            MenuHandler.CreateSlider("Vertical dist(Def: 50)", menu, 40, 20, 60, VerticalDistance, (val) =>
                 {
-                    verticalDistance.Value = val;
+                    VerticalDistance = val;
                     UpdateCardBar();
                 },
                 out var verticalSlider, true);
@@ -150,27 +229,29 @@ namespace CardBarPatch
                     UpdateCardBar();
                 },
                 out var opacitySlider, true);
-
-            var toggle = MenuHandler.CreateToggle(autoHide.Value, "Auto hide during battle", menu,
-                arg0 => { autoHide.Value = arg0;}, 40);
+            var toggle = MenuHandler.CreateToggle(AutoHide, "Auto hide during battle", menu,
+                arg0 => { AutoHide = arg0;}, 40);
             MenuHandler.CreateButton("Reset all", menu, () =>
             {
-                spacing.Value = 3;
-                distanceFromRight.Value = 35;
-                horizontalOffset.Value = 145;
-                cardSize.Value = 40;
-                verticalDistance.Value = 50;
-                opacity.Value = 100;
-                autoHide.Value = false;
+                Spacing = 3;
+                DistanceFromRight = 35;
+                HorizontalOffset = 145;
+                CardSize = 40;
+                VerticalDistance = 50;
+                AutoHide = false;
 
-                spacingSlider.value = spacing.Value;
-                rightSideSlider.value = distanceFromRight.Value;
-                horizontalSlider.value = horizontalOffset.Value;
-                cardSizeSlider.value = cardSize.Value;
-                verticalSlider.value = verticalDistance.Value;
-                opacitySlider.value = opacity.Value;
-                toggle.GetComponentInChildren<Toggle>().isOn = autoHide.Value;
+                spacingSlider.value = Spacing;
+                rightSideSlider.value = DistanceFromRight;
+                horizontalSlider.value = HorizontalOffset;
+                cardSizeSlider.value = CardSize;
+                verticalSlider.value = VerticalDistance;
+                toggle.GetComponentInChildren<Toggle>().isOn = AutoHide;
             }, 40);
+
+            // MenuHandler.CreateToggle(AutoScale, "Automatic scaling", menu, arg0 =>
+            // {
+            //     AutoScale = arg0;
+            // }, 40);
 
             // Create back actions
             menu.GetComponentInChildren<GoBack>(true).goBackEvent.AddListener(() =>
@@ -191,17 +272,17 @@ namespace CardBarPatch
 
         private void Update()
         {
-            if (Input.GetKeyDown(detectedKey.Value) && CardBarHandler.instance != null && !GameManager.lockInput)
+            if (Input.GetKeyDown(DetectedKey) && CardBarHandler.instance != null && !GameManager.lockInput)
             {
                 CardBarHandler.instance.gameObject.SetActive(!CardBarHandler.instance.gameObject.activeInHierarchy);
             }
 
-            if (autoHide.Value && CardBarHandler.instance != null && GameManager.instance.battleOngoing && !hasToggled)
+            if (AutoHide && CardBarHandler.instance != null && GameManager.instance.battleOngoing && !hasToggled)
             {
                 CardBarHandler.instance.gameObject.SetActive(false);
                 hasToggled = true;
             }
-            if (autoHide.Value && CardBarHandler.instance != null && !GameManager.instance.battleOngoing && hasToggled)
+            if (AutoHide && CardBarHandler.instance != null && !GameManager.instance.battleOngoing && hasToggled)
             {
                 CardBarHandler.instance.gameObject.SetActive(true);
                 hasToggled = false;
@@ -213,7 +294,7 @@ namespace CardBarPatch
                 foreach(KeyCode code in values){
                     if (Input.GetKeyDown(code))
                     {
-                        detectedKey.Value = code;
+                        DetectedKey = code;
                         detectKey = false;
                     }                    
                 }
@@ -223,7 +304,7 @@ namespace CardBarPatch
             }
             else if (!haveDetectedKey && !(keyText is null) && !(button is null))
             {
-                keyText.text = "Toggle card bar keybind: " + Enum.GetName(typeof(KeyCode), detectedKey.Value);
+                keyText.text = "Toggle card bar keybind: " + Enum.GetName(typeof(KeyCode), DetectedKey);
                 button.GetComponentInChildren<TextMeshProUGUI>().text = "Set toggle card bar keybind";
                 haveDetectedKey = true;
             }
@@ -262,26 +343,30 @@ namespace CardBarPatch
         private static void UpdateLocalCardBar(CardBar cardBar, int index)
         {
             var layoutGroup = cardBar.gameObject.GetComponent<HorizontalLayoutGroup>();
-            layoutGroup.spacing = spacing.Value;
+            layoutGroup.spacing = Spacing;
             layoutGroup.childForceExpandHeight = false;
             layoutGroup.childControlHeight = false;
             var rectTransform = cardBar.gameObject.GetComponent<RectTransform>();
-            var offset = -(horizontalOffset.Value * 10);
-            
+            var offset = -(HorizontalOffset * 10);
             rectTransform.offsetMin = new Vector2(offset, rectTransform.offsetMin.y);
-            rectTransform.offsetMax = new Vector2(distanceFromRight.Value * -1, rectTransform.offsetMax.y);
+            rectTransform.offsetMax = new Vector2(DistanceFromRight * -1, rectTransform.offsetMax.y);
 
-            
             if (adjustedCardSize == 0)
             {
                 for (var i = 0; i < cardBar.transform.childCount; i++)
                 {
                     var rectTrans = cardBar.transform.GetChild(i).GetComponent<RectTransform>();
-                    rectTrans.sizeDelta = new Vector2(cardSize.Value, cardSize.Value);
+                    rectTrans.sizeDelta = new Vector2(CardSize, CardSize);
                 }
             }
 
-            var deltaY = -verticalDistance.Value;
+            if (cardBars.All(bar => bar.cardBar != cardBar) && index != -1)
+            {
+                cardBars.Add(new Carderbar(cardBar, CardSize, -VerticalDistance));
+            }
+
+            var deltaY = -VerticalDistance;
+
             Transform transform1;
             var barGo = (transform1 = cardBar.transform).parent.transform.GetChild(0).gameObject;
             if (index == -1) index++;
@@ -294,10 +379,10 @@ namespace CardBarPatch
 
         private static void UpdateEstimatedCards(bool useAdjusted = false)
         {
-            var cardSized = useAdjusted ? adjustedCardSize : cardSize.Value;
-            var offset = -(horizontalOffset.Value * 10);
-            estimatedCards = (-offset - (-offset / cardSized * spacing.Value)) / cardSized;
-            estimatedCards += spacing.Value*0.15f;
+            var cardSized = useAdjusted ? adjustedCardSize : CardSize;
+            var offset = -(HorizontalOffset * 10);
+            estimatedCards = (-offset - (-offset / cardSized * Spacing)) / cardSized;
+            estimatedCards += Spacing*0.15f;
             estimatedCards = Mathf.Round(estimatedCards*100)/100;
             estimatedText.text = "Estimated cards that will be visible with these settings: " + estimatedCards;
         }

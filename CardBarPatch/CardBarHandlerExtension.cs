@@ -15,7 +15,7 @@ namespace CardBarPatch
             const int numPlayers = 4;
             var barGo = instance.transform.GetChild(0).gameObject;
 
-            var deltaY = -CardBarPatch.verticalDistance.Value;
+            var deltaY = -CardBarPatch.VerticalDistance;
             var cardBars = new List<CardBar>();
 
             for (int i = 0; i < numPlayers; i++) {
