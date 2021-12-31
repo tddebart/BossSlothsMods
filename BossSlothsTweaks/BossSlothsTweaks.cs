@@ -36,7 +36,7 @@ namespace BossSlothsTweaks
         {
             //Unbound.RegisterGUI("BossSloth Tweaks", DrawGUI);
             
-            Unbound.RegisterMenu("Boss Sloths Tweaks", () => { }, DrawOtherUI);
+            Unbound.RegisterMenu("Boss Sloths Tweaks", () => { }, DrawOtherUI, null);
             
             Unbound.RegisterHandshake("com.willis.rounds.unbound", OnHandShakeCompleted);
 
