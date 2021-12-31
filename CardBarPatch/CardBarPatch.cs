@@ -21,8 +21,6 @@ namespace CardBarPatch
         
         public static CardBarPatch instance;
 
-        private static List<Carderbar> cardBars = new List<Carderbar>();
-
         private static ConfigEntry<KeyCode> detectedKey;
         public static ConfigEntry<float> spacing;
         private static ConfigEntry<float> distanceFromRight;
@@ -30,7 +28,7 @@ namespace CardBarPatch
         public static ConfigEntry<float> cardSize;
         public static ConfigEntry<float> verticalDistance;
         public static ConfigEntry<bool> autoHide;
-        //public static ConfigEntry<bool> autoScale;
+        public static ConfigEntry<float> opacity;
 
         private static float previewCards = 10;
         private static float previewTeams = 1;
@@ -57,8 +55,8 @@ namespace CardBarPatch
             cardSize = Config.Bind("Card bar patch", "Card size", 40f, "");
             verticalDistance = Config.Bind("Card bar patch", "Vertical distance", 50f, "");
             autoHide = Config.Bind("Card bar patch", "Auto hide during battle", false, "");
-            //autoScale = Config.Bind("Card bar patch", "Auto scale", false, "");
-            
+            opacity = Config.Bind("Card bar patch", "Opacity", 100f, "");
+
             Unbound.RegisterClientSideMod(GUID);
         }
 
@@ -86,6 +84,7 @@ namespace CardBarPatch
                 CardBarHandler.instance.gameObject.SetActive(true);
                 CardBarHandler.instance.Rebuild();
                 this.ExecuteAfterSeconds(0.1f, UpdatePreview);
+                UpdateCardBar();
             }, CreateMenu, null);
 
         }
@@ -145,6 +144,13 @@ namespace CardBarPatch
                     UpdateCardBar();
                 },
                 out var verticalSlider, true);
+            MenuHandler.CreateSlider( "Opacity(Def: 100)", menu, 40, 0, 100, opacity.Value, (val) =>
+                {
+                    opacity.Value = val;
+                    UpdateCardBar();
+                },
+                out var opacitySlider, true);
+
             var toggle = MenuHandler.CreateToggle(autoHide.Value, "Auto hide during battle", menu,
                 arg0 => { autoHide.Value = arg0;}, 40);
             MenuHandler.CreateButton("Reset all", menu, () =>
@@ -154,6 +160,7 @@ namespace CardBarPatch
                 horizontalOffset.Value = 145;
                 cardSize.Value = 40;
                 verticalDistance.Value = 50;
+                opacity.Value = 100;
                 autoHide.Value = false;
 
                 spacingSlider.value = spacing.Value;
@@ -161,13 +168,9 @@ namespace CardBarPatch
                 horizontalSlider.value = horizontalOffset.Value;
                 cardSizeSlider.value = cardSize.Value;
                 verticalSlider.value = verticalDistance.Value;
+                opacitySlider.value = opacity.Value;
                 toggle.GetComponentInChildren<Toggle>().isOn = autoHide.Value;
             }, 40);
-
-            // MenuHandler.CreateToggle(autoScale.Value, "Automatic scaling", menu, arg0 =>
-            // {
-            //     autoScale.Value = arg0;
-            // }, 40);
 
             // Create back actions
             menu.GetComponentInChildren<GoBack>(true).goBackEvent.AddListener(() =>
@@ -190,34 +193,22 @@ namespace CardBarPatch
         {
             if (Input.GetKeyDown(detectedKey.Value) && CardBarHandler.instance != null && !GameManager.lockInput)
             {
-                #if DEBUG
-                UnityEngine.Debug.LogWarning("Got key");
-                #endif
                 CardBarHandler.instance.gameObject.SetActive(!CardBarHandler.instance.gameObject.activeInHierarchy);
             }
 
             if (autoHide.Value && CardBarHandler.instance != null && GameManager.instance.battleOngoing && !hasToggled)
             {
-#if DEBUG
-                UnityEngine.Debug.LogWarning("Is playing");
-#endif
                 CardBarHandler.instance.gameObject.SetActive(false);
                 hasToggled = true;
             }
             if (autoHide.Value && CardBarHandler.instance != null && !GameManager.instance.battleOngoing && hasToggled)
             {
-#if DEBUG
-                UnityEngine.Debug.LogWarning("Is not playing");
-#endif
                 CardBarHandler.instance.gameObject.SetActive(true);
                 hasToggled = false;
             }
             
             if (detectKey)
             {
-#if DEBUG
-                UnityEngine.Debug.LogWarning("Detecting key");
-#endif
                 var values = Enum.GetValues(typeof(KeyCode));
                 foreach(KeyCode code in values){
                     if (Input.GetKeyDown(code))
@@ -236,67 +227,6 @@ namespace CardBarPatch
                 button.GetComponentInChildren<TextMeshProUGUI>().text = "Set toggle card bar keybind";
                 haveDetectedKey = true;
             }
-
-            // if (autoScale.Value)
-            // {
-            //     var cardBars = (CardBar[]) Traverse.Create(CardBarHandler.instance).Field("cardBars").GetValue();
-            //     foreach (var cardBar in cardBars)
-            //     {
-            //         UnityEngine.Debug.LogWarning(cardBar.transform.childCount + " | " + estimatedCards);
-            //         if (cardBar.transform.childCount-1 > estimatedCards)
-            //         {
-            //             if (adjustedCardSize == 0)  {adjustedCardSize = cardSize.Value;}
-            //             UnityEngine.Debug.LogWarning("first: " + adjustedCardSize);
-            //             if (adjustedCardSize > 20)
-            //             {
-            //                 UnityEngine.Debug.LogWarning("second");
-            //                 adjustedCardSize--;
-            //                 for (var z = 0; z < cardBar.transform.childCount; z++)
-            //                 {
-            //                     var rectTrans = cardBar.transform.GetChild(z).GetComponent<RectTransform>();
-            //                     rectTrans.sizeDelta = new Vector2(adjustedCardSize, adjustedCardSize);
-            //                 }
-            //
-            //                 UpdateEstimatedCards(true);
-            //             }
-            //         }
-            //         else
-            //         {
-            //             adjustedCardSize = 0;
-            //         }
-            //     }
-            // }
-            
-            // if (autoScale.Value)
-            // {
-            //     for (var index = 0; index < cardBars.Count; index++)
-            //     {
-            //         var cardBar = cardBars[index];
-            //         var cardCount = 0;
-            //         for (int i = 0; i < cardBar.cardBar.transform.childCount; i++)
-            //         {
-            //             if (cardBar.cardBar.transform.GetChild(i).gameObject.activeInHierarchy) cardCount++;
-            //         }
-            //         
-            //         cardBar.UpdateEstimatedCards();
-            //
-            //         if (cardCount-1 > cardBar.estimatedCards)
-            //         {
-            //             cardBar.adjustedSize -= 1;
-            //             for (var i = 0; i < cardBar.cardBar.transform.childCount; i++)
-            //             {
-            //                 var rectTrans = cardBar.cardBar.transform.GetChild(i).GetComponent<RectTransform>();
-            //                 rectTrans.sizeDelta = new Vector2(cardBar.adjustedSize, cardBar.adjustedSize);
-            //             }
-            //
-            //             var deltaY = cardBar.adjustedVerticalDistance;
-            //             Transform transform1;
-            //             var barGo = (transform1 = cardBar.cardBar.transform).parent.transform.GetChild(0).gameObject;
-            //             transform1.localPosition = barGo.transform.localPosition + new Vector3(0, deltaY * index, 0);
-            //             cardBar.UpdateEstimatedCards();
-            //         }
-            //     }
-            // }
         }
 
         private void UpdatePreview()
@@ -317,7 +247,7 @@ namespace CardBarPatch
             });
         }
 
-        public static void UpdateCardBar()
+        private static void UpdateCardBar()
         {
             var cardBars = (CardBar[]) Traverse.Create(CardBarHandler.instance).Field("cardBars").GetValue();
             for (int i = 0; i < cardBars.Length; i++)
@@ -337,8 +267,11 @@ namespace CardBarPatch
             layoutGroup.childControlHeight = false;
             var rectTransform = cardBar.gameObject.GetComponent<RectTransform>();
             var offset = -(horizontalOffset.Value * 10);
+            
             rectTransform.offsetMin = new Vector2(offset, rectTransform.offsetMin.y);
             rectTransform.offsetMax = new Vector2(distanceFromRight.Value * -1, rectTransform.offsetMax.y);
+
+            
             if (adjustedCardSize == 0)
             {
                 for (var i = 0; i < cardBar.transform.childCount; i++)
@@ -348,16 +281,13 @@ namespace CardBarPatch
                 }
             }
 
-            if (cardBars.All(bar => bar.cardBar != cardBar) && index != -1)
-            {
-                cardBars.Add(new Carderbar(cardBar, cardSize.Value, -verticalDistance.Value));
-            }
-
             var deltaY = -verticalDistance.Value;
             Transform transform1;
             var barGo = (transform1 = cardBar.transform).parent.transform.GetChild(0).gameObject;
             if (index == -1) index++;
             transform1.localPosition = barGo.transform.localPosition + new Vector3(0, deltaY * index, 0);
+
+            cardBar.gameObject.GetOrAddComponent<CanvasGroup>().alpha = opacity.Value / 100f;
 
             UpdateEstimatedCards();
         }
@@ -375,28 +305,6 @@ namespace CardBarPatch
         public static void CardBar()
         {
             instance.ExecuteAfterSeconds(0.5f, UpdateCardBar);
-        }
-    }
-
-    internal class Carderbar
-    {
-        public CardBar cardBar;
-        public float adjustedSize;
-        public float adjustedVerticalDistance;
-
-
-        public Carderbar(CardBar cardBar, float adjustedSize, float adjustedVerticalDistance)
-        {
-            this.cardBar = cardBar;
-            this.adjustedSize = adjustedSize;
-            this.adjustedVerticalDistance = adjustedVerticalDistance;
-        }
-
-        public void UpdateEstimatedCards()
-        {
-            var offset = -(CardBarPatch.horizontalOffset.Value * 10);
-            var spacing = CardBarPatch.spacing.Value;
-            
         }
     }
 }
