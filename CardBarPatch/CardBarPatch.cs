@@ -22,99 +22,46 @@ namespace CardBarPatch
         private static string CompatibilityModName => CardBarPatch.ModName.Replace(" ", "");
         
         public static CardBarPatch instance;
-
-        private static List<Carderbar> cardBars = new List<Carderbar>();
         public static KeyCode DetectedKey
         {
-            get
-            {
-                return (KeyCode)PlayerPrefs.GetInt(GetConfigKey("keycode"), (int)KeyCode.P);
-            }
-            set
-            {
-                PlayerPrefs.SetInt(GetConfigKey("keycode"), (int)value);
-            }
+            get => (KeyCode)PlayerPrefs.GetInt(GetConfigKey("keycode"), (int)KeyCode.P);
+            set => PlayerPrefs.SetInt(GetConfigKey("keycode"), (int)value);
         }
         public static float Spacing
         {
-            get
-            {
-                return PlayerPrefs.GetFloat(GetConfigKey("spacing"), 3f);
-            }
-            set
-            {
-                PlayerPrefs.SetFloat(GetConfigKey("spacing"), value);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("spacing"), 3f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("spacing"), value);
         }
         public static float DistanceFromRight
         {
-            get
-            {
-                return PlayerPrefs.GetFloat(GetConfigKey("distanceFromRight"), 35f);
-            }
-            set
-            {
-                PlayerPrefs.SetFloat(GetConfigKey("distanceFromRight"), value);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("distanceFromRight"), 35f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("distanceFromRight"), value);
         }
         public static float HorizontalOffset
         {
-            get
-            {
-                return PlayerPrefs.GetFloat(GetConfigKey("horizontalOffset"), 145f);
-            }
-            set
-            {
-                PlayerPrefs.SetFloat(GetConfigKey("horizontalOffset"), value);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("horizontalOffset"), 145f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("horizontalOffset"), value);
         }
         public static float CardSize
         {
-            get
-            {
-                return PlayerPrefs.GetFloat(GetConfigKey("cardSize"), 40f);
-            }
-            set
-            {
-                PlayerPrefs.SetFloat(GetConfigKey("cardSize"), value);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("cardSize"), 40f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("cardSize"), value);
         }
         public static float VerticalDistance
         {
-            get
-            {
-                return PlayerPrefs.GetFloat(GetConfigKey("verticalDistance"), 50f);
-            }
-            set
-            {
-                PlayerPrefs.SetFloat(GetConfigKey("verticalDistance"), value);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("verticalDistance"), 50f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("verticalDistance"), value);
         }
         public static bool AutoHide
         {
-            get
-            {
-                return PlayerPrefs.GetInt(GetConfigKey("autoHide"), 0) == 1;
-            }
-            set
-            {
-                PlayerPrefs.SetInt(GetConfigKey("autoHide"), value ? 1 : 0);
-            }
+            get => PlayerPrefs.GetInt(GetConfigKey("autoHide"), 0) == 1;
+            set => PlayerPrefs.SetInt(GetConfigKey("autoHide"), value ? 1 : 0);
         }
-        /*
-        public static bool AutoScale
+        public static float Opacity
         {
-            get
-            {
-                return PlayerPrefs.GetInt(GetConfigKey("AutoScale"), 0) == 1;
-            }
-            set
-            {
-                PlayerPrefs.SetInt(GetConfigKey("AutoScale"), value ? 1 : 0);
-            }
+            get => PlayerPrefs.GetFloat(GetConfigKey("opacity"), 100f);
+            set => PlayerPrefs.SetFloat(GetConfigKey("opacity"), value);
         }
-        */
-        public static ConfigEntry<float> opacity;
 
         private static float previewCards = 10;
         private static float previewTeams = 1;
@@ -223,9 +170,9 @@ namespace CardBarPatch
                     UpdateCardBar();
                 },
                 out var verticalSlider, true);
-            MenuHandler.CreateSlider( "Opacity(Def: 100)", menu, 40, 0, 100, opacity.Value, (val) =>
+            MenuHandler.CreateSlider( "Opacity(Def: 100)", menu, 40, 0, 100, Opacity, (val) =>
                 {
-                    opacity.Value = val;
+                    Opacity = val;
                     UpdateCardBar();
                 },
                 out var opacitySlider, true);
@@ -360,11 +307,6 @@ namespace CardBarPatch
                 }
             }
 
-            if (cardBars.All(bar => bar.cardBar != cardBar) && index != -1)
-            {
-                cardBars.Add(new Carderbar(cardBar, CardSize, -VerticalDistance));
-            }
-
             var deltaY = -VerticalDistance;
 
             Transform transform1;
@@ -372,7 +314,7 @@ namespace CardBarPatch
             if (index == -1) index++;
             transform1.localPosition = barGo.transform.localPosition + new Vector3(0, deltaY * index, 0);
 
-            cardBar.gameObject.GetOrAddComponent<CanvasGroup>().alpha = opacity.Value / 100f;
+            cardBar.gameObject.GetOrAddComponent<CanvasGroup>().alpha = Opacity / 100f;
 
             UpdateEstimatedCards();
         }
